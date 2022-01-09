@@ -133,7 +133,7 @@ let shgi = {st: false, msg: ""}
     {#if before == false}
     <div class="pnimi bg-barb  text-center p-4 m-4">
 <h1 class="text-white text-xl text-center">קעקועים רקומים</h1>
-<p class="text-center text-sm text-cachol">לעצב את התפאורה שלך מחדש ולגעת בטאצ' של יופי</p>
+<p class="text-center text-sm text-cachol">לעצב את התפאורה שלך מחדש ולהתייפות בטאצ' של יופי</p>
 
 <button class="text-barb bg-cachol hover:text-cachol hover:bg-white p-2 m-2" on:click={open}>אני רוצה</button>
 </div>
