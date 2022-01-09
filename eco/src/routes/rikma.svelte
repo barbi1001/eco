@@ -152,7 +152,7 @@ let shgi = {st: false, msg: ""}
     .body{
     height: 100vh;
     width: 100vw;
-    background-image: url(wool.svg);
+    background-image: url(https://res.cloudinary.com/barb1/image/upload/v1641753064/Wool_sxs0cp.svg);
     background-position: center center;
     background-size: cover;
     background-repeat: repeat;
