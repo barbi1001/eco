@@ -34,13 +34,13 @@ let shgi = {st: false, msg: ""}
        const mail = $form.email.toLowerCase()
   axios
   .post('https://yomuledet.onrender.com/rekamots', {
-       data: {
+      
      name: $form.name,
      email: mail,
      phone: $form.phone,
      teur: $form.teur
     },
- 
+ {
   headers: {
         'Content-Type': 'application/json',
             }})
