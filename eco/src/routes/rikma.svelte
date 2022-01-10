@@ -33,7 +33,7 @@ let shgi = {st: false, msg: ""}
       onSubmit: values => {
        const mail = $form.email.toLowerCase()
   axios
-  .post('http://localhost:1337/api/rekamots', {
+  .post('https://yomuledet.onrender.com/api/rekamots', {
        data: {
      name: $form.name,
      email: mail,
