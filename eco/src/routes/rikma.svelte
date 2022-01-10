@@ -55,7 +55,7 @@ let shgi = {st: false, msg: ""}
       console.log(error);
     shgi.st = true;
     if (error.response === undefined){
-        shgi.msg = "השרת נרדם 😴, הערנו אותו, אנו מנסים שוב";
+        shgi.msg = "השרת נרדם 😴, הערנו אותו, נבצע ניסיון חוזר";
       //  handleSubmit();
     } else {
         shgi.msg = `${error.response.data.message}  ${error.response.data.statusCode} :טעות לעולם חוזרת, הנה הפרטים היבשים `
