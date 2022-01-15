@@ -4,6 +4,7 @@
     import * as yup from "yup";
     import "yup-phone";
       import axios from 'axios';
+      
 let big2 = "244.393 -796.268 2164.344 2370.554" ;
 let big = "matrix(1, 0, 0, 1.537493, 0, -832.271973)";
 let sma = "matrix(1, 0, 0, 0.965062, 0, 54.097717)";
@@ -14,6 +15,7 @@ let isHover = false;
 let vb = "207.833 -335.61 2215.528 1909.896";
 let metr = "matrix(1, 0, 0, 1.222275, 0, -344.178101)";
 let myInterval = null;
+
 function start () {
    myInterval = setInterval(function () {
   if(vb === sma2){
@@ -171,7 +173,7 @@ let shgi = {st: false, msg: ""}
 <img class="ka" src="https://res.cloudinary.com/barb1/image/upload/v1642275970/barb_jbpyjl.gif" alt="קעקועים רקומים">
 <p class="text-center text-sm text-sof">לעצב את התפאורה שלך מחדש ולהתייפות בטאצ' של יופי</p>
 
-<button on:mouseenter={hover} on:mouseleave={hover} class=" bte  m-2 " on:click={open}>   
+<button on:mouseenter={hover} on:mouseleave={hover} class=" bte " on:click={open}>   
 <svg version="1.1" id="Layer_1" class="im" x="0px" y="0px" viewBox={vb}  enable-background="new 212 25.714 2136 1548.5721" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
   <defs>
     <radialGradient gradientUnits="userSpaceOnUse" cx="779.35" cy="380.22" r="58.679" id="gradient-2">
@@ -797,7 +799,9 @@ let shgi = {st: false, msg: ""}
 }
 
 .bte{
-  border-radius: 50%;
+  height: 200px;
+  justify-self: end;
+  align-self: end ;
 }
     .body{
     height: 100vh;
