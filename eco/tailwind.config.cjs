@@ -7,7 +7,8 @@ const config = {
 		extend: {
 			colors: {
 				barb: '#FF0066',
-				cachol: '#01003d'
+				cachol: '#01003d',
+				sof: 'rgb(254, 132, 169)'
 			}
 		}
 	},
