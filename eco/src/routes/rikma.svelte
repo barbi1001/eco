@@ -717,7 +717,7 @@ let shgi = {st: false, msg: ""}
 
     }
     .ka{
-    height: 500px;
+    height: 50vh;
     margin: 0 auto;
   }
     }
