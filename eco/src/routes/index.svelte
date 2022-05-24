@@ -2,8 +2,7 @@
 	const carouselPhotos = [
 		'https://res.cloudinary.com/barb1/image/upload/v1641771584/%D7%91%D7%A8%D7%91%D7%99_4_zvtv3p.gif',
 		'https://res.cloudinary.com/barb1/image/upload/v1641771587/%D7%91%D7%A8%D7%91%D7%99_3_srzbj7.gif',
-		'https://res.cloudinary.com/barb1/image/upload/v1641771584/%D7%91%D7%A8%D7%91%D7%99_2_owj5x1.gif',
-		'https://res.cloudinary.com/barb1/image/upload/v1641771583/%D7%91%D7%A8%D7%91%D7%99_5_g53bjt.gif'
+		'https://res.cloudinary.com/barb1/image/upload/v1641771584/%D7%91%D7%A8%D7%91%D7%99_2_owj5x1.gif'
 	]
 	
 
