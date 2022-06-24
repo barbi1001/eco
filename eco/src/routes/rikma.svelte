@@ -68,11 +68,13 @@ let shgi = {st: false, msg: ""}
        const mail = $form.email.toLowerCase()
   axios
   .post('https://strapi-7iq2.onrender.com/api/rekamots', {
-      
+
+   "data": {  
      name: $form.name,
      email: mail,
      phone: $form.phone,
      teur: $form.teur
+   }
     },
  {
   headers: {
