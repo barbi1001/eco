@@ -67,7 +67,7 @@ let shgi = {st: false, msg: ""}
       onSubmit: values => {
        const mail = $form.email.toLowerCase()
   axios
-  .post('https://strapi-7iq2.onrender.com/rekamots', {
+  .post('https://strapi-7iq2.onrender.com/api/rekamots', {
       
      name: $form.name,
      email: mail,
