@@ -708,6 +708,7 @@ let shgi = {st: false, msg: ""}
     background-image: url(https://res.cloudinary.com/barb1/image/upload/v1642276506/KnittedWool_yuokzt.svg);
     background-position: center center;
     background-size: cover;
+    z-index:222;
     }
     .ka{
     height: 80vw;
