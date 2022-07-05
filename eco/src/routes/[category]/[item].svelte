@@ -693,7 +693,7 @@ class="mySwiper"
          class="text-sm text-gray-500 p-8 border-2 m-4 ">
            {shopsi.data.attributes.des}
          </p>
-    {#if shopsi.myp == false}    
+    {#if shopsi.data.attributes.kind !== "mydesign"}    
 <a
            style="position:absolute; top: 64%; right: 65%;"
             href="{shopsi.data.attributes.url}"><Buy/>
