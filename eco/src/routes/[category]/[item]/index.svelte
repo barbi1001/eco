@@ -15,6 +15,7 @@
 </script>
 <script>
     export let shopsi;
+    import Mobile from '$lib/comonents/mobileItem.svelte'
     let urlx = "https://strapi-7iq2.onrender.com/api/";
    
   console.log(shopsi)
@@ -27,7 +28,7 @@ import { onMount } from 'svelte'
      let imgc
      let imgd
      let imge
-     import {products, cart} from "./../../lib/stores/cart.js";
+     import {products, cart} from "$lib/stores/cart.js";
     let prod = {};
 onMount(async () => {
   imga = shopsi.data.attributes.img1.data.attributes.formats.small.url
@@ -60,11 +61,12 @@ import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 
-import "./style.css";
+import "$lib/style.css";
 
 // import required modules
 import { EffectCube, Pagination } from "swiper";
-import Buy from './../../lib/svg/buy.svelte'
+import Buy from '$lib/svg/buy.svelte'
+import DesctoItem from '$lib/comonents/desctoItem.svelte';
 	
 	const addToCart = (product) => {
 		for(let item of $cart) {
@@ -77,8 +79,21 @@ import Buy from './../../lib/svg/buy.svelte'
 		$cart = [...$cart, prod]
     console.log($cart)
 	}
+let mobiles = true   
+let h,w;
+$: if(w>600){
+   mobiles = false;
+} else{
+   mobiles = true;
+}
 </script>
+<div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
 
+{#if mobiles}
+<Mobile shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge}/>
+{:else if mobiles == false}
+<DesctoItem shem={shopsi.data.attributes.name}/>
+{:else}
 <Swiper
 effect={"cube"}
 grabCursor={true}
@@ -714,7 +729,8 @@ class="mySwiper"
            </svg>
          </button>-->
      </div>
-   
+     {/if}
+</div>
 <style>
 
 .slide  {
@@ -729,6 +745,9 @@ class="mySwiper"
 		border-radius: 1rem;
 		box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
 	}
-   
+   .fullwidth{
+      max-width: 100vw;
+      overflow-y: hidden;
+   }
 
 </style>
