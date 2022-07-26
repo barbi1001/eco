@@ -14,7 +14,7 @@ import "$lib/style.css";
 import { EffectCube, Pagination } from "swiper";
 
 
-    export let shem;
+    export let shem, url, kind, des , id, price;
     export let imga,imgb,imgc,imgd,imge
 
 </script>
@@ -22,7 +22,7 @@ import { EffectCube, Pagination } from "swiper";
 
     
     <svg id="svg2" viewBox="-320.053862 -4704.000117 1203.302407 10071.580883" version="1.1" width="100vw" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
-        <title>קניה נעימה</title>
+        <title>קניה נעימה {shem}</title>
         <defs id="defs4">
                 <linearGradient id="linearGradient16511">
                         <stop id="stop16513" style="stop-color: rgb(215, 56, 156);" offset="0"/>
@@ -622,7 +622,7 @@ class="mySwiper"
 </Swiper>
          </div>
          </foreignObject>
-        <text style="fill: url(#linearGradient5786-0); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#gradient-27); stroke-width: 0.107934px; text-anchor: middle; white-space: pre;" transform="matrix(4.772483825684, 0, 0, 9.923977851868, 299.845184326172, -4372.8994140625)">BarB</text>
+        <text style="fill: url(#linearGradient5786-0); font-family: &quot;Old English Text MT&quot;; font-size: 24px; stroke: url(#gradient-27); stroke-width: 0.107934px; text-anchor: middle; white-space: pre;" transform="matrix(4.772483825684, 0, 0, 9.923977851868, 299.845184326172, -4372.8994140625)">BarB Design</text>
         <g transform="matrix(3.00520825386, 0, 0, 3.126010417938, -1059.554077148437, -384.874084472656)" style="">
                 <g transform="matrix(16.637781143188, 0, 0, 18.446662902832, 252.694412231445, 684.391540527344)" style="">
                         <g style="" transform="matrix(1, 0, 0, 1.681684970856, 0, -8.354349136353)">
@@ -769,11 +769,11 @@ class="mySwiper"
         </g>
         <text style="fill: url(#linearGradient10151-0); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#linearGradient7090-0); stroke-width: 0.209601px; text-anchor: middle; white-space: pre;" transform="matrix(7.966637134552, 0, 0, 9.476630210876, 299.845184326172, 2548.64453125)" bx:origin="34.787 1">₪</text>
         <text style="fill: url(#gradient-25); font-family: &quot;Bodoni MT Poster&quot;; font-size: 56.0434px; font-weight: 700; line-height: 71.1809px; stroke: rgb(8, 33, 20); stroke-miterlimit: 45; stroke-width: 0.577769px; text-anchor: middle; white-space: pre; opacity: 0.3;" transform="matrix(1.67348408699, 0, 0, 0.795250654221, 299.845184326172, 1450.966186523438)">₪</text>
-        <text style="fill: url(#linearGradient10151-4); font-family: &quot;EB Garamond&quot;; font-size: 28px; stroke: url(#linearGradient5786-8); stroke-width: 0.184964px; text-anchor: middle; white-space: pre;" transform="matrix(4.458679199219, 0, 0, 8.138150215149, 299.845184326172, -2191.505859375)">{shem}</text>
+        <text style="fill: url(#linearGradient10151-4); font-family: &quot;EB Garamond&quot;; font-size: 12px; stroke: url(#linearGradient5786-8); stroke-width: 0.184964px; text-anchor: middle; white-space: pre;" transform="matrix(4.458679199219, 0, 0, 8.138150215149, 299.845184326172, -2191.505859375)">{shem}</text>
         <text style="fill: rgb(255, 246, 213); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#gradient-0); stroke-width: 0px; text-anchor: middle; white-space: pre;" transform="matrix(4.772483825684, 0, 0, 7.460203170776, 2152.228271484375, -2847.705810546875)">BarB</text>
-        <text style="fill: url(#gradient-2); font-family: &quot;EB Garamond&quot;; font-size: 28px; stroke: url(#linearGradient5786-27); stroke-width: 0.809447px; text-anchor: middle; white-space: pre;" transform="matrix(9.133942604065, 0, 0, 8.161825180054, 299.845184326172, 2994.501708984375)">{shem}</text>
+        <text style="fill: url(#gradient-2); font-family: &quot;EB Garamond&quot;; font-size: 12px; stroke: url(#linearGradient5786-27); stroke-width: 0.809447px; text-anchor: middle; white-space: pre;" transform="matrix(9.133942604065, 0, 0, 8.161825180054, 299.845184326172, 2994.501708984375)">{shem}</text>
         <text style="fill: url(#linearGradient16511-29); fill-rule: evenodd; font-family: Arial, sans-serif; font-size: 81.0444px; paint-order: stroke markers; stroke: url(#linearGradient5786-3); stroke-width: 5.40286px; text-anchor: middle; white-space: pre;" transform="matrix(1.124027013779, 0, 0, 3.571475982666, 475.361968994141, -12538.5009765625)" x="-142.353" y="4522.53">:מפרט</text>
-        <text style="fill: url(#gradient-57); font-family: UnifrakturMaguntia; font-size: 15.9px; stroke: url(#linearGradient5786-1); stroke-width: 0.511018px; text-anchor: middle; white-space: pre;" transform="matrix(9.729525566101, 0, 0, 17.666751861572, -3667.893798828125, -23837.650390625)" x="407.804" y="1418.59">מחיר</text>
+        <text style="fill: url(#gradient-57); font-family: UnifrakturMaguntia; font-size: 15.9px; stroke: url(#linearGradient5786-1); stroke-width: 0.511018px; text-anchor: middle; white-space: pre;" transform="matrix(9.729525566101, 0, 0, 17.666751861572, -3667.893798828125, -23837.650390625)" x="407.804" y="1418.59">{price}</text>
         <g style="" transform="matrix(0.328532367945, 0, 0, 0.526096522808, -131.971130371094, -608.956970214844)">
                 <g transform="matrix(1, 0, 0, 1, 34.379852, -4.911469)" style="">
                         <g id="_x23_ffffffff">

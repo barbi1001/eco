@@ -90,7 +90,7 @@ $: if(w>600){
 <div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
 
 {#if mobiles}
-<Mobile shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge}/>
+<Mobile shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
 {:else if mobiles == false}
 <DesctoItem shem={shopsi.data.attributes.name}/>
 {:else}
