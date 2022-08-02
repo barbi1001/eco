@@ -14,6 +14,7 @@
 }
 </script>
 <script>
+
     export let shopsi;
     export let status;
     console.log(status)
@@ -36,16 +37,16 @@ import { onMount } from 'svelte'
 
 onMount(async () => {
    if (mobiles < 600){
-  imga = shopsi.data.attributes.img1.data.attributes.formats.small.url
-  imgb = shopsi.data.attributes.img2.data.attributes.formats.small.url
-  imgc = shopsi.data.attributes.img3.data.attributes.formats.small.url
-  imgd = shopsi.data.attributes.img4.data.attributes.formats.small.url
+  imga = shopsi.data.attributes.img1.data.attributes.formats.large.url
+  imgb = shopsi.data.attributes.img2.data.attributes.formats.large.url
+  imgc = shopsi.data.attributes.img3.data.attributes.formats.large.url
+  imgd = shopsi.data.attributes.img4.data.attributes.formats.large.url
  // imge = shopsi.data.attributes.img5.data.attributes.formats.small.url
    } else {
-      imga = shopsi.data.attributes.img1.data.attributes.formats.medium.url
-  imgb = shopsi.data.attributes.img2.data.attributes.formats.medium.url
-  imgc = shopsi.data.attributes.img3.data.attributes.formats.medium.url
-  imgd = shopsi.data.attributes.img4.data.attributes.formats.medium.url
+      imga = shopsi.data.attributes.img1.data.attributes.formats.large.url
+  imgb = shopsi.data.attributes.img2.data.attributes.formats.large.url
+  imgc = shopsi.data.attributes.img3.data.attributes.formats.large.url
+  imgd = shopsi.data.attributes.img4.data.attributes.formats.large.url
  // imge = shopsi.data.attributes.img5.data.attributes.formats.medium.url
 
    }
@@ -92,6 +93,7 @@ import DesctoItem from '$lib/comonents/desctoItem.svelte';
 		}
 		$cart = [...$cart, prod]
     console.log($cart)
+      open()
 	}
 let h,w;
 $: if(w>600){
@@ -99,7 +101,26 @@ $: if(w>600){
 } else{
    mobiles = true;
 }
+import Carta from '$lib/comonents/carta.svelte'
+	import { DialogOverlay, DialogContent } from 'svelte-accessible-dialog';
+    let isOpen;
+  const open = () => {
+    isOpen = true;
+  };
+
+  const close = () => {
+    isOpen = false;
+	//get name from event timout to show goodby msg
+  };
 </script>
+<DialogOverlay class="over" {isOpen} onDismiss={close}>
+	<DialogContent aria-label="form" class="content">
+		<div class="tofes" dir="rtl">
+<Carta on:close={close}/>
+		</div>
+
+	</DialogContent>
+	</DialogOverlay >
 {#await shopsi}
 <div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
 
@@ -773,5 +794,17 @@ class="mySwiper"
       max-width: 100vw;
       overflow-y: hidden;
    }
+   :global([data-svelte-dialog-content].content) {
+    width: 66vw;
+  /*  background-image: url(https://res.cloudinary.com/barb1/image/upload/v1642276506/KnittedWool_yuokzt.svg);
+    background-position: center center;
+    background-size: cover;
+	*/
+    z-index:222;
+    }
+	:global([data-svelte-dialog-overlay].over) {
+		z-index:222;
+
+	}
 
 </style>

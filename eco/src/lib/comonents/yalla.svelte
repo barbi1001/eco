@@ -1333,32 +1333,39 @@ const t = ["אבו ג'ווייעד שבט",
 
 
 <div class="shipping-address">
-	<div>
-		<p>שם ושם משפחה</p>
-		<input bind:value={$address.name} />
+	<form>
+        <div class="relative z-0 mb-6 w-full group">
+            <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.email} />
+            <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">כתובת מייל</label>
+        </div>
+          <div class="relative z-0 mb-6 w-full group">
+              <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.name}/>
+              <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"> שם ושם משפחה</label>
+          </div>
 
-		<p>כתובת מייל</p>
-		<input bind:value={$address.email} />
-
-		<p>מספר פלאפון ליצירת קשר (חשוב)</p>
-		<input bind:value={$address.phone} />
-
-		<p>הערות</p>
-		<textarea bind:value={$address.teur} cols="24" rows="6"></textarea>
-
-		<p>עיר</p>
+          <div class="relative z-0 mb-6 w-full group">
+              <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.phone}/>
+              <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">מספר פלאפון (חשוב)</label>
+        </div>
+        
+        <p>עיר</p>
         <MultiSelect maxSelect="1" bind:selected options={t} />
+        <div class="relative z-0 mb-6 w-full group">
+            <textarea bind:value={$address.teur} cols="24" rows="6" type="text" name="floating_frs_name" id="floating_frs_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
+            <label for="floating_frs_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">הערות</label>
+        </div>
+        <div class="relative z-0 mb-6 w-full group">
+            <input  bind:value={$address.street} type="text" name="floating_frst_name" id="floating_frst_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
+            <label for="floating_frst_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">רחוב ומספר בית</label>
+        </div>
+      
 
-		<p>רחוב</p>
-		<input bind:value={$address.street} />
-
-	
-		
 		<div class="flex justify-end">
             <button class="mt-1 py-1 px-4 rounded-full bg-pink-200 hover:bg-pink-500 text-pink-900 hover:text-pink-200" on:click={checkOut}>להזמין!</button>
-		</div>
-		
-	</div>
+        </div>
+
+        </form>
+			
 	
 	<div class="current-address">
 		<p>{$address.name}</p>
@@ -1366,6 +1373,7 @@ const t = ["אבו ג'ווייעד שבט",
 		<p>{$address.phone}</p>
 		<p>{$address.street}</p>
 		<p>{$address.city}</p>
+        <p>{$address.teur}</p>
 	</div>
 </div>
 

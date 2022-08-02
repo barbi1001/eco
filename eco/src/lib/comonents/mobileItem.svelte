@@ -3,6 +3,7 @@
 
 const dispatch = createEventDispatcher();
 import { Swiper, SwiperSlide } from "swiper/svelte";
+import "swiper/css/zoom";
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,7 +14,7 @@ import "swiper/css/pagination";
 import "$lib/style.css";
 
 // import required modules
-import { EffectCube, Pagination } from "swiper";
+import {Zoom, EffectCube, Pagination } from "swiper";
 
 
     export let shem, url, kind, des , id, price;
@@ -599,33 +600,36 @@ function addToCart (id){
                 <foreignObject x="-240" y="-1650" width="1050" height="1050" style="stroke-width: 13.0705px; stroke-miterlimit: 1; fill: none; stroke: url(#linearGradient10151-1);" >
         <div>
                 <Swiper
-effect={"cube"}
-grabCursor={true}
-cubeEffect={{
-  shadow: true,
-  slideShadows: true,
-  shadowOffset: 20,
-  shadowScale: 0.94,
-}}
-loop=true
-pagination={true}
-modules={[EffectCube, Pagination]}
+                effect={"cube"}
+                zoom={true}
+                grabCursor={true}
+                cubeEffect={{
+                  shadow: true,
+                  slideShadows: true,
+                  shadowOffset: 20,
+                  shadowScale: 0.94,
+                }}
+                loop=true
+                pagination={true}
+                modules={[EffectCube, Pagination, Zoom]}
 class="mySwiper"
+><SwiperSlide
 >
-<SwiperSlide
-  ><img alt="{`${shem} תמונת המוצר`}" src={imga} /></SwiperSlide
+<div class="swiper-zoom-container">
+<img alt="{`${shem} תמונת המוצר`}" src={imga} /></div></SwiperSlide
 ><SwiperSlide
-  ><img alt="{`${shem} תמונת המוצר`}"   src={imgb} /></SwiperSlide
+> <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}"   src={imgb} /></div></SwiperSlide
 ><SwiperSlide
-  ><img alt="{`${shem} תמונת המוצר`}" src={imgc} /></SwiperSlide
+> <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgc} /></div></SwiperSlide
 ><SwiperSlide
-  ><img alt="{`${shem} תמונת המוצר`}" src={imgd} /></SwiperSlide
+> <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgd} /></div></SwiperSlide
 ><!--<SwiperSlide
 ><img alt="{`${shem} תמונת המוצר`}" src={imge} /></SwiperSlide
 >-->
 </Swiper>
          </div>
          </foreignObject>
+
         <text style="fill: url(#linearGradient5786-0); font-family: &quot;Old English Text MT&quot;; font-size: 24px; stroke: url(#gradient-27); stroke-width: 0.107934px; text-anchor: middle; white-space: pre;" transform="matrix(4.772483825684, 0, 0, 9.923977851868, 299.845184326172, -4372.8994140625)">BarB Design</text>
         <g transform="matrix(3.00520825386, 0, 0, 3.126010417938, -1059.554077148437, -384.874084472656)" style="">
                 <g transform="matrix(16.637781143188, 0, 0, 18.446662902832, 252.694412231445, 684.391540527344)" style="">
@@ -1173,4 +1177,11 @@ class="mySwiper"
                         <path d="M1637.58,854.769c11.406,14.982,12.059,23.625,14.044,31.793c5.659-8.981,11.158-17.956,16.5-26.924 c-1.47-3.269-2.75-6.399-3.757-9.319C1651.748,813.727,1621.981,834.279,1637.58,854.769z" style=""/>
                 </g>
         </g>
+        <foreignObject x="0" y="3761" width="608" height="1133.400024" style=" fill: none;">
+                <div>
+                  <p style="color:#007aff; font-size:60px; text-align:center; ">
+                    {des}
+                  </p>
+                </div>
+            </foreignObject>
 </svg>
