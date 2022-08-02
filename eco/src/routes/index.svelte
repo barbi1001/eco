@@ -59,9 +59,6 @@ function categoryback (){
 
 
 
-
-
-
 <div class="r">
   <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100vw" height="100vh">
     <defs>

@@ -1,20 +1,22 @@
     
 <script context="module">
-  export const load = async ({ params, fetch }) => {
+  export const load = async ({ params, fetch ,status}) => {
     const id = params.item;
     console.log(params)
 
-    const res = await fetch(`https://strapi-7iq2.onrender.com/api/items/${id}?populate=%2A`);
-    const shopsi = await res.json()  ;
+    const response  = await fetch(`https://strapi-7iq2.onrender.com/api/items/${id}?populate=%2A`);
     return {
+         status: response.status,
       props: {
-        shopsi,
-      },
-   }
+         shopsi: response.ok && (await response.json())
+      }
+    };
 }
 </script>
 <script>
     export let shopsi;
+    export let status;
+    console.log(status)
     import Mobile from '$lib/comonents/mobileItem.svelte'
     let urlx = "https://strapi-7iq2.onrender.com/api/";
    
@@ -30,12 +32,23 @@ import { onMount } from 'svelte'
      let imge
      import {products, cart} from "$lib/stores/cart.js";
     let prod = {};
+    let mobiles ;  
+
 onMount(async () => {
+   if (mobiles < 600){
   imga = shopsi.data.attributes.img1.data.attributes.formats.small.url
   imgb = shopsi.data.attributes.img2.data.attributes.formats.small.url
   imgc = shopsi.data.attributes.img3.data.attributes.formats.small.url
   imgd = shopsi.data.attributes.img4.data.attributes.formats.small.url
  // imge = shopsi.data.attributes.img5.data.attributes.formats.small.url
+   } else {
+      imga = shopsi.data.attributes.img1.data.attributes.formats.medium.url
+  imgb = shopsi.data.attributes.img2.data.attributes.formats.medium.url
+  imgc = shopsi.data.attributes.img3.data.attributes.formats.medium.url
+  imgd = shopsi.data.attributes.img4.data.attributes.formats.medium.url
+ // imge = shopsi.data.attributes.img5.data.attributes.formats.medium.url
+
+   }
   $products.push({
     name: shopsi.data.attributes.name,
     image: shopsi.data.attributes.img1.data.attributes.formats.small.url,
@@ -68,7 +81,8 @@ import { EffectCube, Pagination } from "swiper";
 import Buy from '$lib/svg/buy.svelte'
 import DesctoItem from '$lib/comonents/desctoItem.svelte';
 	
-	const addToCart = (product) => {
+	function addToCart (event) {
+      const product = event.detail.pr
 		for(let item of $cart) {
 				if(item.id === product) {
 					prod.quantity += 1
@@ -79,7 +93,6 @@ import DesctoItem from '$lib/comonents/desctoItem.svelte';
 		$cart = [...$cart, prod]
     console.log($cart)
 	}
-let mobiles = true   
 let h,w;
 $: if(w>600){
    mobiles = false;
@@ -87,12 +100,22 @@ $: if(w>600){
    mobiles = true;
 }
 </script>
+{#await shopsi}
 <div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
 
 {#if mobiles}
-<Mobile shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
+<Mobile low="true"/>
 {:else if mobiles == false}
-<DesctoItem shem={shopsi.data.attributes.name}/>
+<DesctoItem low="true"/>
+{/if}
+</div>
+{:then}
+<div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
+
+{#if mobiles}
+<Mobile on:addto={addToCart} shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
+{:else if mobiles == false}
+<DesctoItem on:addto={addToCart} shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
 {:else}
 <Swiper
 effect={"cube"}
@@ -731,6 +754,7 @@ class="mySwiper"
      </div>
      {/if}
 </div>
+{/await}
 <style>
 
 .slide  {

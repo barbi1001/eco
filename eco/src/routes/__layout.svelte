@@ -31,7 +31,7 @@
 		left:50%;
 		transform : translateX( -50%);
 		width :10vw;
-
+		z-index:100;
 	}
 	.ab:hover{
 		animation:blur-out-expand 10.1s linear both
