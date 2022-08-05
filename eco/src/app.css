@@ -1,4 +1,12 @@
 /* Write your global styles here, in PostCSS syntax */
+@font-face {
+    font-family: Anafim;
+    src: url(https://res.cloudinary.com/barb2/raw/upload/v1659662466/sn_anafim_erk7cn.ttf);
+}
+@font-face {
+    font-family: Prachim;
+    src: url(https://res.cloudinary.com/barb2/raw/upload/v1659663207/sn_tishrey_hlvhle.ttf);
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

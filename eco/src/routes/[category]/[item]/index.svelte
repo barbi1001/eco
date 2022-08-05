@@ -37,16 +37,16 @@ import { onMount } from 'svelte'
 
 onMount(async () => {
    if (mobiles < 600){
-  imga = shopsi.data.attributes.img1.data.attributes.formats.large.url
-  imgb = shopsi.data.attributes.img2.data.attributes.formats.large.url
-  imgc = shopsi.data.attributes.img3.data.attributes.formats.large.url
-  imgd = shopsi.data.attributes.img4.data.attributes.formats.large.url
+  imga = shopsi.data.attributes.img1.data.attributes.url
+  imgb = shopsi.data.attributes.img2.data.attributes.url
+  imgc = shopsi.data.attributes.img3.data.attributes.url
+  imgd = shopsi.data.attributes.img4.data.attributes.url
  // imge = shopsi.data.attributes.img5.data.attributes.formats.small.url
    } else {
-      imga = shopsi.data.attributes.img1.data.attributes.formats.large.url
-  imgb = shopsi.data.attributes.img2.data.attributes.formats.large.url
-  imgc = shopsi.data.attributes.img3.data.attributes.formats.large.url
-  imgd = shopsi.data.attributes.img4.data.attributes.formats.large.url
+      imga = shopsi.data.attributes.img1.data.attributes.url
+  imgb = shopsi.data.attributes.img2.data.attributes.url
+  imgc = shopsi.data.attributes.img3.data.attributes.url
+  imgd = shopsi.data.attributes.img4.data.attributes.url
  // imge = shopsi.data.attributes.img5.data.attributes.formats.medium.url
 
    }

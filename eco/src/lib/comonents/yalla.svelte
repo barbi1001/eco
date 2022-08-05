@@ -1334,7 +1334,7 @@ const t = ["אבו ג'ווייעד שבט",
 
 <div class="shipping-address">
 	<form>
-        <div class="relative z-0 mb-6 w-full group">
+        <div class="relative z-0 mb-6 w-full group pt-2 mt-2">
             <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.email} />
             <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">כתובת מייל</label>
         </div>
@@ -1360,7 +1360,7 @@ const t = ["אבו ג'ווייעד שבט",
         </div>
       
 
-		<div class="flex justify-end">
+		<div class="flex justify-end pb-2">
             <button class="mt-1 py-1 px-4 rounded-full bg-pink-200 hover:bg-pink-500 text-pink-900 hover:text-pink-200" on:click={checkOut}>להזמין!</button>
         </div>
 
@@ -1383,9 +1383,18 @@ const t = ["אבו ג'ווייעד שבט",
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 1em;
+        background-color: #ff83a8;
+
+	} 
+    .current-address {
+        display: none;
 	}
-	.current-address {
+    @media (min-width: 720px){
+        .current-address {
+            display: unset;
 		padding: 2em;
 		border: 2px dashed green;
 	}
+    }
+
 </style>
