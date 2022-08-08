@@ -1,0 +1,113 @@
+{
+    "data": [
+        {
+            "id": 2,
+            "attributes": {
+                "name": "הנעלה",
+                "createdAt": "2022-07-04T03:20:06.345Z",
+                "updatedAt": "2022-07-04T03:20:09.224Z",
+                "publishedAt": "2022-07-04T03:20:09.031Z",
+                "locale": "en",
+                "items": {
+                    "data": []
+                },
+                "localizations": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": 1,
+            "attributes": {
+                "name": "תכשיטנות",
+                "createdAt": "2022-07-04T03:19:42.250Z",
+                "updatedAt": "2022-07-24T02:59:20.938Z",
+                "publishedAt": "2022-07-04T03:19:47.349Z",
+                "locale": "en",
+                "items": {
+                    "data": [
+                        {
+                            "id": 1,
+                            "attributes": {
+                                "name": "עגילים ",
+                                "des": "עגילים פרחוניים בתוספת טאצ' פנינתי ",
+                                "createdAt": "2022-07-04T03:20:37.649Z",
+                                "updatedAt": "2022-07-31T22:53:27.192Z",
+                                "publishedAt": "2022-07-04T03:20:39.930Z",
+                                "price": 100,
+                                "link": null,
+                                "kind": "mydesign"
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "attributes": {
+                                "name": "צמיד בכיתוב אישי",
+                                "des": " הצמיד מגיע עם כיתוב בהתאמה לפי בקשת מידה צבע ויכולת התאמה פרטנית, סוגי פנינים ותוספים למיניהם",
+                                "createdAt": "2022-07-31T23:14:02.587Z",
+                                "updatedAt": "2022-08-04T21:33:36.374Z",
+                                "publishedAt": "2022-08-04T21:33:36.368Z",
+                                "price": 50,
+                                "link": null,
+                                "kind": "mydesign"
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "attributes": {
+                                "name": "  שרשרת פפיון",
+                                "des": "  שרשרת פפיון קטיפתי אפשרות לאופציית התאמת אורך נעימה ורכה למגע",
+                                "createdAt": "2022-07-31T15:55:09.589Z",
+                                "updatedAt": "2022-07-31T20:10:02.291Z",
+                                "publishedAt": "2022-07-31T20:10:02.287Z",
+                                "price": 100,
+                                "link": null,
+                                "kind": "mydesign"
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "attributes": {
+                                "name": "שרשרת קולר בהתאמה אישית",
+                                "des": "שרשרת קולר בהתאמה אישית",
+                                "createdAt": "2022-07-04T03:33:44.645Z",
+                                "updatedAt": "2022-07-05T18:25:21.541Z",
+                                "publishedAt": "2022-07-04T03:33:48.946Z",
+                                "price": 55,
+                                "link": null,
+                                "kind": "mydesign"
+                            }
+                        }
+                    ]
+                },
+                "localizations": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": 3,
+            "attributes": {
+                "name": "איבזורים",
+                "createdAt": "2022-07-31T02:05:40.928Z",
+                "updatedAt": "2022-07-31T02:06:03.120Z",
+                "publishedAt": "2022-07-31T02:06:03.028Z",
+                "locale": "en",
+                "items": {
+                    "data": []
+                },
+                "localizations": {
+                    "data": []
+                }
+            }
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "page": 1,
+            "pageSize": 25,
+            "pageCount": 1,
+            "total": 3
+        }
+    }
+}

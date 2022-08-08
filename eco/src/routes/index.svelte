@@ -1,17 +1,22 @@
-<script context="module">
-        export const load = async ({ fetch }) => {
-          const res = await fetch(`https://strapi-7iq2.onrender.com/api/categories?populate=%2A`);
-          const shopsi = await res.json()  ;
-          return {
-            props: {
-              shopsi,
-            },
-         }
-      }
-      </script>
+
 
 <script>
-        export let shopsi
+  import { onMount } from "svelte";
+  import datax from '$lib/data/fruntpage.json'
+   let shopsi = datax
+
+  onMount(async () =>{
+    shopsi = datax
+    fetch(`https://strapi-7iq2.onrender.com/api/categories?populate=%2A`)
+  .then(response => response.json())
+  .then(data => {
+		console.log(data);
+    shopsi = data
+
+  }).catch(error => {
+    console.log(error);
+  })
+})
         console.log(shopsi)
 import { goto } from "$app/navigation";
 import Desc from '$lib/comonents/desctopfront.svelte'
@@ -58,7 +63,6 @@ function categoryback (){
 
 
 </script>
-
 
 
 <div class="r">
