@@ -60,25 +60,24 @@ function categoryback (){
 
 
 
-
+$: w = 0
 </script>
 
 
-<div class="r">
+<div  class="r" bind:clientWidth="{w}">
+  {#if w > 650}
         <Desc {shopsi}/>
  <!--
 <img  src={carouselPhotos[firstIndex]} alt="barbi" title="מזל טוב" />
 
 <button on:click={()=> goto("./rikma")}  class="bg-red-400 bt rounded-full p-2 text-yellow-400 hover:scale-125 hover:bg-yellow-400 hover:text-red-400">להזמנת רקמה</button>
 -->
-</div>
-<div class="mb">
-        <div class="grid">
+{:else}
 <Mobi {shopsi}/>
-        </div>
+{/if}
 </div>
 <style>
-.r{
+/*.r{
     display: none;    
 }
 .mb{
@@ -97,9 +96,8 @@ function categoryback (){
         align-items: center;
         background-color: #ff83a8;
     }
-@media (min-width: 650px){        
+@media (min-width: 650px){    */    
     .r{
-        display:unset;
         height: 100vh;
         width: 100vw;
         display: grid;
@@ -107,10 +105,10 @@ function categoryback (){
         align-items: center;
         background-color: #ff83a8;
     }
-    .mb{
+  /*  .mb{
         display:none;
     }
-}
+}*/
     .bt{
       position: absolute;
       left: 50%;
