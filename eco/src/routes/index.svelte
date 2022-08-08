@@ -17,7 +17,6 @@
     console.log(error);
   })
 })
-        console.log(shopsi)
 import { goto } from "$app/navigation";
 import Desc from '$lib/comonents/desctopfront.svelte'
 import Mobi from '$lib/comonents/mobilefront.svelte'
