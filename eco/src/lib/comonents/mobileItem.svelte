@@ -736,7 +736,7 @@ class="mySwiper"
                 <path id="path2777" style="opacity: 0.62019; filter: url(#filter3276); paint-order: stroke markers; fill: url(#linearGradient16181-38); stroke-width: 6.51271px; stroke: url(#linearGradient5786-24);" d="m201.06 262.34-47.06 15.02c-12.174 2.5802-27.803-2.0589-28.238-15.021-0.44236-13.176 16.566-17.262 28.238-15.04l47.063 15.04z"/>
                 <path id="rect2622" style="stroke-linejoin: round; paint-order: stroke markers; fill: url(#linearGradient16181-26); stroke-width: 6.51271px; stroke: url(#linearGradient5786-25);" d="M 200 225.959051 C 200 225.959051 220.876 232.279101 230 232.279101 C 239.1241 232.279101 260 225.959051 260 225.959051 L 260 301.799646 C 260 301.799646 239.124 295.479596 230 295.479596 C 220.8759 295.479596 200 301.799646 200 301.799646 L 200 225.959051 Z"/>
         </g>
-        <text style="fill: rgb(49, 148, 172); font-family: &quot;Colonna MT&quot;; font-size: 7.41114px; line-height: 44.6888px; stroke: url(#gradient-28); stroke-width: 0.0751055px; white-space: pre; text-anchor: middle;" id="text3921" transform="matrix(45.850700378418, 0, 0, 50.635395050049, -6780.51025390625, -7406.55517578125)" x="154.422" y="90.4427">store</text>
+        <text style="fill: rgb(49, 148, 172); font-family: Prachim; font-size: 7.41114px; line-height: 44.6888px; stroke: url(#gradient-28); stroke-width: 0.0751055px; white-space: pre; text-anchor: middle;" id="text3921" transform="matrix(45.850700378418, 0, 0, 50.635395050049, -6780.51025390625, -7406.55517578125)" x="154.422" y="90.4427">נעים מאוד</text>
         <text id="text85100" style="fill: black; fill-opacity: 1; line-height: 1.25; stroke: none; font-family: sans-serif; font-style: normal; font-weight: normal; font-size: 40px; white-space: pre; text-anchor: middle;"/>
         <g id="g-6" transform="matrix(4.778492927551, -0.017319999635, 0.0096793212, 2.670647144318, -550.416198730469, 816.540100097656)" style="">
                 <g id="g3268" style="" transform="matrix(1, 0, 0, 1.043197154999, 0, -1.596981287003)">
@@ -777,11 +777,11 @@ class="mySwiper"
         </g>
         <text style="fill: url(#linearGradient10151-0); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#linearGradient7090-0); stroke-width: 0.209601px; text-anchor: middle; white-space: pre;" transform="matrix(7.966637134552, 0, 0, 9.476630210876, 299.845184326172, 2548.64453125)" bx:origin="34.787 1">₪</text>
         <text style="fill: url(#gradient-25); font-family: &quot;Bodoni MT Poster&quot;; font-size: 56.0434px; font-weight: 700; line-height: 71.1809px; stroke: rgb(8, 33, 20); stroke-miterlimit: 45; stroke-width: 0.577769px; text-anchor: middle; white-space: pre; opacity: 0.3;" transform="matrix(1.67348408699, 0, 0, 0.795250654221, 299.845184326172, 1450.966186523438)">₪</text>
-        <text style="fill: url(#linearGradient10151-4); font-family: &quot;EB Garamond&quot;; font-size: 12px; stroke: url(#linearGradient5786-8); stroke-width: 0.184964px; text-anchor: middle; white-space: pre;" transform="matrix(4.458679199219, 0, 0, 8.138150215149, 299.845184326172, -2191.505859375)">{shem}</text>
+        <text style="fill: url(#linearGradient10151-4); font-family: Anafim; font-size: 12px; stroke: url(#linearGradient5786-8); stroke-width: 0.184964px; text-anchor: middle; white-space: pre;" transform="matrix(4.458679199219, 0, 0, 8.138150215149, 299.845184326172, -2191.505859375)">{shem}</text>
         <text style="fill: rgb(255, 246, 213); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#gradient-0); stroke-width: 0px; text-anchor: middle; white-space: pre;" transform="matrix(4.772483825684, 0, 0, 7.460203170776, 2152.228271484375, -2847.705810546875)">BarB</text>
-        <text style="fill: url(#gradient-2); font-family: &quot;EB Garamond&quot;; font-size: 12px; stroke: url(#linearGradient5786-27); stroke-width: 0.809447px; text-anchor: middle; white-space: pre;" transform="matrix(9.133942604065, 0, 0, 8.161825180054, 299.845184326172, 2994.501708984375)">{shem}</text>
-        <text style="fill: url(#linearGradient16511-29); fill-rule: evenodd; font-family: Arial, sans-serif; font-size: 81.0444px; paint-order: stroke markers; stroke: url(#linearGradient5786-3); stroke-width: 5.40286px; text-anchor: middle; white-space: pre;" transform="matrix(1.124027013779, 0, 0, 3.571475982666, 475.361968994141, -12538.5009765625)" x="-142.353" y="4522.53">:מפרט</text>
-        <text style="fill: url(#gradient-57); font-family: UnifrakturMaguntia; font-size: 15.9px; stroke: url(#linearGradient5786-1); stroke-width: 0.511018px; text-anchor: middle; white-space: pre;" transform="matrix(9.729525566101, 0, 0, 17.666751861572, -3667.893798828125, -23837.650390625)" x="407.804" y="1418.59">{price}</text>
+        <text style="fill: url(#gradient-2); font-family:Anafim; font-size: 12px; stroke: url(#linearGradient5786-27); stroke-width: 0.809447px; text-anchor: middle; white-space: pre;" transform="matrix(9.133942604065, 0, 0, 8.161825180054, 299.845184326172, 2994.501708984375)">{shem}</text>
+        <text style="fill: url(#linearGradient16511-29); fill-rule: evenodd; font-family:Anafim, sans-serif; font-size: 81.0444px; paint-order: stroke markers; stroke: url(#linearGradient5786-3); stroke-width: 5.40286px; text-anchor: middle; white-space: pre;" transform="matrix(1.124027013779, 0, 0, 3.571475982666, 475.361968994141, -12538.5009765625)" x="-142.353" y="4522.53">:מפרט</text>
+        <text style="fill: url(#gradient-57); font-family: Prachim; font-size: 15.9px; stroke: url(#linearGradient5786-1); stroke-width: 0.511018px; text-anchor: middle; white-space: pre;" transform="matrix(9.729525566101, 0, 0, 17.666751861572, -3667.893798828125, -23837.650390625)" x="407.804" y="1418.59">{price}</text>
         <g on:click={() => addToCart(id)} style="" transform="matrix(0.328532367945, 0, 0, 0.526096522808, -131.971130371094, -608.956970214844)">
                 <g transform="matrix(1, 0, 0, 1, 34.379852, -4.911469)" style="">
                         <g id="_x23_ffffffff">
@@ -1179,7 +1179,7 @@ class="mySwiper"
         </g>
         <foreignObject x="0" y="3761" width="608" height="1133.400024" style=" fill: none;">
                 <div>
-                  <p style="color:#007aff; font-size:60px; text-align:center; ">
+                  <p style="color:#007aff; font-size:100px; text-align:center;font-family:Prachim, sans-serif; ">
                     {des}
                   </p>
                 </div>

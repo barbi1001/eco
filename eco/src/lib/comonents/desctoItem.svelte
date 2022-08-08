@@ -24,7 +24,7 @@ function addToCart (id){
 }
     </script>
 <svg id="svg2" viewBox="-0.919 -2861.818 2400.826 7367.1" version="1.1" width="98.5vw"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
-        <title id="title5179">Store Fronts</title>
+        <title id="title5179">{shem} קניה נעימה של</title>
         <defs id="defs4">
                 <linearGradient id="linearGradient18327">
                         <stop offset="0" style="stop-color: rgb(112, 35, 255);"/>
@@ -5014,7 +5014,7 @@ function addToCart (id){
                 <path id="path2773" style="paint-order: stroke markers; fill: url(#linearGradient16181-36); stroke-width: 5.30882px; stroke: url(#linearGradient5786-67);" d="m184 262.3c0 5.8774-70 28.066-70 28.066-18.107 4.821-41.353-3.8471-42-28.066-0.65795-24.619 24.64-32.255 42-28.103 0 0 70 22.226 70 28.103z"/>
                 <path id="path2775" style="fill-opacity: 1; paint-order: stroke markers; fill: url(#linearGradient16181-37); stroke-width: 5.30882px; stroke: url(#linearGradient5786-68);" d="m200 262.31c0 5.0128-75 23.938-75 23.938-19.401 4.1118-44.306-3.2811-45-23.938-0.70495-20.997 26.4-27.51 45-23.969 0 0 75 18.956 75 23.969z"/>
                 <path id="path2777" style="opacity: 0.62019; paint-order: stroke markers; fill: url(#linearGradient16181-38); stroke-width: 5.30882px; stroke: url(#linearGradient5786-69);" d="m201.06 262.34-47.06 15.02c-12.174 2.5802-27.803-2.0589-28.238-15.021-0.44236-13.176 16.566-17.262 28.238-15.04l47.063 15.04z"/>
-                <title id="bx-title-1">Store Fronts</title>
+                <title id="bx-title-1">{shem}</title>
                 <g style="" transform="matrix(0.093973092735, 0, 0, 0.090825609863, 108.684425354004, 1580.178833007813)">
                         <g on:click={() => addToCart(id)} transform="matrix(1, 0, 0, 1, 34.379875183105, -4.911381244659)" style="">
                                 <g id="g-3">
@@ -5412,11 +5412,11 @@ function addToCart (id){
                 </g>
         </g>
         <text text-anchor="middle" style="fill: url(#linearGradient16181-15); font-family: Anafim; font-size: 107.3px; stroke: url(#linearGradient5786-1); stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 11; stroke-width: 3.82844px; white-space: pre;" transform="matrix(0.855794, -0.009965, 0.014382, 1.233688, 0,0)" x="1455.898" y="-1800">{shem}</text>
-        <text style="fill: url(#linearGradient5786-3); font-family: &quot;Colonna MT&quot;; font-size: 28.8315px; line-height: 44.6888px; stroke-width: 1.08118px; white-space: pre;" id="text3921" transform="matrix(10.09351, 0, 0, 9.659808, -648.093689, -1886.600708)" x="154.422" y="90.4427">store</text>
+        <text style="fill: url(#linearGradient5786-3); font-family: &quot;Colonna MT&quot;; font-size: 28.8315px; line-height: 44.6888px; stroke-width: 1.08118px; white-space: pre;" id="text3921" transform="matrix(10.09351, 0, 0, 9.659808, -648.093689, -1886.600708)" x="154.422" y="90.4427">נעים מאוד</text>
         <text id="text85100" style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;white-space:pre;shape-inside:url(#rect85102)"/>
-        <text style="fill: url(#linearGradient5786-9); font-family: &quot;Bodoni MT Poster&quot;; font-size: 67.3302px; line-height: 71.1809px; stroke: url(#gradient-19-0); stroke-miterlimit: 45; stroke-opacity: 0.18; stroke-width: 4.14109px; text-anchor: middle; white-space: pre;" transform="matrix(2.958269, 0, 0, 1.871373, 1199.494019, -263.13327)">{price}₪</text>
+        <text style="fill: url(#linearGradient5786-9); font-family:Prachim; font-size: 67.3302px; line-height: 71.1809px; stroke: url(#gradient-19-0); stroke-miterlimit: 45; stroke-opacity: 0.18; stroke-width: 4.14109px; text-anchor: middle; white-space: pre;" transform="matrix(2.958269, 0, 0, 1.871373, 1199.494019, -263.13327)">{price}₪</text>
         <text style="fill: url(#linearGradient18327-0); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#linearGradient7090-1); stroke-width: 0.825282px; text-anchor: middle; white-space: pre;" transform="matrix(4.97785, 0, 0, 3.068322, 1198.327271, 2307.148926)">{price}₪</text>
-        <text style="fill: url(#linearGradient5786-20); font-family: &quot;EB Garamond&quot;; font-size: 28px; stroke: url(#linearGradient5786-2); stroke-miterlimit: 39; stroke-width: 0.298844px; text-anchor: middle; white-space: pre;" transform="matrix(4.823176, 0, 0, 5.101732, 1200.134033, 277.413177)">{shem}</text>
+        <text style="fill: url(#linearGradient5786-20); font-family: Anafim; font-size: 28px; stroke: url(#linearGradient5786-2); stroke-miterlimit: 39; stroke-width: 0.298844px; text-anchor: middle; white-space: pre;" transform="matrix(4.823176, 0, 0, 5.101732, 1200.134033, 277.413177)">{shem}</text>
         <g transform="matrix(3.274543, 0, 0, 2.437399, -386.045624, -717.874573)" style="">
                 <g transform="matrix(1.891986, 0, 0, 2.067479, 308.152496, 1053.397095)" style="">
                         <path d="M 5.112 -27.383 L 5.112 269.368 L 93.036 325.882 L 180.988 269.368 L 180.988 -27.383 L 93.036 -27.383 L 5.112 -27.383 Z" style="stroke-width: 3.72958px; stroke: url(#linearGradient5786-22); fill: url(#linearGradient16181-16);"/>

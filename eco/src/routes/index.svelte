@@ -88,6 +88,11 @@ function categoryback (){
     }
     .grid{
         display:grid;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        background-color: #ff83a8;
     }
 @media (min-width: 650px){        
     .r{
