@@ -7,6 +7,7 @@
 
   onMount(async () =>{
     shopsi = datax
+    await
     fetch(`https://strapi-7iq2.onrender.com/api/categories?populate=%2A`)
   .then(response => response.json())
   .then(data => {

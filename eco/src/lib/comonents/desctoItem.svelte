@@ -5414,8 +5414,8 @@ function addToCart (id){
         <text text-anchor="middle" style="fill: url(#linearGradient16181-15); font-family: Anafim; font-size: 107.3px; stroke: url(#linearGradient5786-1); stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 11; stroke-width: 3.82844px; white-space: pre;" transform="matrix(0.855794, -0.009965, 0.014382, 1.233688, 0,0)" x="1455.898" y="-1800">{shem}</text>
         <text style="fill: url(#linearGradient5786-3); font-family:Prachim; font-size: 16.8315px; line-height: 44.6888px; stroke-width: 1.08118px; white-space: pre;" id="text3921" transform="matrix(10.09351, 0, 0, 9.659808, -648.093689, -1886.600708)" x="154.422" y="90.4427">נעים מאוד</text>
         <text id="text85100" style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;white-space:pre;shape-inside:url(#rect85102)"/>
-        <text style="fill: url(#linearGradient5786-9); font-family:Prachim; font-size: 67.3302px; line-height: 71.1809px; stroke: url(#gradient-19-0); stroke-miterlimit: 45; stroke-opacity: 0.18; stroke-width: 4.14109px; text-anchor: middle; white-space: pre;" transform="matrix(2.958269, 0, 0, 1.871373, 1199.494019, -263.13327)">{price}₪</text>
-        <text style="fill: url(#linearGradient18327-0); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#linearGradient7090-1); stroke-width: 0.825282px; text-anchor: middle; white-space: pre;" transform="matrix(4.97785, 0, 0, 3.068322, 1198.327271, 2307.148926)">{price}₪</text>
+        <text style="fill: cyan; font-family:Anafim; font-size: 67.3302px; line-height: 71.1809px; stroke: url(#gradient-19-0); stroke-miterlimit: 45; stroke-opacity: 0.18; stroke-width: 4.14109px; text-anchor: middle; white-space: pre;" transform="matrix(2.958269, 0, 0, 1.871373, 1199.494019, -263.13327)">{price}₪</text>
+        <text style="fill:cyan; font-family:Anafim; font-size: 33.1089px; stroke: url(#linearGradient7090-1); stroke-width: 0.825282px; text-anchor: middle; white-space: pre;" transform="matrix(4.97785, 0, 0, 3.068322, 1198.327271, 2307.148926)">{price}₪</text>
         <text style="fill: url(#linearGradient5786-20); font-family: Anafim; font-size: 28px; stroke: url(#linearGradient5786-2); stroke-miterlimit: 39; stroke-width: 0.298844px; text-anchor: middle; white-space: pre;" transform="matrix(4.823176, 0, 0, 5.101732, 1200.134033, 277.413177)">{shem}</text>
         <g transform="matrix(3.274543, 0, 0, 2.437399, -386.045624, -717.874573)" style="">
                 <g transform="matrix(1.891986, 0, 0, 2.067479, 308.152496, 1053.397095)" style="">
@@ -9814,6 +9814,7 @@ function addToCart (id){
                 <path id="path8488" opacity=".81" fill="#9f7019" d="m1124.7 1746.7c3.8-0.3 7.7-0.6 11.6-0.7-3.5 1.1-7.4 1.4-11.6 0.7z" style="stroke: url(#linearGradient7090-4395);"/>
                 <path id="path8490" opacity=".82" fill="#a4771c" d="m1098.8 1747.8c3.7-0.3 7.5-0.5 11.3-0.7-3.4 1.1-7.2 1.3-11.3 0.7z" style="stroke: url(#linearGradient7090-4396);"/>
         </g>
+        
         <foreignObject x="705.167249" y="1961.791992" width="988.653381" height="1133.400024" style=" fill: none;">
           <div>
             <p style="color:blue; font-size:120px; text-align:center; font-family:Prachim;">
