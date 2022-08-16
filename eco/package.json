@@ -25,6 +25,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"animejs": "^3.2.1",
 		"axios": "^0.24.0",
 		"svelte-accessible-dialog": "^2.1.3",
 		"svelte-forms-lib": "^2.0.1",
