@@ -5549,7 +5549,7 @@ import { elasticInOut } from "svelte/easing";
   <path d="m41.744 14.724c-1.65 0-2.988 1.4609-2.988 3.2628 1e-3 1.3361 0.75 2.537 1.889 3.0289l-6.987 15.577-6.705-15.53c1.083-0.51896 1.784-1.6882 1.785-2.9805 1e-3 -1.8028-1.337-3.2609-2.988-3.2609-1.65 0-2.988 1.4581-2.988 3.2609 1e-3 1.6798 1.171 3.0839 2.703 3.246l-1.561 16.704-8.255-6.4716c0.395-0.56554 0.609-1.2569 0.611-1.9687 0-1.8028-1.338-3.2619-2.988-3.2619-1.651 0-2.989 1.459-2.989 3.2619 0 1.801 1.338 3.2609 2.989 3.2609 0.304-9.31e-4 0.606-0.054038 0.896-0.15466l2.0634 16.144c0.063625 3.8433 35.473 3.6512 34.177 0l3.166-16.119c0.268 0.086648 0.546 0.12951 0.825 0.13044 1.65 0 2.988-1.46 2.988-3.2609 0-1.8028-1.338-3.2619-2.988-3.2619-1.651 0-2.989 1.459-2.989 3.2619 1e-3 0.75002 0.239 1.4795 0.674 2.0609l-8.23 6.1874-1.727-16.624c1.488-0.20963 2.603-1.5913 2.605-3.2293 1e-3 -1.8019-1.337-3.2628-2.988-3.2628z" fill="url(#mobitd)" stroke="url(#mobirq)" stroke-miterlimit="1" stroke-width=".86505px" style="paint-order:fill"/>
   </g>
   </g>
-  <text transform="matrix(14.629 0 0 17.137 946.4 1844.6)" dx="0.249459 0 0 -3.80026" dy="2.38477 0 0 0.794929" fill="url(#mobiah)" fill-opacity=".41" font-family='"Old English Text MT"' stroke="url(#mobird)" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="6" stroke-width=".18462px" text-anchor="middle" style="white-space:pre">BarB</text>
+  <text transform="matrix(14.629 0 0 17.137 946.4 1844.6)" dx="0.249459 0 0 -3.80026" dy="2.38477 0 0 0.794929" fill="url(#mobiah)" fill-opacity=".41" font-family='Asavim' stroke="url(#mobird)"  stroke-width=".2px" text-anchor="middle" style="white-space:pre">BarB</text>
 {#if door == true}
 <g transform="matrix(1.8967 0 0 3.3291 -820.08 -282.8)" style="" bx:origin="0.513374 1.109507">
   <title>הקטגוריה הקודמת</title>
@@ -10154,8 +10154,8 @@ import { elasticInOut } from "svelte/easing";
   <path transform="translate(1.3243,6.1618)" d="m612.12 586.97-23.906 14.812h15.5l18.344-14.812h-9.9375zm19.906 0-12.781 14.812h15.469l9.125-14.812h-11.812zm21.781 0-3.5938 14.812h15.562l1.8438-14.812h-13.812zm26.375 0 1.8438 14.812h15.562l-3.5938-14.812h-13.812zm23.781 0 9.125 14.812h15.469l-12.781-14.812h-11.812zm21.781 0 18.344 14.812h15.5l-23.906-14.812h-9.9375z" fill="url(#mobitg)" stroke="url(#mobist)" stroke-width="1.4251px"/>
   <path d="m603.39 593.13-29.283 14.781h15.452l23.769-14.781h-9.938zm19.843 0-18.223 14.781h15.451l12.71-14.781h-9.937-1e-3zm21.713 0-9.065 14.781h15.451l3.551-14.781h-9.937zm23.645 0-1.87 14.781h16.387l-1.869-14.781h-0.063-6.261-6.262-0.062zm26.354 0 3.552 14.781h15.451l-9.065-14.781h-9.938zm21.713 0 12.71 14.781h15.451l-18.223-14.781h-9.938zm19.843 0 23.77 14.781h15.451l-29.283-14.781h-9.937-1e-3z" fill="url(#mobitf)" stroke="url(#mobish)" stroke-width="1.4863px"/>
   </g>
-  <text transform="matrix(8.2049 0 0 6.5988 950 611.8)" fill="url(#mobiah)" font-family='"Old English Text MT"' font-size="40.601px" stroke="url(#mobird)" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="6" stroke-width=".85949px" text-anchor="middle" style="white-space:pre">BarB</text>
-
+  <!--<text transform="matrix(8.2049 0 0 6.5988 950 611.8)" fill="url(#mobiah)" font-family='Asavim' font-size="40.601px" stroke="url(#mobird)" stroke-width=".2px" text-anchor="middle" style="white-space:pre">BarB</text>
+  -->
 {#if door == false}  
   <g transform="matrix(.92519 0 0 1.8098 7.2924 -235.73)" style="">
   <title>triestoopen</title>

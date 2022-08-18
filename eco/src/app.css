@@ -7,6 +7,19 @@
     font-family: Prachim;
     src: url(https://res.cloudinary.com/barb2/raw/upload/v1659663207/sn_tishrey_hlvhle.ttf);
 }
+@font-face {
+    font-family: Asavim;
+    src: url(https://res.cloudinary.com/barb1/raw/upload/v1660779375/DAEMONES_jmp7xd.TTF);
+}
+@font-face {
+    font-family: Gzayim;
+    src: url(https://res.cloudinary.com/barb1/raw/upload/v1660780368/Pinewood_rqtceu.ttf);
+}
+@font-face {
+    font-family: Alim;
+    src: url(https://res.cloudinary.com/barb1/raw/upload/v1660781092/TenderleafRegular_xylm0y.ttf);
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
