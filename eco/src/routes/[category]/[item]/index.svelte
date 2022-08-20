@@ -41,13 +41,13 @@ onMount(async () => {
   imgb = shopsi.data.attributes.img2.data.attributes.url
   imgc = shopsi.data.attributes.img3.data.attributes.url
   imgd = shopsi.data.attributes.img4.data.attributes.url
- // imge = shopsi.data.attributes.img5.data.attributes.formats.small.url
+ imge = shopsi.data.attributes.img5.data
    } else {
       imga = shopsi.data.attributes.img1.data.attributes.url
   imgb = shopsi.data.attributes.img2.data.attributes.url
   imgc = shopsi.data.attributes.img3.data.attributes.url
   imgd = shopsi.data.attributes.img4.data.attributes.url
- // imge = shopsi.data.attributes.img5.data.attributes.formats.medium.url
+  imge = shopsi.data.attributes.img5.data
 
    }
   $products.push({
