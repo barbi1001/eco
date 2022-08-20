@@ -1,6 +1,8 @@
 
 
 <script>
+          import { fly } from 'svelte/transition'
+
   import { onMount } from "svelte";
   import datax from '$lib/data/fruntpage.json'
    let shopsi = datax
@@ -65,7 +67,7 @@ $: w = 0
 </script>
 
 
-<div  class="r" bind:clientWidth="{w}">
+<div transition:fly="{{y: -250, duration: 1000}}" class="r" bind:clientWidth="{w}">
   {#if w > 650}
         <Desc {shopsi}/>
  <!--

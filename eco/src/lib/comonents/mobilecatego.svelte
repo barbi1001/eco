@@ -9008,7 +9008,7 @@
     </g>
     </g>
     </g>
-    <text transform="matrix(4.0587 0 0 3.6945 1133.9 454.78)" fill="url(#yomfpf)" font-family='"Old English Text MT"' font-size="33.96px" stroke="url(#yomfpd)" stroke-width=".10793px" text-anchor="middle" style="white-space:pre">BarB</text>
+    <text transform="matrix(4.0587 0 0 3.6945 1133.9 454.78)" fill="url(#yomfpf)" font-family='Asavim' font-size="33.96px" stroke="url(#yomfpd)" stroke-width=".10793px" text-anchor="middle" style="white-space:pre">BarB</text>
     <title>Store Fronts</title>
     <g transform="matrix(.0022173 .23606 -.556 .0052227 1481.5 605.26)" style="">
     <g transform="matrix(-.0080794 .77902 -.90584 -.0050162 801.21 -179.01)" style="">
