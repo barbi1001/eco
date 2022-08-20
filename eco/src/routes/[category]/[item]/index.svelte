@@ -1,27 +1,43 @@
     
 <script context="module">
-  export const load = async ({ params, fetch ,status}) => {
+  export const load = async ({ params}) => {
     const id = params.item;
-    console.log(params)
-
-    const response  = await fetch(`https://strapi-7iq2.onrender.com/api/items/${id}?populate=%2A`);
     return {
-         status: response.status,
-      props: {
-         shopsi: response.ok && (await response.json())
-      }
-    };
-}
+        props: {
+          id,
+        },
+     }
+  }
 </script>
 <script>
+   import data1 from '$lib/data/agil1.json'
+   export let id;
 
-    export let shopsi;
-    export let status;
-    console.log(status)
+   function getshop (){
+    let shopsi
+  if (id == 1){
+    shopsi = data1
+    console.log(shopsi)
+    }
+    return shopsi
+}
+  let shopsi = getshop()
+
+  onMount(async () =>{
+
+    await
+    fetch(`https://strapi-7iq2.onrender.com/api/items/${id}?populate=%2A`)
+  .then(response => response.json())
+  .then(data => {
+		console.log(data);
+    shopsi = data
+  }).catch(error => {
+    console.log(error);
+  })
+})
     import Mobile from '$lib/comonents/mobileItem.svelte'
     let urlx = "https://strapi-7iq2.onrender.com/api/";
    
-  console.log(shopsi)
     let productB;
   
    
@@ -36,20 +52,13 @@ import { onMount } from 'svelte'
     let mobiles ;  
 
 onMount(async () => {
-   if (mobiles < 600){
+  
   imga = shopsi.data.attributes.img1.data.attributes.url
   imgb = shopsi.data.attributes.img2.data.attributes.url
   imgc = shopsi.data.attributes.img3.data.attributes.url
   imgd = shopsi.data.attributes.img4.data.attributes.url
  imge = shopsi.data.attributes.img5.data
-   } else {
-      imga = shopsi.data.attributes.img1.data.attributes.url
-  imgb = shopsi.data.attributes.img2.data.attributes.url
-  imgc = shopsi.data.attributes.img3.data.attributes.url
-  imgd = shopsi.data.attributes.img4.data.attributes.url
-  imge = shopsi.data.attributes.img5.data
-
-   }
+ 
   $products.push({
     name: shopsi.data.attributes.name,
     image: shopsi.data.attributes.img1.data.attributes.formats.small.url,
@@ -125,7 +134,7 @@ import Carta from '$lib/comonents/carta.svelte'
 <div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
 
 {#if mobiles}
-<Mobile low="true"/>
+<Mobile low={true}/>
 {:else if mobiles == false}
 <DesctoItem low="true"/>
 {/if}
@@ -133,8 +142,8 @@ import Carta from '$lib/comonents/carta.svelte'
 {:then}
 <div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
 
-{#if mobiles}
-<Mobile on:addto={addToCart} shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
+{#if mobiles == true}
+<Mobile on:addto={addToCart} {shopsi} low={false} shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
 {:else if mobiles == false}
 <DesctoItem on:addto={addToCart} shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
 {:else}

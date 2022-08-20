@@ -1,6 +1,17 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+        export let shopsi
 
+     export let imga
+     export let imgb
+     export let imgc
+     export let imgd
+     let imge = find()
+
+function find () {
+ let imge = shopsi.data.attributes.img5.data
+return imge
+}
 const dispatch = createEventDispatcher();
 import { Swiper, SwiperSlide } from "swiper/svelte";
 import "swiper/css/zoom";
@@ -15,10 +26,10 @@ import "$lib/style.css";
 
 // import required modules
 import {Zoom, EffectCube, Pagination } from "swiper";
-
+export let low = false
 
     export let shem, url, kind, des , id, price;
-    export let imga,imgb,imgc,imgd,imge
+ 
 function addToCart (id){
         dispatch("addto",{pr:id})
 }
@@ -624,7 +635,7 @@ class="mySwiper"
 ><SwiperSlide
 > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgd} /></div></SwiperSlide
 >
-{#if imge != undefined}
+{#if  low == false}
 {#each imge as im}
 <SwiperSlide
 ><img alt="{`${shem} תמונת המוצר`}" src={im.attributes.url} /></SwiperSlide
