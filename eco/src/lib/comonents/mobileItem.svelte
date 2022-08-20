@@ -623,9 +623,14 @@ class="mySwiper"
 > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgc} /></div></SwiperSlide
 ><SwiperSlide
 > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgd} /></div></SwiperSlide
-><!--<SwiperSlide
-><img alt="{`${shem} תמונת המוצר`}" src={imge} /></SwiperSlide
->-->
+>
+{#if imge != undefined}
+{#each imge as im}
+<SwiperSlide
+><img alt="{`${shem} תמונת המוצר`}" src={im.attributes.url} /></SwiperSlide
+>
+{/each}
+{/if}
 </Swiper>
          </div>
          </foreignObject>
