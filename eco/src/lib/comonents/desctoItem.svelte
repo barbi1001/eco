@@ -1,5 +1,7 @@
 <script>
    import { createEventDispatcher } from 'svelte';
+   export let is4vid =- false
+   export let is1vid =- false
 
 const dispatch = createEventDispatcher();
 import { Swiper, SwiperSlide } from "swiper/svelte";
@@ -9841,15 +9843,27 @@ function addToCart (id){
   >
  
   <SwiperSlide
-    >
-    <div class="swiper-zoom-container">
-    <img alt="{`${shem} תמונת המוצר`}" src={imga} /></div></SwiperSlide
-  ><SwiperSlide
+> <div class="swiper-zoom-container">
+        {#if is1vid == false}
+        <img alt="{`${shem} תמונת המוצר`}" src={imga} />
+        {:else}
+        <video autoplay loop muted src={imga}/>
+        {/if}
+</div>
+        </SwiperSlide
+><SwiperSlide
     > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}"   src={imgb} /></div></SwiperSlide
   ><SwiperSlide
     > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgc} /></div></SwiperSlide
   ><SwiperSlide
-    > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgd} /></div></SwiperSlide
+  > <div class="swiper-zoom-container">
+          {#if is4vid == false}
+          <img alt="{`${shem} תמונת המוצר`}" src={imgd} />
+          {:else}
+          <video autoplay loop muted src={imgd}/>
+          {/if}
+  </div>
+          </SwiperSlide
   >
   {#each imge as im}
   <SwiperSlide

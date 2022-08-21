@@ -1,6 +1,8 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
         export let shopsi
+        export let is4vid =- false
+        export let is1vid =- false
 
      export let imga
      export let imgb
@@ -9,8 +11,27 @@
      let imge = find()
 
 function find () {
+        if (shopsi){
  let imge = shopsi.data.attributes.img5.data
+
 return imge
+        }else{
+                let imge = [] 
+                return imge
+                setTimeout(function n () { if (shopsi){
+ let imge = shopsi.data.attributes.img5.data
+
+return imge
+        }else{
+                setTimeout(function n () { if (shopsi){
+ let imge = shopsi.data.attributes.img5.data
+
+return imge
+        }else{
+                
+         }} , 1000) 
+         }} , 1000)
+        }
 }
 const dispatch = createEventDispatcher();
 import { Swiper, SwiperSlide } from "swiper/svelte";
@@ -625,15 +646,27 @@ function addToCart (id){
                 modules={[EffectCube, Pagination, Zoom]}
 class="mySwiper"
 ><SwiperSlide
->
-<div class="swiper-zoom-container">
-<img alt="{`${shem} תמונת המוצר`}" src={imga} /></div></SwiperSlide
+> <div class="swiper-zoom-container">
+        {#if is1vid == false}
+        <img alt="{`${shem} תמונת המוצר`}" src={imga} />
+        {:else}
+        <video autoplay loop muted src={imga}/>
+        {/if}
+</div>
+        </SwiperSlide
 ><SwiperSlide
 > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}"   src={imgb} /></div></SwiperSlide
 ><SwiperSlide
 > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgc} /></div></SwiperSlide
 ><SwiperSlide
-> <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgd} /></div></SwiperSlide
+> <div class="swiper-zoom-container">
+        {#if is4vid == false}
+        <img alt="{`${shem} תמונת המוצר`}" src={imgd} />
+        {:else}
+        <video autoplay loop muted src={imgd}/>
+        {/if}
+</div>
+        </SwiperSlide
 >
 {#if  low == false}
 {#each imge as im}

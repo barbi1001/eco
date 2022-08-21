@@ -11,18 +11,106 @@
 </script>
 <script>
    import data1 from '$lib/data/agil1.json'
-   export let id;
+   import data3 from '$lib/data/item3.json'
+   import data2 from '$lib/data/item2.json'
+   import data4 from '$lib/data/item4.json'
 
+
+   let imga
+     let imgb
+     let imgc
+     let imgd
+     let imge
+     let shem
+let is4vid = false
+
+let is1vid = false
+
+   export let id;
+  let kind ,url ,des,price
    function getshop (){
     let shopsi
   if (id == 1){
     shopsi = data1
-    console.log(shopsi)
-    }
+
+    imga = shopsi.data.attributes.img1.data.attributes.url
+  imgb = shopsi.data.attributes.img2.data.attributes.url
+  imgc = shopsi.data.attributes.img3.data.attributes.url
+  imgd = shopsi.data.attributes.img4.data.attributes.url
+ imge = shopsi.data.attributes.img5.data   
+ shem=shopsi.data.attributes.name
+    kind=shopsi.data.attributes.kind
+  url=shopsi.data.attributes.url
+    des=shopsi.data.attributes.des 
+ price=shopsi.data.attributes.price
+ if (shopsi.data.attributes.img4.data.attributes.mime  == "video/mp4"){
+   is4vid = true
+ } 
+ if (shopsi.data.attributes.img1.data.attributes.mime  == "video/mp4"){
+   is1vid = true
+ }
+} else if (id == 3){
+   shopsi = data3
+
+imga = shopsi.data.attributes.img1.data.attributes.url
+imgb = shopsi.data.attributes.img2.data.attributes.url
+imgc = shopsi.data.attributes.img3.data.attributes.url
+imgd = shopsi.data.attributes.img4.data.attributes.url
+imge = shopsi.data.attributes.img5.data   
+shem=shopsi.data.attributes.name
+kind=shopsi.data.attributes.kind
+url=shopsi.data.attributes.url
+des=shopsi.data.attributes.des 
+price=shopsi.data.attributes.price
+if (shopsi.data.attributes.img4.data.attributes.mime  == "video/mp4"){
+   is4vid = true
+ }
+ if (shopsi.data.attributes.img1.data.attributes.mime  == "video/mp4"){
+   is1vid = true
+ }
+} else if (id == 2){
+   shopsi = data2
+
+imga = shopsi.data.attributes.img1.data.attributes.url
+imgb = shopsi.data.attributes.img2.data.attributes.url
+imgc = shopsi.data.attributes.img3.data.attributes.url
+imgd = shopsi.data.attributes.img4.data.attributes.url
+imge = shopsi.data.attributes.img5.data   
+shem=shopsi.data.attributes.name
+kind=shopsi.data.attributes.kind
+url=shopsi.data.attributes.url
+des=shopsi.data.attributes.des 
+price=shopsi.data.attributes.price
+if (shopsi.data.attributes.img4.data.attributes.mime  == "video/mp4"){
+   is4vid = true
+ }
+ if (shopsi.data.attributes.img1.data.attributes.mime  == "video/mp4"){
+   is1vid = true
+ }
+} else if (id == 4){
+   shopsi = data4
+
+imga = shopsi.data.attributes.img1.data.attributes.url
+imgb = shopsi.data.attributes.img2.data.attributes.url
+imgc = shopsi.data.attributes.img3.data.attributes.url
+imgd = shopsi.data.attributes.img4.data.attributes.url
+imge = shopsi.data.attributes.img5.data   
+shem=shopsi.data.attributes.name
+kind=shopsi.data.attributes.kind
+url=shopsi.data.attributes.url
+des=shopsi.data.attributes.des 
+price=shopsi.data.attributes.price
+if (shopsi.data.attributes.img4.data.attributes.mime  == "video/mp4"){
+   is4vid = true
+ }
+ if (shopsi.data.attributes.img1.data.attributes.mime  == "video/mp4"){
+   is1vid = true
+ }
+
+}
     return shopsi
 }
   let shopsi = getshop()
-
   onMount(async () =>{
 
     await
@@ -31,35 +119,14 @@
   .then(data => {
 		console.log(data);
     shopsi = data
-  }).catch(error => {
-    console.log(error);
-  })
-})
-    import Mobile from '$lib/comonents/mobileItem.svelte'
-    let urlx = "https://strapi-7iq2.onrender.com/api/";
-   
-    let productB;
-  
-   
-import { onMount } from 'svelte'
-     let imga
-     let imgb
-     let imgc
-     let imgd
-     let imge
-     import {products, cart} from "$lib/stores/cart.js";
-    let prod = {};
-    let mobiles ;  
-
-onMount(async () => {
-  
-  imga = shopsi.data.attributes.img1.data.attributes.url
+      imga = shopsi.data.attributes.img1.data.attributes.url
   imgb = shopsi.data.attributes.img2.data.attributes.url
   imgc = shopsi.data.attributes.img3.data.attributes.url
   imgd = shopsi.data.attributes.img4.data.attributes.url
  imge = shopsi.data.attributes.img5.data
- 
-  $products.push({
+ shem=shopsi.data.attributes.name
+  
+ $products.push({
     name: shopsi.data.attributes.name,
     image: shopsi.data.attributes.img1.data.attributes.formats.small.url,
     id: shopsi.data.id,
@@ -73,9 +140,22 @@ onMount(async () => {
     price: shopsi.data.attributes.price, 
     quantity: 1
   })
+  }).catch(error => {
+    console.log(error);
+  })
 })
+    import Mobile from '$lib/comonents/mobileItem.svelte'
+    let urlx = "https://strapi-7iq2.onrender.com/api/";
+   
+  
+   
+import { onMount } from 'svelte'
+ 
+     import {products, cart} from "$lib/stores/cart.js";
+    let prod = {};
+    let mobiles ;  
 
-productB = shopsi.data.attributes;
+
         import { Swiper, SwiperSlide } from "swiper/svelte";
 
 // Import Swiper styles
@@ -143,9 +223,9 @@ import Carta from '$lib/comonents/carta.svelte'
 <div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
 
 {#if mobiles == true}
-<Mobile on:addto={addToCart} {shopsi} low={false} shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
+<Mobile on:addto={addToCart} {shopsi} {is4vid} {is1vid} low={false} {shem} {imga}{imgb}{imgc}{imgd} {id} {kind} {url} {des}{price}/>
 {:else if mobiles == false}
-<DesctoItem on:addto={addToCart} shem={shopsi.data.attributes.name} {imga}{imgb}{imgc}{imgd}{imge} id={shopsi.data.id} kind={shopsi.data.attributes.kind} url={shopsi.data.attributes.url} des={shopsi.data.attributes.des} price={shopsi.data.attributes.price}/>
+<DesctoItem on:addto={addToCart} {shem} {is4vid} {is1vid} {imga}{imgb}{imgc}{imgd}{imge}  {id} {kind} {url} {des}{price}/>
 {:else}
 <Swiper
 effect={"cube"}
