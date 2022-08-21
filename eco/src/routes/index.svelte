@@ -63,11 +63,13 @@ function categoryback (){
 
 
 
-$: w = 0
+let w = 0
+$: h = 0
+
 </script>
 
 
-<div transition:fly="{{y: -250, duration: 1000}}" class="r" bind:clientWidth="{w}">
+<div transition:fly="{{y: -h, duration: 5000}}" class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
   {#if w > 650}
         <Desc {shopsi}/>
  <!--

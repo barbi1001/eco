@@ -10,7 +10,9 @@
      }
   }
   </script>
-  <script>
+  <script>      
+      import { scale } from 'svelte/transition'
+
     export let id;
 import { onMount } from "svelte";
   import datax from '$lib/data/tachshi.json'
@@ -47,7 +49,7 @@ import { onMount } from "svelte";
 </script>
 
 
-<div  class="r" bind:clientWidth="{w}">
+<div transition:scale="{{duration: 9000}}" class="r" bind:clientWidth="{w}">
   {#if w > 650}
 <Desk {shopsi}/>
 

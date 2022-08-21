@@ -45,8 +45,8 @@ async function toclick (){
     }
     #tttt{
         transform-origin: 840px 840px;
-        -webkit-animation: rotation 2s infinite cubic-bezier(0, 0, 0.11, 0.95);
-        animation: rotation 2s infinite cubic-bezier(0, 0, 0.11, 0.95);
+        -webkit-animation: rotation 3s infinite cubic-bezier(0, 0, 0.11, 0.95);
+        animation: rotation 3s infinite cubic-bezier(0, 0, 0.11, 0.95);
     }
     #tttt:hover{
  
@@ -54,9 +54,9 @@ async function toclick (){
         
     }
     #tt{
-        transform-origin: 1090px 840px;
-        -webkit-animation: rotation2 2s infinite cubic-bezier(0, 0, 0.11, 0.95);
-        animation: rotation2 2s infinite cubic-bezier(0, 0, 0.11, 0.95);
+        transform-origin: 1068px 840px;
+        -webkit-animation: rotation2 3s infinite cubic-bezier(0, 0, 0.11, 0.95);
+        animation: rotation2 3s infinite cubic-bezier(0, 0, 0.11, 0.95);
     }
     #tt:hover{
  
@@ -69,6 +69,28 @@ async function toclick (){
         -webkit-animation: rotation2 1.2s infinite cubic-bezier(0, 0, 0.11, 0.95);
         animation: rotation2 1.2s infinite cubic-bezier(0, 0, 0.11, 0.95);
     }
+    @-webkit-keyframes rotation2 {
+		0% {
+				-webkit-transform: rotate(-30deg) ;
+		}
+		50% {
+				-webkit-transform: rotate(50deg) ;
+		}
+               100% {
+				-webkit-transform: rotate(-30deg) ;
+		}
+}
+@keyframes rotation2 {
+		0% {
+				transform: rotate(-30deg) ;
+		}
+		50% {
+				transform: rotate(50deg) ;
+		}
+                100% {
+				transform: rotate(-30deg) ;
+		}
+}
     @-webkit-keyframes spini {
 		from {
 				-webkit-transform: rotate(0deg) ;
@@ -84,39 +106,28 @@ async function toclick (){
 		to {
 				transform: rotate(359deg) ;
 		}
-}
-    @-webkit-keyframes rotation {
-		from {
-				-webkit-transform: rotate(0deg) ;
+}    @-webkit-keyframes rotation {
+		0% {
+				-webkit-transform: rotate(30deg) ;
 		}
-		to {
-				-webkit-transform: rotate(359deg) ;
+		50% {
+				-webkit-transform: rotate(-50deg) ;
+		}
+               100% {
+				-webkit-transform: rotate(30deg) ;
 		}
 }
 @keyframes rotation {
-		from {
-				transform: rotate(0deg) ;
+		0% {
+				transform: rotate(30deg) ;
 		}
-		to {
-				transform: rotate(359deg) ;
+		50% {
+				transform: rotate(-50deg) ;
 		}
-}
-@-webkit-keyframes rotation2 {
-		from {
-				-webkit-transform: rotate(0deg) ;
+                100% {
+				transform: rotate(30deg) ;
 		}
-		to {
-				-webkit-transform: rotate(-359deg) ;
-		}
-}
-@keyframes rotation2 {
-		from {
-				transform: rotate(0deg) ;
-		}
-		to {
-				transform: rotate(-359deg) ;
-		}
-}
+        }
     </style>
 
 <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100vw" height="100vh">
@@ -4907,7 +4918,7 @@ async function toclick (){
                     </g>
                     <g transform="matrix(1.032629013062, 0, 0, 1.016057014465, -0.644296050072, -0.994212985039)" style="display: inline;" id="g3364-5">
                             <rect style="fill-opacity: 1; stroke-linecap: round; stroke-linejoin: miter; stroke-miterlimit: 1; stroke-dasharray: none; stroke-opacity: 1; paint-order: fill; stroke-width: 1.14112px; fill: url(#linearGradient16181-49); stroke: url(#linearGradient5786-71);" id="rect3366-4" width="31.507999" height="0.918814" x="18.054001" y="-52.261992" transform="matrix(1, 0, 0, -1, 0, 0)"/>
-                            <path id="path3368-4" d="M 41.620785 14.724 C 39.970785 14.724 38.632785 16.292 38.632785 18.226 C 38.633785 19.66 39.382785 20.949 40.521785 21.477 L 33.534785 38.196 L 26.829785 21.527 C 27.912785 20.97 28.613785 19.715 28.614785 18.328 C 28.615785 16.393 27.277785 14.828 25.626785 14.828 C 23.976785 14.828 22.638785 16.393 22.638785 18.328 C 22.639785 20.131 23.809785 21.638 25.341785 21.812 L 23.780785 39.741 L 15.525785 32.795 C 15.920785 32.188 16.134785 31.446 16.136785 30.682 C 16.136785 28.747 14.798785 27.181 13.148785 27.181 C 11.497785 27.181 10.159785 28.747 10.159785 30.682 C 10.159785 32.615 11.497785 34.182 13.148785 34.182 C 13.452785 34.181 13.754785 34.124 14.044785 34.016 L 16.108189 51.343179 L 50.284805 51.343179 L 53.450785 34.042 C 53.718785 34.135 53.996785 34.181 54.275785 34.182 C 55.925785 34.182 57.263785 32.615 57.263785 30.682 C 57.263785 28.747 55.925785 27.181 54.275785 27.181 C 52.624785 27.181 51.286785 28.747 51.286785 30.682 C 51.287785 31.487 51.525785 32.27 51.960785 32.894 L 43.730785 39.535 L 42.003785 21.692 C 43.491785 21.467 44.606785 19.984 44.608785 18.226 C 44.609785 16.292 43.271785 14.724 41.620785 14.724 Z" style="fill-opacity: 1; stroke-linecap: round; stroke-linejoin: miter; stroke-miterlimit: 1; stroke-dasharray: none; stroke-opacity: 1; paint-order: fill; stroke-width: 0.865053px; fill: url(#linearGradient16181-50); stroke: url(#linearGradient5786-72);"/>
+                            <path on:click={toclick} id="path3368-4" d="M 41.620785 14.724 C 39.970785 14.724 38.632785 16.292 38.632785 18.226 C 38.633785 19.66 39.382785 20.949 40.521785 21.477 L 33.534785 38.196 L 26.829785 21.527 C 27.912785 20.97 28.613785 19.715 28.614785 18.328 C 28.615785 16.393 27.277785 14.828 25.626785 14.828 C 23.976785 14.828 22.638785 16.393 22.638785 18.328 C 22.639785 20.131 23.809785 21.638 25.341785 21.812 L 23.780785 39.741 L 15.525785 32.795 C 15.920785 32.188 16.134785 31.446 16.136785 30.682 C 16.136785 28.747 14.798785 27.181 13.148785 27.181 C 11.497785 27.181 10.159785 28.747 10.159785 30.682 C 10.159785 32.615 11.497785 34.182 13.148785 34.182 C 13.452785 34.181 13.754785 34.124 14.044785 34.016 L 16.108189 51.343179 L 50.284805 51.343179 L 53.450785 34.042 C 53.718785 34.135 53.996785 34.181 54.275785 34.182 C 55.925785 34.182 57.263785 32.615 57.263785 30.682 C 57.263785 28.747 55.925785 27.181 54.275785 27.181 C 52.624785 27.181 51.286785 28.747 51.286785 30.682 C 51.287785 31.487 51.525785 32.27 51.960785 32.894 L 43.730785 39.535 L 42.003785 21.692 C 43.491785 21.467 44.606785 19.984 44.608785 18.226 C 44.609785 16.292 43.271785 14.724 41.620785 14.724 Z" style="fill-opacity: 1; stroke-linecap: round; stroke-linejoin: miter; stroke-miterlimit: 1; stroke-dasharray: none; stroke-opacity: 1; paint-order: fill; stroke-width: 0.865053px; fill: url(#linearGradient16181-50); stroke: url(#linearGradient5786-72);"/>
                     </g>
             </g>
     </g>
@@ -4918,7 +4929,7 @@ async function toclick (){
 
     <g  transform="matrix(17.884559631348, 0, 0, 5.993933677673, -2943.640625, -3821.32958984375)" id="g17261" style="">
 
-        <path out:fade="{{ duration: 10000}}" d="M 185.333 711.949 L 184.761 807.118 L 175.774 807.361 L 175.774 817.715 L 185.333 817.715 L 250.441 817.715 L 260 817.715 L 260 807.361 L 250.441 807.361 C 249.341 794.561 250.441 711.948 250.441 711.949 L 185.333 711.949 Z" style:fill={doori ? "url(#linearGradient16181-7)": "transparent"} style=" stroke: url(#linearGradient5786-24); stroke-width: 0.753816px;" id="path9049"/>
+        <path out:fade="{{ duration: 5000}}" d="M 185.333 711.949 L 184.761 807.118 L 175.774 807.361 L 175.774 817.715 L 185.333 817.715 L 250.441 817.715 L 260 817.715 L 260 807.361 L 250.441 807.361 C 249.341 794.561 250.441 711.948 250.441 711.949 L 185.333 711.949 Z" style:fill={doori ? "url(#linearGradient16181-7)": "transparent"} style=" stroke: url(#linearGradient5786-24); stroke-width: 0.753816px;" id="path9049"/>
 
              <path  out:fly="{{y: -250, duration: 10000}}" class="doori" d="M 188.59 713.62 L 188.59 732.161 L 200.652 732.161 L 200.652 713.62 L 188.59 713.62 Z M 203.278 713.62 L 203.278 732.161 L 216.559 732.161 L 216.559 713.62 L 203.278 713.62 Z M 219.216 713.62 L 219.216 732.161 L 232.497 732.161 L 232.497 713.62 L 219.216 713.62 Z M 235.122 713.62 L 235.122 732.161 L 247.184 732.161 L 247.184 713.62 L 235.122 713.62 Z M 188.591 735.661 L 188.591 805.839 L 216.56 805.839 L 216.56 735.661 L 188.591 735.661 Z M 219.216 735.661 L 219.216 805.839 L 247.185 805.839 L 247.185 735.661 L 219.216 735.661 Z M 211.591 773.807 C 213.195 773.807 214.497 775.109 214.497 776.713 C 214.497 778.317 213.195 779.619 211.591 779.619 C 209.987 779.619 208.685 778.317 208.685 776.713 C 208.685 775.109 209.987 773.807 211.591 773.807 Z M 224.153 773.807 C 225.757 773.807 227.059 775.109 227.059 776.713 C 227.059 778.317 225.757 779.619 224.153 779.619 C 222.549 779.619 221.278 778.317 221.278 776.713 C 221.278 775.109 222.549 773.807 224.153 773.807 Z" style="fill-opacity: 1; stroke: url(#linearGradient5786-25); fill: url(#linearGradient16181-14); stroke-width: 0.753816px;" id="path9051">
             </path>
