@@ -34,7 +34,7 @@ const dispatch = createEventDispatcher();
  function close(event){
 	console.log("yy")
   let name = event.detail.name
-    dispatch("close", {name: name })
+    dispatch("close", {name: name,phone: event.detail.phone, total:event.detail.total })
 
 }
 </script>

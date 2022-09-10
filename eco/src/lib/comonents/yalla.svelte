@@ -14,11 +14,13 @@
 		async function checkOut () {
 	//total price send
         let order = [];
+        let total = 0
         for (let index = 0; index < $cart.length; index++) {
             order.push({
               item: $cart[index].id,
             camut: $cart[index].quantity
             })
+         total += ($cart[index].price * $cart[index].quantity) 
             order = order
         }
 
@@ -41,9 +43,8 @@
             }})
   .then(response => {
           data = response.data;
-          dispatch("close", {name:$address.name })
+          dispatch("close", {name:$address.name, phone: $address.phone, total:total})
 
-          console.log("ghjg",$address.name);
       
               })
              

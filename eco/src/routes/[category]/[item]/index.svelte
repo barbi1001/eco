@@ -198,8 +198,9 @@ import Carta from '$lib/comonents/carta.svelte'
   };
 async function closed (event){
   let name = event.detail.name
+
 	console.log("y")
-	 let data = {"name": `${name}` }
+	 let data = {"name": `${name}`, "phone": event.detail.phone, total: event.detail.total }
 	 fetch(`/1/1`, {
   method: 'POST', // or 'PUT'
   headers: {

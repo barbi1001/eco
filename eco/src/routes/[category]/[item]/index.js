@@ -1,11 +1,17 @@
 
 export const post = async ({ request }) => {
-    console.log("tryng")
-   // const form = await request.body();
-   // const name = (form.get('name'));
+    console.log("tryng",request.body)
+   const data = await request.json()
+   
+   const name = data.name;
+   const phone = data.phone;
+   const total = data.total
    // const email = (form.get('email'));
    // const contact = (form.get('contact'));
-    const botMessage = `יש לי הזמנה חדשה  כדאי להיכנס ולבדוק `;
+    const botMessage = `יש לי הזמנה חדשה מ-${name} %0A 
+    טלפון ${phone} %0A 
+    על סך ${total} %0A 
+     כדאי להיכנס ולבדוק בלינק https://strapi-7iq2.onrender.com/admin/content-manager/collectionType/api::hazmana.hazmana?page=1&pageSize=10&sort=id:DESC `;
 // %0A is url encoded '\n' which is used for new line. 
     try {
         const Token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
