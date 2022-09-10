@@ -31,9 +31,11 @@ const dispatch = createEventDispatcher();
 
 		$: total = $cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
-function close(event){
-    let name = event.detail.name
-    dispatch(close, {name: name })
+ function close(event){
+	console.log("yy")
+  let name = event.detail.name
+    dispatch("close", {name: name })
+
 }
 </script>
 

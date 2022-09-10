@@ -11,7 +11,7 @@
         let shgi = {st: false, msg: ""}
 
       import axios from 'axios';
-		const checkOut = () => {
+		async function checkOut () {
 	//total price send
         let order = [];
         for (let index = 0; index < $cart.length; index++) {
@@ -41,9 +41,12 @@
             }})
   .then(response => {
           data = response.data;
-          dispatch(close, {name:$address.name })
-   
+          dispatch("close", {name:$address.name })
+
+          console.log("ghjg",$address.name);
+      
               })
+             
   .catch(error => {
       console.log(error);
     shgi.st = true;
@@ -1333,7 +1336,7 @@ const t = ["אבו ג'ווייעד שבט",
 
 
 <div class="shipping-address">
-	<form>
+	<div>
         <div class="relative z-0 mb-6 w-full group pt-2 mt-2">
             <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.email} />
             <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">כתובת מייל</label>
@@ -1364,7 +1367,7 @@ const t = ["אבו ג'ווייעד שבט",
             <button class="mt-1 py-1 px-4 rounded-full bg-pink-200 hover:bg-pink-500 text-pink-900 hover:text-pink-200" on:click={checkOut}>להזמין!</button>
         </div>
 
-        </form>
+</div>
 			
 	
 	<div class="current-address">

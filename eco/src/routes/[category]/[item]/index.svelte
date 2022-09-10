@@ -196,7 +196,27 @@ import Carta from '$lib/comonents/carta.svelte'
   const open = () => {
     isOpen = true;
   };
+async function closed (event){
+  let name = event.detail.name
+	console.log("y")
+	 let data = {"name": `${name}` }
+	 fetch(`/1/1`, {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+  .then((response) => response)
+  .then((data) => {
+    console.log('Success:', data);
+    isOpen = false;
 
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
   const close = () => {
     isOpen = false;
 	//get name from event timout to show goodby msg
@@ -205,7 +225,7 @@ import Carta from '$lib/comonents/carta.svelte'
 <DialogOverlay class="over" {isOpen} onDismiss={close}>
 	<DialogContent aria-label="form" class="content">
 		<div class="tofes" dir="rtl">
-<Carta on:close={close}/>
+<Carta on:close={closed}/>
 		</div>
 
 	</DialogContent>
