@@ -1,15 +1,7 @@
     
-<script context="module">
-  export const load = async ({ params}) => {
-    const id = params.item;
-    return {
-        props: {
-          id,
-        },
-     }
-  }
-</script>
+
 <script>
+
    import data1 from '$lib/data/agil1.json'
    import data3 from '$lib/data/item3.json'
    import data2 from '$lib/data/item2.json'
@@ -26,8 +18,11 @@ let is4vid = false
 
 let is1vid = false
 
-   export let id;
-  let kind ,url ,des,price
+export let data;
+console.log(data)
+    let id = data.id
+    $: (id = data.id);
+      let kind ,url ,des,price
    function getshop (){
     let shopsi
   if (id == 1){

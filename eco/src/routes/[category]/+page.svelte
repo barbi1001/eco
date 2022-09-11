@@ -1,22 +1,15 @@
-<script context="module">
-    export const load = async ({ params }) => {
-      const id = params.category;
-  
-     
-      return {
-        props: {
-          id,
-        },
-     }
-  }
-  </script>
-  <script>      
+
+  <script>
+      
       import { scale } from 'svelte/transition'
 
-    export let id;
+    export let data;
+    let id = 1;
+    $: (id = data.data);
 import { onMount } from "svelte";
   import datax from '$lib/data/tachshi.json'
   function getshop (){
+    console.log(data)
     let shopsi
   if (id == 1){
     shopsi = datax
@@ -27,7 +20,7 @@ import { onMount } from "svelte";
   let shopsi = getshop()
 
   onMount(async () =>{
-
+    console.log(id)
     await
     fetch(`https://strapi-7iq2.onrender.com/api/categories/${id}?populate[1]=items.img1`)
   .then(response => response.json())
