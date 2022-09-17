@@ -12,7 +12,7 @@ export const POST = async ({ request }) => {
     const botMessage = `יש לי הזמנה חדשה מ-${name} %0A 
     טלפון ${phone} %0A 
     על סך ${total} %0A 
-     כדאי להיכנס ולבדוק בלינק hhttps://strapi-7iq2.onrender.com/admin/content-manager/collectionType/api::hazmana.hazmana?page=1&pageSize=10&sort=id:DESC`;
+     כדאי להיכנס ולבדוק בלינק https://strapi-7iq2.onrender.com/admin/content-manager/collectionType/api::hazmana.hazmana?page=1&pageSize=10&sort=id:DESC`;
 // %0A is url encoded '\n' which is used for new line. 
         const Token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
         const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
