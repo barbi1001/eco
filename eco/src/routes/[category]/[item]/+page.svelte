@@ -1,7 +1,7 @@
     
 
 <script>
-
+  import {circOut} from 'svelte/easing'
    import data1 from '$lib/data/agil1.json'
    import data3 from '$lib/data/item3.json'
    import data2 from '$lib/data/item2.json'
@@ -165,7 +165,7 @@ import "$lib/style.css";
 import { EffectCube, Pagination } from "swiper";
 import Buy from '$lib/svg/buy.svelte'
 import DesctoItem from '$lib/comonents/desctoItem.svelte';
-	
+	import { fly } from 'svelte/transition'
 	function addToCart (event) {
       const product = event.detail.pr
 		for(let item of $cart) {
@@ -226,6 +226,8 @@ async function closed (event){
 
 	</DialogContent>
 	</DialogOverlay >
+  <div transition:fly="{{y: -h, duration: 8000, easing: circOut }}" class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
+
 {#await shopsi}
 <div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">
 
@@ -881,6 +883,7 @@ class="mySwiper"
      {/if}
 </div>
 {/await}
+  </div>
 <style>
 
 .slide  {

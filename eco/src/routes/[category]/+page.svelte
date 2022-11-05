@@ -42,7 +42,7 @@ import { onMount } from "svelte";
 </script>
 
 
-<div transition:scale="{{duration: 9000}}" class="r" bind:clientWidth="{w}">
+<div in:scale="{{duration: 9000}}" class="r" bind:clientWidth="{w}">
   {#if w > 650}
 <Desk {shopsi}/>
 
