@@ -11,7 +11,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/adapter-vercel": "^1.0.0-next.36",
+		"@sveltejs/adapter-vercel": "^1.0.0-next.81",
 		"@sveltejs/kit": "1.0.0-next.406",
 		"autoprefixer": "^10.4.0",
 		"eslint": "^7.32.0",
