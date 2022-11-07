@@ -6,6 +6,7 @@
    import data3 from '$lib/data/item3.json'
    import data2 from '$lib/data/item2.json'
    import data4 from '$lib/data/item4.json'
+   import data5 from '$lib/data/item5.json'
 
 
    let imga
@@ -84,6 +85,28 @@ if (shopsi.data.attributes.img4.data.attributes.mime  == "video/mp4"){
  }
 } else if (id == 4){
    shopsi = data4
+
+imga = shopsi.data.attributes.img1.data.attributes.url
+imgb = shopsi.data.attributes.img2.data.attributes.url
+imgc = shopsi.data.attributes.img3.data.attributes.url
+imgd = shopsi.data.attributes.img4.data.attributes.url
+imge = shopsi.data.attributes.img5.data   
+shem=shopsi.data.attributes.name
+kind=shopsi.data.attributes.kind
+url=shopsi.data.attributes.url
+des=shopsi.data.attributes.des 
+price=shopsi.data.attributes.price
+if (shopsi.data.attributes.img4.data.attributes.mime  == "video/mp4"){
+   is4vid = true
+ }
+ if (shopsi.data.attributes.img1.data.attributes.mime  == "video/mp4"){
+   is1vid = true
+ }
+
+
+
+} else if (id == 5){
+   shopsi = data5
 
 imga = shopsi.data.attributes.img1.data.attributes.url
 imgb = shopsi.data.attributes.img2.data.attributes.url
