@@ -1,7 +1,7 @@
 
   <script>
       
-      import { scale } from 'svelte/transition'
+      import { fade } from 'svelte/transition'
 
     export let data;
     let id = 1;
@@ -25,6 +25,7 @@ import { onMount } from "svelte";
     fetch(`https://strapi-7iq2.onrender.com/api/categories/${id}?populate[1]=items.img1`)
   .then(response => response.json())
   .then(data => {
+    
 		console.log(data);
     shopsi = data
   }).catch(error => {
@@ -39,14 +40,18 @@ import { onMount } from "svelte";
 
  
     $: w = 0
+    $: h = 0
+
 </script>
 
 
-<div in:scale="{{duration: 9000}}" class="r" bind:clientWidth="{w}">
+<div class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
   {#if w > 650}
-<Desk {shopsi}/>
+  <div in:fade="{{ duration: 9000}}"  bind:clientHeight="{h}">
 
-{:else}
+<Desk {shopsi}/>
+  </div>
+{:else if w <= 650 && w>0}
 <Mobile {shopsi}/>
 {/if}
 

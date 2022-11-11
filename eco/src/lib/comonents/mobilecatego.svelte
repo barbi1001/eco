@@ -3,6 +3,15 @@
     import { goto } from "$app/navigation";
     
     let i = 0
+let t=setInterval(uhamadLive,1000);
+function uhamadLive (){
+     if (shopsi.data.attributes.items.data.length > 0){
+     i = shopsi.data.attributes.items.data.length -1 
+     console.log(i)
+     clearInterval(t);
+
+    } 
+}
     function next (){
             console.log("click",i)
             if (i + 1 < shopsi.data.attributes.items.data.length){

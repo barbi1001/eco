@@ -2,7 +2,7 @@
 
 <script>
           import { fly } from 'svelte/transition'
-
+  import { bounceOut } from 'svelte/easing'
   import { onMount } from "svelte";
   import datax from '$lib/data/fruntpage.json'
    let shopsi = datax
@@ -69,15 +69,18 @@ $: h = 0
 </script>
 
 
-<div transition:fly="{{y: -h, duration: 5000}}" class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
+<div  class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
   {#if w > 650}
+  <div in:fly="{{y: -h, duration: 5000, easing : bounceOut}}" out:fly="{{y: h, duration: 5000, easing : bounceOut}}" >
+
         <Desc {shopsi}/>
+  </div>
  <!--
 <img  src={carouselPhotos[firstIndex]} alt="barbi" title="מזל טוב" />
 
 <button on:click={()=> goto("./rikma")}  class="bg-red-400 bt rounded-full p-2 text-yellow-400 hover:scale-125 hover:bg-yellow-400 hover:text-red-400">להזמנת רקמה</button>
 -->
-{:else}
+{:else if w < 650 && w > 0}
 <Mobi {shopsi}/>
 {/if}
 </div>
