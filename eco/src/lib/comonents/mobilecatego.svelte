@@ -1,7 +1,19 @@
 <script>
     export let shopsi;
     import { goto } from "$app/navigation";
-    
+    import { swipe } from 'svelte-gestures';
+  let direction;
+  let target;
+
+  function handler(event) {
+    direction = event.detail.direction;
+    target = event.detail.target;
+    if (direction = "left"){
+        back()
+    } else if  (direction = "left"){
+        next()
+    }
+  }
     let i = 0
 let t=setInterval(uhamadLive,1000);
 function uhamadLive (){
@@ -9050,7 +9062,7 @@ function uhamadLive (){
     <text transform="matrix(1.6337 0 0 1.2693 1155.3 1187.1)" fill="url(#yomfny)" font-family="Arial, sans-serif" font-size="48.058px" stroke="rgb(3, 3, 3)" stroke-opacity=".62" stroke-width="2.3635px" text-anchor="middle" style="line-height:96.5991px;white-space:pre">{shopsi.data.attributes.items.data[i].attributes.name}</text>
     <g transform="translate(939.57 -382.99)"></g>
     
-<image on:click={()=> goto(`./${shopsi.data.id}/${shopsi.data.attributes.items.data[i].id}`)}  xlink:href="{shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.formats.small.url}" x="1005.5" y="832.06" width="288.97" height="300" rx="6.7967" ry="6.7967" />
+<image use:swipe={{ timeframe: 300, minSwipeDistance: 60 }} on:swipe={handler}   on:click={()=> goto(`./${shopsi.data.id}/${shopsi.data.attributes.items.data[i].id}`)}  xlink:href="{shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.formats.small.url}" x="1005.5" y="832.06" width="288.97" height="300" rx="6.7967" ry="6.7967" />
   
     <text transform="matrix(.97722 0 0 .97723 1150 691.59)" fill="url(#yomfnv)" font-family="Arial, sans-serif" font-size="36.839px" stroke="url(#yomfor)" stroke-width="1.0233px" text-anchor="middle" style="line-height:96.5991px;white-space:pre">{shopsi.data.attributes.name}</text>
     <g transform="matrix(2.6742 0 0 3.6949 -657.25 -1455.9)" fill-rule="evenodd" style="">

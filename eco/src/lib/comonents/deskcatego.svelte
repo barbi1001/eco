@@ -49,24 +49,24 @@ function next (){
 
 @keyframes nexti {
     0%{
-        transform:   translateX(-40px)
+        transform:   translateX(-60px)
     }
     50%{
-        transform:  translateX(40px)
+        transform:  translateX(16px)
     }
     100%{
-        transform:  translateX(-40px)
+        transform:  translateX(-60px)
     }
 }
 @keyframes backi {
     0%{
-        transform: translateX(40px)
+        transform: translateX(60px)
     }
     50%{
-        transform: translateX(-40px)
+        transform: translateX(-16px)
     }
     100%{
-        transform:  translateX(40px)
+        transform:  translateX(60px)
     }
 }
 @keyframes rot2 {
@@ -104,25 +104,25 @@ function next (){
 
 @keyframes pabacki {
     0%{
-        transform:  rotate(-2deg) translateY(-4px)
+        transform:  rotate(-1deg) translateY(-8px) translateX(-16px)
     }
     50%{
-        transform:  rotate(2deg) translateY(-4px)
+        transform:  rotate(1deg) translateY(-8px) translateX(16px)
     }
     100%{
-        transform: rotate(-2deg) translateY(-4px)
+        transform: rotate(-1deg) translateY(-8px) translateX(-16px)
     }
 }
 @keyframes panexti {
     0%{
-        transform:  rotate(2deg) translateX(26px) translateY(0px)
+        transform:  rotate(1deg) translateX(16px) translateY(-8px)
     }
     50%{
-    transform:  rotate(-2deg) translateX(-26px) translateY(-8px)
+    transform:  rotate(-1deg) translateX(-16px) translateY(-8px)
  
     }
     100%{
-        transform: rotate(2deg) translateX(26px) translateY(0px)
+        transform: rotate(1deg) translateX(16px) translateY(-8px)
 
 }
 }
