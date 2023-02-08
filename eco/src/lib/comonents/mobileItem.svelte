@@ -1,8 +1,8 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
         export let shopsi
-        export let is4vid =- false
-        export let is1vid =- false
+        export let is4vid = false
+        export let is1vid = false
 
      export let imga
      export let imgb

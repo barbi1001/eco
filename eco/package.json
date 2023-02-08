@@ -13,6 +13,9 @@
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-vercel": "^1.0.0-next.81",
 		"@sveltejs/kit": "1.0.0-next.535",
+		"@threlte/core": "^5.0.8",
+		"@threlte/extras": "^4.9.3",
+		"@threlte/preprocess": "^0.0.2",
 		"autoprefixer": "^10.4.0",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
@@ -21,7 +24,9 @@
 		"prettier-plugin-svelte": "^2.4.0",
 		"svelte": "^3.48.0",
 		"svelte-preprocess": "^4.10.1",
-		"tailwindcss": "^3.0.7"
+		"svelte-sequential-preprocessor": "^0.0.7",
+		"tailwindcss": "^3.0.7",
+		"three": "^0.148.0"
 	},
 	"type": "module",
 	"dependencies": {

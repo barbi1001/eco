@@ -1,7 +1,7 @@
 <script>
    import { createEventDispatcher } from 'svelte';
-   export let is4vid =- false
-   export let is1vid =- false
+   export let is4vid = false
+   export let is1vid = false
 
 const dispatch = createEventDispatcher();
 import { Swiper, SwiperSlide } from "swiper/svelte";

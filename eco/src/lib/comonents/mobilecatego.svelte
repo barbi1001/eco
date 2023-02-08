@@ -9062,8 +9062,18 @@ function uhamadLive (){
     <text transform="matrix(1.6337 0 0 1.2693 1155.3 1187.1)" fill="url(#yomfny)" font-family="Arial, sans-serif" font-size="48.058px" stroke="rgb(3, 3, 3)" stroke-opacity=".62" stroke-width="2.3635px" text-anchor="middle" style="line-height:96.5991px;white-space:pre">{shopsi.data.attributes.items.data[i].attributes.name}</text>
     <g transform="translate(939.57 -382.99)"></g>
     
-<image use:swipe={{ timeframe: 300, minSwipeDistance: 60 }} on:swipe={handler}   on:click={()=> goto(`./${shopsi.data.id}/${shopsi.data.attributes.items.data[i].id}`)}  xlink:href="{shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.formats.small.url}" x="1005.5" y="832.06" width="288.97" height="300" rx="6.7967" ry="6.7967" />
-  
+    <foreignObject x="1005.5" y="832.06" width="288.97" height="300" rx="6.7967" ry="6.7967">
+        {#if shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.ext != ".mp4"}
+    <img use:swipe={{ timeframe: 300, minSwipeDistance: 60 }}
+     on:swipe={handler}
+     on:click={()=> goto(`./${shopsi.data.id}/${shopsi.data.attributes.items.data[i].id}`)}  
+      src="{shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.formats.small.url}" alt="click for this product"/>
+    {:else}
+    <video  
+    on:click={()=> goto(`./${shopsi.data.id}/${shopsi.data.attributes.items.data[i].id}`)}  
+    autoplay loop muted src={shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.url}/>
+        {/if}
+</foreignObject>   
     <text transform="matrix(.97722 0 0 .97723 1150 691.59)" fill="url(#yomfnv)" font-family="Arial, sans-serif" font-size="36.839px" stroke="url(#yomfor)" stroke-width="1.0233px" text-anchor="middle" style="line-height:96.5991px;white-space:pre">{shopsi.data.attributes.name}</text>
     <g transform="matrix(2.6742 0 0 3.6949 -657.25 -1455.9)" fill-rule="evenodd" style="">
     <path transform="translate(.040575)" d="m603.44 593.12-29.56 14.88v2.5938c0 4.6309 3.4806 8.375 7.7812 8.375s7.75-3.7441 7.75-8.375v-2.5938l24-14.875zm19.906 0-18.406 14.875v2.5938c0 4.6309 3.4807 8.375 7.7812 8.375 4.3006 0 7.75-3.7441 7.75-8.375v-2.5938l12.844-14.875zm21.781 0-9.1562 14.875v2.5938c0 4.6309 3.4807 8.375 7.7812 8.375 4.3006 0 7.75-3.7441 7.75-8.375v-2.5938l3.5938-14.875zm23.719 0-1.875 14.875v2.5938c0 3.7834 2.3366 6.9585 5.5312 8 0.22686 0.074 0.45234 0.16703 0.6875 0.21875 0.0182 4e-3 0.0443-4e-3 0.0625 0 0.23556 0.0499 0.47602 0.0985 0.71875 0.125 0.27983 0.0328 0.55548 0.0312 0.84375 0.0312 0.12733-9.7e-4 0.24877-0.0239 0.375-0.0312 0.12623 7e-3 0.24767 0.0303 0.375 0.0312 0.28827 0 0.56392 2e-3 0.84375-0.0312 0.24273-0.0265 0.48319-0.0751 0.71875-0.125 0.0182-4e-3 0.0443 4e-3 0.0625 0 0.23516-0.0517 0.46064-0.14475 0.6875-0.21875 3.1946-1.0415 5.5312-4.2166 5.5312-8v-2.5938l-1.875-14.875h-0.0625-6.2812-6.2812zm26.438 0 3.5938 14.875v2.5938c0 4.6309 3.4494 8.375 7.75 8.375s7.7812-3.7441 7.7812-8.375v-2.5938l-9.1562-14.875zm21.781 0 12.844 14.875v2.5938c0 4.6309 3.4494 8.375 7.75 8.375s7.7812-3.7441 7.7812-8.375v-2.5938l-18.406-14.875zm19.906 0 24 14.875v2.5938c0 4.6309 3.4494 8.375 7.75 8.375s7.7812-3.7441 7.7812-8.375l-0.01-2.59-29.56-14.88z" fill="url(#yomau)" stroke="url(#yomah)" stroke-width="1.3447px"/>
