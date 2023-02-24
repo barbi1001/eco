@@ -240,6 +240,7 @@ async function closed (event){
     isOpen = false;
 	//get name from event timout to show goodby msg
   };
+
 </script>
 <DialogOverlay class="over" {isOpen} onDismiss={close}>
 	<DialogContent aria-label="form" class="content">
@@ -249,7 +250,7 @@ async function closed (event){
 
 	</DialogContent>
 	</DialogOverlay >
-  <div transition:fly="{{y: -h, duration: 8000, easing: circOut }}" class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
+  <div class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
 
 {#await shopsi}
 <div bind:clientHeight="{h}" class="fullwidth" bind:clientWidth="{w}">

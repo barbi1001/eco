@@ -36,6 +36,7 @@
 		"svelte-forms-lib": "^2.0.1",
 		"svelte-gestures": "^1.4.1",
 		"svelte-multiselect": "^5.0.3",
+		"svelte-scrolling": "^1.2.2",
 		"swiper": "^8.0.6",
 		"vite": "^3.1.0",
 		"yup": "^0.32.11",

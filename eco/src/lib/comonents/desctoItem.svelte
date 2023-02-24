@@ -9,12 +9,16 @@ import "swiper/css/zoom";
 
 // Import Swiper styles
 import "swiper/css";
+import { scrollElement, scrollRef} from 'svelte-scrolling'
 
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
-
+import { onMount} from 'svelte'
+onMount(async()=>{
+        setTimeout(scrollElement,2200)  
+})
+scrollElement({ ref: 'tttt', duration: 1000 })
 import "$lib/style.css";
-
 // import required modules
 import {Zoom, EffectCube, Pagination } from "swiper";
 
@@ -24,6 +28,13 @@ import {Zoom, EffectCube, Pagination } from "swiper";
 function addToCart (id){
         dispatch("addto",{pr:id})
 }
+function scrollIntoVieww() {
+		const el = document.getElementById("tttt");
+		if (!el) return;
+    el.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
     </script>
 <svg id="svg2" viewBox="-0.919 -2861.818 2400.826 7367.1" version="1.1" width="98.5vw"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
         <title id="title5179"> קניה נעימה של {shem}</title>
@@ -9824,7 +9835,8 @@ function addToCart (id){
           </div>
       </foreignObject>
         <text style="font-family: UnifrakturMaguntia; font-size: 157.3px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 11; stroke-width: 3.82844px; white-space: pre; fill: url(#linearGradient16181-44); stroke: url(#linearGradient5786-12);" transform="matrix(0.855794012547 -0.009965125471 0.014382000081 1.233687996864 776.747924804688 -3505.156982421875)" x="265.898" y="1363.63">BarB</text>
-        <foreignObject transform="scale(1.17)" x="530" y="327" width="1050" height="1050" style="stroke-width: 13.0705px; stroke-miterlimit: 1; fill: none; stroke: url(#linearGradient10151-1);" >
+        <foreignObject use:scrollRef={'tttt'}
+         transform="scale(1.17)" x="530" y="327" width="1050" height="1050" style="stroke-width: 13.0705px; stroke-miterlimit: 1; fill: none; stroke: url(#linearGradient10151-1);" >
           <div>
                   <Swiper
   effect={"cube"}
