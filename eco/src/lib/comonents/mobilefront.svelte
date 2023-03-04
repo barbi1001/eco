@@ -290,7 +290,7 @@ setInterval(() => {
        }
    }
        </style>
-       <div class="ani"  style="width:100%; position:absolute; top:70%; left:0%; z-index:100;">
+       <div class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
 <!----<Canvas>
 
 <Text anchorX="center" material={MeshBasicMaterial} strokeColor="pink" outlineColor="purple" outlineWidth="0.6" rotation.y={rotationt} text={value} fontSize="2"  position={$poz} color="white" font="https://res.cloudinary.com/barb2/raw/upload/v1659663207/sn_tishrey_hlvhle.ttf"/>
