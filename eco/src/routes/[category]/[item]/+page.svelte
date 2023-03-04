@@ -219,7 +219,7 @@ async function closed (event){
 
 	console.log("y")
 	 let data = {"name": `${name}`, "phone": event.detail.phone, total: event.detail.total }
-	 fetch(`/1/1`, {
+	 fetch(`/api/teleg`, {
   method: 'POST', // or 'PUT'
   headers: {
     'Content-Type': 'application/json',
