@@ -7,10 +7,10 @@
       anime({
   targets: '.do',
   d: [
-    { value: 
-      "M 400.0001 696.805377 L 400.0001 1007.719652 L 626.443042 1007.719652 L 626.443042 696.805377 L 400.0001 696.805377 Z M 675.741599 696.805377 L 675.741599 1007.719652 L 925.069142 1007.719652 L 925.069142 696.805377 L 675.741599 696.805377 Z M 974.949671 696.805377 L 974.949671 1007.719652 L 1224.277214 1007.719652 L 1224.277214 696.805377 L 974.949671 696.805377 Z M 1273.556994 696.805377 L 1273.556994 1007.719652 L 1499.999947 1007.719652 L 1499.999947 696.805377 L 1273.556994 696.805377 Z M 400.0001 1033.762809 L 300 1100 C 962.592924 1099.655317 847.318849 1082.594892 847.318849 1082.594892 L 948.167321 1039.949328 L 400.0001 1033.762809 Z M 952.769079 1032.216187 L 1056.722712 1082.594597 C 1055.597781 1082.594597 1079.747804 1082.594892 1600 1082.594892 L 1500.000005 1033.762809 C 1500.000005 1033.762809 923.228855 1032.216187 952.769079 1032.216187 Z" 
+    { value:
+      "M 400.0001 696.805377 L 400.0001 1007.719652 L 626.443042 1007.719652 L 626.443042 696.805377 L 400.0001 696.805377 Z M 675.741599 696.805377 L 675.741599 1007.719652 L 925.069142 1007.719652 L 925.069142 696.805377 L 675.741599 696.805377 Z M 974.949671 696.805377 L 974.949671 1007.719652 L 1224.277214 1007.719652 L 1224.277214 696.805377 L 974.949671 696.805377 Z M 1273.556994 696.805377 L 1273.556994 1007.719652 L 1499.999947 1007.719652 L 1499.999947 696.805377 L 1273.556994 696.805377 Z M 400.0001 1033.762809 L 300 1100 C 962.592924 1099.655317 847.318849 1082.594892 847.318849 1082.594892 L 948.167321 1039.949328 L 400.0001 1033.762809 Z M 952.769079 1032.216187 L 1056.722712 1082.594597 C 1055.597781 1082.594597 1079.747804 1082.594892 1600 1082.594892 L 1500.000005 1033.762809 C 1500.000005 1033.762809 923.228855 1032.216187 952.769079 1032.216187 Z"
     },
-    { value:  
+    { value:
       "m400 696.81v310.91h226.44v-310.91h-226.44zm275.74 0v310.91h249.33v-310.91h-249.33zm299.21 0v310.91h249.33v-310.91h-249.33zm298.61 0v310.91h226.44v-310.91h-226.44zm-873.56 336.96v1347.8c662.59-0.34468 554.9-7.31e-4 548.95-4.35e-4l-0.78421-1341.6-548.17-6.1865zm552.77-1.5466 3.9536 1349.4c-1.1249 0 23.025 2.95e-4 543.28 2.95e-4v-1347.8s-576.77-1.5466-547.23-1.5466z" },
   ],
   easing: 'easeOutQuad',
@@ -18,20 +18,20 @@
   loop: true
 });
     })*/
-    
+
     // Update svg shape
     const paths = [
       "M 400.0001 696.805377 L 400.0001 1007.719652 L 626.443042 1007.719652 L 626.443042 696.805377 L 400.0001 696.805377 Z M 675.741599 696.805377 L 675.741599 1007.719652 L 925.069142 1007.719652 L 925.069142 696.805377 L 675.741599 696.805377 Z M 974.949671 696.805377 L 974.949671 1007.719652 L 1224.277214 1007.719652 L 1224.277214 696.805377 L 974.949671 696.805377 Z M 1273.556994 696.805377 L 1273.556994 1007.719652 L 1499.999947 1007.719652 L 1499.999947 696.805377 L 1273.556994 696.805377 Z M 400.0001 1033.762809 L 300 1100 C 962.592924 1099.655317 847.318849 1082.594892 847.318849 1082.594892 L 948.167321 1039.949328 L 400.0001 1033.762809 Z M 952.769079 1032.216187 L 1056.722712 1082.594597 C 1055.597781 1082.594597 1079.747804 1082.594892 1600 1082.594892 L 1500.000005 1033.762809 C 1500.000005 1033.762809 923.228855 1032.216187 952.769079 1032.216187 Z" ,
-      "m400 696.81v310.91h226.44v-310.91h-226.44zm275.74 0v310.91h249.33v-310.91h-249.33zm299.21 0v310.91h249.33v-310.91h-249.33zm298.61 0v310.91h226.44v-310.91h-226.44zm-873.56 336.96v1347.8c662.59-0.34468 554.9-7.31e-4 548.95-4.35e-4l-0.78421-1341.6-548.17-6.1865zm552.77-1.5466 3.9536 1349.4c-1.1249 0 23.025 2.95e-4 543.28 2.95e-4v-1347.8s-576.77-1.5466-547.23-1.5466z" 
+      "m400 696.81v310.91h226.44v-310.91h-226.44zm275.74 0v310.91h249.33v-310.91h-249.33zm299.21 0v310.91h249.33v-310.91h-249.33zm298.61 0v310.91h226.44v-310.91h-226.44zm-873.56 336.96v1347.8c662.59-0.34468 554.9-7.31e-4 548.95-4.35e-4l-0.78421-1341.6-548.17-6.1865zm552.77-1.5466 3.9536 1349.4c-1.1249 0 23.025 2.95e-4 543.28 2.95e-4v-1347.8s-576.77-1.5466-547.23-1.5466z"
     ];
     function open () {
       door = true
-      let destination_path 
+      let destination_path
       destination_path = paths[0];
       svgMorphing(destination_path);
-      
+
     }
-   
+
     function svgMorphing(path) {
       let timeline = anime({
         duration: 1750,
@@ -45,7 +45,7 @@
     export let shopsi;
     let door = false
 
-    import { goto } from "$app/navigation";	
+    import { goto } from "$app/navigation";
 
 	let firstIndex = 0
 let i = 0
@@ -60,7 +60,7 @@ function categorynext (){
 function categoryback (){
         console.log("click",i)
         if (i == 0){
-            i = shopsi.data.length - 1              
+            i = shopsi.data.length - 1
         } else{
             i -= 1
         }
@@ -83,7 +83,7 @@ import { elasticInOut } from "svelte/easing";
       easing: elasticInOut,
       duration: 5000,
     };
-  };	
+  };
   import {  MeshBasicMaterial } from 'three'
 
 
@@ -120,21 +120,21 @@ setInterval(() => {
         transform-origin: center;*/
       }
       .tviatetzba{
-        animation: tronFilter 12s infinite; 
-      
+        animation: tronFilter 12s infinite;
+
   }
 
 @keyframes tronFilter {
-    0% { fill:#31eefd;} 
-   22% {fill:#1d85bb;} 
+    0% { fill:#31eefd;}
+   22% {fill:#1d85bb;}
    42% {fill:#884173;}
-   62% {fill:#ff0071;} 
+   62% {fill:#ff0071;}
    82% {
   fill:#009997;}
    92% {
-              fill:#92ffd7;} /* end green */      
+              fill:#92ffd7;} /* end green */
   100% {
-              fill:#31eefd;} 
+              fill:#31eefd;}
 }
 
 
@@ -145,7 +145,7 @@ setInterval(() => {
         transform-origin: 1089px 1200px;
       animation-delay: 2s;
       }
-    
+
       .n{
         transform-origin: 806px 1200px;
         animation-delay:1s;
@@ -166,9 +166,9 @@ setInterval(() => {
            animation: rotation 2s infinite cubic-bezier(0, 0, 0.11, 0.95);
        }
        .tttt:hover{
-    
+
            transform: rotate(0deg) scale(1.2) ;
-           
+
        }
        #tt{
            transform-origin: 1090px 840px;
@@ -176,9 +176,9 @@ setInterval(() => {
            animation: rotation2 2s infinite cubic-bezier(0, 0, 0.11, 0.95);
        }
        #tt:hover{
-    
+
            transform: rotate(0deg) scale(1.2) ;
-           
+
        }
        @-webkit-keyframes lemala {
        0% {
@@ -295,9 +295,11 @@ setInterval(() => {
 
 <Text anchorX="center" material={MeshBasicMaterial} strokeColor="pink" outlineColor="purple" outlineWidth="0.6" rotation.y={rotationt} text={value} fontSize="2"  position={$poz} color="white" font="https://res.cloudinary.com/barb2/raw/upload/v1659663207/sn_tishrey_hlvhle.ttf"/>
 </Canvas>-->
-<Canvas>
-  <Scene />
+{#if door != true}
+<Canvas >
+  <Scene on:clicked={()=>open()}/>
 </Canvas>
+{/if}
 </div>
 <svg id="svgg" height="100vh" width="100vw" viewBox="99.812 -445.72 1693.7 2845.7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
 <defs>
@@ -5349,8 +5351,8 @@ setInterval(() => {
   <g transform="matrix(15.235 0 0 23.258 -2378.2 -16637)" style="">
   <path d="m185.34 711.95c1.2783-0.12514 1.3319 94.983-0.572 95.169l-8.987 0.243-13.129 10.354 22.688-2.7e-5h65.108l23.814 2.7e-5 -14.255-10.354h-9.559c-0.40591-7.4814 0-96.177 0-95.412h-65.108z" fill="url(#mobiti)" stroke="url(#mobisk)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="24" stroke-width="1.1691px"/>
   </g>
-  
-{#if door == true}  
+
+{#if door == true}
 <g transform="matrix(-.51356 0 0 .67624 1452.4 735.11)" style="">
   <title>tri2</title>
   <g transform="matrix(-.050062 -1.352 -1.6211 .060025 66.188 1214.2)" fill-opacity=".93" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="38" stroke-opacity=".9" stroke-width="2.7678px" style="">
@@ -5475,7 +5477,7 @@ setInterval(() => {
 </g>
 {/if}
 
-{#if door == true}  
+{#if door == true}
 <g transform="matrix(.51356 0 0 .67624 445.69 735.11)" style="" bx:origin="5.568565 0.5">
   <title>tri</title>
   <g transform="matrix(-.050062 -1.352 -1.6211 .060025 66.188 1214.2)" fill-opacity=".93" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="38" stroke-opacity=".9" stroke-width="2.7678px" style="">
@@ -5678,7 +5680,7 @@ setInterval(() => {
   <path d="m473.4 503.86v18.195l-88.99 44.661v-17.864z" fill="url(#mobix)" stroke="url(#mobiri)" style="paint-order:stroke"/>
   </g>
   </g>
-{/if} 
+{/if}
   <g class:tttt={clicked == true} class:m={clicked == true}>
   <path transform="matrix(-.028109 -.9996 .9996 -.028109 -75.157 2312.3)" d="m1146 1195.5c-1.8702 5.2895-19.223 9.8654-32.2 8.6206-2.9255-0.28109-6.2142-0.92783-9.5504-1.7583 5.8276 5.107 8.012 10.126 7.4202 13.897-1.0329 6.5745-7.079 8.8901-15.1 9.1335-8.6608 0.26284-23.638-6.7558-25.496-13.717-0.41827-1.5691-0.299-3.4333 0.13196-5.3784-7.274 4.5071-15.538 7.1385-22.449 7.9836-12.048 1.4736-16.7-0.97103-21.033-4.8868-4.4218-3.9942 4.616-14.041 16.442-17.098 2.671-0.68994 6.0375-1.1961 9.6484-1.5679-10.329-2.3217-17.63-5.7118-21.31-8.9613-6.4164-5.6643-4.1841-8.9826 2.1004-12.154 5.7195-2.8863 26.487-1.9214 35.658 3.1504 2.0666 1.1432 4.0246 2.6953 5.8213 4.4104 0.89249-5.9424 4.6508-10.67 9.287-13.523 8.0835-4.9738 14.12-4.1409 22.333-2.6247 8.2143 1.5137 11.755 12.853 5.5953 19.045-1.3893 1.3957-3.5399 2.8595-6.0341 4.2917 10.876-1.3507 20.487-0.87976 27.033 0.60537 11.412 2.5906 13.311 5.9898 11.703 10.532" fill="url(#mobiggg)" fill-opacity=".81" fill-rule="evenodd" stroke="url(#mobity)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="38" stroke-width="7px" style="paint-order:stroke">
   <title>perach</title>
@@ -5715,7 +5717,7 @@ setInterval(() => {
      stroke-width= "6px" dur="5s" repeatCount="indefinite" attributeName="d" values="M 400.0001 696.805377 L 400.0001 1007.719652 L 626.443042 1007.719652 L 626.443042 696.805377 L 400.0001 696.805377 Z M 675.741599 696.805377 L 675.741599 1007.719652 L 925.069142 1007.719652 L 925.069142 696.805377 L 675.741599 696.805377 Z M 974.949671 696.805377 L 974.949671 1007.719652 L 1224.277214 1007.719652 L 1224.277214 696.805377 L 974.949671 696.805377 Z M 1273.556994 696.805377 L 1273.556994 1007.719652 L 1499.999947 1007.719652 L 1499.999947 696.805377 L 1273.556994 696.805377 Z M 400.0001 1033.762809 L 300 1100 C 962.592924 1099.655317 847.318849 1082.594892 847.318849 1082.594892 L 948.167321 1039.949328 L 400.0001 1033.762809 Z M 952.769079 1032.216187 L 1056.722712 1082.594597 C 1055.597781 1082.594597 1079.747804 1082.594892 1600 1082.594892 L 1500.000005 1033.762809 C 1500.000005 1033.762809 923.228855 1032.216187 952.769079 1032.216187 Z"/>
     -->
     </path>
- 
+
 <g transform="matrix(15.647 0 0 8.3723 -3791.2 -5680)" style="">
   <title>papibig</title>
   <g transform="translate(-81.927 -43.296)">
@@ -10212,7 +10214,7 @@ setInterval(() => {
 </g>
 <foreingObject width="200" height="100" x="250" y="300" class="bigpapi">
    <!---- <Canvas>
-    
+
     <Text anchorX="center" strokeColor="pink" outlineColor="purple" outlineWidth="0.6" rotation.y={rotationt} text={value} fontSize="2"  position={$poz} color="white" font="https://res.cloudinary.com/barb2/raw/upload/v1659663207/sn_tishrey_hlvhle.ttf"/>
     </Canvas>-->
 </foreingObject>
@@ -10237,4 +10239,3 @@ setInterval(() => {
   </g>
   </g>
   </svg>
-     
