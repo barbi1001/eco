@@ -114,7 +114,7 @@ color={0x2DFF34} intensity={180} $poz
 <SpotLight position={poz} />
 
 <DirectionalLight color={new Color(0x00029E)} intensity={0.81} position={{ y: 20, z: 5, x: 5 }} />
-<DirectionalLight color={new Color(0x137584)} intensity={0.91} position={{ y: 2, z: 5, x: 5 }} />
+<DirectionalLight color={new Color(0x137584)} intensity={0.91} position={{ y: -2, z: -5, x: 5 }} />
 
 <GLTF
 castShadow receiveShadow

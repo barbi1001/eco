@@ -1,10 +1,13 @@
 <script>
     import anime from "animejs";
-    import { draw } from 'svelte/transition';
+    import { draw, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
     import { onMount } from 'svelte';
- /*   onMount(()=>{
-      anime({
+   onMount(()=>{
+    setTimeout(open,30000)
+
+   })
+   /*    anime({
   targets: '.do',
   d: [
     { value:
@@ -70,7 +73,6 @@ function tocate(){
   clicked = true
   goto(`./${shopsi.data[i].id}`)
 }
-import { fly } from 'svelte/transition';
 
 import { elasticInOut } from "svelte/easing";
   const customTransition = () => {
@@ -108,6 +110,7 @@ setInterval(() => {
   }
 
 }, 4000);
+let c;
   </script>
 
   <style>
@@ -290,13 +293,13 @@ setInterval(() => {
        }
    }
        </style>
-       <div class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
+       <div transition:fly={{x:-c}} bind:clientWidth={c} class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
 <!----<Canvas>
 
 <Text anchorX="center" material={MeshBasicMaterial} strokeColor="pink" outlineColor="purple" outlineWidth="0.6" rotation.y={rotationt} text={value} fontSize="2"  position={$poz} color="white" font="https://res.cloudinary.com/barb2/raw/upload/v1659663207/sn_tishrey_hlvhle.ttf"/>
-</Canvas>-->
+</Canvas> size={}-->
 {#if door != true}
-<Canvas >
+<Canvas  >
   <Scene on:clicked={()=>open()}/>
 </Canvas>
 {/if}
