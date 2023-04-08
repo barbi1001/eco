@@ -4,8 +4,9 @@
 	import { quintOut } from 'svelte/easing';
     import { onMount } from 'svelte';
    onMount(()=>{
+    if(door == false){
     setTimeout(open,30000)
-
+    }
    })
    /*    anime({
   targets: '.do',
@@ -28,10 +29,14 @@
       "m400 696.81v310.91h226.44v-310.91h-226.44zm275.74 0v310.91h249.33v-310.91h-249.33zm299.21 0v310.91h249.33v-310.91h-249.33zm298.61 0v310.91h226.44v-310.91h-226.44zm-873.56 336.96v1347.8c662.59-0.34468 554.9-7.31e-4 548.95-4.35e-4l-0.78421-1341.6-548.17-6.1865zm552.77-1.5466 3.9536 1349.4c-1.1249 0 23.025 2.95e-4 543.28 2.95e-4v-1347.8s-576.77-1.5466-547.23-1.5466z"
     ];
     function open () {
+      console.log("here")
+      if(door == false){
       door = true
       let destination_path
       destination_path = paths[0];
       svgMorphing(destination_path);
+      console.log("now here")
+      }
 
     }
 
@@ -86,14 +91,13 @@ import { elasticInOut } from "svelte/easing";
       duration: 5000,
     };
   };
-  import {  MeshBasicMaterial } from 'three'
 
-
+/*
   import { Text } from '@threlte/extras'
-  let value ='לחיצה לפתיחה'
+  let value ='לחיצה לפתיחה'*/
   import { Canvas } from '@threlte/core'
   import Scene from './Scene.svelte'
-  import { spring} from 'svelte/motion'
+ /* import { spring} from 'svelte/motion'
   let rotationt = 0
 
  const poz = spring({z:-4, y:0, x:0});
@@ -109,7 +113,7 @@ setInterval(() => {
 
   }
 
-}, 4000);
+}, 4000);*/
 let c;
   </script>
 
@@ -293,17 +297,19 @@ let c;
        }
    }
        </style>
-       <div transition:fly={{x:-c}} bind:clientWidth={c} class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
 <!----<Canvas>
 
 <Text anchorX="center" material={MeshBasicMaterial} strokeColor="pink" outlineColor="purple" outlineWidth="0.6" rotation.y={rotationt} text={value} fontSize="2"  position={$poz} color="white" font="https://res.cloudinary.com/barb2/raw/upload/v1659663207/sn_tishrey_hlvhle.ttf"/>
 </Canvas> size={}-->
 {#if door != true}
+<div transition:fly={{duration: 1750,y:-c}} bind:clientHeight={c} class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
+
 <Canvas  >
   <Scene on:clicked={()=>open()}/>
 </Canvas>
-{/if}
 </div>
+
+{/if}
 <svg id="svgg" height="100vh" width="100vw" viewBox="99.812 -445.72 1693.7 2845.7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
 <defs>
   <linearGradient id="mobisy" x1="210.82" x2="210.82" y1="710.67" y2="816.44" gradientTransform="translate(7.0701 1.8567)" gradientUnits="userSpaceOnUse" xlink:href="#mobib"/>
