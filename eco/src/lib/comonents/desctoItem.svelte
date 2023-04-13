@@ -1,5 +1,7 @@
 <script>
    import { createEventDispatcher } from 'svelte';
+   import SimilarProducts from '$lib/comonents/item/similarProducts.svelte'
+        export let relatedProducts = []
    export let is4vid = false
    export let is1vid = false
 
@@ -15,7 +17,7 @@ import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 import { onMount} from 'svelte'
 onMount(async()=>{
-        setTimeout(scrollElement,2200)  
+        setTimeout(scrollElement,2200)
 })
 scrollElement({ ref: 'tttt', duration: 1000 })
 import "$lib/style.css";
@@ -9826,7 +9828,7 @@ function scrollIntoVieww() {
                 <path id="path8488" opacity=".81" fill="#9f7019" d="m1124.7 1746.7c3.8-0.3 7.7-0.6 11.6-0.7-3.5 1.1-7.4 1.4-11.6 0.7z" style="stroke: url(#linearGradient7090-4395);"/>
                 <path id="path8490" opacity=".82" fill="#a4771c" d="m1098.8 1747.8c3.7-0.3 7.5-0.5 11.3-0.7-3.4 1.1-7.2 1.3-11.3 0.7z" style="stroke: url(#linearGradient7090-4396);"/>
         </g>
-        
+
         <foreignObject x="705.167249" y="1961.791992" width="988.653381" height="1133.400024" style=" fill: none;">
           <div>
             <p style="color:blue; font-size:120px; text-align:center; font-family:Prachim;">
@@ -9853,7 +9855,7 @@ function scrollIntoVieww() {
   modules={[EffectCube, Pagination, Zoom]}
   class="mySwiper"
   >
- 
+
   <SwiperSlide
 > <div class="swiper-zoom-container">
         {#if is1vid == false}
@@ -9864,7 +9866,7 @@ function scrollIntoVieww() {
 </div>
         </SwiperSlide
 ><SwiperSlide
-    > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}"   src={imgb} /></div></SwiperSlide
+    > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgb} /></div></SwiperSlide
   ><SwiperSlide
     > <div class="swiper-zoom-container"><img alt="{`${shem} תמונת המוצר`}" src={imgc} /></div></SwiperSlide
   ><SwiperSlide
@@ -9879,7 +9881,15 @@ function scrollIntoVieww() {
   >
   {#each imge as im}
   <SwiperSlide
-  ><img alt="{`${shem} תמונת המוצר`}" src={im.attributes.url} /></SwiperSlide
+  >
+  <div class="swiper-zoom-container">
+  {#if im.attributes.mime != 'video/mp4'}
+  <img alt="{`${shem} תמונת המוצר`}" src={im.attributes.url} />
+  {:else}
+  <video autoplay loop muted src={im.attributes.url}/>
+  {/if}
+  </div>
+  </SwiperSlide
   >
   {/each}
   </Swiper>
@@ -9887,3 +9897,8 @@ function scrollIntoVieww() {
           </foreignObject>
 
       </svg>
+      {#if relatedProducts?.length}
+				<hr class="mb-5 w-full sm:mb-10" />
+
+				<SimilarProducts similarProducts="{relatedProducts}" />
+			{/if}

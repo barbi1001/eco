@@ -16,7 +16,7 @@ function find () {
 
 return imge
         }else{
-                let imge = [] 
+                let imge = []
                 return imge
                 setTimeout(function n () { if (shopsi){
  let imge = shopsi.data.attributes.img5.data
@@ -28,8 +28,8 @@ return imge
 
 return imge
         }else{
-                
-         }} , 1000) 
+
+         }} , 1000)
          }} , 1000)
         }
 }
@@ -50,14 +50,14 @@ import {Zoom, EffectCube, Pagination } from "swiper";
 export let low = false
 
     export let shem, url, kind, des , id, price;
- 
+
 function addToCart (id){
         dispatch("addto",{pr:id})
 }
 </script>
 
 
-    
+
     <svg id="svg2" viewBox="-320.053862 -4704.000117 1203.302407 10071.580883" version="1.1" width="100vw" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
         <title>קניה נעימה {shem}</title>
         <defs id="defs4">
@@ -671,7 +671,15 @@ class="mySwiper"
 {#if  low == false}
 {#each imge as im}
 <SwiperSlide
-><img alt="{`${shem} תמונת המוצר`}" src={im.attributes.url} /></SwiperSlide
+>
+<div class="swiper-zoom-container">
+        {#if im.attributes.mime != 'video/mp4'}
+        <img alt="{`${shem} תמונת המוצר`}" src={im.attributes.url} />
+        {:else}
+        <video autoplay loop  src={im.attributes.url}/>
+        {/if}
+        </div>
+</SwiperSlide
 >
 {/each}
 {/if}
