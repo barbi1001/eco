@@ -6,15 +6,7 @@
 	import data4 from '$lib/data/item4.json';
 	import data5 from '$lib/data/item5.json';
 
-	let imga;
-	let imgb;
-	let imgc;
-	let imgd;
-	let imge;
-	let shem;
-	let is4vid = false;
 
-	let is1vid = false;
 
 	export let data;
 	console.log(data);
@@ -22,7 +14,7 @@
 	let relatedP = data.relatedP;
 	$: id = data.id;
 	let kind, url, des, price;
-	function getshop() {
+	/*function getshop() {
 		let shopsi;
 		if (id == 1) {
 			shopsi = data1;
@@ -143,43 +135,39 @@
     }
   }
 		return shopsi;
-	}
-	let shopsi = getshop();
-	onMount(async () => {
-		await fetch(`https://strapi-7iq2.onrender.com/api/items/${id}?populate=%2A`)
-			.then((response) => response.json())
-			.then((data) => {
-				console.log('137', data);
-				shopsi = data;
-				imga = shopsi.data.attributes.img1.data.attributes.url;
-				imgb = shopsi.data.attributes.img2.data.attributes.url;
-				imgc = shopsi.data.attributes.img3.data.attributes.url;
-				imgd = shopsi.data.attributes.img4.data.attributes.url;
-				imge = shopsi.data.attributes.img5.data;
-				shem = shopsi.data.attributes.name;
-				if (shopsi.data.attributes.img1.data.attributes.mime == 'video/mp4') {
-					is1vid = true;
-				}
-				$products.push({
+	}*/
+	$: shopsi = data.pdata;
+
+
+			$:	imga = shopsi?.data.attributes.img1.data.attributes.url;
+			$:	imgb = shopsi?.data.attributes.img2.data.attributes.url;
+			$:	imgc = shopsi?.data.attributes.img3.data.attributes.url;
+			$:	imgd = shopsi?.data.attributes.img4.data.attributes.url;
+			$:	imge = shopsi?.data.attributes.img5.data;
+			$:	shem = shopsi?.data.attributes.name;
+			$:  kind = shopsi?.data.attributes.kind;
+			$:  url = shopsi?.data.attributes.url;
+			$:  des = shopsi?.data.attributes.des;
+			$:  price = shopsi?.data.attributes.price;
+			$:	is1vid  = shopsi?.data.attributes.img1.data.attributes.mime == 'video/mp4' ? true : false
+      $:	is4vid  = shopsi?.data.attributes.img4.data.attributes.mime == 'video/mp4' ? true : false
+
+			$: if(data.loading == false){
+        	$products.push({
 					name: shopsi.data.attributes.name,
 					image: is1vid	? shopsi.data.attributes.img1.data.attributes.url	: shopsi.data.attributes.img1.data.attributes.formats.small.url,
 					id: shopsi.data.id,
 					price: shopsi.data.attributes.price,
 					quantity: 1
-				});
-				prod = {
+				})
+        	prod = {
 					name: shopsi.data.attributes.name,
 					image: is1vid ? shopsi.data.attributes.img1.data.attributes.url : shopsi.data.attributes.img1.data.attributes.formats.small.url,
 					id: shopsi.data.id,
 					price: shopsi.data.attributes.price,
 					quantity: 1
-				};
-				console.log(prod, is1vid);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	});
+        }
+      }
 	import Mobile from '$lib/comonents/mobileItem.svelte';
 	let urlx = 'https://strapi-7iq2.onrender.com/api/';
 
@@ -265,7 +253,7 @@
 	</DialogContent>
 </DialogOverlay>
 <div class="r" bind:clientWidth={w} bind:clientHeight={h}>
-	{#await data}
+	{#if data.loading == true}
 		<div bind:clientHeight={h} class="fullwidth" bind:clientWidth={w}>
 			{#if mobiles}
 				<Mobile low={true} />
@@ -273,7 +261,7 @@
 				<DesctoItem low={true} />
 			{/if}
 		</div>
-	{:then}
+	{:else}
 		<div bind:clientHeight={h} class="fullwidth" bind:clientWidth={w}>
 			{#if mobiles == true}
 				<Mobile
@@ -1212,7 +1200,7 @@
 				</div>
 			{/if}
 		</div>
-	{/await}
+	{/if}
 </div>
 
 <style>
