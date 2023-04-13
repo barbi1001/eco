@@ -78,6 +78,7 @@
         <a
             href="/{product.attributes.categories.data[0].id}/{product.id}"
             rel="noopener noreferrer"
+            target=”_blank”
             aria-label="Click to view the product details"
             data-sveltekit-preload-data
             class="flex flex-col items-center"
@@ -132,6 +133,7 @@
 
             <div>
                 <a
+                target=”_blank”
                     href="/{product.attributes.categories.data[0].id}/{product.id}"
                     aria-label="Click to view the product details"
                     class="block"
@@ -176,6 +178,7 @@
             <!-- {/if} -->
 
             <a
+            target=”_blank”
             href="/{product.attributes.categories.data[0].id}/{product.id}"
             aria-label="Click to view the product details"
                 data-sveltekit-preload-data
