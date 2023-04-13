@@ -9897,8 +9897,4 @@ function scrollIntoVieww() {
           </foreignObject>
 
       </svg>
-      {#if relatedProducts?.length}
-				<hr class="mb-5 w-full sm:mb-10" />
-
-				<SimilarProducts similarProducts="{relatedProducts}" />
-			{/if}
+	<SimilarProducts  />

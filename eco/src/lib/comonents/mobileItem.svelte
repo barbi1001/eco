@@ -1,5 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+        import SimilarProducts from '$lib/comonents/item/similarProducts.svelte'
+
         export let shopsi
         export let is4vid = false
         export let is1vid = false
@@ -1242,3 +1244,5 @@ class="mySwiper"
                 </div>
             </foreignObject>
 </svg>
+<hr class="mb-5 w-full sm:mb-10" />
+<SimilarProducts  />

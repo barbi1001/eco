@@ -42,7 +42,7 @@
         'https://s3.ap-south-1.amazonaws.com/litekart.in/stores/6356502aca4ff28ed596cb1b/product/6045f9ae120e71405f1767d3/ohdbaf-1288-decorebugs-original-imaem5qyq8f6vtyy-q27lkebwlah0.jpeg'
     ]
 
-    // console.log('zzzzzzzzzzzzzzzzzz', product)
+     console.log('zzzzzzzzzzzzzzzzzz', product)
 
     let show=false,
         showRelatedProducts = false,
@@ -76,8 +76,7 @@
         on:mouseleave="{hideitems}"
     >
         <a
-            href="/product/{product.slug}?id={iid}"
-            target="{$page?.data?.isDesktop ? '_blank' : ''}"
+            href="/{product.attributes.categories.data[0].id}/{product.id}"
             rel="noopener noreferrer"
             aria-label="Click to view the product details"
             data-sveltekit-preload-data
@@ -112,191 +111,28 @@
             <!-- on:mouseenter="{selectSecondImage}" on:mouseleave="{selectPrimaryImage}"
             showcaseImg -->
             <!-- <button type="button" class="h-[280px] w-[210px] overflow-hidden"> -->
+                {#if product.attributes.img1.data.attributes.mime != 'video/mp4'}
             <img
-                src="{product.img||''}"
-                alt="{product.name}"
+                src="{product.attributes.img1.data.attributes.url||''}"
+                alt="{product.attributes.name}"
                 width="210"
                 height="100"
                 class="h-[100px] w-[210px] object-contain object-bottom text-xs"
             />
+            {:else}
+            <video
+                class="h-[100px] w-[210px] object-contain object-bottom text-xs"
+             autoplay loop muted src="{product.attributes.img1.data.attributes.url||''}"/>
+
+            {/if}
             <!-- </button> -->
         </a>
 
         <div class="p-4">
-            <!-- View smilar button start-->
 
-            <!-- <div class="{product.relatedProducts?.length > 0 ? 'absolute bottom-24 right-4' : 'hidden'}">
-                <button class="focus:outline-none" on:click="{() => (showRelatedProducts = true)}">
-                    <div
-                        class="trans flex h-7 w-7 items-center rounded-full border border-primary-500 bg-white text-primary-500">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 flex-shrink-0"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                            ></path>
-                        </svg>
-
-                        <span class="whitespace-nowrap pl-2 text-xs">View similar</span>
-                    </div>
-                </button>
-            </div> -->
-
-            <!-- View smilar button end-->
-
-            <!-- {#if show} -->
-            <!-- For view above 640px start -->
-
-            <!-- <div class="-mt-12 hidden sm:block"> -->
-            <!-- View smilar button start-->
-
-            <!-- <div
-                        class="flex justify-end
-                        {product.relatedProducts?.length > 0 ? 'opacity-100' : 'opacity-0'}">
-                        <button class="focus:outline-none" on:click="{() => (showRelatedProducts = true)}">
-                            <div
-                                class="trans flex h-7 w-7 items-center rounded-full border border-primary-500 bg-white text-primary-500">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 flex-shrink-0"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                                    ></path>
-                                </svg>
-
-                                <span class="whitespace-nowrap pl-2 text-xs">View similar</span>
-                            </div>
-                        </button>
-                    </div> -->
-
-            <!-- View smilar button end-->
-
-            <!-- Wishlist start-->
-
-            <!-- <button
-                        class="mt-3.5 flex w-full items-center justify-center  gap-2 border border-gray-300 py-1 text-sm font-semibold focus:outline-none"
-                        on:click="{() => toggleWishlist(product._id)}">
-                        {#if isWislisted}
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5 text-red-500"
-                                viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-
-                            <span>Wishlisted</span>
-                        {:else}
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5 flex-shrink-0"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                ></path>
-                            </svg>
-
-                            <span>Wishlist</span>
-                        {/if}
-                    </button> -->
-
-            <!-- Wishlist end-->
-
-            <!-- Size chart start-->
-
-            <!-- <div class="mt-1.5 flex items-baseline justify-start">
-                        <h2 class="mr-1 text-sm">Sizes:</h2>
-
-                        <h2 class="flex items-baseline gap-1 text-xs font-medium text-gray-500 ">
-                            {#if product.variants?.length}
-                                {#each product.variants as v, i}
-                                    <div>{v.size}</div>
-                                {/each}
-                            {:else}
-                                One Size
-                            {/if}
-                        </h2>
-                    </div> -->
-
-            <!-- Size chart end-->
-            <!-- </div> -->
-
-            <!-- For view above 640px end -->
-
-            <!-- For view below 640px start -->
-
-            <!-- <div class="sm:hidden">
-                    <a
-                        href="/product/{product.slug}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Click to view the product details"
-                        data-sveltekit-preload-data>
-                        <div class="flex items-center justify-between">
-                            <h2 class="mb-1.5 font-semibold">
-                                {#if product.brandName}
-                                    {product.brandName}
-                                {:else}
-                                    _
-                                {/if}
-                            </h2>
-
-                            <div class="sm:hidden">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                    ></path>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <h2
-                            href="{'/' + product.slug}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="overflow-hidden overflow-ellipsis whitespace-nowrap text-sm font-medium group-hover:underline">
-                            {#if product.name}
-                                {product.name}
-                            {:else}
-                                _
-                            {/if}
-                        </h2>
-                    </a>
-                </div> -->
-
-            <!-- For view below 640px end -->
-            <!-- {:else} -->
             <div>
                 <a
-                    href="/{category.slug}/{product.slug}"
+                    href="/{product.attributes.categories.data[0].id}/{product.id}"
                     aria-label="Click to view the product details"
                     class="block"
                     data-sveltekit-preload-data
@@ -329,7 +165,7 @@
 
                     <div class="flex justify-between gap-2">
                         <h2 class="flex-1 text-sm line-clamp-2 group-hover:underline">
-                            {product.name || '_'}
+                            {product.attributes.name || '_'}
                         </h2>
 
 
@@ -340,19 +176,19 @@
             <!-- {/if} -->
 
             <a
-                href="/product/{product.slug}"
-                aria-label="Click to view the product details"
+            href="/{product.attributes.categories.data[0].id}/{product.id}"
+            aria-label="Click to view the product details"
                 data-sveltekit-preload-data
                 class="block"
             >
                 <div class="mt-2.5 flex flex-wrap items-baseline justify-start gap-1.5 text-xs leading-4">
                     <span class="whitespace-nowrap text-sm font-bold sm:text-base">
-                        {currency(product.price, $page.data?.store?.currencySymbol)}
+                        {product.attributes.price}₪
                     </span>
-
+<!--
                     {#if product.mrp > product.price}
                         <span class="whitespace-nowrap text-gray-600 line-through">
-                            {currency(product.mrp, $page.data?.store?.currencySymbol)}
+                            {product.mrp, $page.data?.store?.currencySymbol}
                         </span>
 
                         {#if Math.floor(((product.mrp - product.price) / product.mrp) * 100) > 0}
@@ -360,18 +196,18 @@
                                 ({Math.floor(((product.mrp - product.price) / product.mrp) * 100)}% off)
                             </span>
                         {/if}
-                    {/if}
+                    {/if}-->
                 </div>
-
+<!--
                 {#if !product.hasStock && !show}
                     <p class="absolute inset-x-0 bottom-[5.5rem] text-center text-xs text-red-500">
                         Out of Stock
                     </p>
-                {/if}
+                {/if}-->
             </a>
         </div>
     </div>
-
+<!--
     {#if showRelatedProducts}
         <div class="fixed inset-0 z-[100] h-screen w-full">
             <button
@@ -416,8 +252,8 @@
                                     class="group relative w-full sm:w-48"
                                     on:click="{() => (showRelatedProducts = false)}"
                                 >
-                                    <!-- New -->
-
+                                    <!-- New
+<!--
                                     {#if relatedProduct.new}
                                         <div
                                             class="text-rem absolute top-2 left-2 max-w-max rounded bg-red-500 py-0.5 px-1.5 text-center uppercase tracking-wider text-white"
@@ -427,7 +263,7 @@
                                     {/if}
 
                                     <div class="h-auto w-full">
-                                        <LazyImg
+                                        <img
                                             src="{relatedProduct.img}"
                                             alt="{relatedProduct.name}"
                                             aspect_ratio="3:4"
@@ -456,12 +292,12 @@
                                             class="mt-2.5 flex flex-wrap items-baseline justify-start gap-1.5 text-xs leading-4"
                                         >
                                             <span class="whitespace-nowrap font-semibold sm:text-sm">
-                                                {currency(relatedProduct.price, $page.data?.store?.currencySymbol)}
+                                                {relatedProduct.price, $page.data?.store?.currencySymbol}
                                             </span>
 
                                             {#if relatedProduct.mrp > relatedProduct.price}
                                                 <span class="whitespace-nowrap text-gray-600 line-through">
-                                                    {currency(relatedProduct.mrp, $page.data?.store?.currencySymbol)}
+                                                    {relatedProduct.mrp, $page.data?.store?.currencySymbol}
                                                 </span>
 
                                                 {#if Math.floor(((relatedProduct.mrp - relatedProduct.price) / relatedProduct.mrp) * 100) > 0}
@@ -481,4 +317,5 @@
                 </div>
             </div>
         </div>
-    {/if}
+    {/if}-->
+
