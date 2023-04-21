@@ -3,6 +3,7 @@
     import { draw, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
     import { onMount } from 'svelte';
+    let papi = false
    onMount(()=>{
     if(door == false){
     setTimeout(open,30000)
@@ -35,11 +36,18 @@
       let destination_path
       destination_path = paths[0];
       svgMorphing(destination_path);
+      papi = false
       console.log("now here")
       }
 
     }
-
+function papiclic(){
+  if(papi == true){
+    open()
+  }else{
+    tocate()
+  }
+}
     function svgMorphing(path) {
       let timeline = anime({
         duration: 1750,
@@ -300,16 +308,16 @@ let c;
 <!----<Canvas>
 
 <Text anchorX="center" material={MeshBasicMaterial} strokeColor="pink" outlineColor="purple" outlineWidth="0.6" rotation.y={rotationt} text={value} fontSize="2"  position={$poz} color="white" font="https://res.cloudinary.com/barb2/raw/upload/v1659663207/sn_tishrey_hlvhle.ttf"/>
-</Canvas> size={}-->
-{#if door != true}
+</Canvas> size={}
+{#if papi != true}{/if}
+-->
 <div transition:fly={{duration: 1750,y:-c}} bind:clientHeight={c} class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
 
 <Canvas  >
-  <Scene on:clicked={()=>open()}/>
+  <Scene on:clicked={()=>papiclic()}/>
 </Canvas>
 </div>
 
-{/if}
 <svg id="svgg" height="100vh" width="100vw" viewBox="99.812 -445.72 1693.7 2845.7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
 <defs>
   <linearGradient id="mobisy" x1="210.82" x2="210.82" y1="710.67" y2="816.44" gradientTransform="translate(7.0701 1.8567)" gradientUnits="userSpaceOnUse" xlink:href="#mobib"/>
