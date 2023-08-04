@@ -9879,6 +9879,7 @@ function scrollIntoVieww() {
   </div>
           </SwiperSlide
   >
+  {#if imge != null}
   {#each imge as im}
   <SwiperSlide
   >
@@ -9892,6 +9893,7 @@ function scrollIntoVieww() {
   </SwiperSlide
   >
   {/each}
+  {/if}
   </Swiper>
            </div>
           </foreignObject>

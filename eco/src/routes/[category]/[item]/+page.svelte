@@ -15,156 +15,158 @@
 	$: id = data.id;
 	let kind, url, des, price;
 	/*function getshop() {
-		let shopsi;
+		let data.pdata;
 		if (id == 1) {
-			shopsi = data1;
+			data.pdata = data1;
 
-			imga = shopsi.data.attributes.img1.data.attributes.url;
-			imgb = shopsi.data.attributes.img2.data.attributes.url;
-			imgc = shopsi.data.attributes.img3.data.attributes.url;
-			imgd = shopsi.data.attributes.img4.data.attributes.url;
-			imge = shopsi.data.attributes.img5.data;
-			shem = shopsi.data.attributes.name;
-			kind = shopsi.data.attributes.kind;
-			url = shopsi.data.attributes.url;
-			des = shopsi.data.attributes.des;
-			price = shopsi.data.attributes.price;
-			if (shopsi.data.attributes.img4.data.attributes.mime == 'video/mp4') {
+			imga = data.pdata.data.attributes.img1.data.attributes.url;
+			imgb = data.pdata.data.attributes.img2.data.attributes.url;
+			imgc = data.pdata.data.attributes.img3.data.attributes.url;
+			imgd = data.pdata.data.attributes.img4.data.attributes.url;
+			imge = data.pdata.data.attributes.img5.data;
+			shem = data.pdata.data.attributes.name;
+			kind = data.pdata.data.attributes.kind;
+			url = data.pdata.data.attributes.url;
+			des = data.pdata.data.attributes.des;
+			price = data.pdata.data.attributes.price;
+			if (data.pdata.data.attributes.img4.data.attributes.mime == 'video/mp4') {
 				is4vid = true;
 			}
-			if (shopsi.data.attributes.img1.data.attributes.mime == 'video/mp4') {
+			if (data.pdata.data.attributes.img1.data.attributes.mime == 'video/mp4') {
 				is1vid = true;
 			}
 		} else if (id == 3) {
-			shopsi = data3;
+			data.pdata = data3;
 
-			imga = shopsi.data.attributes.img1.data.attributes.url;
-			imgb = shopsi.data.attributes.img2.data.attributes.url;
-			imgc = shopsi.data.attributes.img3.data.attributes.url;
-			imgd = shopsi.data.attributes.img4.data.attributes.url;
-			imge = shopsi.data.attributes.img5.data;
-			shem = shopsi.data.attributes.name;
-			kind = shopsi.data.attributes.kind;
-			url = shopsi.data.attributes.url;
-			des = shopsi.data.attributes.des;
-			price = shopsi.data.attributes.price;
-			if (shopsi.data.attributes.img4.data.attributes.mime == 'video/mp4') {
+			imga = data.pdata.data.attributes.img1.data.attributes.url;
+			imgb = data.pdata.data.attributes.img2.data.attributes.url;
+			imgc = data.pdata.data.attributes.img3.data.attributes.url;
+			imgd = data.pdata.data.attributes.img4.data.attributes.url;
+			imge = data.pdata.data.attributes.img5.data;
+			shem = data.pdata.data.attributes.name;
+			kind = data.pdata.data.attributes.kind;
+			url = data.pdata.data.attributes.url;
+			des = data.pdata.data.attributes.des;
+			price = data.pdata.data.attributes.price;
+			if (data.pdata.data.attributes.img4.data.attributes.mime == 'video/mp4') {
 				is4vid = true;
 			}
-			if (shopsi.data.attributes.img1.data.attributes.mime == 'video/mp4') {
+			if (data.pdata.data.attributes.img1.data.attributes.mime == 'video/mp4') {
 				is1vid = true;
 			}
 		} else if (id == 2) {
-			shopsi = data2;
+			data.pdata = data2;
 
-			imga = shopsi.data.attributes.img1.data.attributes.url;
-			imgb = shopsi.data.attributes.img2.data.attributes.url;
-			imgc = shopsi.data.attributes.img3.data.attributes.url;
-			imgd = shopsi.data.attributes.img4.data.attributes.url;
-			imge = shopsi.data.attributes.img5.data;
-			shem = shopsi.data.attributes.name;
-			kind = shopsi.data.attributes.kind;
-			url = shopsi.data.attributes.url;
-			des = shopsi.data.attributes.des;
-			price = shopsi.data.attributes.price;
-			if (shopsi.data.attributes.img4.data.attributes.mime == 'video/mp4') {
+			imga = data.pdata.data.attributes.img1.data.attributes.url;
+			imgb = data.pdata.data.attributes.img2.data.attributes.url;
+			imgc = data.pdata.data.attributes.img3.data.attributes.url;
+			imgd = data.pdata.data.attributes.img4.data.attributes.url;
+			imge = data.pdata.data.attributes.img5.data;
+			shem = data.pdata.data.attributes.name;
+			kind = data.pdata.data.attributes.kind;
+			url = data.pdata.data.attributes.url;
+			des = data.pdata.data.attributes.des;
+			price = data.pdata.data.attributes.price;
+			if (data.pdata.data.attributes.img4.data.attributes.mime == 'video/mp4') {
 				is4vid = true;
 			}
-			if (shopsi.data.attributes.img1.data.attributes.mime == 'video/mp4') {
+			if (data.pdata.data.attributes.img1.data.attributes.mime == 'video/mp4') {
 				is1vid = true;
 			}
 		} else if (id == 4) {
-			shopsi = data4;
+			data.pdata = data4;
 
-			imga = shopsi.data.attributes.img1.data.attributes.url;
-			imgb = shopsi.data.attributes.img2.data.attributes.url;
-			imgc = shopsi.data.attributes.img3.data.attributes.url;
-			imgd = shopsi.data.attributes.img4.data.attributes.url;
-			imge = shopsi.data.attributes.img5.data;
-			shem = shopsi.data.attributes.name;
-			kind = shopsi.data.attributes.kind;
-			url = shopsi.data.attributes.url;
-			des = shopsi.data.attributes.des;
-			price = shopsi.data.attributes.price;
-			if (shopsi.data.attributes.img4.data.attributes.mime == 'video/mp4') {
+			imga = data.pdata.data.attributes.img1.data.attributes.url;
+			imgb = data.pdata.data.attributes.img2.data.attributes.url;
+			imgc = data.pdata.data.attributes.img3.data.attributes.url;
+			imgd = data.pdata.data.attributes.img4.data.attributes.url;
+			imge = data.pdata.data.attributes.img5.data;
+			shem = data.pdata.data.attributes.name;
+			kind = data.pdata.data.attributes.kind;
+			url = data.pdata.data.attributes.url;
+			des = data.pdata.data.attributes.des;
+			price = data.pdata.data.attributes.price;
+			if (data.pdata.data.attributes.img4.data.attributes.mime == 'video/mp4') {
 				is4vid = true;
 			}
-			if (shopsi.data.attributes.img1.data.attributes.mime == 'video/mp4') {
+			if (data.pdata.data.attributes.img1.data.attributes.mime == 'video/mp4') {
 				is1vid = true;
 			}
 		} else if (id == 5) {
-			shopsi = data5;
+			data.pdata = data5;
 
-			imga = shopsi.data.attributes.img1.data.attributes.url;
-			imgb = shopsi.data.attributes.img2.data.attributes.url;
-			imgc = shopsi.data.attributes.img3.data.attributes.url;
-			imgd = shopsi.data.attributes.img4.data.attributes.url;
-			imge = shopsi.data.attributes.img5.data;
-			shem = shopsi.data.attributes.name;
-			kind = shopsi.data.attributes.kind;
-			url = shopsi.data.attributes.url;
-			des = shopsi.data.attributes.des;
-			price = shopsi.data.attributes.price;
-			if (shopsi.data.attributes.img4.data.attributes.mime == 'video/mp4') {
+			imga = data.pdata.data.attributes.img1.data.attributes.url;
+			imgb = data.pdata.data.attributes.img2.data.attributes.url;
+			imgc = data.pdata.data.attributes.img3.data.attributes.url;
+			imgd = data.pdata.data.attributes.img4.data.attributes.url;
+			imge = data.pdata.data.attributes.img5.data;
+			shem = data.pdata.data.attributes.name;
+			kind = data.pdata.data.attributes.kind;
+			url = data.pdata.data.attributes.url;
+			des = data.pdata.data.attributes.des;
+			price = data.pdata.data.attributes.price;
+			if (data.pdata.data.attributes.img4.data.attributes.mime == 'video/mp4') {
 				is4vid = true;
 			}
-			if (shopsi.data.attributes.img1.data.attributes.mime == 'video/mp4') {
+			if (data.pdata.data.attributes.img1.data.attributes.mime == 'video/mp4') {
 				is1vid = true;
 			}
 		} else if (id == 6){
       if(data.loading == false){
       let datar = {"data":data.pdata[0]}
-      shopsi = datar
-      console.log(shopsi)
-      imga = shopsi.data.attributes.img1.data.attributes.url;
-			imgb = shopsi.data.attributes.img2.data.attributes.url;
-			imgc = shopsi.data.attributes.img3.data.attributes.url;
-			imgd = shopsi.data.attributes.img4.data.attributes.url;
-			imge = shopsi.data.attributes.img5.data;
-			shem = shopsi.data.attributes.name;
-			kind = shopsi.data.attributes.kind;
-			url = shopsi.data.attributes.url;
-			des = shopsi.data.attributes.des;
-			price = shopsi.data.attributes.price;
-			if (shopsi.data.attributes.img4.data.attributes.mime == 'video/mp4') {
+      data.pdata = datar
+      console.log(data.pdata)
+      imga = data.pdata.data.attributes.img1.data.attributes.url;
+			imgb = data.pdata.data.attributes.img2.data.attributes.url;
+			imgc = data.pdata.data.attributes.img3.data.attributes.url;
+			imgd = data.pdata.data.attributes.img4.data.attributes.url;
+			imge = data.pdata.data.attributes.img5.data;
+			shem = data.pdata.data.attributes.name;
+			kind = data.pdata.data.attributes.kind;
+			url = data.pdata.data.attributes.url;
+			des = data.pdata.data.attributes.des;
+			price = data.pdata.data.attributes.price;
+			if (data.pdata.data.attributes.img4.data.attributes.mime == 'video/mp4') {
 				is4vid = true;
 			}
-			if (shopsi.data.attributes.img1.data.attributes.mime == 'video/mp4') {
+			if (data.pdata.data.attributes.img1.data.attributes.mime == 'video/mp4') {
 				is1vid = true;
 			}
     }
   }
-		return shopsi;
+		return data.pdata;
 	}*/
-	$: shopsi = data.pdata;
+let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
+console.log(data.pdata.attributes)
+			$: if(data.loading == false){
+				console.log(data.pdata.data.attributes.img5.data)
 
-
-			$:	imga = shopsi?.data.attributes.img1.data.attributes.url;
-			$:	imgb = shopsi?.data.attributes.img2.data.attributes.url;
-			$:	imgc = shopsi?.data.attributes.img3.data.attributes.url;
-			$:	imgd = shopsi?.data.attributes.img4.data.attributes.url;
-			$:	imge = shopsi?.data.attributes.img5.data;
-			$:	shem = shopsi?.data.attributes.name;
-			$:  kind = shopsi?.data.attributes.kind;
-			$:  url = shopsi?.data.attributes.url;
-			$:  des = shopsi?.data.attributes.des;
-			$:  price = shopsi?.data.attributes.price;
-			$:	is1vid  = shopsi?.data.attributes.img1.data.attributes.mime == 'video/mp4' ? true : false
-      $:	is4vid  = shopsi?.data.attributes.img4.data.attributes.mime == 'video/mp4' ? true : false
-
+				imga = data.pdata?.data?.attributes.img1.data?.attributes.url;
+				imgb = data.pdata?.data?.attributes.img2.data?.attributes.url || imga;
+				imgc = data.pdata?.data?.attributes.img3.data?.attributes.url || imga;
+				imgd = data.pdata?.data?.attributes.img4.data?.attributes.url || imga;
+				imge = data.pdata?.data.attributes.img5.data || new Array(imga);
+				shem = data.pdata?.data.attributes.name;
+			  kind = data.pdata?.data.attributes.kind;
+			  url = data.pdata?.data.attributes.url;
+			  des = data.pdata?.data.attributes.des;
+			  price = data.pdata?.data.attributes.price;
+				is1vid  = data.pdata?.data.attributes.img1.data.attributes.mime == 'video/mp4' ? true : false
+      	is4vid  = data.pdata?.data.attributes.img4.data?.attributes.mime == 'video/mp4' ? true : false
+			}
 			$: if(data.loading == false){
         	$products.push({
-					name: shopsi.data.attributes.name,
-					image: is1vid	? shopsi.data.attributes.img1.data.attributes.url	: shopsi.data.attributes.img1.data.attributes.formats.small.url,
-					id: shopsi.data.id,
-					price: shopsi.data.attributes.price,
+					name: data.pdata.data.attributes.name,
+					image: is1vid	? data.pdata.data.attributes.img1.data.attributes.url	: data.pdata.data.attributes.img1.data.attributes.formats.small.url,
+					id: data.pdata.data.id,
+					price: data.pdata.data.attributes.price,
 					quantity: 1
 				})
         	prod = {
-					name: shopsi.data.attributes.name,
-					image: is1vid ? shopsi.data.attributes.img1.data.attributes.url : shopsi.data.attributes.img1.data.attributes.formats.small.url,
-					id: shopsi.data.id,
-					price: shopsi.data.attributes.price,
+					name: data.pdata.data.attributes.name,
+					image: is1vid ? data.pdata.data.attributes.img1.data.attributes.url : data.pdata.data.attributes.img1.data.attributes.formats.small.url,
+					id: data.pdata.data.id,
+					price: data.pdata.data.attributes.price,
 					quantity: 1
         }
       }
@@ -266,7 +268,7 @@
 			{#if mobiles == true}
 				<Mobile
 					on:addto={addToCart}
-					{shopsi}
+					shopsi={data.pdata}
 					{is4vid}
 					{is1vid}
 					low={false}
@@ -314,15 +316,15 @@
 					class="mySwiper"
 				>
 					<SwiperSlide
-						><img alt={`${shopsi.data.attributes.name} תמונת המוצר`} src={imga} /></SwiperSlide
+						><img alt={`${data.pdata.data.attributes.name} תמונת המוצר`} src={imga} /></SwiperSlide
 					><SwiperSlide
-						><img alt={`${shopsi.data.attributes.name} תמונת המוצר`} src={imgb} /></SwiperSlide
+						><img alt={`${data.pdata.data.attributes.name} תמונת המוצר`} src={imgb} /></SwiperSlide
 					><SwiperSlide
-						><img alt={`${shopsi.data.attributes.name} תמונת המוצר`} src={imgc} /></SwiperSlide
+						><img alt={`${data.pdata.data.attributes.name} תמונת המוצר`} src={imgc} /></SwiperSlide
 					><SwiperSlide
-						><img alt={`${shopsi.data.attributes.name} תמונת המוצר`} src={imgd} /></SwiperSlide
+						><img alt={`${data.pdata.data.attributes.name} תמונת המוצר`} src={imgd} /></SwiperSlide
 					><!--<SwiperSlide
-><img alt="{`${shopsi.data.attributes.name} תמונת המוצר`}" src={imge} /></SwiperSlide
+><img alt="{`${data.pdata.data.attributes.name} תמונת המוצר`}" src={imge} /></SwiperSlide
 >-->
 				</Swiper>
 
@@ -612,7 +614,7 @@
 										<text
 											style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 22.8606px; line-height: 35.3577px; white-space: pre; text-anchor: middle;"
 											transform="matrix(0.2327, 0, 0, 0.231887, 34.009094, 53.262566)"
-											id="text29497">{shopsi.data.attributes.name}</text
+											id="text29497">{data.pdata.data.attributes.name}</text
 										>
 									</g>
 								</g>
@@ -1166,7 +1168,7 @@
 							<text
 								style="fill: rgb(254, 249, 250); font-family: &quot;Bodoni MT Poster&quot;; font-size: 56.0434px; font-weight: 700; line-height: 71.1809px; stroke: rgb(31, 32, 30); stroke-miterlimit: 45; stroke-width: 0.577769px; text-anchor: middle; white-space: pre; opacity: 0.3;"
 								transform="matrix(1.730788, 0, 0, 1.730801, 102.762741, 108.970848)"
-								>{shopsi.data.attributes.price}</text
+								>{data.pdata.data.attributes.price}</text
 							>
 							<text
 								style="fill: url(#gradient-25); font-family: &quot;Bodoni MT Poster&quot;; font-size: 56.0434px; font-weight: 700; line-height: 71.1809px; stroke: rgb(8, 33, 20); stroke-miterlimit: 45; stroke-width: 0.577769px; text-anchor: middle; white-space: pre; opacity: 0.3;"
@@ -1176,16 +1178,16 @@
 					</div>
 
 					<p style="position:absolute; top: 40%;" class="text-sm text-gray-500 p-8 border-2 m-4 ">
-						{shopsi.data.attributes.des}
+						{data.pdata.data.attributes.des}
 					</p>
-					{#if shopsi.data.attributes.kind !== 'mydesign'}
-						<a style="position:absolute; top: 64%; right: 65%;" href={shopsi.data.attributes.url}
+					{#if data.pdata.data.attributes.kind !== 'mydesign'}
+						<a style="position:absolute; top: 64%; right: 65%;" href={data.pdata.data.attributes.url}
 							><Buy />
 						</a>
 					{:else}
 						<button
 							style="position:absolute; top: 64%; right: 65%;"
-							on:click={() => addToCart(shopsi.data.id)}
+							on:click={() => addToCart(data.pdata.data.id)}
 							><Buy />
 						</button>
 					{/if}

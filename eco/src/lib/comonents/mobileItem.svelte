@@ -670,7 +670,8 @@ class="mySwiper"
 </div>
         </SwiperSlide
 >
-{#if  low == false}
+{#if  low == false && imge != null}
+
 {#each imge as im}
 <SwiperSlide
 >

@@ -77,7 +77,7 @@
         on:mouseleave="{hideitems}"
     >
         <a
-            href="/{product.attributes.categories.data[0].id}/{product.id}"
+            href="/{product.attributes.categories.data[0]?.id ?? 1}/{product.id}"
             aria-label="Click to view the product details"
             data-sveltekit-preload-data
             class="flex flex-col items-center"
@@ -111,7 +111,8 @@
             <!-- on:mouseenter="{selectSecondImage}" on:mouseleave="{selectPrimaryImage}"
             showcaseImg -->
             <!-- <button type="button" class="h-[280px] w-[210px] overflow-hidden"> -->
-                {#if product.attributes.img1.data.attributes.mime != 'video/mp4'}
+                {#if product.attributes.img1.data != null}
+                {#if product.attributes.img1.data?.attributes?.mime != 'video/mp4'}
             <img
                 src="{product.attributes.img1.data.attributes.url||''}"
                 alt="{product.attributes.name}"
@@ -119,11 +120,19 @@
                 height="100"
                 class="h-[100px] w-[210px] object-contain object-bottom text-xs"
             />
-            {:else}
+            {:else if product.attributes.img1.data != null}
             <video
                 class="h-[100px] w-[210px] object-contain object-bottom text-xs"
              autoplay loop muted src="{product.attributes.img1.data.attributes.url||''}"/>
-
+                {:else}
+                   <img
+                src="{'https://web-dev.imgix.net/image/j2RDdG43oidUy6AL6LovThjeX9c2/GMPpoERpp9aM5Rihk5F2.jpg'}"
+                alt="{product.attributes.name}"
+                width="210"
+                height="100"
+                class="h-[100px] w-[210px] object-contain object-bottom text-xs"
+            />
+            {/if}
             {/if}
             <!-- </button> -->
         </a>
@@ -132,7 +141,7 @@
 
             <div>
                 <a
-                    href="/{product.attributes.categories.data[0].id}/{product.id}"
+                    href="/{product.attributes.categories.data[0]?.id ?? 1}/{product.id}"
                     aria-label="Click to view the product details"
                     class="block"
                     data-sveltekit-preload-data
@@ -176,14 +185,14 @@
             <!-- {/if} -->
 
             <a
-            href="/{product.attributes.categories.data[0].id}/{product.id}"
+            href="/{product.attributes.categories.data[0]?.id ?? 1}/{product.id}"
             aria-label="Click to view the product details"
                 data-sveltekit-preload-data
                 class="block"
             >
                 <div class="mt-2.5 flex flex-wrap items-baseline justify-start gap-1.5 text-xs leading-4">
                     <span class="whitespace-nowrap text-sm font-bold sm:text-base">
-                        {product.attributes.price}₪
+                        {product.attributes.price || 100}₪
                     </span>
 <!--
                     {#if product.mrp > product.price}
@@ -252,7 +261,7 @@
                                     class="group relative w-full sm:w-48"
                                     on:click="{() => (showRelatedProducts = false)}"
                                 >
-                                    <!-- New
+                                     New -->
 <!--
                                     {#if relatedProduct.new}
                                         <div
