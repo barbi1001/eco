@@ -151,7 +151,7 @@ console.log(data.pdata.attributes)
 			  url = data.pdata?.data.attributes.url;
 			  des = data.pdata?.data.attributes.des;
 			  price = data.pdata?.data.attributes.price;
-				is1vid  = data.pdata?.data.attributes.img1.data.attributes.mime == 'video/mp4' ? true : false
+				is1vid  = data.pdata?.data.attributes.img1.data?.attributes.mime == 'video/mp4' ? true : false
       	is4vid  = data.pdata?.data.attributes.img4.data?.attributes.mime == 'video/mp4' ? true : false
 			}
 			$: if(data.loading == false){
