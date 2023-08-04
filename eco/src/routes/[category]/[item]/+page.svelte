@@ -157,14 +157,14 @@ console.log(data.pdata.attributes)
 			$: if(data.loading == false){
         	$products.push({
 					name: data.pdata.data.attributes.name,
-					image: is1vid	? data.pdata.data.attributes.img1.data.attributes.url	: data.pdata.data.attributes.img1.data.attributes.formats.small.url,
+					image: is1vid	? data.pdata.data.attributes.img1.data?.attributes.url	: data.pdata.data.attributes.img1.data?.attributes.formats.small.url,
 					id: data.pdata.data.id,
 					price: data.pdata.data.attributes.price,
 					quantity: 1
 				})
         	prod = {
 					name: data.pdata.data.attributes.name,
-					image: is1vid ? data.pdata.data.attributes.img1.data.attributes.url : data.pdata.data.attributes.img1.data.attributes.formats.small.url,
+					image: is1vid ? data.pdata.data.attributes.img1.data?.attributes.url : data.pdata.data.attributes.img1.data?.attributes.formats.small.url,
 					id: data.pdata.data.id,
 					price: data.pdata.data.attributes.price,
 					quantity: 1
