@@ -265,6 +265,7 @@ console.log(data.pdata.attributes)
 		</div>
 	{:else}
 		<div bind:clientHeight={h} class="fullwidth" bind:clientWidth={w}>
+			{#key mobiles}
 			{#if mobiles == true}
 				<Mobile
 					on:addto={addToCart}
@@ -1201,6 +1202,7 @@ console.log(data.pdata.attributes)
          </button>-->
 				</div>
 			{/if}
+			{/key}
 		</div>
 	{/if}
 </div>

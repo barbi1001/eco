@@ -9885,9 +9885,9 @@ function scrollIntoVieww() {
   >
   <div class="swiper-zoom-container">
   {#if im.attributes.mime != 'video/mp4'}
-  <img alt="{`${shem} תמונת המוצר`}" src={im.attributes.url} />
+  <img alt="{`${shem} תמונת המוצר`}" src={im?.attributes.url} />
   {:else}
-  <video autoplay loop muted src={im.attributes.url}/>
+  <video autoplay loop muted src={im?.attributes?.url}/>
   {/if}
   </div>
   </SwiperSlide
