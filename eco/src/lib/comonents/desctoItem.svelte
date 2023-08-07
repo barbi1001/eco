@@ -38,7 +38,7 @@ function scrollIntoVieww() {
     });
   }
     </script>
-<svg id="svg2" viewBox="-0.919 -2861.818 2400.826 7367.1" version="1.1" width="98.5vw"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
+<svg id="svg2" style="background-color: #ff83a8;" viewBox="-0.919 -2861.818 2400.826 7367.1" version="1.1" width="98.5vw"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
         <title id="title5179"> קניה נעימה של {shem}</title>
         <defs id="defs4">
                 <linearGradient id="linearGradient18327">
@@ -9879,13 +9879,13 @@ function scrollIntoVieww() {
   </div>
           </SwiperSlide
   >
-  {#if imge != null}
+  {#if imge != null && imge.length >0}
   {#each imge as im}
   <SwiperSlide
   >
   <div class="swiper-zoom-container">
-  {#if im.attributes.mime != 'video/mp4'}
-  <img alt="{`${shem} תמונת המוצר`}" src={im?.attributes.url} />
+  {#if im?.attributes?.mime != 'video/mp4'}
+  <img alt="{`${shem} תמונת המוצר`}" src={im?.attributes?.url} />
   {:else}
   <video autoplay loop muted src={im?.attributes?.url}/>
   {/if}

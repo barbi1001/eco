@@ -20,7 +20,7 @@
               item: $cart[index].id,
             camut: $cart[index].quantity
             })
-         total += ($cart[index].price * $cart[index].quantity) 
+         total += ($cart[index].price * $cart[index].quantity)
             order = order
         }
 
@@ -1336,40 +1336,39 @@ const t = ["אבו ג'ווייעד שבט",
 </script>
 
 
-<div class="shipping-address">
+<div class="shipping-address bg-pink-200">
 	<div>
-        <div class="relative z-0 mb-6 w-full group pt-2 mt-2">
-            <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.email} />
-            <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">כתובת מייל</label>
+        <div class="relative z-0 mb-6 w-full group pt-2 mt-2 bg-pink-200">
+            <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-lg sm:pr-2 md:text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-grey-700 dark:border-gray-600 dark:focus:border-pink-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.email} />
+            <label for="floating_email" class="peer-focus:font-medium absolute text-lg sm:pr-2 md:text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-pink-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">כתובת מייל</label>
         </div>
           <div class="relative z-0 mb-6 w-full group">
-              <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.name}/>
-              <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"> שם ושם משפחה</label>
+              <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-lg sm:pr-2 md:text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-grey-700 dark:border-gray-600 dark:focus:border-pink-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.name}/>
+              <label for="floating_first_name" class="peer-focus:font-medium absolute text-lg sm:pr-2 md:text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-pink-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"> שם ושם משפחה</label>
           </div>
 
           <div class="relative z-0 mb-6 w-full group">
-              <input type="tel" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.phone}/>
-              <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">מספר פלאפון (חשוב)</label>
+              <input type="tel" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-lg sm:pr-2 md:text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-grey-700 dark:border-gray-600 dark:focus:border-pink-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required bind:value={$address.phone}/>
+              <label for="floating_phone" class="peer-focus:font-medium absolute text-lg sm:pr-2 md:text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-pink-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">מספר פלאפון (חשוב)</label>
         </div>
         
-        <p>עיר</p>
-        <MultiSelect maxSelect="1" bind:selected options={t} />
+        <MultiSelect maxSelect="1" bind:selected options={t} placeholder="עיר"/>
         <div class="relative z-0 mb-6 w-full group">
-            <textarea bind:value={$address.teur} cols="24" rows="6" type="text" name="floating_frs_name" id="floating_frs_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
-            <label for="floating_frs_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">הערות</label>
+            <textarea bind:value={$address.teur} cols="24" rows="6" type="text" name="floating_frs_name" id="floating_frs_name" class="block py-2.5 px-0 w-full text-lg sm:pr-2 md:text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-grey-700 dark:border-gray-600 dark:focus:border-pink-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
+            <label for="floating_frs_name" class="peer-focus:font-medium absolute text-lg sm:pr-2 md:text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-pink-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">הערות</label>
         </div>
         <div class="relative z-0 mb-6 w-full group">
-            <input  bind:value={$address.street} type="text" name="floating_frst_name" id="floating_frst_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
-            <label for="floating_frst_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">רחוב ומספר בית</label>
+            <input  bind:value={$address.street} type="text" name="floating_frst_name" id="floating_frst_name" class="block py-2.5 px-0 w-full text-lg sm:pr-2 md:text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-grey-700 dark:border-gray-600 dark:focus:border-pink-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
+            <label for="floating_frst_name" class="peer-focus:font-medium absolute text-lg sm:pr-2 md:text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-pink-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">רחוב ומספר בית</label>
         </div>
       
-
-		<div class="flex justify-end pb-2">
-            <button class="mt-1 py-1 px-4 rounded-full bg-pink-200 hover:bg-pink-500 text-pink-900 hover:text-pink-200" on:click={checkOut}>להזמין!</button>
-        </div>
+         
+	
 
 </div>
-			
+		<div class="flex items-center justify-center align-middle pb-2 mb-2 nod w-full">
+            <button class=" py-2 px-6  text-2xl mt-4 rounded-full bg-pink-700 hover:bg-pink-400 text-pink-100 hover:text-pink-200" on:click={checkOut}>להזמין!</button>
+        </div>		
 	
 	<div class="current-address">
 		<p>{$address.name}</p>
@@ -1378,27 +1377,43 @@ const t = ["אבו ג'ווייעד שבט",
 		<p>{$address.street}</p>
 		<p>{$address.city}</p>
         <p>{$address.teur}</p>
+        <div class="flex justify-end pb-2">
+            <button class=" py-2 px-6  text-2xl mt-4 rounded-full bg-pink-700 hover:bg-pink-400 text-pink-100 hover:text-pink-200" on:click={checkOut}>להזמין!</button>
+        </div>
 	</div>
 </div>
 
 
 <style>
+    p{
+        color: black;
+        background-color: pink;
+    }
 	.shipping-address {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-gap: 1em;
-        background-color: #ff83a8;
+        max-height: 90vh;
+        overflow-y: auto;
 
 	} 
     .current-address {
         display: none;
 	}
+    .nod{
+        display: flex;
+    }
     @media (min-width: 720px){
         .current-address {
             display: unset;
 		padding: 2em;
 		border: 2px dashed green;
 	}
+    	.shipping-address {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 1em;
+        }
+        .nod{
+        display: none;
+    }
     }
 
 </style>

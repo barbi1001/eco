@@ -65,7 +65,109 @@ function uhamadLive (){
             }
         }
         </script>
+<style>
+    .panas{
+    transform-origin: top;
+    animation: rot 4s ease-in-out infinite;
+}
+.panas2{
+    animation: rot2 4s ease-in-out infinite;
+    transform-origin: top;
 
+}
+
+@keyframes nexti {
+    0%{
+        transform:   translateX(-60px)
+    }
+    50%{
+        transform:  translateX(16px)
+    }
+    100%{
+        transform:  translateX(-60px)
+    }
+}
+@keyframes backi {
+    0%{
+        transform: translateX(60px)
+    }
+    50%{
+        transform: translateX(-16px)
+    }
+    100%{
+        transform:  translateX(60px)
+    }
+}
+@keyframes rot2 {
+    0%{
+        transform:  rotate(-2deg) translateY(-40px)
+    }
+    50%{
+        transform:  rotate(2deg) translateY(-40px)
+    }
+    100%{
+        transform: rotate(-2deg) translateY(-40px)
+    }
+}
+@keyframes rot {
+    0%{
+        transform:  rotate(2deg) translateY(-40px)
+    }
+    50%{
+        transform:  rotate(-2deg) translateY(-40px)
+    }
+    100%{
+        transform: rotate(2deg) translateY(-40px)
+    }
+}
+.next{
+
+    animation: nexti 4s ease-in-out infinite;
+
+}
+.back{
+
+    animation: backi 4s ease-in-out infinite;
+
+}
+
+@keyframes pabacki {
+    0%{
+        transform:  rotate(-1deg) translateY(-8px) translateX(-16px)
+    }
+    50%{
+        transform:  rotate(1deg) translateY(-8px) translateX(16px)
+    }
+    100%{
+        transform: rotate(-1deg) translateY(-8px) translateX(-16px)
+    }
+}
+@keyframes panexti {
+    0%{
+        transform:  rotate(1deg) translateX(16px) translateY(-8px)
+    }
+    50%{
+    transform:  rotate(-1deg) translateX(-16px) translateY(-8px)
+
+    }
+    100%{
+        transform: rotate(1deg) translateX(16px) translateY(-8px)
+
+}
+}
+.panasnext{
+    transform-origin: top;
+
+    animation: panexti 4s ease-in-out infinite;
+
+}
+.panasback{
+
+    transform-origin: top;
+    animation: pabacki 4s ease-in-out infinite;
+
+}
+</style>
     <svg height="100vh" width="100vw" viewBox="700 -128.17 900 1328.2" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
     <linearGradient id="yomfop" x1="210.82" x2="210.82" y1="710.67" y2="816.44" gradientTransform="matrix(1 0 0 .56664 7.0641 355.09)" gradientUnits="userSpaceOnUse" xlink:href="#yomb"/>
