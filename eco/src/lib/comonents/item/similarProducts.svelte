@@ -6,7 +6,7 @@ export let similarProducts = $page?.data?.relatedP
 </script>
 
 {#if similarProducts}
-	<div dir="rtl" class="mb-5 sm:mb-10">
+	<div dir="rtl" style="background-color: #ff83a8;" class="mb-5 sm:mb-10">
 		<h2 class="mb-5 text-lg font-bold capitalize sm:text-xl md:text-2xl">עוד מ
             -
             BarB </h2>

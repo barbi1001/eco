@@ -4741,10 +4741,10 @@ function next (){
     <path d="m185.33 711.95-0.572 95.169-8.987 0.243v10.354h9.559 65.108 9.559v-10.354h-9.559c-1.1-12.8 0-95.413 0-95.412h-65.108z" fill="url(#fpm)" stroke="url(#fpi)" stroke-width=".75382px"/>
     </g>
     <foreignObject x="700" y="600" width="500" height="480">
-        {#if shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.ext != ".mp4"}
-    <img  on:click={go}  src="{shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.url}" alt="click for this product"/>
+        {#if shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.ext != ".mp4"}
+    <img  on:click={go}  src="{shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}" alt="click for this product"/>
     {:else}
-    <video  on:click={go}  autoplay loop muted src={shopsi.data.attributes.items.data[i].attributes.img1.data.attributes.url}/>
+    <video  on:click={go}  autoplay loop muted src={shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}/>
         {/if}
 </foreignObject>
     <g class:panas={active == true}>
