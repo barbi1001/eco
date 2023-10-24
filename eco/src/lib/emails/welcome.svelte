@@ -1,8 +1,9 @@
 <script>
 	import { Button, Container, Head, Hr, Html, Img, Preview, Section, Text } from 'svelte-email';
 
-	export let firstName = 'John';
-
+	export let name = 'John';
+	export let cart = []
+	export let total = 0
 	const fontFamily =
 		'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
 
@@ -54,7 +55,7 @@
 
 <Html lang="en">
 	<Head />
-	<Preview preview="Welcome to svelte-email" />
+	<Preview preview="Welcome to BarB" />
 	<Section style={main}>
 		<Container style={container}>
 			<Img
@@ -64,16 +65,24 @@
 				width="200"
 				height="50"
 			/>
-			<Text style={paragraph}>{firstName}, welcome to BarB</Text>
+			<Text style={paragraph}>{name}, welcome to BarB</Text>
 			<Text style={paragraph}>A place for Outstanding beutiful designs</Text>
+			<Section style={btnContainer}>
+			<Text style={paragraph}>הזמנתך על סך 
+				{total}
+			התקבלה בהצלחה!
+			הפריטים שהזמנת:
+			{#each cart as car} {car} {/each}
+			</Text>
+				</Section>
 			<Section style={btnContainer}>
 				<Button pX={12} pY={12} style={button} href="https://www.barbracha.art">
 					View on Site
 				</Button>
 			</Section>
-			<Text style={paragraph}>Happy pessach!</Text>
+			<Text style={paragraph}>Happy day!</Text>
 			<Hr style={hr} />
-			<Text style={footer}>Bar Bracha</Text>
+			<Text style={footer}>BarB</Text>
 		</Container>
 	</Section>
 </Html>

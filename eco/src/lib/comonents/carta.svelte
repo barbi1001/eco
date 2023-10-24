@@ -2,7 +2,6 @@
 	import {cart } from "../stores/cart.js";
 	import Check from './yalla.svelte';
     import { createEventDispatcher } from 'svelte';
-
 const dispatch = createEventDispatcher();
     let check = false;
 	const minusItem = (product) => {
@@ -34,7 +33,7 @@ const dispatch = createEventDispatcher();
  function close(event){
 	console.log("yy")
   let name = event.detail.name
-    dispatch("close", {name: name,phone: event.detail.phone, total:event.detail.total })
+    dispatch("close", {name: name,phone: event.detail.phone, total:event.detail.total ,email:event.detail.email, cart:$cart.map(c=>c.name)})
 
 }
 </script>

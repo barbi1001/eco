@@ -222,15 +222,28 @@ console.log(data.pdata.attributes)
 	};
 	async function closed(event) {
 		let name = event.detail.name;
-
 		console.log('y');
-		let data = { name: `${name}`, phone: event.detail.phone, total: event.detail.total };
+		let datar = { name: `${name}`, phone: event.detail.phone, total: event.detail.total ,email:event.detail.email,cart:event.detail.cart};
 		fetch(`/api/teleg`, {
 			method: 'POST', // or 'PUT'
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(data)
+			body: JSON.stringify(datar)
+		})
+			.then((response) => response)
+			.then((data) => {
+				console.log('Success:', data);
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+			fetch(`/api/mail`, {
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(datar)
 		})
 			.then((response) => response)
 			.then((data) => {

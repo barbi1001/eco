@@ -10042,8 +10042,9 @@ function scrollIntoVieww() {
     <path d="m673.22 568.56c0 43.394-68.064 80-144.17 78.571-104.13-1.9545-154.07-35.364-144.17-78.571 11.541-50.362 65.677-82.576 144.17-81.429 107.68 1.5744 144.17 38.035 144.17 81.429z" fill="url(#yomap)" stroke="url(#yomy)" style="paint-order:stroke"/>
     </g>
     </g>
+    <g  stroke-linejoin="bevel" stroke-width="14.258px" style="">
         <path transform="translate(0 300)" d="m587.14 265.52c0 43.394-27.652 80-58.571 78.571-42.303-1.9545-62.594-35.364-58.571-78.571 4.6885-50.362 26.682-82.576 58.571-81.429 43.745 1.5744 58.571 38.035 58.571 81.429z" fill="url(#yomaq)" stroke="url(#yomaa)" style="paint-order:stroke"/>
-
+        </g>
     <g  transform="rotate(90) translate(180 -1050)" stroke-width="2.7799px" style="">
     
         <path d="m295.42 503.86v18.195l88.99 44.661v-17.864z" fill="url(#yomx)" stroke="url(#yombi)"/>

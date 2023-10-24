@@ -19,9 +19,5 @@ export const POST = async ({ request }) => {
           const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
           const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${botMessage}`;
           const res = await fetch(url);
-          return {
-              status: 418,
-              errors: {
-                foo: res
-              }
-            }}
+                return new Response();
+}

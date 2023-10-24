@@ -43,7 +43,7 @@
             }})
   .then(response => {
           data = response.data;
-          dispatch("close", {name:$address.name, phone: $address.phone, total:total})
+          dispatch("close", {name:$address.name, phone: $address.phone, total:total,email:$address.email})
 
       
               })
