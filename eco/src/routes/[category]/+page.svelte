@@ -6,7 +6,6 @@
     export let data;
     let id = 1;
     $: (id = data.data);
-import { onMount } from "svelte";
   import datax from '$lib/data/tachshi.json'
   function getshop (){
     console.log(data)
@@ -17,21 +16,9 @@ import { onMount } from "svelte";
     }
     return shopsi
 }
-  let shopsi = getshop()
 
-  onMount(async () =>{
-    console.log(id)
-    await
-    fetch(`https://strapi-7iq2.onrender.com/api/categories/${id}?populate[1]=items.img1`)
-  .then(response => response.json())
-  .then(data => {
-
-		console.log(data);
-    shopsi = data
-  }).catch(error => {
-    console.log(error);
-  })
-})
+ 
+  
     import Desk from '$lib/comonents/deskcatego.svelte'
       import Mobile from '$lib/comonents/mobilecatego.svelte'
       let urlx = "https://strapi-7iq2.onrender.com/api/";
@@ -46,15 +33,16 @@ import { onMount } from "svelte";
 
 
 <div class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
+  {#if data.fulfild}
   {#if w > 650}
   <div in:fade="{{ duration: 9000}}"  bind:clientHeight="{h}">
 
-<Desk {shopsi}/>
+<Desk shopsi={data.shopsi}/>
   </div>
 {:else if w <= 650 && w>0}
-<Mobile {shopsi}/>
+<Mobile shopsi={data.shopsi}/>
 {/if}
-
+{/if}
 
 </div>
 

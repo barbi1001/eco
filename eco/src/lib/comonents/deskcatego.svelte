@@ -1,20 +1,9 @@
 <script>
-export let shopsi = [];
+export let shopsi;
 import { goto } from "$app/navigation";
-let i = 0
-let t=setInterval(uhamadLive,1000);
-function uhamadLive (){
-     if (shopsi.data?.attributes.items?.data.length > 0){
-     i = shopsi.data.attributes.items.data.length -1
-     console.log(i)
-     clearInterval(t);
-
-    } else {
-        console.log(shopsi.length , shopsi)
-    }
-}
+$: i = 0
 let active = false
-function next (){
+function next (i){
         console.log("click",i)
         if (i + 1 < shopsi.data.attributes.items.data.length){
                 i += 1
@@ -22,7 +11,7 @@ function next (){
                 i = 0
         }
     }
-    function back (){
+    function back (i){
         console.log("click",i)
         if (i == 0){
             i = shopsi.data.attributes.items.data.length - 1
@@ -31,8 +20,10 @@ function next (){
         }
     }
 
-    function go (){
+    function go (i){
         active = true
+                console.log(i,shopsi)
+
         goto(`./${shopsi.data.id}/${shopsi.data.attributes.items.data[i].id}`)
     }
     </script>
@@ -4740,13 +4731,15 @@ function next (){
     <g transform="matrix(17.885 0 0 5.9939 -2943.6 -3821.3)" style="">
     <path d="m185.33 711.95-0.572 95.169-8.987 0.243v10.354h9.559 65.108 9.559v-10.354h-9.559c-1.1-12.8 0-95.413 0-95.412h-65.108z" fill="url(#fpm)" stroke="url(#fpi)" stroke-width=".75382px"/>
     </g>
+    {#key i }
     <foreignObject x="700" y="600" width="500" height="480">
-        {#if shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.ext != ".mp4"}
-    <img  on:click={go}  src="{shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}" alt="click for this product"/>
+        {#if shopsi.data.attributes && shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.ext != ".mp4"}
+    <img  on:click={()=>go(i)}  src="{shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}" alt="click for this product"/>
     {:else}
-    <video  on:click={go}  autoplay loop muted src={shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}/>
+    <video  on:click={()=>go(i)}  autoplay loop muted src={shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}/>
         {/if}
 </foreignObject>
+{/key}
     <g class:panas={active == true}>
             <g  transform="matrix(1.3909 -4.8586e-8 -6.9496e-8 1.31 454.21 732.63)" style="" bx:origin="0.519623 0">
             <path d="m180.47 136.31h-4.3192l-0.050814-0.80244c0-0.35628-0.1372-0.67726-0.40651-0.96292-0.23781-0.24929-0.52643-0.37447-0.86384-0.37447-0.37399 0 2.253 2.7805 1.8811 3.0298-0.23781 0.17868 0.10163-0.21398 0 0 0.10163-0.64195-3.1351 18.314-2.6941 17.886 0.20045-0.21182 6.3724-284.79 3.687-266.81-1.484 9.9376-0.19948 206.07 0.37815 244.39 0.57522 0.10699 1.0834 0.39266 1.5244 0.85593 0.57522 0.57026 0.86384 1.2839 0.86384 2.1398v0.64195l-1.6e-5 0.00623zm0 5.2961h-4.2684l-0.050814-3.0493h4.3162v3.0493h0.003049-3.5e-5zm30.184 33.702-33.487 5.1891h-0.25407l-0.66058-36.645h4.2176v6.045l30.184 25.41 5e-5 9e-4z" fill="url(#ay)" fill-rule="evenodd" stroke="url(#ag)" stroke-linecap="square" stroke-miterlimit="44" stroke-width=".74048px"/>
@@ -9225,7 +9218,7 @@ function next (){
                     </g>
                     </g>
                 </g>
- <g on:click={next} transform="matrix(1 0 0 .81763 177.83 195.43)" style="">
+ <g on:click={()=>next(i)} transform="matrix(1 0 0 .81763 177.83 195.43)" style="">
     <g transform="matrix(.4687 0 0 .39906 1172.8 731.43)" style="">
 
     <title>הבא</title>
@@ -9280,7 +9273,7 @@ function next (){
         </g>
         </g>
     </g>
-<g on:click={back} transform="matrix(.4686 0 0 .32637 635 793.4)" style="" bx:origin="3.121307 0.56782">
+<g on:click={()=>back(i)} transform="matrix(.4686 0 0 .32637 635 793.4)" style="" bx:origin="3.121307 0.56782">
     <title>המוצר הקודם</title>
     <g transform="translate(-451.77 -1.8212e-5)">
     <g transform="matrix(.54914 0 0 .77385 211.86 96.416)" stroke-linejoin="bevel" stroke-width="14.258px" style="">
