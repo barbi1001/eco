@@ -1,6 +1,6 @@
 
   <script>
-      
+
       import { fade } from 'svelte/transition'
 
     export let data;
@@ -25,7 +25,7 @@ import { onMount } from "svelte";
     fetch(`https://strapi-7iq2.onrender.com/api/categories/${id}?populate[1]=items.img1`)
   .then(response => response.json())
   .then(data => {
-    
+
 		console.log(data);
     shopsi = data
   }).catch(error => {
@@ -35,10 +35,10 @@ import { onMount } from "svelte";
     import Desk from '$lib/comonents/deskcatego.svelte'
       import Mobile from '$lib/comonents/mobilecatego.svelte'
       let urlx = "https://strapi-7iq2.onrender.com/api/";
-     
 
 
- 
+
+
     $: w = 0
     $: h = 0
 
@@ -65,7 +65,7 @@ import { onMount } from "svelte";
 
     {/each}
     </ul>
-    {/key}--> 
+    {/key}-->
 <style>
     .r{
         height: 100vh;

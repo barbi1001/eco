@@ -1,4 +1,4 @@
-<svg id="svg2" viewBox="-200.093 -2895.328 1200 10000" version="1.1" width="100vw"  preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
+<!--<svg id="svg2" viewBox="-200.093 -2895.328 1200 10000" version="1.1" width="100vw"  preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
     <title id="title5179">Store Fronts</title>
     <defs id="defs4">
             <linearGradient id="linearGradient18327">
@@ -579,4 +579,4 @@
     <text style="fill: rgb(255, 246, 213); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#gradient-0); stroke-width: 0px; text-anchor: middle; white-space: pre;" transform="matrix(4.772483825684, 0, 0, 7.460203170776, 382.709991455078, -2546.171142578125)">BarB</text>
     <text style="font-family: &quot;EB Garamond&quot;; font-size: 28px; stroke-width: 0px; white-space: pre; fill: url(#gradient-2); stroke: url(#linearGradient5786-3);" transform="matrix(9.133942604065, 0, 0, 8.161825180054, -0.092983007431, 3148.256591796875)">שםמוצר</text>
     <text style="fill: rgb(255, 255, 255); fill-rule: evenodd; font-family: Arial, sans-serif; font-size: 81.0444px; paint-order: stroke markers; stroke-width: 5.40286px; white-space: pre;" transform="matrix(1.124027371407, 0, 0, 3.571476459503, 159.915664672852, -12099.1513671875)" x="-142.353" y="4522.53">Enter your text here</text>
-</svg>
+</svg>-->
