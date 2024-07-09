@@ -226,7 +226,7 @@
             </button>
 
             <div
-                transition:fly="{{ x: 400, duration: 500 }}"
+                transition:fly|global="{{ x: 400, duration: 500 }}"
                 class="absolute inset-y-0 right-0 z-[101] h-full max-w-max border-l bg-white"
             >
                 <button

@@ -21,7 +21,9 @@
 
 	</DialogContent>
 	</DialogOverlay >
+	<!---
 <div class="ab"> <button on:click={()=>open()}><Small/></button></div>
+-->
 <slot />
 
 <style>

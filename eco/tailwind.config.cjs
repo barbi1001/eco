@@ -8,7 +8,10 @@ const config = {
 			colors: {
 				barb: '#FF0066',
 				cachol: '#01003d',
-				sof: 'rgb(254, 132, 169)'
+				love:"#FF0065",
+				nice:'rgb(255, 131, 168)',
+				sof: 'rgb(254, 132, 169)',
+				pinki: "#fb6298"
 			}
 		}
 	},

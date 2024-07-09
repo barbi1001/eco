@@ -71,7 +71,7 @@ $: h = 0
 
 <div  class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
   {#if w > 650}
-  <div in:fly="{{y: -h, duration: 5000, easing : bounceOut}}" out:fly="{{y: h, duration: 5000, easing : bounceOut}}" >
+  <div in:fly|global="{{y: -h, duration: 5000, easing : bounceOut}}" out:fly|global="{{y: h, duration: 5000, easing : bounceOut}}" >
 
         <Desc {shopsi}/>
   </div>

@@ -35,7 +35,7 @@
 <div class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
   {#if data.fulfild}
   {#if w > 650}
-  <div in:fade="{{ duration: 9000}}"  bind:clientHeight="{h}">
+  <div in:fade|global="{{ duration: 9000}}"  bind:clientHeight="{h}">
 
 <Desk shopsi={data.shopsi}/>
   </div>

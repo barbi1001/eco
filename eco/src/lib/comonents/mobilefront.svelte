@@ -313,7 +313,7 @@ let c;
 </Canvas> size={}
 {#if papi != true}{/if}
 -->
-<div transition:fly={{duration: 1750,y:-c}} bind:clientHeight={c} class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
+<div transition:fly|global={{duration: 1750,y:-c}} bind:clientHeight={c} class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
 
 <Canvas  >
   <Scene on:clicked={()=>papiclic()}/>
