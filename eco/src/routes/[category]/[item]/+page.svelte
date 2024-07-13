@@ -216,6 +216,7 @@ console.log(data.pdata.attributes)
 	}
 	import Carta from '$lib/comonents/carta.svelte';
 	import { DialogOverlay, DialogContent } from 'svelte-accessible-dialog';
+	import WhatsappButton from '$lib/comonents/whatsappButton.svelte';
 	let isOpen;
 	const open = () => {
 		isOpen = true;
@@ -267,6 +268,8 @@ console.log(data.pdata.attributes)
 		</div>
 	</DialogContent>
 </DialogOverlay>
+<div class="fixed bottom-2 left-2 z-[9999]"><WhatsappButton text={data?.pdata?.data?.attributes?.name}/></div>
+
 <div class="r" bind:clientWidth={w} bind:clientHeight={h}>
 	{#if data.loading == true}
 		<div bind:clientHeight={h} class="fullwidth" bind:clientWidth={w}>
