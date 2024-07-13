@@ -1,4 +1,5 @@
 <script>
+	let ìsStatic = import.meta.env.VITE_STATIC || undefined
 	import '../app.css';
 	import Small from './../lib/comonents/smallcarta.svelte'
 	import Carta from './../lib/comonents/carta.svelte'
@@ -12,6 +13,7 @@
     isOpen = false;
 	//get name from event timout to show goodby msg
   };
+  
 </script>
 <DialogOverlay class="over" {isOpen} onDismiss={close}>
 	<DialogContent aria-label="form" class="content">
