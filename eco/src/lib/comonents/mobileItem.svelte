@@ -100,7 +100,7 @@ function addToCart (id){
 </style>
 
 
-    <svg id="svg2" viewBox="-320.053862 -3104.000117 1263.302407 8471.580883" version="1.1" width="100vw" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com" style="background-color:rgb(255, 131, 168)">
+    <svg id="svg2" viewBox="-320.053862 -3104.000117 1263.302407 8471.580883" version="1.1" width="100vw" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com" style="background-color: #ff83a8;" >
         <title>קניה נעימה {shem}</title>
         <defs id="defs4">
                        <linearGradient id="yomb">
