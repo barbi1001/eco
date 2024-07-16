@@ -143,11 +143,8 @@ let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
 			{#key mobiles}
 
 			{#if mobiles}
-			<h1 class="fixed top-0 left-0">mobile </h1>
-
 				<Mobile low={true} />
 			{:else if mobiles == false}
-			<h1 class="fixed top-0 left-0">desktop</h1>
 				<DesctoItem low={true} />
 			{/if}
 			{/key}
@@ -156,7 +153,6 @@ let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
 		<div >
 			{#key mobiles}
 			{#if mobiles == true}
-			<h1 h1 class="fixed top-0 left-0">mobile else</h1>
 				<Mobile
 					on:addto={addToCart}
 					shopsi={data.pdata}
@@ -177,8 +173,6 @@ let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
 					{w}
 				/>
 			{:else if mobiles == false}
-			<h1 class="fixed top-0 left-0">desktop else</h1>
-
 				<DesctoItem
 					on:addto={addToCart}
 					{shem}
