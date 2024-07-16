@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
         import SimilarProducts from '$lib/comonents/item/similarProducts.svelte'
-
+        export let w = 0
         export let shopsi
         export let is4vid = false
         export let is1vid = false
@@ -54,7 +54,7 @@ import "$lib/style.css";
   import "swiper/css/mousewheel"
 
   // import required modules
-  import {Zoom, EffectCube, Pagination, Mousewheel, Keyboard,   Navigation} from "swiper";
+  import {Zoom, EffectCube, Pagination, Mousewheel, Keyboard, Navigation} from "swiper";
   export let low = false
 
     export let shem, url, kind, des , id, price;
@@ -810,9 +810,10 @@ function addToCart (id){
 </g>
                 <foreignObject x="-240" y="-1650" width="1050" height="1050" style="stroke-width: 13.0705px; stroke-miterlimit: 1; fill: none; stroke: url(#linearGradient10151-1);" >
         <div>
+                {#if w != 0}
                 <Swiper
               navigation={{
-    nextEl: ".perv",
+    nextEl: ".back",
     prevEl: ".next",
   }}
   effect={"cube"}
@@ -824,7 +825,7 @@ function addToCart (id){
     shadowOffset: 20,
     shadowScale: 0.94,
   }}
-  loop=true
+  loop={true}
   pagination={true}
    keyboard={{
     enabled: true,
@@ -872,6 +873,7 @@ mousewheel={true}
 {/each}
 {/if}
 </Swiper>
+{/if}
          </div>
          </foreignObject>
       <text style="fill: url(#linearGradient5786-0); font-family: &quot;Old English Text MT&quot;; font-size: 24px; stroke: url(#gradient-27); stroke-width: 0.107934px; text-anchor: middle; white-space: pre;" transform="matrix(4.772483825684, 0, 0, 9.923977851868, 299.845184326172, -4372.8994140625)">BarB Design</text>

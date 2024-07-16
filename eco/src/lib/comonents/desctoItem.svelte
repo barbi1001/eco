@@ -11,7 +11,6 @@ import "swiper/css/zoom";
 
 // Import Swiper styles
 import "swiper/css";
-import { scrollElement, scrollRef} from 'svelte-scrolling'
   import "swiper/css/navigation";
 
   import "swiper/css/keyboard"
@@ -22,10 +21,7 @@ import { scrollElement, scrollRef} from 'svelte-scrolling'
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 import { onMount} from 'svelte'
-onMount(async()=>{
-        setTimeout(scrollElement({ ref: 'tttt', duration: 1000 })
-,2200)
-})
+
 import "$lib/style.css";
 // import required modules
 
@@ -35,13 +31,6 @@ import "$lib/style.css";
 function addToCart (id){
         dispatch("addto",{pr:id})
 }
-function scrollIntoVieww() {
-		const el = document.getElementById("tttt");
-		if (!el) return;
-    el.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }
     </script>
     <style>
         
@@ -10052,12 +10041,12 @@ function scrollIntoVieww() {
     </g>
 </g>
 </g>
-        <foreignObject id="tttt" use:scrollRef={'tttt'}
+        <foreignObject id="tttt" 
          transform="scale(1.17)" x="530" y="327" width="1050" height="1050" style="stroke-width: 13.0705px; stroke-miterlimit: 1; fill: none; stroke: url(#linearGradient10151-1);" >
           <div>
-                  <Swiper
+               <Swiper
                   navigation={{
-    nextEl: ".perv",
+    nextEl: ".back",
     prevEl: ".next",
   }}
   effect={"cube"}
