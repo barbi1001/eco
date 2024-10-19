@@ -1,11 +1,12 @@
 <script>
         import { fly , fade} from 'svelte/transition'
+	import { onMount } from 'svelte';
             export let shopsi
         console.log(shopsi)
 import { goto } from "$app/navigation";
 
 let doori = true
-
+$: instruction = false
 	
 
 	let firstIndex = 0
@@ -38,6 +39,18 @@ let clicked = false
 
 }
 
+onMount(() => {
+setTimeout(() => {
+	x();
+}, 30000);
+
+function x() {
+	// כאן יש להוסיף את הפעולות שברצונך לבצע לאחר 30 שניות
+	console.log("עברו 30 שניות");
+        instruction = true
+	// לדוגמה: שינוי מצב, קריאה לפונקציה אחרת, עדכון ממשק המשתמש וכו'
+}
+})
 </script>
 <style>
    .doori{
@@ -129,7 +142,27 @@ let clicked = false
 		}
         }
     </style>
+{#if instruction}
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2  text-center" in:fly={{duration:2000, y:-500}}>
+        <button
+  class="group relative grid overflow-hidden rounded-xl px-4 py-2 shadow-[0_1000px_0_0_hsl(0_0%_20%)_inset] transition-colors duration-200"
+>
+  <span>
+    <span
+      class="spark mask-gradient animate-flip before:animate-kitrotate absolute inset-0 h-[100%] w-[100%] overflow-hidden rounded-xl [mask:linear-gradient(white,_transparent_50%)] before:absolute before:aspect-square before:w-[200%] before:rotate-[-90deg] before:bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] before:content-[''] before:[inset:0_auto_auto_50%] before:[translate:-50%_-15%]"
+    />
+  </span>
+  <span
+    class="backdrop absolute inset-px rounded-[11px] bg-goldGrad transition-colors duration-200 group-hover:bg-neutral-900"
+  />
+  <span class="z-10 text-pink-900 text-sm font-medium">
+    <slot>יש ללחוץ על ידיות הפפיונים כדי לפתוח את החנות
+</slot>
+  </span>
+</button>
 
+</div>
+{/if}
 <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100vw" height="100vh">
     <defs>
         <linearGradient id="linearGradient5786-81" gradientUnits="userSpaceOnUse" x1="528.319" y1="184.061" x2="528.319" y2="344.131" xlink:href="#linearGradient5786"/>
