@@ -42,7 +42,7 @@ let clicked = false
 onMount(() => {
 setTimeout(() => {
 	x();
-}, 30000);
+}, 5000);
 
 function x() {
 	// כאן יש להוסיף את הפעולות שברצונך לבצע לאחר 30 שניות
@@ -142,8 +142,8 @@ function x() {
 		}
         }
     </style>
-{#if instruction}
-<div class="absolute bottom-0 left-1/2 -translate-x-1/2  text-center" in:fly={{duration:2000, y:-500}}>
+{#if instruction && doori == true}
+<div class="absolute bottom-1 left-1/2 -translate-x-1/2  text-center" in:fly={{duration:2000, y:-500}}>
         <button
   class="group relative grid overflow-hidden rounded-xl px-4 py-2 shadow-[0_1000px_0_0_hsl(0_0%_20%)_inset] transition-colors duration-200"
 >
