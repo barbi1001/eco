@@ -19,7 +19,245 @@
     font-family: Alim;
     src: url(https://res.cloudinary.com/barb1/raw/upload/v1660781092/TenderleafRegular_xylm0y.ttf);
 }
+@font-face {
+    font-family: 'MakabiYG';
+    src: url('/MakabiYG.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes sparkle {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.sparkle-text {
+    background: linear-gradient(90deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #AA771C 75%, #BF953F 100%);
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: sparkle 4s linear infinite;
+    text-shadow: 0 0 10px rgba(255, 223, 0, 0.2);
+}
+
+.glowing-text {
+    color: transparent;
+    background: linear-gradient(to right, #BF953F, #FCF6BA, #AA771C, #BF953F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+    background-size: 200% auto;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3),
+                 0 0 20px rgba(255, 215, 0, 0.3),
+                 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.metallic-text {
+    background: linear-gradient(to bottom, #BF953F 0%, #FCF6BA 40%, #B38728 60%, #AA771C 80%, #BF953F 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.metallic-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(45deg, 
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine-effect 3s infinite;
+}
+
+.royal-text {
+    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #fbf4a1, #AA771C);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    text-shadow: 0 0 10px rgba(251, 244, 161, 0.3);
+    animation: royal-shine 2s linear infinite;
+}
+
+.sparkly-uv {
+    background: linear-gradient(90deg, 
+        #ffd700 0%,      /* Gold */
+        #ff00ff 15%,     /* Bright Pink */
+        #bf953f 30%,     /* Bronze Gold */
+        #8a2be2 45%,     /* Blue Violet */
+        #fcf6ba 60%,     /* Light Gold */
+        #ff69b4 75%,     /* Hot Pink */
+        #ffd700 100%     /* Gold */
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: sparkly-shine 3s linear infinite;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.6),    /* Gold glow */
+        0 0 20px rgba(255, 0, 255, 0.3),     /* Pink glow */
+        0 0 30px rgba(191, 149, 63, 0.4);    /* Bronze glow */
+    position: relative;
+}
+
+.crown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.crown {
+    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.3));
+}
+
+.crown-path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawCrown 2s ease forwards;
+}
+
+.crown-pearl {
+    animation: pearlGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+}
+
+.crown-pearl.small {
+    animation: pearlGlow 3s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.crown-pearl.base {
+    animation: pearlGlow 3s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+@keyframes drawCrown {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes pearlGlow {
+    0%, 100% {
+        opacity: 0.8;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    }
+    50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+    }
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes shine-effect {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes royal-shine {
+    0% {
+        filter: hue-rotate(0deg) brightness(100%);
+    }
+    50% {
+        filter: hue-rotate(5deg) brightness(120%);
+    }
+    100% {
+        filter: hue-rotate(0deg) brightness(100%);
+    }
+}
+
+@keyframes sparkly-shine {
+    0% {
+        background-position: 0% 50%;
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: hue-rotate(30deg);
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: hue-rotate(0deg);
+    }
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.benefits-list li {
+    background: linear-gradient(135deg, rgba(255,192,203,0.15) 0%, rgba(255,215,0,0.15) 100%);
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+.benefits-list li::before {
+    content: '✧';
+    position: absolute;
+    right: 0.75rem;
+    color: transparent;
+    background: linear-gradient(45deg, #ff69b4, #ffd700);
+    -webkit-background-clip: text;
+    font-size: 1.2em;
+}
+
+.benefits-list li::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 15px;
+    padding: 1px;
+    background: linear-gradient(45deg, #ff69b4, #ffd700);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.7;
+}
+
+.benefits-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,105,180,0.2);
+}
+
+.benefits-list li:hover::after {
+    opacity: 1;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
