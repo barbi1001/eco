@@ -164,13 +164,9 @@
         %0A שם: ${name}
         %0A טלפון: ${phone}
         %0A הודעה: ${message}`;
-        const url = `https://api.telegram.org/bot${Token}/sendMessage`;
+        const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${text}`;
 
-        await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: chatId, text }),
-        });
+        await fetch(url);
 
         isSuccess = true;
         
