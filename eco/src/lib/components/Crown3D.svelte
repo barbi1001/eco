@@ -1,8 +1,13 @@
 <script>
+    import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
     import { T } from '@threlte/core'
     import { useFrame } from '@threlte/core'
     import { GLTF } from '@threlte/extras'
     import { spring } from 'svelte/motion'
+
+    // Initialize DRACOLoader
+    const dracoLoader = new DRACOLoader()
+    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
 
     let rotation = 0
     let floatOffset = 0
