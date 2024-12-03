@@ -159,7 +159,7 @@
       isSuccess = false;
       try {
         const Token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-        const chatId = import.meta.env.VITE_TELE;
+        const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
         const text = `פנייה חדשה:
         %0A שם: ${name}
         %0A טלפון: ${phone}
