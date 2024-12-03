@@ -37,6 +37,7 @@
 		"axios": "^0.24.0",
 		"lucide-svelte": "^0.462.0",
 		"nodemailer": "^6.9.1",
+		"svead": "^0.0.4",
 		"svelte-accessible-dialog": "^2.1.3",
 		"svelte-email": "^0.0.4",
 		"svelte-forms-lib": "^2.0.1",

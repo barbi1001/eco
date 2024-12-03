@@ -1,3 +1,95 @@
+<script>
+    import { fade, fly } from 'svelte/transition';
+    import { onMount } from 'svelte';
+    import { Drawer } from "vaul-svelte";
+    import { quintOut, backOut } from 'svelte/easing';
+    import { page } from '$app/stores';
+    import WhatsappButton from '$lib/comonents/whatsappButton.svelte';
+    import HeartScene from '$lib/comonents/HeartScene.svelte';
+    import HeartButton from '$lib/ui/heartButton.svelte';
+    import { Canvas } from '@threlte/core';
+    import Crown3D from '$lib/components/Crown3D.svelte';
+    import { Send, Check } from 'lucide-svelte';
+    import { Head } from 'svead';
+
+    let name = '';
+    let phone = '';
+    let message = '';
+    let stars = [];
+    let b = false;
+    let dialogOpen = false;
+    let isLoading = false;
+    let isSuccess = false;
+
+    async function submitForm(event) {
+      if (!name || !phone) return;
+      
+      isLoading = true;
+      isSuccess = false;
+      try {
+        const Token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+        const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+        const text = `פנייה חדשה:
+        %0A שם: ${name}
+        %0A טלפון: ${phone}
+        %0A הודעה: ${message}`;
+        const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${text}`;
+
+        await fetch(url);
+
+        isSuccess = true;
+        
+        // Show success message and close after delay
+        setTimeout(() => {
+          dialogOpen = false;
+          name = '';
+          phone = '';
+          message = '';
+          isSuccess = false;
+        }, 2000);
+      } catch (error) {
+        console.error('Error:', error);
+        alert('אירעה שגיאה, אנא נסי שוב');
+      } finally {
+        isLoading = false;
+      }
+    }
+
+    const starCount = 100;
+    const sparkle = 20;
+  
+    onMount(() => {
+      for(let i = 0; i < starCount; i++) {
+        let size = i % 2 === 0 ? 'small' : i % 3 === 0 ? 'medium' : 'large';
+        stars.push({
+          top: Math.random() * 100,
+          left: Math.random() * 100,
+          delay: Math.random() * sparkle,
+          size: size
+        });
+      }
+      stars = stars
+    });
+</script>
+
+<Head
+    title="תכשיט משלי - עיצוב תכשיטים בהתאמה אישית | ברבי עיצובים"
+    description="הצטרפי לסדנת תכשיטים מיוחדת עם נוף פנורמי לכינרת. למדי טכניקות מסורתיות וחדשניות ליצירת תכשיטים בעבודת יד בהתאמה אישית בסטודיו של ברבי."
+    canonical="https://barbracha.vercel.app/sadnaot"
+    openGraph={{
+        title: 'תכשיט משלי - עיצוב תכשיטים בהתאמה אישית | ברבי עיצובים',
+        description: 'הצטרפי לסדנת תכשיטים מיוחדת עם נוף פנורמי לכינרת. למדי טכניקות מסורתיות וחדשניות ליצירת תכשיטים בעבודת יד בהתאמה אישית בסטודיו של ברבי.',
+        url: 'https://barbracha.vercel.app/sadnaot',
+        siteName: 'ברבי עיצובים',
+        image: {
+            url: 'https://res.cloudinary.com/barb1/image/upload/v1672529650/%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%A1%D7%9A_20221108_142006_tmkrfo.png',
+            width: 1080,
+            height: 1080,
+            alt: 'עיצוב תכשיטים עם נוף לכינרת - ברבי עיצובים'
+        }
+    }}
+/>
+
 <div class="starshine">
     {#each stars as star (star.top + star.left)}
       <div class=" shine {star.size}" style="top: {star.top}%; left: {star.left}%; animation-delay: {star.delay}s;"></div>
@@ -129,79 +221,6 @@
     </div>
 
   </div>
-  
-  <script>
-    import { fade, fly } from 'svelte/transition';
-    import { onMount } from 'svelte';
-    import { Drawer } from "vaul-svelte";
-    import { quintOut, backOut } from 'svelte/easing';
-    import { page } from '$app/stores';
-    import WhatsappButton from '$lib/comonents/whatsappButton.svelte';
-    import HeartScene from '$lib/comonents/HeartScene.svelte';
-    import HeartButton from '$lib/ui/heartButton.svelte';
-    import { Canvas } from '@threlte/core';
-    import Crown3D from '$lib/components/Crown3D.svelte';
-    import { Send, Check } from 'lucide-svelte';
-
-    let name = '';
-    let phone = '';
-    let message = '';
-    let stars = [];
-    let b = false;
-    let dialogOpen = false;
-    let isLoading = false;
-    let isSuccess = false;
-
-    async function submitForm(event) {
-      if (!name || !phone) return;
-      
-      isLoading = true;
-      isSuccess = false;
-      try {
-        const Token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-        const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-        const text = `פנייה חדשה:
-        %0A שם: ${name}
-        %0A טלפון: ${phone}
-        %0A הודעה: ${message}`;
-        const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${text}`;
-
-        await fetch(url);
-
-        isSuccess = true;
-        
-        // Show success message and close after delay
-        setTimeout(() => {
-          dialogOpen = false;
-          name = '';
-          phone = '';
-          message = '';
-          isSuccess = false;
-        }, 2000);
-      } catch (error) {
-        console.error('Error:', error);
-        alert('אירעה שגיאה, אנא נסי שוב');
-      } finally {
-        isLoading = false;
-      }
-    }
-
-    const starCount = 100;
-    const sparkle = 20;
-  
-    onMount(() => {
-      for(let i = 0; i < starCount; i++) {
-        let size = i % 2 === 0 ? 'small' : i % 3 === 0 ? 'medium' : 'large';
-        stars.push({
-          top: Math.random() * 100,
-          left: Math.random() * 100,
-          delay: Math.random() * sparkle,
-          size: size
-        });
-      }
-      stars = stars
-    });
-  </script>
   
   <style>
         @keyframes float {
