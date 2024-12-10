@@ -6,10 +6,18 @@
     let rotation = 0;
     let scale = tweened(1.2);
     let isHovering = false;
+    let rotationDirection = 'left';
+    let rotationDirectionChangeCounter = 0;
+    let rotationChangeThreshold = 300; // adjust this value to change the frequency of direction changes
 
     useFrame(() => {
         if (!isHovering) {
-           rotation += 0.01;
+            rotation += (rotationDirection === 'left' ? 0.01 : -0.01);
+            rotationDirectionChangeCounter++;
+            if (rotationDirectionChangeCounter >= rotationChangeThreshold) {
+                rotationDirection = rotationDirection === 'left' ? 'right' : 'left';
+                rotationDirectionChangeCounter = 0;
+            }
         }
     });
 </script>

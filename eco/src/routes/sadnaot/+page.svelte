@@ -11,6 +11,7 @@
     import Crown3D from '$lib/components/Crown3D.svelte';
     import { Send, Check } from 'lucide-svelte';
     import { Head } from 'svead';
+	import { goto } from '$app/navigation';
 
     let name = '';
     let phone = '';
@@ -46,7 +47,7 @@
           phone = '';
           message = '';
           isSuccess = false;
-        }, 2000);
+        }, 10000);
       } catch (error) {
         console.error('Error:', error);
         alert('אירעה שגיאה, אנא נסי שוב');
@@ -74,11 +75,11 @@
 
 <Head
     title="תכשיט משלי - עיצוב תכשיטים בהתאמה אישית | ברבי עיצובים"
-    description="הצטרפי לסדנת תכשיטים מיוחדת עם נוף פנורמי לכינרת. למדי טכניקות מסורתיות וחדשניות ליצירת תכשיטים בעבודת יד בהתאמה אישית בסטודיו של ברבי."
+    description="הצטרפי למפגש יצירת תכשיטים מיוחד עם נוף פנורמי לכינרת. למדי טכניקות מסורתיות וחדשניות ליצירת תכשיטים בעבודת יד בהתאמה אישית בסטודיו של ברבי."
     canonical="https://barbracha.vercel.app/sadnaot"
     openGraph={{
         title: 'תכשיט משלי - עיצוב תכשיטים בהתאמה אישית | ברבי עיצובים',
-        description: 'הצטרפי לסדנת תכשיטים מיוחדת עם נוף פנורמי לכינרת. למדי טכניקות מסורתיות וחדשניות ליצירת תכשיטים בעבודת יד בהתאמה אישית בסטודיו של ברבי.',
+        description: 'הצטרפי למפגש יצירת תכשיטים מיוחד עם נוף פנורמי לכינרת. למדי טכניקות מסורתיות וחדשניות ליצירת תכשיטים בעבודת יד בהתאמה אישית בסטודיו של ברבי.',
         url: 'https://barbracha.vercel.app/sadnaot',
         siteName: 'ברבי עיצובים',
         image: {
@@ -127,15 +128,15 @@
   <div class="flex flex-col items-center justify-center align-middle pb-2 mb-2 nod w-full">
      
       <button on:click={(()=>dialogOpen=true)} class="p-2 mb-2 focus:outline-none bg-transparent hover:bg-transparent">
-        <div class="heart-container relative w-full h-[300px] max-w-[400px] -mb-12">
-          <span class="absolute top-2 left-1/2 transform -translate-x-1/2 text-xl font-[MakabiYG] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text">להזמנה</span>
+        <div class="heart-container relative w-full h-[300px] max-w-[400px] -mb-20">
+          <span class="absolute top-8 left-1/2 transform -translate-x-1/2 text-4xl font-extrabold font-[MakabiYG] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text">להזמנה</span>
 
           <Canvas>
             <HeartScene />
           </Canvas>
         </div>
       </button>
-      <WhatsappButton text="סדנאות עיצוב תכשיטים"	rotate={true}/>
+      <WhatsappButton text="מפגש עיצוב תכשיטים"	rotate={true}/>
   </div>
     <Drawer.Portal>
       <Drawer.Overlay class="fixed inset-0 bg-black/40" />
@@ -152,10 +153,10 @@
                           <div class=" shine {star.size}" style="top: {star.top}%; left: {star.left}%; animation-delay: {star.delay}s;"></div>
                         {/each}
                       <div class="mx-auto max-w-md text-center">
-                          <Drawer.Title class="mb-4 text-2xl font-[MakabiYG] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text sparkly-uv">כמה פרטים כדי שהסדנה תהיה  מושלמת</Drawer.Title>
+                          <Drawer.Title class="mb-4 text-2xl font-[MakabiYG] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text sparkly-uv">כמה פרטים כדי שהמפגש יהיה  מושלם</Drawer.Title>
                           {#if b == false}
                           <div class="">
-                            <h2 class="text-lg font-medium text-pink-800 mb-4 sparkly-uv pearl-effect">השאירו פרטים ונחזור אליכם</h2>
+                            <h2 class="text-lg font-medium bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#d462cb] text-transparent bg-clip-text mb-4 sparkly-uv pearl-effect">השאירי פרטים ואני אחזור אלייך בהקדם!</h2>
                             <form class="flex flex-col space-y-4" on:submit|preventDefault={submitForm}>
                                 <input
                                   class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
@@ -182,7 +183,8 @@
                                   dir="rtl"
                                 ></textarea>
                                 <button 
-                                  class="z-[1000] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-gray-900 font-medium rounded-lg text-base px-6 py-3 text-center transition-all duration-300 hover:opacity-90 focus:ring-4 focus:ring-[#BF953F] focus:ring-opacity-50 transform hover:-translate-y-0.5 disabled:opacity-50 flex items-center justify-center gap-2 relative overflow-hidden"
+                                  class="z-[1000] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-gray-900 font-medium rounded-lg text-base px-6 py-3 text-center
+                                  hover:to-pink-600 hover:from-pink-600 hover:via-[#FCF6BA] transition-all duration-300 hover:opacity-70 focus:ring-4 focus:ring-[#BF953F] focus:ring-opacity-50 transform hover:-translate-y-0.5 disabled:opacity-50 flex items-center justify-center gap-2 relative overflow-hidden"
                                   type="submit"
                                   disabled={!name || !phone || isLoading}
                                 >
@@ -195,6 +197,7 @@
                                       <Check class="check-icon" size={24} />
                                       <span class="inline-block">נשלח בהצלחה!</span>
                                     </div>
+                                
                                   {:else}
                                     <Send 
                                       class="send-icon {isLoading ? 'send-loading' : ''}"
@@ -211,6 +214,12 @@
                           </div>
       {:else}
       תכף
+      {/if}
+      {#if isSuccess}
+      <button on:click={()=> goto('/')} class="z-[1000] mt-4 bg-transparent text-white font-bold rounded-lg text-lg px-6 py-3 transition-all duration-300 hover:opacity-90 focus:outline-none focus:ring-4
+         focus:ring-[#22c55e] focus:ring-opacity-50 transform hover:-translate-y-0.5">
+        <HeartButton text="לדף הבית" className="text-white" />
+      </button>
       {/if}
                       </div>
                   </div>
