@@ -13,7 +13,11 @@
     isOpen = false;
 	//get name from event timout to show goodby msg
   };
-  
+  export const prerender = true;
+  export const trailingSlash = 'always';
+
+
+
 </script>
 <DialogOverlay class="over" {isOpen} onDismiss={close}>
 	<DialogContent aria-label="form" class="content">
