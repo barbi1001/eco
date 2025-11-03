@@ -1,11 +1,11 @@
 
   <script>
+  import { run } from 'svelte/legacy';
+
 
       import { fade } from 'svelte/transition'
 
-    export let data;
-    let id = 1;
-    $: (id = data.data);
+    let id = $state(1);
   import datax from '$lib/data/tachshi.json'
   function getshop (){
     console.log(data)
@@ -21,14 +21,21 @@
   
     import Desk from '$lib/comonents/deskcatego.svelte'
       import Mobile from '$lib/comonents/mobilecatego.svelte'
+  /** @type {{data: any}} */
+  let { data } = $props();
       let urlx = "https://strapi-7iq2.onrender.com/api/";
 
 
 
 
-    $: w = 0
-    $: h = 0
 
+    run(() => {
+    (id = data.data);
+  });
+    let w = $state(0);
+  
+    let h = $state(0);
+  
 </script>
 
 

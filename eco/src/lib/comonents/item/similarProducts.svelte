@@ -2,7 +2,8 @@
 import DummyProductCard from '$lib/comonents/item/dummyProductCard.svelte'
 import ProductCard from '$lib/comonents/item/productCard.svelte'
 import { page } from '$app/stores'
-export let similarProducts = $page?.data?.relatedP
+	/** @type {{similarProducts?: any}} */
+	let { similarProducts = $page?.data?.relatedP } = $props();
 </script>
 
 {#if similarProducts}

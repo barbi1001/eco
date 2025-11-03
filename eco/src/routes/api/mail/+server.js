@@ -1,4 +1,4 @@
-    import { render } from 'svelte-email';
+    import { render } from 'svelty-email';
 	import Welcome from '$lib/emails/welcome.svelte';
 import nodemailer from 'nodemailer';
 

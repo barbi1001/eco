@@ -4,7 +4,10 @@
 	import Small from './../lib/comonents/smallcarta.svelte'
 	import Carta from './../lib/comonents/carta.svelte'
 	import { DialogOverlay, DialogContent } from 'svelte-accessible-dialog';
-    let isOpen;
+	import ClientOnly from '$lib/components/ClientOnly.svelte';
+	/** @type {{children?: import('svelte').Snippet}} */
+	let { children } = $props();
+    let isOpen = $state();
   const open = () => {
     isOpen = true;
   };
@@ -22,7 +25,9 @@
 <DialogOverlay class="over" {isOpen} onDismiss={close}>
 	<DialogContent aria-label="form" class="content">
 		<div class="tofes" dir="rtl">
-<Carta on:close={close}/>
+			<ClientOnly>
+				<Carta onclose={close}/>
+			</ClientOnly>
 		</div>
 
 	</DialogContent>
@@ -30,7 +35,7 @@
 	<!---
 <div class="ab"> <button on:click={()=>open()}><Small/></button></div>
 -->
-<slot />
+{@render children?.()}
 
 <style>
 	.ab{

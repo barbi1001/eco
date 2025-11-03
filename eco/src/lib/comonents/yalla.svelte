@@ -3,10 +3,8 @@
     import * as yup from "yup";
     import "yup-phone";
     import MultiSelect from 'svelte-multiselect'
-    import { createEventDispatcher } from 'svelte';
-
-    const dispatch = createEventDispatcher();
-        let selected = [];
+    let { onclose } = $props()
+        let selected = $state([]);
         let data;
         let shgi = {st: false, msg: ""}
 
@@ -43,7 +41,7 @@
             }})
   .then(response => {
           data = response.data;
-          dispatch("close", {name:$address.name, phone: $address.phone, total:total,email:$address.email})
+          onclose({name:$address.name, phone: $address.phone, total:total,email:$address.email})
 
       
               })
@@ -59,7 +57,9 @@
           });
 
 	}
-    $: $address.city = `${selected.join()}`
+    $effect(()=>{
+        $address.city = selected.join()
+    }) 
 const t = ["אבו ג'ווייעד שבט",
     , "אבו גוש"
     , "אבו סנאן"
@@ -1354,7 +1354,7 @@ const t = ["אבו ג'ווייעד שבט",
         
         <MultiSelect maxSelect="1" bind:selected options={t} placeholder="עיר"/>
         <div class="relative z-0 mb-6 w-full group">
-            <textarea bind:value={$address.teur} cols="24" rows="6" type="text" name="floating_frs_name" id="floating_frs_name" class="block py-2.5 px-0 w-full text-lg sm:pr-2 md:text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-grey-700 dark:border-gray-600 dark:focus:border-pink-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
+            <textarea bind:value={$address.teur} cols="24" rows="6" type="text" name="floating_frs_name" id="floating_frs_name" class="block py-2.5 px-0 w-full text-lg sm:pr-2 md:text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-grey-700 dark:border-gray-600 dark:focus:border-pink-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required></textarea>
             <label for="floating_frs_name" class="peer-focus:font-medium absolute text-lg sm:pr-2 md:text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:right-0 peer-focus:text-blue-600 peer-focus:dark:text-pink-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">הערות</label>
         </div>
         <div class="relative z-0 mb-6 w-full group">
@@ -1367,7 +1367,7 @@ const t = ["אבו ג'ווייעד שבט",
 
 </div>
 		<div class="flex items-center justify-center align-middle pb-2 mb-2 nod w-full">
-            <button class=" py-2 px-6  text-2xl mt-4 rounded-full bg-pink-700 hover:bg-pink-400 text-pink-100 hover:text-pink-200" on:click={checkOut}>להזמין!</button>
+            <button class=" py-2 px-6  text-2xl mt-4 rounded-full bg-pink-700 hover:bg-pink-400 text-pink-100 hover:text-pink-200" onclick={checkOut}>להזמין!</button>
         </div>		
 	
 	<div class="current-address">
@@ -1378,7 +1378,7 @@ const t = ["אבו ג'ווייעד שבט",
 		<p>{$address.city}</p>
         <p>{$address.teur}</p>
         <div class="flex justify-end pb-2">
-            <button class=" py-2 px-6  text-2xl mt-4 rounded-full bg-pink-700 hover:bg-pink-400 text-pink-100 hover:text-pink-200" on:click={checkOut}>להזמין!</button>
+            <button class=" py-2 px-6  text-2xl mt-4 rounded-full bg-pink-700 hover:bg-pink-400 text-pink-100 hover:text-pink-200" onclick={checkOut}>להזמין!</button>
         </div>
 	</div>
 </div>

@@ -11,7 +11,7 @@
   
     <Drawer.Trigger/>
 
-    <button on:click={(()=>dialogOpen=true)} class="p-2 m-2 bg-pink-500 rounded-full hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+    <button onclick={()=>dialogOpen=true} class="p-2 m-2 bg-pink-500 rounded-full hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
       <HeartButton text="להזמנה" className="text-white" />
     </button>
     
@@ -21,11 +21,11 @@
 				class="z-50 fixed bottom-0 left-0 right-0 mt-24 flex h-[96%] flex-col rounded-t-[10px] bg-zinc-100"
 			>
 				<div class="flex-1 rounded-t-[10px] bg-white p-4" dir="rtl">
-					<div class="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
+					<div class="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300"></div>
 					<div class="mx-auto max-w-md text-center">
 						<Drawer.Title class="mb-4 font-medium ">כמה פרטים כדי שהסדנה תהיה  מושלמת</Drawer.Title>
 						{#if b == false}
-  <Chooser {checked} on:change={()=>b=true} fl="בגד" tr="חפץ" level="מה ברצונך לעצב"/>
+  <Chooser {checked} onchange={()=>b=true} fl="בגד" tr="חפץ" level="מה ברצונך לעצב"/>
     {:else if !checked}
     <level>{placeholder}</level>
     <MultiSelect bind:selected {options} {placeholder} allowUserOptions={"append"}
@@ -45,22 +45,20 @@
 </div>
 
 <script>
-  let dialogOpen = false
+  let dialogOpen = $state(false)
   import img from '$lib/img/imge.jpeg'
-    $: addn = `הוספת "${ugug}"`
-  $: ugug = ""
   	import { Drawer } from "vaul-svelte";
   let placeholder = "איזה בגד או בגדים לעצב לך?"
-  let selected = []
+  let selected = $state([])
   let options = ["חולצה","מכנסיים","קפוצ'ון","מעיל"]
       import MultiSelect from 'svelte-multiselect'
 
 	import Chooser from '$lib/comonents/chooser.svelte';
   import { onMount } from 'svelte';
 	import HeartButton from '$lib/ui/heartButton.svelte';
-  let a = false, b = false
+  let a = false, b = $state(false)
   let checked = false
-  let stars = [];
+  let stars = $state([]);
   const starCount = 500;
   const sparkle = 20;
 
@@ -77,6 +75,9 @@
     stars = stars
     console.log(stars)
   });
+  let ugug = $state("");
+  
+    let addn = $derived(`הוספת "${ugug}"`)
 </script>
 
 <style>

@@ -327,8 +327,8 @@
                     <stop offset="1" style="stop-color: rgba(255, 126, 216, 1)"/>
             </radialGradient>
             <linearGradient id="linearGradient16181-1" gradientUnits="userSpaceOnUse" x1="210.824" y1="710.67" x2="210.824" y2="816.436" gradientTransform="matrix(1, 0, 0, 0.96687, 0, 23.544183)" xlink:href="#linearGradient16181"/>
-            <style bx:fonts="EB Garamond">@import url(https://fonts.googleapis.com/css2?family=EB+Garamond%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700%3B1%2C800&amp;display=swap);</style>
-            <radialGradient gradientUnits="userSpaceOnUse" cx="39.34" cy="-9.444" r="39.34" id="linearGradient5786-2" xlink:href="#linearGradient5786"/>
+            <style bx:fonts="EB Garamond">/*$$__STYLE_CONTENT__$$*/</style>
+            <radialGradient gradientUnits="userSpaceOn@import url(https://fonts.googleapis.com/css2?family=EB+Garamond%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700%3B1%2C800&amp;display=swap);4" r="39.34" id="linearGradient5786-2" xlink:href="#linearGradient5786"/>
             <linearGradient gradientUnits="userSpaceOnUse" x1="39.348" y1="-28.459" x2="39.348" y2="8.538" id="gradient-72" gradientTransform="matrix(1, 0, 0, 0.492894, 0, -14.431728)">
                     <stop id="stop7092" style="stop-color: rgb(183, 224, 237);" offset="0"/>
                     <stop id="stop7094" style="stop-color:#ffeeaa" offset="0.345"/>

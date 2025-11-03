@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { circOut } from 'svelte/easing';
 	import data1 from '$lib/data/agil1.json';
 	import data3 from '$lib/data/item3.json';
@@ -8,47 +10,13 @@
 
 
 
-	export let data;
 	console.log(data);
-	let id = data.id;
+	let id = $state(data.id);
 	let relatedP = data.relatedP;
-	$: id = data.id;
-	let kind, url, des, price;
+	let kind = $state(), url = $state(), des = $state(), price = $state();
 
-let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
+let imga = $state(), imgb = $state(), imgc = $state(), imgd = $state(), imge = $state(), shem = $state(),is1vid = $state(), is4vid = $state()
 
-			$: if(data.loading == false){
-				console.log(data.pdata.data.attributes.img5.data)
-
-				imga = data.pdata?.data?.attributes.img1.data?.attributes.url;
-				imgb = data.pdata?.data?.attributes.img2.data?.attributes.url || imga;
-				imgc = data.pdata?.data?.attributes.img3.data?.attributes.url || imga;
-				imgd = data.pdata?.data?.attributes.img4.data?.attributes.url || imga;
-				imge = data.pdata?.data.attributes.img5.data || new Array(imga);
-				shem = data.pdata?.data.attributes.name;
-			  kind = data.pdata?.data.attributes.kind;
-			  url = data.pdata?.data.attributes.url;
-			  des = data.pdata?.data.attributes.des;
-			  price = data.pdata?.data.attributes.price;
-				is1vid  = data.pdata?.data.attributes.img1.data?.attributes.mime == 'video/mp4' ? true : false
-      	is4vid  = data.pdata?.data.attributes.img4.data?.attributes.mime == 'video/mp4' ? true : false
-			}
-			$: if(data.loading == false){
-        	$products.push({
-					name: data.pdata.data.attributes.name,
-					image: is1vid	? data.pdata.data.attributes.img1.data?.attributes.url	: data.pdata.data.attributes.img1.data?.attributes.formats.small.url,
-					id: data.pdata.data.id,
-					price: data.pdata.data.attributes.price,
-					quantity: 1
-				})
-        	prod = {
-					name: data.pdata.data.attributes.name,
-					image: is1vid ? data.pdata.data.attributes.img1.data?.attributes.url : data.pdata.data.attributes.img1.data?.attributes.formats.small.url,
-					id: data.pdata.data.id,
-					price: data.pdata.data.attributes.price,
-					quantity: 1
-        }
-      }
 	  import DesctoItem from '$lib/comonents/desctoItem.svelte';
 
 	import Mobile from '$lib/comonents/mobileItem.svelte';
@@ -57,14 +25,13 @@ let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
 	import { onMount } from 'svelte';
 
 	import { products, cart } from '$lib/stores/cart.js';
-	let prod = {};
-	$: mobiles = w < 600 ? true : false;
+	let prod = $state({});
 
 
 	import Buy from '$lib/svg/buy.svelte';
 	import { fly } from 'svelte/transition';
 	function addToCart(event) {
-		const product = event.detail.pr;
+		const product = event.pr;
 		for (let item of $cart) {
 			if (item.id === product) {
 				prod.quantity += 1;
@@ -77,13 +44,13 @@ let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
 		console.log($cart, prod);
 		open();
 	}
-	$: h = 0;
-	$: w = 0;
 	
 	import Carta from '$lib/comonents/carta.svelte';
 	import { DialogOverlay, DialogContent } from 'svelte-accessible-dialog';
 	import WhatsappButton from '$lib/comonents/whatsappButton.svelte';
-	let isOpen;
+	/** @type {{data: any}} */
+	let { data } = $props();
+	let isOpen = $state();
 	const open = () => {
 		isOpen = true;
 	};
@@ -125,6 +92,50 @@ let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
 		isOpen = false;
 		//get name from event timout to show goodby msg
 	};
+	run(() => {
+		id = data.id;
+	});
+			run(() => {
+		if(data.loading == false){
+					console.log(data.pdata.data.attributes.img5.data)
+
+					imga = data.pdata?.data?.attributes.img1.data?.attributes.url;
+					imgb = data.pdata?.data?.attributes.img2.data?.attributes.url || imga;
+					imgc = data.pdata?.data?.attributes.img3.data?.attributes.url || imga;
+					imgd = data.pdata?.data?.attributes.img4.data?.attributes.url || imga;
+					imge = data.pdata?.data.attributes.img5.data || new Array(imga);
+					shem = data.pdata?.data.attributes.name;
+				  kind = data.pdata?.data.attributes.kind;
+				  url = data.pdata?.data.attributes.url;
+				  des = data.pdata?.data.attributes.des;
+				  price = data.pdata?.data.attributes.price;
+					is1vid  = data.pdata?.data.attributes.img1.data?.attributes.mime == 'video/mp4' ? true : false
+	      	is4vid  = data.pdata?.data.attributes.img4.data?.attributes.mime == 'video/mp4' ? true : false
+				}
+	});
+			run(() => {
+		if(data.loading == false){
+	        	$products.push({
+						name: data.pdata.data.attributes.name,
+						image: is1vid	? data.pdata.data.attributes.img1.data?.attributes.url	: data.pdata.data.attributes.img1.data?.attributes.formats.small.url,
+						id: data.pdata.data.id,
+						price: data.pdata.data.attributes.price,
+						quantity: 1
+					})
+	        	prod = {
+						name: data.pdata.data.attributes.name,
+						image: is1vid ? data.pdata.data.attributes.img1.data?.attributes.url : data.pdata.data.attributes.img1.data?.attributes.formats.small.url,
+						id: data.pdata.data.id,
+						price: data.pdata.data.attributes.price,
+						quantity: 1
+	        }
+	      }
+	});
+	let w = $state(0);
+	
+	let mobiles = $derived(w < 600 ? true : false);
+	let h = $state(0);
+	
 </script>
 
 <DialogOverlay class="over" {isOpen} onDismiss={close}>
@@ -154,7 +165,7 @@ let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
 			{#key mobiles}
 			{#if mobiles == true}
 				<Mobile
-					on:addto={addToCart}
+					onaddto={addToCart}
 					shopsi={data.pdata}
 					{is4vid}
 					{is1vid}
@@ -174,7 +185,7 @@ let imga, imgb, imgc, imgd, imge, shem,is1vid, is4vid
 				/>
 			{:else if mobiles == false}
 				<DesctoItem
-					on:addto={addToCart}
+					onaddto={addToCart}
 					{shem}
 					{is4vid}
 					{is1vid}

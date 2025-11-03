@@ -12,8 +12,8 @@ let sma2 = "244.393 51.929 2164.344 1522.357";
 let md2 = "207.833 -335.61 2215.528 1909.896";
 let md = "matrix(1, 0, 0, 1.222275, 0, -344.178101)";
 let isHover = false;
-let vb = "207.833 -335.61 2215.528 1909.896";
-let metr = "matrix(1, 0, 0, 1.222275, 0, -344.178101)";
+let vb = $state("207.833 -335.61 2215.528 1909.896");
+let metr = $state("matrix(1, 0, 0, 1.222275, 0, -344.178101)");
 let myInterval = null;
 
 function start () {
@@ -39,8 +39,8 @@ start ()
   metr = md
 }
 }
-      let isOpen;
-    let before = false;
+      let isOpen = $state();
+    let before = $state(false);
   const open = () => {
     isOpen = true;
   };
@@ -49,7 +49,7 @@ start ()
     isOpen = false;
   };
 let data;
-let shgi = {st: false, msg: ""}
+let shgi = $state({st: false, msg: ""})
     const { form, errors, state, handleChange, handleSubmit } = createForm({
       initialValues: {
         name: "",
@@ -106,17 +106,17 @@ let shgi = {st: false, msg: ""}
 <DialogOverlay {isOpen} onDismiss={close}>
   <DialogContent aria-label="form" class="content">
       <div class="tofes" dir="rtl">
-    <button class="bg-barb hover:bg-sof text-sof hover:text-barb " on:click={close}>חזרה</button>
+    <button class="bg-barb hover:bg-sof text-sof hover:text-barb " onclick={close}>חזרה</button>
 <h1 class="bg-sof p-2 m-2 text-barb text-center">השארת פרטים לקניית רקמה</h1>
- <form class="flex flex-col" on:submit={handleSubmit} >
+ <form class="flex flex-col" onsubmit={handleSubmit} >
   
     <input
     placeholder="השמשלי"
       class="textbox g"
       id="name"
       name="name"
-      on:change={handleChange}
-      on:blur={handleChange}
+      onchange={handleChange}
+      onblur={handleChange}
       bind:value={$form.name}
     />
     {#if $errors.name}
@@ -128,8 +128,8 @@ let shgi = {st: false, msg: ""}
     class="textbox"
       id="phone"
       name="phone"
-      on:change={handleChange}
-      on:blur={handleChange}
+      onchange={handleChange}
+      onblur={handleChange}
       bind:value={$form.phone}
     />
     {#if $errors.phone}
@@ -141,8 +141,8 @@ let shgi = {st: false, msg: ""}
     class="textbox"
       id="email"
       name="email"
-      on:change={handleChange}
-      on:blur={handleChange}
+      onchange={handleChange}
+      onblur={handleChange}
       bind:value={$form.email}
     />
     {#if $errors.email}
@@ -158,7 +158,7 @@ let shgi = {st: false, msg: ""}
     />
 
     <br>
-    <button on:submit={handleSubmit} class="bt bg-barb text-bold text-cachol hover:text-sof p-4 rounded" type="submit">שליחת הטופס</button>
+    <button onsubmit={handleSubmit} class="bt bg-barb text-bold text-cachol hover:text-sof p-4 rounded" type="submit">שליחת הטופס</button>
   </form>
 {#if shgi.st == true}
 <p>{shgi.msg}</p>
@@ -175,7 +175,7 @@ let shgi = {st: false, msg: ""}
 <img class="ka" src="https://res.cloudinary.com/barb1/image/upload/v1642275970/barb_jbpyjl.gif" alt="קעקועים רקומים">
 <p class="text-center text-sm text-sof">לעצב את התפאורה שלך מחדש ולהתייפות בטאצ' של יופי</p>
 
-<button on:mouseenter={hover} on:mouseleave={hover} class=" bte " on:click={open}>   
+<button onmouseenter={hover} onmouseleave={hover} class=" bte " onclick={open}>   
 <svg version="1.1" id="Layer_1" class="im" x="0px" y="0px" viewBox={vb}  enable-background="new 212 25.714 2136 1548.5721" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
   <defs>
     <radialGradient gradientUnits="userSpaceOnUse" cx="779.35" cy="380.22" r="58.679" id="gradient-2">

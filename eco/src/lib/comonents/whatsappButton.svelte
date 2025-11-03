@@ -1,6 +1,6 @@
 <script>
-    export let text = ""
-    export let rotate = false
+    /** @type {{text?: string, rotate?: boolean}} */
+    let { text = "", rotate = false } = $props();
 </script>
 
 <a href="https://wa.me/+972585171519/?text=היי ברבי!, אשמח לקבוע איתך פגישה ליצירת תכשיט בעיצוב אישי ובמיוחד בקשר ל{text}" target="_blank" rel="noopener noreferrer" class='{rotate ? "animate-bounce" : "floating"} z-[9999]'>

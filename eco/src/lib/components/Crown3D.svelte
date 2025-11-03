@@ -1,7 +1,7 @@
 <script>
     import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
     import { T } from '@threlte/core'
-    import { useFrame } from '@threlte/core'
+    import { useTask } from '@threlte/core'
     import { GLTF } from '@threlte/extras'
     import { spring } from 'svelte/motion'
 
@@ -9,13 +9,13 @@
     const dracoLoader = new DRACOLoader()
     dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
 
-    let rotation = 0
-    let floatOffset = 0
+    let rotation = $state(0)
+    let floatOffset = $state(0)
     let isHovering = false
     let isPointerDown = false
     
     // Create spring animations for interactive effects
-    const scale = spring([8, 8, 8], {
+    const scale = spring([1, 1, 1], {
         stiffness: 0.1,
         damping: 0.4
     })
@@ -24,11 +24,13 @@
         damping: 0.4
     })
     
-    useFrame((state) => {
+    useTask((state) => {
         if (!isHovering && !isPointerDown) {
             // Normal idle animation
             rotation += 0.003
-            floatOffset = Math.sin(state.clock.elapsedTime * 0.8) * 0.1
+            // Safe access to elapsedTime with fallback
+            const elapsedTime = state?.clock?.elapsedTime || Date.now() * 0.001
+            floatOffset = Math.sin(elapsedTime * 0.8) * 0.1
         } else if (isPointerDown) {
             // Always rotate towards 0
             const fullRotations = Math.floor(rotation / (Math.PI * 2))
@@ -46,42 +48,42 @@
     // Handle interactions
     function handlePointerEnter() {
         isHovering = true
-        scale.set([9, 9, 9])
-        hover.set(0.5)
+        scale.set([1.2, 1.2, 1.2])
+        hover.set(0.1)
     }
 
     function handlePointerLeave() {
         isHovering = false
         isPointerDown = false
-        scale.set([8, 8, 8])
+        scale.set([1, 1, 1])
         hover.set(0)
     }
 
     function handlePointerDown() {
         isPointerDown = true
-        scale.set([8.5, 8.5, 8.5])
-        hover.set(1)
+        scale.set([1.1, 1.1, 1.1])
+        hover.set(0.15)
     }
 
     function handlePointerUp() {
         isPointerDown = false
         if (isHovering) {
-            scale.set([9, 9, 9])
-            hover.set(0.5)
+            scale.set([1.2, 1.2, 1.2])
+            hover.set(0.1)
         }
     }
 
     function handlePointerCancel() {
         isPointerDown = false
         isHovering = false
-        scale.set([8, 8, 8])
+        scale.set([1, 1, 1])
         hover.set(0)
     }
 </script>
 
 <T.PerspectiveCamera
-    position={[0, 0, 1.2]}
-    fov={65}
+    position={[0, 0, 3]}
+    fov={45}
 />
 
 <T.DirectionalLight position={[5, 5, 5]} intensity={2.5} />
@@ -96,7 +98,7 @@
     <GLTF 
         url="/כתר_זהב_עם_ע_1129224434_texture.glb"
         scale={$scale}
-        position={[0, -0.5, 0]}
+        position={[0, 0.2, 0]}
         castShadow
         receiveShadow
         interactive

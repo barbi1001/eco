@@ -35,8 +35,8 @@
    // import productNonVeg from '$lib/assets/product/non-veg.png'
    // import productVeg from '$lib/assets/product/veg.png'
 
-    export let product
-    export let iid
+   /** @type {{product: any, iid: any}} */
+   let { product, iid } = $props();
     let images = [
         'https://s3.ap-south-1.amazonaws.com/litekart.in/stores/6356502aca4ff28ed596cb1b/product/6045f9ae120e71405f1767d3/fancy-0235-888-fancymart-original-imafhez6qfja6jza-vjkatenzjzyw.jpeg',
         'https://s3.ap-south-1.amazonaws.com/litekart.in/stores/6356502aca4ff28ed596cb1b/product/6045f9ae120e71405f1767d3/ohdbaf-1287-decorebugs-original-imaem5qy9pus7vfk-beflo8mcngxe.jpeg',
@@ -73,8 +73,8 @@
 
     <div
         class="group relative col-span-1 block w-full overflow-hidden border bg-white sm:w-52 sm:flex-shrink-0 sm:rounded-md sm:border-transparent sm:hover:border-gray-200 sm:hover:shadow-lg"
-        on:mouseenter="{showitems}"
-        on:mouseleave="{hideitems}"
+        onmouseenter={showitems}
+        onmouseleave={hideitems}
     >
         <a
             href="/{product.attributes.categories.data[0]?.id ?? 1}/{product.id}"
@@ -123,7 +123,7 @@
             {:else if product.attributes.img1.data != null}
             <video
                 class="h-[100px] w-[210px] object-contain object-bottom text-xs"
-             autoplay loop muted src="{product.attributes.img1.data.attributes.url||''}"/>
+             autoplay loop muted src="{product.attributes.img1.data.attributes.url||''}"></video>
                 {:else}
                    <img
                 src="{'https://web-dev.imgix.net/image/j2RDdG43oidUy6AL6LovThjeX9c2/GMPpoERpp9aM5Rihk5F2.jpg'}"

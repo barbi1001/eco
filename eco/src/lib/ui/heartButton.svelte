@@ -1,6 +1,6 @@
 <script>
-  export let text = "";
-  export let className = "";
+  /** @type {{text?: string, className?: string}} */
+  let { text = "", className = "" } = $props();
 </script>
 
 <style>

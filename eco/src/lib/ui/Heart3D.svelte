@@ -2,9 +2,8 @@
     import { T } from '@threlte/core';
     import { Environment, GLTF } from '@threlte/extras';
 
-    export let scale = 1;
-    export let position = { x: 0, y: 0, z: 0 };
-    export let rotation = { x: 0, y: 0, z: 0 };
+    /** @type {{scale?: number, position?: any, rotation?: any}} */
+    let { scale = 1, position = { x: 0, y: 0, z: 0 }, rotation = { x: 0, y: 0, z: 0 } } = $props();
 </script>
 
 <T.Group {position} {rotation} {scale}>

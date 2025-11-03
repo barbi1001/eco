@@ -1,6 +1,7 @@
 <script>
 
-    export let number =0;
+    /** @type {{number?: number}} */
+    let { number = 0 } = $props();
 </script>
 
 <svg height="100%" width="100%" viewBox="26.059282 46.907266 441.80096 353.092734" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">

@@ -1,8 +1,9 @@
 <script>
-export let shopsi;
 import { goto } from "$app/navigation";
-$: i = 0
-let active = false
+    /** @type {{shopsi: any}} */
+    let { shopsi } = $props();
+let i = $derived(0)
+let active = $state(false)
 function next (i){
         console.log("click",i)
         if (i + 1 < shopsi.data.attributes.items.data.length){
@@ -4734,9 +4735,9 @@ function next (i){
     {#key i }
     <foreignObject x="700" y="600" width="500" height="480">
         {#if shopsi.data.attributes && shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.ext != ".mp4"}
-    <img  on:click={()=>go(i)}  src="{shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}" alt="click for this product"/>
+    <img  onclick={()=>go(i)}  src="{shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}" alt="click for this product"/>
     {:else}
-    <video  on:click={()=>go(i)}  autoplay loop muted src={shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}/>
+    <video  onclick={()=>go(i)}  autoplay loop muted src={shopsi.data.attributes.items.data[i].attributes.img1.data?.attributes.url || ""}></video>
         {/if}
 </foreignObject>
 {/key}
@@ -9218,7 +9219,7 @@ function next (i){
                     </g>
                     </g>
                 </g>
- <g on:click={()=>next(i)} transform="matrix(1 0 0 .81763 177.83 195.43)" style="">
+ <g onclick={()=>next(i)} transform="matrix(1 0 0 .81763 177.83 195.43)" style="">
     <g transform="matrix(.4687 0 0 .39906 1172.8 731.43)" style="">
 
     <title>הבא</title>
@@ -9273,7 +9274,7 @@ function next (i){
         </g>
         </g>
     </g>
-<g on:click={()=>back(i)} transform="matrix(.4686 0 0 .32637 635 793.4)" style="" bx:origin="3.121307 0.56782">
+<g onclick={()=>back(i)} transform="matrix(.4686 0 0 .32637 635 793.4)" style="" bx:origin="3.121307 0.56782">
     <title>המוצר הקודם</title>
     <g transform="translate(-451.77 -1.8212e-5)">
     <g transform="matrix(.54914 0 0 .77385 211.86 96.416)" stroke-linejoin="bevel" stroke-width="14.258px" style="">

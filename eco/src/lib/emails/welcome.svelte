@@ -1,9 +1,8 @@
 <script>
 	import { Button, Container, Head, Hr, Html, Img, Preview, Section, Text } from 'svelte-email';
 
-	export let name = 'John';
-	export let cart = []
-	export let total = 0
+	/** @type {{name?: string, cart?: any, total?: number}} */
+	let { name = 'John', cart = [], total = 0 } = $props();
 	const fontFamily =
 		'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
 

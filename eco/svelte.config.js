@@ -1,7 +1,7 @@
 import preprocess from 'svelte-preprocess';
 import adapterStatic from '@sveltejs/adapter-static';
 import adapterVercel from '@sveltejs/adapter-vercel';
-import { preprocessThrelte } from '@threlte/preprocess';
+// import { preprocessThrelte } from '@threlte/preprocess'; // Temporarily disabled for Svelte 5 compatibility
 import seqPreprocessor from 'svelte-sequential-preprocessor';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -13,7 +13,7 @@ const config = {
 		}
 	},
 
-	preprocess: seqPreprocessor([preprocess(), preprocessThrelte()])
+	preprocess: seqPreprocessor([preprocess()])
 };
 
 export default config;

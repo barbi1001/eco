@@ -98,12 +98,12 @@
   </div>
   
   <div>
-    <button onclick="location.href='https://wa.me/YOUR_PHONE_NUMBER'">שלחי הודעה בווצאפ</button>
+    <button onclick={location.href='https://wa.me/+97258151719'}>שלחי הודעה בווצאפ</button>
   </div>
   
   <div>
     <h2>השאירו פרטים ונחזור אליכם</h2>
-    <form on:submit|preventDefault={submitForm}>
+    <form onsubmit={submitForm}>
       <input
         type="text"
         placeholder="שם"

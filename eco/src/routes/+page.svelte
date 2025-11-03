@@ -5,7 +5,7 @@
   import { bounceOut } from 'svelte/easing'
   import { onMount } from "svelte";
   import datax from '$lib/data/fruntpage.json'
-   let shopsi = datax
+   let shopsi = $state(datax)
 
   onMount(async () =>{
     shopsi = datax
@@ -23,6 +23,7 @@
 import { goto } from "$app/navigation";
 import Desc from '$lib/comonents/desctopfront.svelte'
 import Mobi from '$lib/comonents/mobilefront.svelte'
+import ClientOnly from '$lib/components/ClientOnly.svelte'
 
 let doori = true
 	const carouselPhotos = [
@@ -63,8 +64,9 @@ function categoryback (){
 
 
 
-let w = 0
-$: h = 0
+let w = $state(0)
+let h = $state(0);
+  
 
 </script>
 
@@ -72,8 +74,9 @@ $: h = 0
 <div  class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
   {#if w > 650}
   <div in:fly|global="{{y: -h, duration: 5000, easing : bounceOut}}" out:fly|global="{{y: h, duration: 5000, easing : bounceOut}}" >
-
-        <Desc {shopsi}/>
+        <ClientOnly>
+          <Desc {shopsi}/>
+        </ClientOnly>
   </div>
  <!--
 <img  src={carouselPhotos[firstIndex]} alt="barbi" title="מזל טוב" />
@@ -81,7 +84,9 @@ $: h = 0
 <button on:click={()=> goto("./rikma")}  class="bg-red-400 bt rounded-full p-2 text-yellow-400 hover:scale-125 hover:bg-yellow-400 hover:text-red-400">להזמנת רקמה</button>
 -->
 {:else if w < 650 && w > 0}
-<Mobi {shopsi}/>
+<ClientOnly>
+  <Mobi {shopsi}/>
+</ClientOnly>
 {/if}
 </div>
 <style>

@@ -1,15 +1,6 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
         import SimilarProducts from '$lib/comonents/item/similarProducts.svelte'
-        export let w = 0
-        export let shopsi
-        export let is4vid = false
-        export let is1vid = false
 
-     export let imga
-     export let imgb
-     export let imgc
-     export let imgd
      let imge = find()
 
 function find () {
@@ -35,7 +26,6 @@ return imge
          }} , 1000)
         }
 }
-const dispatch = createEventDispatcher();
 import { Swiper, SwiperSlide } from "swiper/svelte";
 import "swiper/css/zoom";
 
@@ -55,12 +45,29 @@ import "$lib/style.css";
 
   // import required modules
   import {Zoom, EffectCube, Pagination, Mousewheel, Keyboard, Navigation} from "swiper";
-  export let low = false
 
-    export let shem, url, kind, des , id, price;
+  /** @type {{w?: number, shopsi: any, is4vid?: boolean, is1vid?: boolean, imga: any, imgb: any, imgc: any, imgd: any, low?: boolean, shem: any, url: any, kind: any, des: any, id: any, price: any}} */
+  let {
+    w = 0,
+    shopsi,
+    is4vid = false,
+    is1vid = false,
+    imga,
+    imgb,
+    imgc,
+    imgd,
+    low = false,
+    shem,
+    url,
+    kind,
+    des,
+    id,
+    price,
+    onaddto
+  } = $props();
 
 function addToCart (id){
-        dispatch("addto",{pr:id})
+        onaddto({pr:id})
 }
 </script>
    <style>
@@ -295,7 +302,7 @@ function addToCart (id){
                 <filter id="filter3276" style="color-interpolation-filters:sRGB" x="-0.038221992" y="-0.091908037" width="1.076444" height="1.1838161">
                         <feGaussianBlur id="feGaussianBlur3278" stdDeviation="1.1993656"/>
                 </filter>
-                <bx:grid x="-116.655416" y="-1546.455844" width="546.992666" height="384.113145"/>
+                <bx:grid x="-116.655416" y="-1546.455844" width="546.992666" height="384.113145"></bx:grid>
                 <radialGradient id="linearGradient16181-21" gradientUnits="userSpaceOnUse" cx="33.864" cy="49.49" r="15.466" gradientTransform="matrix(1, 0, 0, 0.808779716492, 0, 8.434726893843)" xlink:href="#linearGradient16181"/>
                 <radialGradient id="linearGradient16181-22" gradientUnits="userSpaceOnUse" cx="34.04" cy="31.185" r="23.552" xlink:href="#linearGradient16181"/>
                 <radialGradient id="linearGradient16181-23" gradientUnits="userSpaceOnUse" cx="33.808" cy="53.312" r="15.754" gradientTransform="matrix(1, 0, 0, 2.293444894281, 0, -72.577759152339)" xlink:href="#linearGradient16181"/>
@@ -467,7 +474,7 @@ function addToCart (id){
                 </linearGradient>
                 <linearGradient gradientUnits="userSpaceOnUse" x1="339.915" y1="503.86" x2="339.915" y2="566.716" id="gradient-19-1" xlink:href="#gradient-19"/>
                 <linearGradient gradientUnits="userSpaceOnUse" x1="428.905" y1="503.86" x2="428.905" y2="566.716" id="gradient-19-2" xlink:href="#gradient-19"/>
-                <bx:guide x="5163.696628" y="4723.630048" angle="90"/>
+                <bx:guide x="5163.696628" y="4723.630048" angle="90"></bx:guide>
                 <radialGradient gradientUnits="userSpaceOnUse" cx="407.803972" cy="1413.124425" r="15.546556" id="gradient-57">
                         <stop offset="0" style="stop-color: rgba(255, 255, 255, 1)"/>
                         <stop offset="1" style="stop-color: rgba(204, 204, 204, 1)"/>
@@ -545,9 +552,9 @@ function addToCart (id){
                         <stop offset="0" style="stop-color: rgba(158, 255, 255, 1)"/>
                         <stop offset="1" style="stop-color: rgb(205, 11, 130);"/>
                 </linearGradient>
-                <style bx:fonts="Almendra Display">@import url(https://fonts.googleapis.com/css2?family=Almendra+Display%3Aital%2Cwght%400%2C400&amp;display=swap);</style>
+                <style bx:fonts="Almendra Display">/*$$__STYLE_CONTENT__$$*/</style>
                 <radialGradient gradientUnits="userSpaceOnUse" cx="1174.062" cy="994.602" r="293.036" id="gradient-84">
-                        <stop offset="0" style="stop-color: rgba(125, 222, 231, 1)"/>
+                @import url(https://fonts.googleapis.com/css2?family=Almendra+Display%3Aital%2Cwght%400%2C400&amp;display=swap);style="stop-color: rgba(125, 222, 231, 1)"/>
                         <stop offset="1" style="stop-color: rgba(40, 200, 214, 1)"/>
                 </radialGradient>
                 <filter id="duotone-filter-0" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="duotone 1 rgb(189,11,145) rgb(252,187,13) 3.8">
@@ -838,7 +845,7 @@ mousewheel={true}
         {#if is1vid == false}
         <img alt="{`${shem} תמונת המוצר`}" src={imga} />
         {:else}
-        <video autoplay loop muted src={imga}/>
+        <video autoplay loop muted src={imga}></video>
         {/if}
 </div>
         </SwiperSlide
@@ -851,7 +858,7 @@ mousewheel={true}
         {#if is4vid == false}
         <img alt="{`${shem} תמונת המוצר`}" src={imgd} />
         {:else}
-        <video autoplay loop muted src={imgd}/>
+        <video autoplay loop muted src={imgd}></video>
         {/if}
 </div>
         </SwiperSlide
@@ -865,7 +872,7 @@ mousewheel={true}
         {#if im.attributes.mime != 'video/mp4'}
         <img alt="{`${shem} תמונת המוצר`}" src={im.attributes.url} />
         {:else}
-        <video autoplay loop  src={im.attributes.url}/>
+        <video autoplay loop  src={im.attributes.url}></video>
         {/if}
         </div>
 </SwiperSlide
@@ -1027,7 +1034,7 @@ mousewheel={true}
         <text style="fill: url(#gradient-2); font-family:Anafim; font-size: 12px; stroke: url(#linearGradient5786-27); stroke-width: 0.809447px; text-anchor: middle; white-space: pre;" transform="matrix(9.133942604065, 0, 0, 8.161825180054, 299.845184326172, 2994.501708984375)">{shem}</text>
         <text style="fill: url(#linearGradient16511-29); fill-rule: evenodd; font-family:Anafim, sans-serif; font-size: 81.0444px; paint-order: stroke markers; stroke: url(#linearGradient5786-3); stroke-width: 5.40286px; text-anchor: middle; white-space: pre;" transform="matrix(1.124027013779, 0, 0, 3.571475982666, 475.361968994141, -12538.5009765625)" x="-142.353" y="4522.53">:מידע נוסף</text>
         <text style="fill: url(#gradient-57);   font-family: UnifrakturMaguntia, cursive; font-size: 15.9px; stroke: url(#linearGradient5786-1); stroke-width: 0.511018px; text-anchor: middle; white-space: pre;" transform="matrix(9.729525566101, 0, 0, 17.666751861572, -3667.893798828125, -23837.650390625)" x="407.804" y="1418.59">{price}</text>
-        <g on:click={() => addToCart(id)} style="" transform="matrix(0.328532367945, 0, 0, 0.526096522808, -131.971130371094, -608.956970214844)">
+        <g onclick={() => addToCart(id)} style="" transform="matrix(0.328532367945, 0, 0, 0.526096522808, -131.971130371094, -608.956970214844)">
                 <g transform="matrix(1, 0, 0, 1, 34.379852, -4.911469)" style="">
                         <g id="_x23_ffffffff">
                                 <path d="M601.9289,316.9086c9.314-0.1439,18.6376,0.0383,27.9612,0.0096 c24.9877,0.8345,50.0137-0.0288,75.0014,0.8536c16.2972,0,32.5943,0.0192,48.9011,0.0288 c7.8177-0.211,15.6737,0.4796,23.4626-0.4604c17.1317,0.1439,34.2729-0.0767,51.395,0.3837 c24.2683-0.0384,48.642-0.4988,72.7376,2.9065c20.7672,2.6473,41.9851,7.9231,59.2415,20.297 c8.5563,6.091,15.7025,15.7408,15.0502,26.7143c-0.7002,10.0527-6.3021,19.1844-14.0526,25.4289 c-15.8943,13.4387-36.5751,18.8295-56.5077,23.0213c-2.5706,0.6427-5.1702,1.0935-7.7697,1.4197 c2.35,0.3357,4.7098,0.7385,7.0695,1.2085c6.3212,1.1127,12.6713,2.1392,18.9638,3.4725 c15.453,3.2805,31.1938,7.904,44.0283,17.4674c7.9807,5.9183,14.5513,14.6281,15.5969,24.7574 c0.8345,4.4892-0.1439,8.9975-0.6907,13.4675c-2.1678,8.2781-6.772,15.7696-12.8631,21.7552 c-11.2421,10.9734-25.3426,18.6376-39.9995,24.038c-14.3883,5.4484-29.4865,8.7961-44.7573,10.4171 c-5.8895-0.8728-11.9039-0.7673-17.7456,0.3166c-6.6377,1.4868-13.4866,0.6618-20.2011,1.41 c-4.3261,0.5851-9.4387-0.9784-13.055,2.0911c-11.2804,0.7578-22.5897,1.036-33.8797,1.6115 c-28.671,0.048-57.3613-0.2206-86.0132-0.1823c-6.801,0.307-13.5826-0.4124-20.3642-0.0191 c-3.3957,0.1055-6.7722-0.0288-10.139-0.2974c-15.127-0.9113-30.3306-0.2014-45.4861-0.6043 c-31.3186-0.7194-62.6564-0.3165-93.9749-0.5756c1.3909-7.9902,4.048-15.6832,5.9184-23.568 c10.4459-39.6254,20.9015-79.2413,31.3378-118.8666c0.1918-0.7482,0.4028-1.4677,0.633-2.1775 C588.6245,367.8336,595.2526,342.3662,601.9289,316.9086 M718.9921,400.3608c20.5657,0.2781,41.1409,0.1342,61.7163,0.2781 c9.9759,0.0768,19.9421-0.4412,29.851-1.5539l-0.8922-0.7577c1.8896,0.6234,3.8273-0.1439,5.717-0.4988 c5.6114-0.5947,10.9734-2.8297,15.7599-5.7553c5.0455-3.223,9.2085-8.7865,8.8057-15.031 c-0.048-4.6906-3.6163-8.374-7.4916-10.5034c-7.8848-4.4412-17.1124-5.0551-25.9085-6.0431 c-26.1963-1.4388-52.4501-0.681-78.6753-0.8345C724.7858,373.2052,721.9849,386.807,718.9921,400.3608 M709.6014,442.6432 c-2.2638,13.5826-6.1775,26.8774-8.2397,40.4695c-0.9401,1.6404-0.7963,3.6739-1.1511,5.4964 c21.0549,0.1151,42.1098,0.1247,63.1646,0.211c15.0214,0,30.1387,0.1822,45.0259-2.1967 c9.0263-1.3525,18.0909-3.8848,25.6974-9.1126c4.1439-2.8488,7.5012-7.1461,8.47-12.1533 c0.2877-2.916,0.3837-6.3309-1.7458-8.6043c-3.0311-5.3236-9.266-7.7025-14.7623-9.6593 c-15.3572-4.2302-31.4433-4.3357-47.2512-4.4892c-13.4387-0.1343-26.8678-0.0383-40.3065-0.1726 C728.8721,442.5377,719.2032,441.5304,709.6014,442.6432z" style="stroke-width: 20px; fill: url(#gradient-78); stroke: url(#gradient-73);"/>
