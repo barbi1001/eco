@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_jewelry_template_positions",
+  "info": {
+    "displayName": "Template Position",
+    "description": "Position markers on jewelry templates where components can be placed"
+  },
+  "options": {},
+  "attributes": {
+    "position_id": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "x_coordinate": {
+      "type": "decimal",
+      "required": true
+    },
+    "y_coordinate": {
+      "type": "decimal",
+      "required": true
+    },
+    "position_type": {
+      "type": "enumeration",
+      "enum": ["bead", "charm", "pendant", "chain"],
+      "required": true
+    },
+    "size_category": {
+      "type": "enumeration",
+      "enum": ["small", "medium", "large"],
+      "required": true
+    },
+    "is_required": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "beads": [
+    {
+      "name": "Pink Pearl Bead",
+      "component_type": "bead",
+      "color": "pink",
+      "material": "pearl",
+      "description": "Soft pink pearl bead, perfect for feminine designs",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"8\" fill=\"#FFB6C1\" stroke=\"#FF69B4\" stroke-width=\"1\" opacity=\"0.9\" />",
+      "price": 5.00,
+      "compatible_sizes": ["small", "medium"],
+      "is_active": true
+    },
+    {
+      "name": "Large Pink Pearl Bead",
+      "component_type": "bead",
+      "color": "pink",
+      "material": "pearl",
+      "description": "Larger pink pearl bead for emphasis points",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"12\" fill=\"#FFB6C1\" stroke=\"#FF69B4\" stroke-width=\"1.5\" opacity=\"0.9\" />",
+      "price": 8.00,
+      "compatible_sizes": ["medium", "large"],
+      "is_active": true
+    },
+    {
+      "name": "Rose Pink Bead",
+      "component_type": "bead",
+      "color": "rose",
+      "material": "glass",
+      "description": "Vibrant rose pink glass bead",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"8\" fill=\"#FF69B4\" stroke=\"#C71585\" stroke-width=\"1\" opacity=\"0.95\" />",
+      "price": 4.50,
+      "compatible_sizes": ["small", "medium"],
+      "is_active": true
+    },
+    {
+      "name": "Coral Pink Bead",
+      "component_type": "bead",
+      "color": "coral",
+      "material": "ceramic",
+      "description": "Warm coral pink ceramic bead",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"8\" fill=\"#FF7F7F\" stroke=\"#FF6B6B\" stroke-width=\"1\" opacity=\"0.9\" />",
+      "price": 4.00,
+      "compatible_sizes": ["small", "medium"],
+      "is_active": true
+    },
+    {
+      "name": "Magenta Bead",
+      "component_type": "bead",
+      "color": "magenta",
+      "material": "glass",
+      "description": "Bold magenta glass bead",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"8\" fill=\"#FF1493\" stroke=\"#C71585\" stroke-width=\"1\" opacity=\"0.95\" />",
+      "price": 5.50,
+      "compatible_sizes": ["small", "medium"],
+      "is_active": true
+    }
+  ],
+  "charms": [
+    {
+      "name": "Blue Center Knot",
+      "component_type": "charm",
+      "color": "blue",
+      "material": "enamel",
+      "description": "Decorative blue enamel center piece for the bow knot",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"20\" fill=\"#4A9FD8\" stroke=\"#3A7FB8\" stroke-width=\"2\" /><circle cx=\"0\" cy=\"0\" r=\"12\" fill=\"#87CEEB\" opacity=\"0.6\" />",
+      "price": 15.00,
+      "compatible_sizes": ["medium", "large"],
+      "is_active": true
+    },
+    {
+      "name": "Turquoise Center Knot",
+      "component_type": "charm",
+      "color": "turquoise",
+      "material": "enamel",
+      "description": "Vibrant turquoise center piece",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"20\" fill=\"#40E0D0\" stroke=\"#20B2AA\" stroke-width=\"2\" /><circle cx=\"0\" cy=\"0\" r=\"12\" fill=\"#7FFFD4\" opacity=\"0.6\" />",
+      "price": 15.00,
+      "compatible_sizes": ["medium", "large"],
+      "is_active": true
+    },
+    {
+      "name": "Pink Center Knot",
+      "component_type": "charm",
+      "color": "pink",
+      "material": "enamel",
+      "description": "Soft pink enamel center piece",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"20\" fill=\"#FF69B4\" stroke=\"#FF1493\" stroke-width=\"2\" /><circle cx=\"0\" cy=\"0\" r=\"12\" fill=\"#FFB6C1\" opacity=\"0.6\" />",
+      "price": 15.00,
+      "compatible_sizes": ["medium", "large"],
+      "is_active": true
+    }
+  ],
+  "pendants": [
+    {
+      "name": "Blue Teardrop Pendant",
+      "component_type": "pendant",
+      "color": "blue",
+      "material": "crystal",
+      "description": "Elegant blue crystal teardrop pendant",
+      "svg_element": "<ellipse cx=\"0\" cy=\"5\" rx=\"12\" ry=\"18\" fill=\"#4A9FD8\" stroke=\"#3A7FB8\" stroke-width=\"1.5\" opacity=\"0.9\" /><ellipse cx=\"0\" cy=\"3\" rx=\"6\" ry=\"9\" fill=\"#87CEEB\" opacity=\"0.5\" />",
+      "price": 20.00,
+      "compatible_sizes": ["large"],
+      "is_active": true
+    },
+    {
+      "name": "Turquoise Teardrop Pendant",
+      "component_type": "pendant",
+      "color": "turquoise",
+      "material": "crystal",
+      "description": "Stunning turquoise crystal teardrop",
+      "svg_element": "<ellipse cx=\"0\" cy=\"5\" rx=\"12\" ry=\"18\" fill=\"#40E0D0\" stroke=\"#20B2AA\" stroke-width=\"1.5\" opacity=\"0.9\" /><ellipse cx=\"0\" cy=\"3\" rx=\"6\" ry=\"9\" fill=\"#7FFFD4\" opacity=\"0.5\" />",
+      "price": 20.00,
+      "compatible_sizes": ["large"],
+      "is_active": true
+    },
+    {
+      "name": "Pink Heart Pendant",
+      "component_type": "pendant",
+      "color": "pink",
+      "material": "crystal",
+      "description": "Romantic pink crystal heart pendant",
+      "svg_element": "<path d=\"M 0,-8 C -6,-14 -14,-10 -14,-2 C -14,6 0,14 0,14 C 0,14 14,6 14,-2 C 14,-10 6,-14 0,-8 Z\" fill=\"#FF69B4\" stroke=\"#FF1493\" stroke-width=\"1.5\" opacity=\"0.9\" />",
+      "price": 22.00,
+      "compatible_sizes": ["large"],
+      "is_active": true
+    },
+    {
+      "name": "Blue Oval Pendant",
+      "component_type": "pendant",
+      "color": "blue",
+      "material": "glass",
+      "description": "Classic blue glass oval pendant",
+      "svg_element": "<ellipse cx=\"0\" cy=\"0\" rx=\"10\" ry=\"16\" fill=\"#4A9FD8\" stroke=\"#3A7FB8\" stroke-width=\"1.5\" opacity=\"0.9\" /><ellipse cx=\"-2\" cy=\"-3\" rx=\"4\" ry=\"6\" fill=\"#87CEEB\" opacity=\"0.6\" />",
+      "price": 18.00,
+      "compatible_sizes": ["large"],
+      "is_active": true
+    }
+  ]
+}

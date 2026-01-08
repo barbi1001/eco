@@ -1,0 +1,242 @@
+{
+  "name": "Bow Design 1",
+  "category": "necklace",
+  "description": "Elegant infinity bow necklace with customizable bead positions and pendant drops",
+  "svg_template": "<svg width=\"600\" height=\"400\" viewBox=\"0 0 600 400\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"chainGradient\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\"><stop offset=\"0%\" style=\"stop-color:#C0C0C0;stop-opacity:1\" /><stop offset=\"50%\" style=\"stop-color:#E8E8E8;stop-opacity:1\" /><stop offset=\"100%\" style=\"stop-color:#C0C0C0;stop-opacity:1\" /></linearGradient></defs><!-- Left loop of infinity bow --><ellipse cx=\"200\" cy=\"150\" rx=\"100\" ry=\"60\" fill=\"none\" stroke=\"#808080\" stroke-width=\"3\" /><!-- Right loop of infinity bow --><ellipse cx=\"400\" cy=\"150\" rx=\"100\" ry=\"60\" fill=\"none\" stroke=\"#808080\" stroke-width=\"3\" /><!-- Center knot --><circle cx=\"300\" cy=\"150\" r=\"20\" fill=\"#4A9FD8\" stroke=\"#3A7FB8\" stroke-width=\"2\" /><!-- Left drop chain --><path d=\"M 250 200 L 240 320\" stroke=\"#808080\" stroke-width=\"3\" fill=\"none\" /><!-- Right drop chain --><path d=\"M 350 200 L 360 320\" stroke=\"#808080\" stroke-width=\"3\" fill=\"none\" /><!-- Position markers (will be replaced with components) --><!--POSITION_left_loop_1--><!--POSITION_left_loop_2--><!--POSITION_left_loop_3--><!--POSITION_left_loop_4--><!--POSITION_left_loop_5--><!--POSITION_left_loop_6--><!--POSITION_left_loop_7--><!--POSITION_left_loop_8--><!--POSITION_right_loop_1--><!--POSITION_right_loop_2--><!--POSITION_right_loop_3--><!--POSITION_right_loop_4--><!--POSITION_right_loop_5--><!--POSITION_right_loop_6--><!--POSITION_right_loop_7--><!--POSITION_right_loop_8--><!--POSITION_center_knot--><!--POSITION_left_drop_1--><!--POSITION_left_drop_2--><!--POSITION_left_drop_3--><!--POSITION_left_drop_4--><!--POSITION_left_drop_5--><!--POSITION_left_drop_pendant--><!--POSITION_right_drop_1--><!--POSITION_right_drop_2--><!--POSITION_right_drop_3--><!--POSITION_right_drop_4--><!--POSITION_right_drop_5--><!--POSITION_right_drop_pendant--></svg>",
+  "base_price": 150.00,
+  "positions": [
+    {
+      "position_id": "left_loop_1",
+      "x_coordinate": 287,
+      "y_coordinate": 180,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_loop_2",
+      "x_coordinate": 229,
+      "y_coordinate": 207,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_loop_3",
+      "x_coordinate": 156,
+      "y_coordinate": 204,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_loop_4",
+      "x_coordinate": 107,
+      "y_coordinate": 172,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_loop_5",
+      "x_coordinate": 107,
+      "y_coordinate": 128,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_loop_6",
+      "x_coordinate": 156,
+      "y_coordinate": 96,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_loop_7",
+      "x_coordinate": 229,
+      "y_coordinate": 93,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_loop_8",
+      "x_coordinate": 287,
+      "y_coordinate": 120,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_loop_1",
+      "x_coordinate": 313,
+      "y_coordinate": 120,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_loop_2",
+      "x_coordinate": 370,
+      "y_coordinate": 93,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_loop_3",
+      "x_coordinate": 443,
+      "y_coordinate": 96,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_loop_4",
+      "x_coordinate": 493,
+      "y_coordinate": 128,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_loop_5",
+      "x_coordinate": 493,
+      "y_coordinate": 172,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_loop_6",
+      "x_coordinate": 443,
+      "y_coordinate": 204,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_loop_7",
+      "x_coordinate": 371,
+      "y_coordinate": 207,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_loop_8",
+      "x_coordinate": 313,
+      "y_coordinate": 180,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "center_knot",
+      "x_coordinate": 300,
+      "y_coordinate": 150,
+      "position_type": "charm",
+      "size_category": "medium",
+      "is_required": true
+    },
+    {
+      "position_id": "left_drop_1",
+      "x_coordinate": 248,
+      "y_coordinate": 220,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_drop_2",
+      "x_coordinate": 246,
+      "y_coordinate": 245,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_drop_3",
+      "x_coordinate": 244,
+      "y_coordinate": 270,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_drop_4",
+      "x_coordinate": 242,
+      "y_coordinate": 295,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_drop_5",
+      "x_coordinate": 240,
+      "y_coordinate": 310,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "left_drop_pendant",
+      "x_coordinate": 240,
+      "y_coordinate": 340,
+      "position_type": "pendant",
+      "size_category": "large",
+      "is_required": false
+    },
+    {
+      "position_id": "right_drop_1",
+      "x_coordinate": 352,
+      "y_coordinate": 220,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_drop_2",
+      "x_coordinate": 354,
+      "y_coordinate": 245,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_drop_3",
+      "x_coordinate": 356,
+      "y_coordinate": 270,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_drop_4",
+      "x_coordinate": 358,
+      "y_coordinate": 295,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_drop_5",
+      "x_coordinate": 360,
+      "y_coordinate": 310,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "right_drop_pendant",
+      "x_coordinate": 360,
+      "y_coordinate": 340,
+      "position_type": "pendant",
+      "size_category": "large",
+      "is_required": false
+    }
+  ],
+  "is_active": true
+}

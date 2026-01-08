@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "custom_jewelry_orders",
+  "info": {
+    "singularName": "custom-jewelry-order",
+    "pluralName": "custom-jewelry-orders",
+    "displayName": "Custom Jewelry Order",
+    "description": "Orders for custom-designed jewelry pieces"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customer_name": {
+      "type": "string",
+      "required": true
+    },
+    "customer_phone": {
+      "type": "string",
+      "required": true
+    },
+    "customer_message": {
+      "type": "text"
+    },
+    "design_preview": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "design_configuration": {
+      "type": "json",
+      "required": true
+    },
+    "total_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "order_status": {
+      "type": "enumeration",
+      "enum": ["pending", "confirmed", "in_production", "completed", "cancelled"],
+      "default": "pending"
+    },
+    "order_date": {
+      "type": "datetime"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "wrist_circumference": {
+      "type": "decimal",
+      "required": false
+    },
+    "custom_text": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

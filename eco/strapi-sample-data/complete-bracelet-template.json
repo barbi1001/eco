@@ -1,0 +1,191 @@
+{
+  "name": "צמיד עגול עם מרווח לתליון",
+  "category": "bracelet",
+  "description": "צמיד עגול עם מרווח ייעודי בתחתית לתליון המרכזי, כך שהחרוזים לא מוסתרים.",
+  "svg_template": "<svg width=\"500\" height=\"500\" viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"roundGradient\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" style=\"stop-color:#e9ecef;stop-opacity:1\" /><stop offset=\"100%\" style=\"stop-color:#ced4da;stop-opacity:1\" /></linearGradient><filter id=\"dropShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\"><feDropShadow dx=\"3\" dy=\"3\" stdDeviation=\"4\" flood-color=\"rgba(0,0,0,0.3)\"/></filter></defs><!-- Wire Path --><path d=\"M 280 80 A 175 175 0 1 1 220 80\" fill=\"none\" stroke=\"url(#roundGradient)\" stroke-width=\"4\" stroke-linecap=\"round\" filter=\"url(#dropShadow)\"/><!-- Clasps --><rect x=\"275\" y=\"70\" width=\"10\" height=\"20\" rx=\"2\" fill=\"#adb5bd\" transform=\"rotate(15 280 80)\" /><rect x=\"215\" y=\"70\" width=\"10\" height=\"20\" rx=\"2\" fill=\"#adb5bd\" transform=\"rotate(-15 220 80)\" /><text x=\"250\" y=\"250\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"bold\" fill=\"#495057\" style=\"opacity: 0.5;\">עיצוב אישי</text></svg>",
+  "base_price": 180.0,
+  "positions": [
+    {
+      "position_id": "clasp_right_charm",
+      "x_coordinate": 290,
+      "y_coordinate": 90,
+      "position_type": "charm",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_1",
+      "x_coordinate": 315,
+      "y_coordinate": 110,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_2",
+      "x_coordinate": 345,
+      "y_coordinate": 135,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_3",
+      "x_coordinate": 370,
+      "y_coordinate": 165,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_4",
+      "x_coordinate": 390,
+      "y_coordinate": 200,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_5",
+      "x_coordinate": 405,
+      "y_coordinate": 240,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_6",
+      "x_coordinate": 405,
+      "y_coordinate": 280,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_7",
+      "x_coordinate": 395,
+      "y_coordinate": 320,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_8",
+      "x_coordinate": 370,
+      "y_coordinate": 355,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_9",
+      "x_coordinate": 335,
+      "y_coordinate": 385,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_10",
+      "x_coordinate": 165,
+      "y_coordinate": 385,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_11",
+      "x_coordinate": 130,
+      "y_coordinate": 355,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_12",
+      "x_coordinate": 105,
+      "y_coordinate": 320,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_13",
+      "x_coordinate": 95,
+      "y_coordinate": 280,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_14",
+      "x_coordinate": 95,
+      "y_coordinate": 240,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_15",
+      "x_coordinate": 110,
+      "y_coordinate": 200,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_16",
+      "x_coordinate": 130,
+      "y_coordinate": 165,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_17",
+      "x_coordinate": 155,
+      "y_coordinate": 135,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_18",
+      "x_coordinate": 185,
+      "y_coordinate": 110,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "clasp_left_charm",
+      "x_coordinate": 210,
+      "y_coordinate": 90,
+      "position_type": "charm",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "pendant_center",
+      "x_coordinate": 250,
+      "y_coordinate": 415,
+      "position_type": "pendant",
+      "size_category": "large",
+      "is_required": false
+    }
+  ],
+  "is_active": true,
+  "is_bracelet": true,
+  "bracelet_metadata": {
+    "min_wrist_size": 12,
+    "max_wrist_size": 25,
+    "default_wrist_size": 17,
+    "clasp_space": 1.5,
+    "max_text_length": 20,
+    "supports_letter_beads": true,
+    "supported_languages": ["he", "en"],
+    "bead_positions_count": 18,
+    "charm_positions_count": 2,
+    "pendant_positions_count": 1
+  }
+}

@@ -1,5 +1,5 @@
 <script>
-	import { Button, Container, Head, Hr, Html, Img, Preview, Section, Text } from 'svelte-email';
+	import { Button, Container, Head, Hr, Html, Img, Preview, Section, Text } from 'svelty-email';
 
 	/** @type {{name?: string, cart?: any, total?: number}} */
 	let { name = 'John', cart = [], total = 0 } = $props();

@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jewelry_components",
+  "info": {
+    "singularName": "jewelry-component",
+    "pluralName": "jewelry-components",
+    "displayName": "Jewelry Component",
+    "description": "Individual components (beads, charms, pendants) for jewelry customization"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "component_type": {
+      "type": "enumeration",
+      "enum": ["bead", "charm", "pendant", "chain"],
+      "required": true
+    },
+    "color": {
+      "type": "string"
+    },
+    "material": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "svg_element": {
+      "type": "text",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "compatible_sizes": {
+      "type": "json",
+      "required": true
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "diameter": {
+      "type": "decimal",
+      "required": false,
+      "default": 0.5
+    },
+    "is_letter_bead": {
+      "type": "boolean",
+      "default": false
+    },
+    "letter_value": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

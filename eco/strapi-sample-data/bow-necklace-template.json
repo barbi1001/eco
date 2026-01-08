@@ -1,0 +1,74 @@
+{
+  "name": "Bow Necklace",
+  "category": "necklace",
+  "description": "Elegant bow necklace with customizable bead positions and charm attachment point",
+  "svg_template": "<svg width=\"400\" height=\"300\" viewBox=\"0 0 400 300\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"goldGradient\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" style=\"stop-color:#FFD700;stop-opacity:1\" /><stop offset=\"50%\" style=\"stop-color:#FFA500;stop-opacity:1\" /><stop offset=\"100%\" style=\"stop-color:#FF8C00;stop-opacity:1\" /></linearGradient></defs><!-- Chain path --><path d=\"M50 150 Q100 120, 150 130 Q200 140, 250 130 Q300 120, 350 150\" stroke=\"url(#goldGradient)\" stroke-width=\"3\" fill=\"none\" /><!-- Bow center --><ellipse cx=\"200\" cy=\"150\" rx=\"15\" ry=\"8\" fill=\"url(#goldGradient)\" /><!-- Bow left wing --><path d=\"M185 150 Q170 135, 160 150 Q170 165, 185 150\" fill=\"url(#goldGradient)\" /><!-- Bow right wing --><path d=\"M215 150 Q230 135, 240 150 Q230 165, 215 150\" fill=\"url(#goldGradient)\" /><!-- Position markers (will be replaced with components) --><!--POSITION_chain_1--><!--POSITION_chain_2--><!--POSITION_chain_3--><!--POSITION_chain_4--><!--POSITION_chain_5--><!--POSITION_bow_charm--><!--POSITION_side_charm_left--><!--POSITION_side_charm_right--></svg>",
+  "base_price": 120.00,
+  "positions": [
+    {
+      "position_id": "chain_1",
+      "x_coordinate": 100,
+      "y_coordinate": 125,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "chain_2",
+      "x_coordinate": 150,
+      "y_coordinate": 135,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "chain_3",
+      "x_coordinate": 200,
+      "y_coordinate": 120,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "chain_4",
+      "x_coordinate": 250,
+      "y_coordinate": 135,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "chain_5",
+      "x_coordinate": 300,
+      "y_coordinate": 125,
+      "position_type": "bead",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "bow_charm",
+      "x_coordinate": 200,
+      "y_coordinate": 180,
+      "position_type": "pendant",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "side_charm_left",
+      "x_coordinate": 160,
+      "y_coordinate": 170,
+      "position_type": "charm",
+      "size_category": "small",
+      "is_required": false
+    },
+    {
+      "position_id": "side_charm_right",
+      "x_coordinate": 240,
+      "y_coordinate": 170,
+      "position_type": "charm",
+      "size_category": "small",
+      "is_required": false
+    }
+  ],
+  "is_active": true
+}

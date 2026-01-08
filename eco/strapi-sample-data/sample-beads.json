@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Pearl Bead - White",
+    "component_type": "bead",
+    "color": "White",
+    "material": "Freshwater Pearl",
+    "description": "Classic white freshwater pearl bead with lustrous finish",
+    "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"4\" fill=\"#F8F8FF\" stroke=\"#E6E6FA\" stroke-width=\"0.5\" opacity=\"0.9\"><animate attributeName=\"opacity\" values=\"0.9;1;0.9\" dur=\"3s\" repeatCount=\"indefinite\"/></circle>",
+    "price": 15.00,
+    "compatible_sizes": ["small", "medium"],
+    "is_active": true
+  },
+  {
+    "name": "Pearl Bead - Cream",
+    "component_type": "bead",
+    "color": "Cream",
+    "material": "Freshwater Pearl",
+    "description": "Elegant cream-colored freshwater pearl bead",
+    "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"4\" fill=\"#FFF8DC\" stroke=\"#F5DEB3\" stroke-width=\"0.5\" opacity=\"0.9\"><animate attributeName=\"opacity\" values=\"0.9;1;0.9\" dur=\"3s\" repeatCount=\"indefinite\"/></circle>",
+    "price": 15.00,
+    "compatible_sizes": ["small", "medium"],
+    "is_active": true
+  },
+  {
+    "name": "Gold Bead - Round",
+    "component_type": "bead",
+    "color": "Gold",
+    "material": "14K Gold Filled",
+    "description": "Polished 14K gold filled round bead",
+    "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"3.5\" fill=\"url(#goldGradient)\"><defs><radialGradient id=\"goldGradient\" cx=\"30%\" cy=\"30%\"><stop offset=\"0%\" style=\"stop-color:#FFD700\"/><stop offset=\"100%\" style=\"stop-color:#B8860B\"/></radialGradient></defs></circle>",
+    "price": 25.00,
+    "compatible_sizes": ["small", "medium"],
+    "is_active": true
+  },
+  {
+    "name": "Rose Gold Bead - Round",
+    "component_type": "bead",
+    "color": "Rose Gold",
+    "material": "14K Rose Gold Filled",
+    "description": "Warm rose gold filled round bead",
+    "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"3.5\" fill=\"url(#roseGoldGradient)\"><defs><radialGradient id=\"roseGoldGradient\" cx=\"30%\" cy=\"30%\"><stop offset=\"0%\" style=\"stop-color:#E8B4B8\"/><stop offset=\"100%\" style=\"stop-color:#CD7F32\"/></radialGradient></defs></circle>",
+    "price": 25.00,
+    "compatible_sizes": ["small", "medium"],
+    "is_active": true
+  },
+  {
+    "name": "Crystal Bead - Clear",
+    "component_type": "bead",
+    "color": "Clear",
+    "material": "Swarovski Crystal",
+    "description": "Brilliant clear Swarovski crystal bead",
+    "svg_element": "<g><circle cx=\"0\" cy=\"0\" r=\"4\" fill=\"#F0F8FF\" stroke=\"#E0E6FF\" stroke-width=\"0.5\" opacity=\"0.8\"/><circle cx=\"-1\" cy=\"-1\" r=\"1\" fill=\"#FFFFFF\" opacity=\"0.6\"/><animate attributeName=\"opacity\" values=\"0.8;1;0.8\" dur=\"2s\" repeatCount=\"indefinite\"/></g>",
+    "price": 20.00,
+    "compatible_sizes": ["small", "medium"],
+    "is_active": true
+  },
+  {
+    "name": "Crystal Bead - Pink",
+    "component_type": "bead",
+    "color": "Pink",
+    "material": "Swarovski Crystal",
+    "description": "Sparkling pink Swarovski crystal bead",
+    "svg_element": "<g><circle cx=\"0\" cy=\"0\" r=\"4\" fill=\"#FFB6C1\" stroke=\"#FF69B4\" stroke-width=\"0.5\" opacity=\"0.8\"/><circle cx=\"-1\" cy=\"-1\" r=\"1\" fill=\"#FFFFFF\" opacity=\"0.6\"/><animate attributeName=\"opacity\" values=\"0.8;1;0.8\" dur=\"2s\" repeatCount=\"indefinite\"/></g>",
+    "price": 20.00,
+    "compatible_sizes": ["small", "medium"],
+    "is_active": true
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jewelry_templates",
+  "info": {
+    "singularName": "jewelry-template",
+    "pluralName": "jewelry-templates",
+    "displayName": "Jewelry Template",
+    "description": "Base templates for custom jewelry designs"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["necklace", "earrings", "bracelet", "ring"],
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "preview_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "svg_template": {
+      "type": "text",
+      "required": true
+    },
+    "base_price": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "positions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "jewelry.template-position"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "is_bracelet": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable bracelet-specific features like wrist sizing and text input"
+    }
+  }
+}

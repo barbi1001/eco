@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Teardrop Pendant - Gold",
+    "component_type": "pendant",
+    "color": "Gold",
+    "material": "14K Gold Filled",
+    "description": "Elegant teardrop pendant with polished finish",
+    "svg_element": "<path d=\"M0,-8 C-3,-8 -6,-5 -6,0 C-6,4 -3,8 0,8 C3,8 6,4 6,0 C6,-5 3,-8 0,-8 Z\" fill=\"url(#goldGradient)\" stroke=\"#B8860B\" stroke-width=\"0.5\"><defs><linearGradient id=\"goldGradient\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" style=\"stop-color:#FFD700\"/><stop offset=\"50%\" style=\"stop-color:#FFA500\"/><stop offset=\"100%\" style=\"stop-color:#FF8C00\"/></linearGradient></defs><animate attributeName=\"opacity\" values=\"0.9;1;0.9\" dur=\"4s\" repeatCount=\"indefinite\"/></path>",
+    "price": 65.00,
+    "compatible_sizes": ["medium", "large"],
+    "is_active": true
+  },
+  {
+    "name": "Diamond Pendant - White Gold",
+    "component_type": "pendant",
+    "color": "White Gold",
+    "material": "14K White Gold with CZ",
+    "description": "Classic diamond-shaped pendant with cubic zirconia center",
+    "svg_element": "<g><path d=\"M0,-6 L-4,-2 L-2,6 L2,6 L4,-2 Z\" fill=\"url(#whiteGoldGradient)\" stroke=\"#C0C0C0\" stroke-width=\"0.4\"/><circle cx=\"0\" cy=\"0\" r=\"2\" fill=\"#F0F8FF\" stroke=\"#E0E6FF\" stroke-width=\"0.3\" opacity=\"0.9\"/><circle cx=\"-0.5\" cy=\"-0.5\" r=\"0.5\" fill=\"#FFFFFF\" opacity=\"0.7\"/><defs><linearGradient id=\"whiteGoldGradient\"><stop offset=\"0%\" style=\"stop-color:#F5F5F5\"/><stop offset=\"100%\" style=\"stop-color:#DCDCDC\"/></linearGradient></defs><animate attributeName=\"opacity\" values=\"0.9;1;0.9\" dur=\"3s\" repeatCount=\"indefinite\"/></g>",
+    "price": 85.00,
+    "compatible_sizes": ["medium", "large"],
+    "is_active": true
+  },
+  {
+    "name": "Cross Pendant - Rose Gold",
+    "component_type": "pendant",
+    "color": "Rose Gold",
+    "material": "14K Rose Gold Filled",
+    "description": "Delicate cross pendant with smooth finish",
+    "svg_element": "<g fill=\"url(#roseGoldGradient)\" stroke=\"#CD7F32\" stroke-width=\"0.4\"><rect x=\"-1\" y=\"-6\" width=\"2\" height=\"12\" rx=\"1\"/><rect x=\"-4\" y=\"-1\" width=\"8\" height=\"2\" rx=\"1\"/><defs><linearGradient id=\"roseGoldGradient\"><stop offset=\"0%\" style=\"stop-color:#E8B4B8\"/><stop offset=\"50%\" style=\"stop-color:#DDA0DD\"/><stop offset=\"100%\" style=\"stop-color:#CD7F32\"/></linearGradient></defs></g>",
+    "price": 70.00,
+    "compatible_sizes": ["medium", "large"],
+    "is_active": true
+  },
+  {
+    "name": "Infinity Pendant - Silver",
+    "component_type": "pendant",
+    "color": "Silver",
+    "material": "Sterling Silver",
+    "description": "Modern infinity symbol pendant",
+    "svg_element": "<path d=\"M-6,0 C-6,-3 -3,-3 0,0 C3,3 6,3 6,0 C6,3 3,3 0,0 C-3,-3 -6,-3 -6,0 Z\" fill=\"none\" stroke=\"url(#silverGradient)\" stroke-width=\"1.5\" stroke-linecap=\"round\"><defs><linearGradient id=\"silverGradient\"><stop offset=\"0%\" style=\"stop-color:#E5E5E5\"/><stop offset=\"50%\" style=\"stop-color:#C0C0C0\"/><stop offset=\"100%\" style=\"stop-color:#A9A9A9\"/></linearGradient></defs></path>",
+    "price": 55.00,
+    "compatible_sizes": ["medium"],
+    "is_active": true
+  },
+  {
+    "name": "Hamsa Pendant - Gold",
+    "component_type": "pendant",
+    "color": "Gold",
+    "material": "14K Gold Filled with Turquoise",
+    "description": "Traditional Hamsa hand pendant with turquoise accent",
+    "svg_element": "<g><path d=\"M0,-7 C-1,-7 -2,-6 -2,-5 L-2,2 C-2,3 -3,4 -4,4 C-5,4 -6,3 -6,2 L-6,-2 C-6,-3 -5,-4 -4,-4 C-3,-4 -2,-3 -2,-2 L-2,-5 C-2,-6 -1,-7 0,-7 C1,-7 2,-6 2,-5 L2,-2 C2,-3 3,-4 4,-4 C5,-4 6,-3 6,-2 L6,2 C6,3 5,4 4,4 C3,4 2,3 2,2 L2,-5 C2,-6 1,-7 0,-7 Z M0,5 C-2,5 -4,3 -4,1 L4,1 C4,3 2,5 0,5 Z\" fill=\"url(#goldGradient)\" stroke=\"#B8860B\" stroke-width=\"0.3\"/><circle cx=\"0\" cy=\"-1\" r=\"1.5\" fill=\"#40E0D0\" stroke=\"#008B8B\" stroke-width=\"0.2\"/><circle cx=\"0\" cy=\"-1\" r=\"0.5\" fill=\"#000080\"/><defs><linearGradient id=\"goldGradient\"><stop offset=\"0%\" style=\"stop-color:#FFD700\"/><stop offset=\"100%\" style=\"stop-color:#FFA500\"/></linearGradient></defs></g>",
+    "price": 90.00,
+    "compatible_sizes": ["medium", "large"],
+    "is_active": true
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "name": "Classic Bead Bracelet",
+  "category": "bracelet",
+  "description": "A classic bracelet template for custom bead arrangements with text support",
+  "svg_template": "<svg viewBox=\"0 0 400 100\" xmlns=\"http://www.w3.org/2000/svg\"><defs><pattern id=\"braceletPattern\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><circle cx=\"10\" cy=\"10\" r=\"8\" fill=\"none\" stroke=\"#ddd\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/></pattern></defs><rect x=\"20\" y=\"30\" width=\"360\" height=\"40\" fill=\"url(#braceletPattern)\" stroke=\"#ccc\" stroke-width=\"1\" rx=\"20\"/><text x=\"200\" y=\"20\" text-anchor=\"middle\" font-size=\"12\" fill=\"#666\">Custom Bracelet Design</text></svg>",
+  "base_price": 120.0,
+  "positions": [
+    {
+      "position_id": "bead_1",
+      "x_coordinate": 30,
+      "y_coordinate": 50,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_2",
+      "x_coordinate": 50,
+      "y_coordinate": 50,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    },
+    {
+      "position_id": "bead_3",
+      "x_coordinate": 70,
+      "y_coordinate": 50,
+      "position_type": "bead",
+      "size_category": "medium",
+      "is_required": false
+    }
+  ],
+  "is_active": true,
+  "is_bracelet": true
+}

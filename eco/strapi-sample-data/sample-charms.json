@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Heart Charm - Gold",
+    "component_type": "charm",
+    "color": "Gold",
+    "material": "14K Gold Filled",
+    "description": "Delicate heart-shaped charm in gold",
+    "svg_element": "<path d=\"M0,-3 C-2,-5 -5,-3 -5,0 C-5,3 0,6 0,6 C0,6 5,3 5,0 C5,-3 2,-5 0,-3 Z\" fill=\"url(#goldGradient)\" stroke=\"#B8860B\" stroke-width=\"0.3\"><defs><linearGradient id=\"goldGradient\"><stop offset=\"0%\" style=\"stop-color:#FFD700\"/><stop offset=\"100%\" style=\"stop-color:#FFA500\"/></linearGradient></defs></path>",
+    "price": 35.00,
+    "compatible_sizes": ["small"],
+    "is_active": true
+  },
+  {
+    "name": "Star Charm - Silver",
+    "component_type": "charm",
+    "color": "Silver",
+    "material": "Sterling Silver",
+    "description": "Five-pointed star charm in sterling silver",
+    "svg_element": "<path d=\"M0,-4 L1.2,-1.2 L4,0 L1.2,1.2 L0,4 L-1.2,1.2 L-4,0 L-1.2,-1.2 Z\" fill=\"url(#silverGradient)\" stroke=\"#A9A9A9\" stroke-width=\"0.3\"><defs><linearGradient id=\"silverGradient\"><stop offset=\"0%\" style=\"stop-color:#E5E5E5\"/><stop offset=\"100%\" style=\"stop-color:#C0C0C0\"/></linearGradient></defs></path>",
+    "price": 30.00,
+    "compatible_sizes": ["small"],
+    "is_active": true
+  },
+  {
+    "name": "Flower Charm - Rose Gold",
+    "component_type": "charm",
+    "color": "Rose Gold",
+    "material": "14K Rose Gold Filled",
+    "description": "Delicate flower charm in rose gold",
+    "svg_element": "<g fill=\"url(#roseGoldGradient)\" stroke=\"#CD7F32\" stroke-width=\"0.2\"><circle cx=\"0\" cy=\"-2\" r=\"1.5\"/><circle cx=\"1.5\" cy=\"1\" r=\"1.5\"/><circle cx=\"-1.5\" cy=\"1\" r=\"1.5\"/><circle cx=\"0\" cy=\"0\" r=\"1\" fill=\"#FFE4E1\"/><defs><linearGradient id=\"roseGoldGradient\"><stop offset=\"0%\" style=\"stop-color:#E8B4B8\"/><stop offset=\"100%\" style=\"stop-color:#CD7F32\"/></linearGradient></defs></g>",
+    "price": 40.00,
+    "compatible_sizes": ["small"],
+    "is_active": true
+  },
+  {
+    "name": "Moon Charm - Gold",
+    "component_type": "charm",
+    "color": "Gold",
+    "material": "14K Gold Filled",
+    "description": "Crescent moon charm with textured surface",
+    "svg_element": "<path d=\"M2,-3 C0,-3 -2,-1 -2,1 C-2,3 0,5 2,5 C1,5 0,3 0,1 C0,-1 1,-3 2,-3 Z\" fill=\"url(#goldGradient)\" stroke=\"#B8860B\" stroke-width=\"0.3\"><defs><linearGradient id=\"goldGradient\"><stop offset=\"0%\" style=\"stop-color:#FFD700\"/><stop offset=\"100%\" style=\"stop-color:#FFA500\"/></linearGradient></defs></path>",
+    "price": 32.00,
+    "compatible_sizes": ["small"],
+    "is_active": true
+  },
+  {
+    "name": "Butterfly Charm - Multi-Color",
+    "component_type": "charm",
+    "color": "Multi-Color",
+    "material": "Enamel on Sterling Silver",
+    "description": "Colorful butterfly charm with enamel details",
+    "svg_element": "<g><path d=\"M-3,-2 Q-4,-3 -3,-4 Q-2,-3 -1,-2 Q0,-1 0,0 Q0,-1 1,-2 Q2,-3 3,-4 Q4,-3 3,-2 Q2,-1 1,0 Q2,1 3,2 Q4,3 3,4 Q2,3 1,2 Q0,1 0,0 Q0,1 -1,2 Q-2,3 -3,4 Q-4,3 -3,2 Q-2,1 -1,0 Q-2,-1 -3,-2 Z\" fill=\"url(#butterflyGradient)\" stroke=\"#4B0082\" stroke-width=\"0.2\"/><line x1=\"0\" y1=\"-4\" x2=\"0\" y2=\"4\" stroke=\"#2F4F4F\" stroke-width=\"0.5\"/><defs><linearGradient id=\"butterflyGradient\"><stop offset=\"0%\" style=\"stop-color:#FF69B4\"/><stop offset=\"50%\" style=\"stop-color:#9370DB\"/><stop offset=\"100%\" style=\"stop-color:#00CED1\"/></linearGradient></defs></g>",
+    "price": 45.00,
+    "compatible_sizes": ["small"],
+    "is_active": true
+  }
+]
