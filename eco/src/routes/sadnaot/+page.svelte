@@ -104,7 +104,7 @@
 
 	<div
 		data-vaul-drawer-wrapper
-		class="h-screen overflow-auto w-screen bg-pinki
+		class="h-screen overflow-y-auto overflow-x-hidden w-full bg-pinki
     flex flex-col justify-start items-center"
 	>
 		<Drawer.Root bind:open={dialogOpen} shouldScaleBackground>
@@ -131,25 +131,25 @@
 						class="bg-pink-50 p-5 rounded-lg shadow-lg border-2 border-pink-200 flex flex-row-reverse gap-2 justify-center text-indigo-600 cool-hover font-bold"
 					>
 						<div class="heart-number ml-2"><span>1</span></div>
-						 קובעות תאריך למפגש יצירה ועיצוב
+						קובעות תאריך למפגש יצירה ועיצוב
 					</li>
 					<li
 						class="bg-pink-50 p-5 rounded-lg shadow-lg border-2 border-pink-200 flex flex-row-reverse gap-2 justify-center text-indigo-600 cool-hover font-bold"
 					>
 						<div class="heart-number ml-2"><span>2</span></div>
-						 מגיעות עם תכשיט לתיקון או רעיון לתכשיט חדש
+						מגיעות עם תכשיט לתיקון או רעיון לתכשיט חדש
 					</li>
 					<li
 						class="bg-pink-50 p-5 rounded-lg shadow-lg border-2 border-pink-200 flex flex-row-reverse gap-2 justify-center text-indigo-600 cool-hover font-bold"
 					>
 						<div class="heart-number ml-2"><span>3</span></div>
-						 מעצבות ביחד את התכשיט המושלם עבורך
+						מעצבות ביחד את התכשיט המושלם עבורך
 					</li>
 					<li
 						class="bg-pink-50 p-5 rounded-lg shadow-lg border-2 border-pink-200 flex flex-row-reverse gap-2 justify-center text-indigo-600 cool-hover font-bold"
 					>
 						<div class="heart-number ml-2"><span>4</span></div>
-						 מקבלות תכשיט שעוצב במיוחד בשבילך
+						מקבלות תכשיט שעוצב במיוחד בשבילך
 					</li>
 				</ul>
 			</div>
@@ -171,6 +171,20 @@
 				</button>
 				<WhatsappButton text="מפגש עיצוב תכשיטים" rotate={true} />
 			</div>
+
+			<a
+				href="https://youtu.be/kdTmSGom5mc?si=SPHN54giFnpz8P8M"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="w-full max-w-full flex justify-center cursor-pointer overflow-ס-hidden box-border"
+			>
+				<img
+					src="/lehair.jpeg"
+					alt="תמונה"
+					class="w-full max-w-full h-auto object-cover ךע:w-auto md:max-h-[60vh] md:object-contain mb-10"
+				/>
+			</a>
+
 			<Drawer.Portal>
 				<Drawer.Overlay class="fixed inset-0 bg-black/40" />
 				<Drawer.Content
