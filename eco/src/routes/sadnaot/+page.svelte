@@ -185,100 +185,128 @@
 				/>
 			</a>
 
-			<Drawer.Portal>
-				<Drawer.Overlay class="fixed inset-0 bg-black/40" />
-				<Drawer.Content
-					class="z-50 fixed bottom-0 left-0 right-0 mt-24 flex h-[96%] flex-col rounded-t-[10px] bg-zinc-100 border-t-2 border-pink-700"
+			<div class="w-full flex flex-col items-center gap-6 mb-12 sm:px-4">
+				{#each ['photo_1_2026-02-24_21-33-11.jpg', 'photo_2_2026-02-24_21-33-11.jpg', 'photo_3_2026-02-24_21-33-11.jpg', 'photo_4_2026-02-24_21-33-11.jpg', 'photo_5_2026-02-24_21-33-11.jpg', 'photo_6_2026-02-24_21-33-11.jpg', 'photo_7_2026-02-24_21-33-11.jpg', 'photo_8_2026-02-24_21-33-11.jpg'] as img}
+					<div
+						class="w-full max-w-4xl flex justify-center items-center bg-white/50 sm:rounded-3xl shadow-lg border-y border-pink-200 sm:border"
+					>
+						<img src="/{img}" alt="מידע נוסף" class="w-full h-auto object-contain sm:rounded-3xl" />
+					</div>
+				{/each}
+			</div>
+
+			<div class="flex flex-col items-center justify-center mb-24 w-full px-4">
+				<h3
+					class="text-3xl font-[MakabiYG] mb-6 text-center bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text sparkly-uv pearl-effect"
 				>
-					<div class="flex-1 rounded-t-[10px] bg-pinki p-4 z-[51]" dir="rtl">
-						<div class="mx-auto h-1.5 starshine">
-							{#each stars as star (star.top + star.left)}
-								<div
-									class=" shine {star.size}"
-									style="top: {star.top}%; left: {star.left}%; animation-delay: {star.delay}s;"
-								></div>
-							{/each}
-							<div class="mx-auto max-w-md text-center">
-								<Drawer.Title
-									class="mb-4 text-2xl font-[MakabiYG] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text sparkly-uv"
-									>כמה פרטים כדי שהמפגש יהיה מושלם</Drawer.Title
-								>
-								{#if b == false}
-									<div class="">
-										<h2
-											class="text-lg font-medium bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#d462cb] text-transparent bg-clip-text mb-4 sparkly-uv pearl-effect"
-										>
-											השאירי פרטים ואני אחזור אלייך בהקדם!
-										</h2>
-										<form class="flex flex-col space-y-4" onsubmit={preventDefault(submitForm)}>
-											<input
-												class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
-												type="text"
-												placeholder="שם מלא"
-												bind:value={name}
-												required
-												dir="rtl"
-											/>
-											<input
-												class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
-												type="tel"
-												placeholder="טלפון נייד"
-												bind:value={phone}
-												required
-												dir="rtl"
-												pattern="[0-9]*"
-												inputmode="numeric"
-											/>
-											<textarea
-												class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10 min-h-[100px] resize-y"
-												placeholder="הודעה (אופציונלי)"
-												bind:value={message}
-												dir="rtl"
-											></textarea>
-											<button
-												class="z-[1000] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-gray-900 font-medium rounded-lg text-base px-6 py-3 text-center
-                                  hover:to-pink-600 hover:from-pink-600 hover:via-[#FCF6BA] transition-all duration-300 hover:opacity-70 focus:ring-4 focus:ring-[#BF953F] focus:ring-opacity-50 transform hover:-translate-y-0.5 disabled:opacity-50 flex items-center justify-center gap-2 relative overflow-hidden"
-												type="submit"
-												disabled={!name || !phone || isLoading}
-											>
-												{#if isSuccess}
-													<div
-														class="success-container"
-														in:fly={{ y: 20, duration: 400, easing: backOut }}
-														out:fade
-													>
-														<Check class="check-icon" size={24} />
-														<span class="inline-block">נשלח בהצלחה!</span>
-													</div>
-												{:else}
-													<Send class="send-icon {isLoading ? 'send-loading' : ''}" size={20} />
-													{#if isLoading}
-														<span class="inline-block">שולח...</span>
-													{:else}
-														<span class="inline-block">לשליחת פרטים</span>
-													{/if}
-												{/if}
-											</button>
-										</form>
-									</div>
-								{:else}
-									תכף
-								{/if}
-								{#if isSuccess}
-									<button
-										onclick={() => goto('/')}
-										class="z-[1000] mt-4 bg-transparent text-white font-bold rounded-lg text-lg px-6 py-3 transition-all duration-300 hover:opacity-90 focus:outline-none focus:ring-4
-         focus:ring-[#22c55e] focus:ring-opacity-50 transform hover:-translate-y-0.5"
+					מוכנה ליצור את התכשיט שלך?
+				</h3>
+				<button
+					onclick={() => (dialogOpen = true)}
+					class="z-[10] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-gray-900 font-bold rounded-full text-2xl px-10 py-4 text-center hover:to-pink-600 hover:from-pink-600 hover:via-[#FCF6BA] transition-all duration-300 hover:opacity-90 shadow-xl transform hover:-translate-y-1 mb-6 font-[MakabiYG]"
+				>
+					לתיאום פגישה
+				</button>
+				<!-- Adjusting with -ml-[30px] because the WhatsappButton component has a built-in margin-left: 30px !-->
+				<div class="flex flex-col items-center justify-center pb-2 mt-2 w-full -ml-[30px]">
+					<WhatsappButton text="אני מעוניינת לתאם מפגש עיצוב תכשיטים" rotate={false} />
+				</div>
+
+				<Drawer.Portal>
+					<Drawer.Overlay class="fixed inset-0 bg-black/40" />
+					<Drawer.Content
+						class="z-50 fixed bottom-0 left-0 right-0 mt-24 flex h-[96%] flex-col rounded-t-[10px] bg-zinc-100 border-t-2 border-pink-700"
+					>
+						<div class="flex-1 rounded-t-[10px] bg-pinki p-4 z-[51]" dir="rtl">
+							<div class="mx-auto h-1.5 starshine">
+								{#each stars as star (star.top + star.left)}
+									<div
+										class=" shine {star.size}"
+										style="top: {star.top}%; left: {star.left}%; animation-delay: {star.delay}s;"
+									></div>
+								{/each}
+								<div class="mx-auto max-w-md text-center">
+									<Drawer.Title
+										class="mb-4 text-2xl font-[MakabiYG] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text sparkly-uv"
+										>כמה פרטים כדי שהמפגש יהיה מושלם</Drawer.Title
 									>
-										<HeartButton text="לדף הבית" className="text-white" />
-									</button>
-								{/if}
+									{#if b == false}
+										<div class="">
+											<h2
+												class="text-lg font-medium bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#d462cb] text-transparent bg-clip-text mb-4 sparkly-uv pearl-effect"
+											>
+												השאירי פרטים ואני אחזור אלייך בהקדם!
+											</h2>
+											<form class="flex flex-col space-y-4" onsubmit={preventDefault(submitForm)}>
+												<input
+													class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+													type="text"
+													placeholder="שם מלא"
+													bind:value={name}
+													required
+													dir="rtl"
+												/>
+												<input
+													class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+													type="tel"
+													placeholder="טלפון נייד"
+													bind:value={phone}
+													required
+													dir="rtl"
+													pattern="[0-9]*"
+													inputmode="numeric"
+												/>
+												<textarea
+													class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10 min-h-[100px] resize-y"
+													placeholder="הודעה (אופציונלי)"
+													bind:value={message}
+													dir="rtl"
+												></textarea>
+												<button
+													class="z-[1000] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-gray-900 font-medium rounded-lg text-base px-6 py-3 text-center
+                                  hover:to-pink-600 hover:from-pink-600 hover:via-[#FCF6BA] transition-all duration-300 hover:opacity-70 focus:ring-4 focus:ring-[#BF953F] focus:ring-opacity-50 transform hover:-translate-y-0.5 disabled:opacity-50 flex items-center justify-center gap-2 relative overflow-hidden"
+													type="submit"
+													disabled={!name || !phone || isLoading}
+												>
+													{#if isSuccess}
+														<div
+															class="success-container"
+															in:fly={{ y: 20, duration: 400, easing: backOut }}
+															out:fade
+														>
+															<Check class="check-icon" size={24} />
+															<span class="inline-block">נשלח בהצלחה!</span>
+														</div>
+													{:else}
+														<Send class="send-icon {isLoading ? 'send-loading' : ''}" size={20} />
+														{#if isLoading}
+															<span class="inline-block">שולח...</span>
+														{:else}
+															<span class="inline-block">לשליחת פרטים</span>
+														{/if}
+													{/if}
+												</button>
+											</form>
+										</div>
+									{:else}
+										תכף
+									{/if}
+									{#if isSuccess}
+										<button
+											onclick={() => goto('/')}
+											class="z-[1000] mt-4 bg-transparent text-white font-bold rounded-lg text-lg px-6 py-3 transition-all duration-300 hover:opacity-90 focus:outline-none focus:ring-4
+         focus:ring-[#22c55e] focus:ring-opacity-50 transform hover:-translate-y-0.5"
+										>
+											<HeartButton text="לדף הבית" className="text-white" />
+										</button>
+									{/if}
+								</div>
 							</div>
 						</div>
-					</div>
-				</Drawer.Content>
-			</Drawer.Portal>
-		</Drawer.Root>
+					</Drawer.Content>
+				</Drawer.Portal>
+			</div></Drawer.Root
+		>
 	</div>
 </div>
 
