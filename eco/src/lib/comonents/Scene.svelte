@@ -1,10 +1,8 @@
 <script>
     //https://res.cloudinary.com/barb1/image/upload/v1676238523/%D7%A4%D7%AA%D7%A6%D7%95%D7%92%D7%94%D7%9C%D7%95%D7%A4%D7%A4%D7%99%D7%95%D7%9F_kkymez.glb
 	import {  Color } from 'three'
-	import {  useTask } from '@threlte/core'
-
-
-	import {  T } from '@threlte/core'
+	import {  useTask, T } from '@threlte/core'
+	import { OrbitControls } from '@threlte/extras'
 	import { Environment, GLTF } from '@threlte/extras'
 	//const { gltf } = useGltfAnimations<'Take 001'>(({ actions }) => {
 	//	actions['Take 001']?.play()
@@ -98,8 +96,8 @@ function sub (){
 <Environment path="/hdr/" files="shanghai_riverside_1k.hdr" />
 -->
 
-<T.PerspectiveCamera position={{ x:0, y:0 , z:20}} fov={24}>
-	<T.OrbitControls  enableDamping />
+<T.PerspectiveCamera makeDefault position={{ x:0, y:0 , z:20}} fov={24}>
+	<OrbitControls enableDamping />
 </T.PerspectiveCamera>
 
 <T.AmbientLight  color={new Color( 0x2DFF34)}  intensity={0.61} />

@@ -13,9 +13,16 @@ let instruction = $state(false);
 
 	let firstIndex = 0
 let i = $state(0)
+
+const staticItems = [
+        { id: null, attributes: { name: 'סדנאות' }, path: '/sadnaot' },
+        { id: null, attributes: { name: 'צרי עיצוב משלך' }, path: '/customjewelry' }
+]
+const allItems = $derived([...staticItems, ...shopsi.data])
+
 function categorynext (){
         console.log("click",i)
-        if (i + 1 < shopsi.data.length){
+        if (i + 1 < allItems.length){
                 i += 1
         } else{
                 i = 0
@@ -24,7 +31,7 @@ function categorynext (){
 function categoryback (){
         console.log("click",i)
         if (i == 0){
-            i = shopsi.data.length - 1              
+            i = allItems.length - 1              
         } else{
             i -= 1
         }
@@ -34,11 +41,14 @@ function categoryback (){
   let papistati = "matrix(0.37516528368, 0, 0, 0.360194295645, 653.193664550781, 639.331970214844)"
   let papistati2 = "matrix(0.375165373087, 0, 0, 0.360194295645, 877.636596679688, 639.331970214844)"
 let clicked = $state(false)
- function toclick (){
-       clicked = true
-        goto(`./${shopsi.data[i].id}`)
-         clicked = true
-
+function toclick (){
+        clicked = true
+        const item = allItems[i]
+        if (item.path) {
+                goto(item.path)
+        } else {
+                goto(`./${item.id}`)
+        }
 }
 
 onMount(() => {
@@ -4948,7 +4958,7 @@ function x() {
     {/if}
     <g onclick={toclick}>
     <g  style="display: inline;" id="g4186" transform="matrix(10.157043457031, 0, 0, 8.221660614014, 994.88818359375, 583.012268066406)">
-            <title>לחיצה למעבר לקטגוריה {shopsi.data[i].name}</title>
+            <title>לחיצה למעבר לקטגוריה {allItems[i].attributes.name}</title>
             <g onclick={toclick}  style="display: inline;" id="g4191-0" transform="matrix(1.766469955444, 0, 0, 1.204821228981, -63.790687561035, -10.727913856506)">
                     <g transform="matrix(1.032629, 0, 0, 1.00591, -1.110744, -0.644688)" style="display: inline;" id="g3364-2-8">
                             <rect style="fill-opacity: 0.72549; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 0.47; stroke-width: 0.868084px; fill: url(#linearGradient16181-43); stroke: url(#gradient-18);" id="rect3366-6-4" width="30.933" height="10.761" x="18.398" y="44.11"/>
@@ -4961,7 +4971,7 @@ function x() {
             </g>
     </g>
 </g>
-    <text onclick={toclick}  style="fill: url(#linearGradient5786-73); font-family: Arial, sans-serif; font-size: 48.0576px; line-height: 96.5991px; stroke: rgb(3, 3, 3); stroke-opacity: 0.62; stroke-width: 2.3635px; text-anchor: middle; white-space: pre;" transform="matrix(1.269295692444, 0, 0, 1.269310355186, 937.637084960938, 962.698120117188)">{shopsi.data[i].attributes.name}</text>
+    <text onclick={toclick}  style="fill: url(#linearGradient5786-73); font-family: Arial, sans-serif; font-size: 48.0576px; line-height: 96.5991px; stroke: rgb(3, 3, 3); stroke-opacity: 0.62; stroke-width: 2.3635px; text-anchor: middle; white-space: pre;" transform="matrix(1.269295692444, 0, 0, 1.269310355186, 937.637084960938, 962.698120117188)">{allItems[i].attributes.name}</text>
 
     {#if doori == true}
 

@@ -57,9 +57,16 @@ function papiclic(){
 
 	let firstIndex = 0
 let i = $state(0)
+
+const staticItems = [
+        { id: null, attributes: { name: 'סדנאות' }, path: '/sadnaot' },
+        { id: null, attributes: { name: 'צרי עיצוב משלך' }, path: '/customjewelry' }
+]
+const allItems = $derived([...staticItems, ...shopsi.data])
+
 function categorynext (){
         console.log("click",i)
-        if (i + 1 < shopsi.data.length){
+        if (i + 1 < allItems.length){
                 i += 1
         } else{
                 i = 0
@@ -68,7 +75,7 @@ function categorynext (){
 function categoryback (){
         console.log("click",i)
         if (i == 0){
-            i = shopsi.data.length - 1
+            i = allItems.length - 1
         } else{
             i -= 1
         }
@@ -76,7 +83,12 @@ function categoryback (){
 let clicked =$state(false);
 function tocate(){
   clicked = true
-  goto(`./${shopsi.data[i].id}`)
+  const item = allItems[i]
+  if (item.path) {
+    goto(item.path)
+  } else {
+    goto(`./${item.id}`)
+  }
 }
 
 import { elasticInOut } from "svelte/easing";
@@ -5616,7 +5628,7 @@ let c = $state();
   <g transform="matrix(1.0326 0 0 1.0815 -.98326 -1.5584)" stroke-linejoin="round">
   <rect  onclick={tocate} x="12.05" y="47.223" width="44.104" height="9.7376" rx="4.034" ry="4.034" fill="url(#mobitt)" stroke="url(#mobisi)" stroke-width=".86808px"/>
   <path d="m41.949 15.146c-1.6505-2.17e-4 -2.9885 1.2452-2.9883 2.7813 0.001201 1.14 0.74977 2.1638 1.8887 2.5832l-6.9863 13.283-6.7051-13.243c1.0833-0.44335 1.7833-1.44 1.7852-2.5414 2.38e-4 -1.5362-1.3378-2.7816-2.9883-2.7813-1.6505-2.17e-4 -2.9885 1.2452-2.9883 2.7813 8.23e-4 1.4326 1.1709 2.6303 2.7031 2.7668l-1.5605 14.245-8.2559-5.5172c0.39527-0.4828 0.60997-1.0727 0.61133-1.6797 2.38e-4 -1.5362-1.3378-2.7816-2.9883-2.7813-1.6505-2.17e-4 -2.9885 1.2452-2.9883 2.7813-2.38e-4 1.5362 1.3378 2.7816 2.9883 2.7813 0.30435-0.00148 0.60666-0.046231 0.89648-0.1327l4.377 14.528 30.492-0.081803 4.5371-14.425c0.26783 0.072594 0.54526 0.10992 0.82422 0.11089 1.6505 2.17e-4 2.9885-1.2452 2.9883-2.7813 2.38e-4 -1.5362-1.3378-2.7816-2.9883-2.7813-1.6505-2.17e-4 -2.9885 1.2452-2.9883 2.7813 7.83e-4 0.64009 0.23878 1.2603 0.67383 1.7561l-8.2305 5.2773-1.7266-14.176c1.4883-0.17875 2.6033-1.3573 2.6055-2.7541 2.38e-4 -1.5362-1.3378-2.7816-2.9883-2.7813z" fill="url(#mobitr)" stroke="url(#mobiggj)" stroke-width=".86808px" style="paint-order:stroke markers"/>
-  <text  onclick={tocate} transform="matrix(.11002 0 0 .2336 34.087 55.299)" fill="url(#mobisx)" fill-rule="evenodd" font-family='"Felix Titling"' font-size="28.696px" stroke="url(#mobiggl)" stroke-miterlimit="38" stroke-width="2.5753px" text-anchor="middle" style="line-height:51.2121px;paint-order:stroke;white-space:pre">{shopsi.data[i].attributes.name}</text>
+  <text  onclick={tocate} transform="matrix(.11002 0 0 .2336 34.087 55.299)" fill="url(#mobisx)" fill-rule="evenodd" font-family='"Felix Titling"' font-size="28.696px" stroke="url(#mobiggl)" stroke-miterlimit="38" stroke-width="2.5753px" text-anchor="middle" style="line-height:51.2121px;paint-order:stroke;white-space:pre">{allItems[i].attributes.name}</text>
   </g>
   <g transform="matrix(1.0326 0 0 .87791 -.6443 3.1769)">
   <rect transform="scale(1 -1)" x="13.283" y="-51.688" width="40.982" height="2.456" fill="url(#mobitk)" stroke="url(#mobirr)" stroke-miterlimit="35" stroke-width=".54439px" style="paint-order:fill"/>

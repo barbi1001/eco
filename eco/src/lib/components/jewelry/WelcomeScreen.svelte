@@ -16,7 +16,7 @@
 <div class="welcome-screen" in:fade={{ duration: 600 }}>
   <div class="welcome-content" in:fly={{ y: 30, duration: 800, delay: 200, easing: quintOut }}>
     <div class="welcome-icon">💎</div>
-    <h1 class="welcome-title">ברוכה הבאה למעצבת התכשיטים</h1>
+    <h1 class="welcome-title">ברוכה הבאה למעצבת התכשיטים שלך</h1>
     <p class="welcome-subtitle">
       צרי תכשיט ייחודי ומותאם אישית בקלות ובמהירות
     </p>
