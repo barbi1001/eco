@@ -1,7 +1,8 @@
 
 
 <script>
-          import { fly } from 'svelte/transition'
+  import { Head } from 'svead';
+  import { fly } from 'svelte/transition'
   import { bounceOut } from 'svelte/easing'
   import { onMount } from "svelte";
   import datax from '$lib/data/fruntpage.json'
@@ -70,6 +71,24 @@ let h = $state(0);
 
 </script>
 
+
+<Head
+	title="BarB | עיצוב אישי ואומנות בטבריה – סדנאות תכשיטים וצפון ישראל"
+	description="ברבי עיצובים – סטודיו לעיצוב אישי ואומנות בטבריה, צפון ישראל. סדנאות עיצוב תכשיטים בהתאמה אישית עם נוף מרהיב לכינרת. גלי את עולם האומנות והיצירה."
+	canonical="https://barbracha.vercel.app/"
+	openGraph={{
+		title: 'BarB | עיצוב אישי ואומנות בטבריה – סדנאות תכשיטים צפון ישראל',
+		description: 'סטודיו לעיצוב אישי ואומנות בטבריה. סדנאות יצירת תכשיטים בעבודת יד עם נוף לכינרת. הצטרפי לחוויה יצירתית ייחודית בצפון ישראל.',
+		url: 'https://barbracha.vercel.app/',
+		siteName: 'BarB עיצוב אישי ואומנותי',
+		image: {
+			url: 'https://res.cloudinary.com/barb1/image/upload/v1672529650/%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%A1%D7%9A_20221108_142006_tmkrfo.png',
+			width: 1080,
+			height: 1080,
+			alt: 'ברבי עיצובים – עיצוב אישי ואומנות בטבריה, צפון ישראל'
+		}
+	}}
+/>
 
 <div  class="r" bind:clientWidth="{w}" bind:clientHeight="{h}">
   {#if w > 650}
