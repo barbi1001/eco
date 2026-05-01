@@ -13,7 +13,7 @@
   }
 </script>
 
-<div class="welcome-screen" in:fade={{ duration: 600 }}>
+<div dir="rtl" class="welcome-screen" in:fade={{ duration: 600 }}>
   <div class="welcome-content" in:fly={{ y: 30, duration: 800, delay: 200, easing: quintOut }}>
     <div class="welcome-icon">💎</div>
     <h1 class="welcome-title">ברוכה הבאה למעצבת התכשיטים שלך</h1>

@@ -728,10 +728,12 @@
 		text-align: center;
 		margin-top: 1rem;
 		padding: 0.75rem;
-		background: linear-gradient(to right, rgba(191, 149, 63, 0.1), rgba(252, 246, 186, 0.1));
+		background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
 		border-radius: 0.5rem;
-		color: #6b7280;
+		color: #181f61;
 		font-size: 0.95rem;
+		font-weight: 600;
+		text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
 	}
 
 	/* Responsive design */

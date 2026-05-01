@@ -129,7 +129,7 @@
     </div>
     
     <!-- Design Summary Panel -->
-    <div class="summary-panel">
+    <div dir="rtl" class="summary-panel">
       <div class="summary-content">
         <h3>סיכום עיצוב</h3>
         

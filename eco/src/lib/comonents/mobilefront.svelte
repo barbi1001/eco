@@ -3,7 +3,7 @@
     import {  fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
     import { onMount } from 'svelte';
-    let papi = true
+    let papi = $state(true)
    onMount(()=>{
     if(door == false){
     setTimeout(open,30000)
@@ -43,12 +43,11 @@
 
     }
 function papiclic(){
- /* if(papi == true){
+  if(papi == true){
     open()
   }else{
     tocate()
-  }*/
-  console.log("clicak")
+  }
 }
   
     let door = $state(false)
@@ -137,8 +136,9 @@ let c = $state();
         transform-origin: center;
       }
       .ani{
-     /*   animation: merachef 8s  infinite;
-        transform-origin: center;*/
+        position: absolute;
+        height: 350px;
+        width: 100%;
       }
       .tviatetzba{
         animation: tronFilter 12s infinite;
@@ -317,12 +317,13 @@ let c = $state();
 </Canvas> size={}
 {#if papi != true}{/if}
 -->
-<div transition:fly|global={{duration: 1750,y:-c}} bind:clientHeight={c} class="ani"  style="width:100%; position:absolute; top:40%; left:0%; z-index:100;">
-
-<Canvas  >
-  <Scene on:clicked={()=>papiclic()}/>
-</Canvas>
+{#if papi}
+<div class="ani" style="width:100%; position:absolute; top:30%; left:0%; z-index:100;" role="button" tabindex="0" onclick={()=>papiclic()} onkeydown={()=>{}}>
+  <Canvas>
+    <Scene />
+  </Canvas>
 </div>
+{/if}
 
 <svg id="svgg" height="100vh" width="100vw" viewBox="99.812 -445.72 1693.7 2845.7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
 <defs>
