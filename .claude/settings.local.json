@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://strapi-7iq2.onrender.com/api/categories?populate=items\")",
+      "Bash(curl -s \"https://strapi-7iq2.onrender.com/api/items?populate=*\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(f'id={i[\\\\\"id\\\\\"]} cat={[c[\\\\\"id\\\\\"] for c in i[\\\\\"attributes\\\\\"].get\\(\\\\\"categories\\\\\",{}\\).get\\(\\\\\"data\\\\\",[]\\)]} name={i[\\\\\"attributes\\\\\"][\\\\\"name\\\\\"]}'\\) for i in d['data']]\")",
+      "Bash(curl -s \"https://strapi-7iq2.onrender.com/api/items\")",
+      "Bash(npm install *)",
+      "Bash(git cherry-pick *)",
+      "Bash(git push *)"
+    ]
+  }
+}
