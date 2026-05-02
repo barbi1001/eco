@@ -31,7 +31,8 @@
 		"svelte-sequential-preprocessor": "^0.0.7",
 		"tailwindcss": "^3.0.7",
 		"three": "^0.180.0",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"vite-plugin-pwa": "^1.2.0"
 	},
 	"type": "module",
 	"dependencies": {
@@ -48,7 +49,7 @@
 		"svelte-gestures": "^1.4.1",
 		"svelte-multiselect": "^11.2.4",
 		"svelte-scrolling": "^1.4.0",
-   	    "svelty-email": "^0.1.1",
+		"svelty-email": "^0.1.1",
 		"swiper": "^8.0.6",
 		"vaul-svelte": "0.3.2",
 		"vite": "^6.3.5",
