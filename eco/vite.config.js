@@ -49,8 +49,29 @@ const config = {
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp,woff,woff2,ttf}'],
+        // precache only small assets; large JS/SVG chunks handled by runtime caching
+        globPatterns: ['**/*.{css,html,ico,png,jpg,jpeg,webp,woff,woff2,ttf}'],
+        globIgnores: ['**/*.svg', '**/*.glb'],
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3 MB safety net
         runtimeCaching: [
+          {
+            // large JS chunks (Three.js nodes) – NetworkFirst so updates land quickly
+            urlPattern: ({ request }) => request.destination === 'script',
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'js-chunks',
+              expiration: { maxEntries: 40, maxAgeSeconds: 7 * 24 * 60 * 60 }
+            }
+          },
+          {
+            // SVG and 3D model assets
+            urlPattern: /\.(?:svg|glb)$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'large-assets',
+              expiration: { maxEntries: 20, maxAgeSeconds: 30 * 24 * 60 * 60 }
+            }
+          },
           {
             urlPattern: /^https:\/\/res\.cloudinary\.com\/.*/i,
             handler: 'CacheFirst',
