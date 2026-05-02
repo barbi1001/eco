@@ -49,10 +49,9 @@ const config = {
         ]
       },
       workbox: {
-        // precache only small assets; large JS/SVG chunks handled by runtime caching
-        globPatterns: ['**/*.{css,html,ico,png,jpg,jpeg,webp,woff,woff2,ttf}'],
-        globIgnores: ['**/*.svg', '**/*.glb'],
-        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3 MB safety net
+        // precache only fonts and core shell; all images/assets via runtime caching
+        globPatterns: ['**/*.{css,html,ico,woff,woff2,ttf}'],
+        globIgnores: ['**/*.svg', '**/*.glb', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.webp'],
         runtimeCaching: [
           {
             // large JS chunks (Three.js nodes) – NetworkFirst so updates land quickly
@@ -64,8 +63,8 @@ const config = {
             }
           },
           {
-            // SVG and 3D model assets
-            urlPattern: /\.(?:svg|glb)$/i,
+            // local images (png, jpg, webp, svg, glb)
+            urlPattern: /\.(?:png|jpg|jpeg|webp|svg|glb)$/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'large-assets',
