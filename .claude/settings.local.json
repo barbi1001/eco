@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\Users\\\\babay\\\\Documents\\\\GitHub\\\\eco\\\\src\\\\routes\")",
+      "Bash(gh pr create --title 'SEO בעברית – טבריה, צפון ישראל, סדנאות עיצוב אישי ואומנות' --body ' *)"
+    ]
+  }
+}

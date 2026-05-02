@@ -1,6 +1,8 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import { Canvas } from '@threlte/core';
+  import Crown3D from '$lib/components/Crown3D.svelte';
 
   interface Props {
     onStart?: () => void;
@@ -15,7 +17,11 @@
 
 <div dir="rtl" class="welcome-screen" in:fade={{ duration: 600 }}>
   <div class="welcome-content" in:fly={{ y: 30, duration: 800, delay: 200, easing: quintOut }}>
-    <div class="welcome-icon">💎</div>
+    <div class="crown-container">
+      <Canvas>
+        <Crown3D />
+      </Canvas>
+    </div>
     <h1 class="welcome-title">ברוכה הבאה למעצבת התכשיטים שלך</h1>
     <p class="welcome-subtitle">
       צרי תכשיט ייחודי ומותאם אישית בקלות ובמהירות
@@ -56,12 +62,19 @@
     max-width: 600px;
   }
   
-  .welcome-icon {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
+  .crown-container {
+    position: relative;
+    height: 20rem;
+    margin-bottom: -3rem;
     animation: float 3s ease-in-out infinite;
   }
-  
+
+  .crown-container :global(canvas) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+  }
+
   @keyframes float {
     0%, 100% {
       transform: translateY(0);
