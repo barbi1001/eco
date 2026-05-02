@@ -27,8 +27,19 @@
 	let svgContainer = $state<SVGSVGElement>();
 	let hoveredPosition = $state<string | null>(null);
 	let selectedPosition = $state<string | null>(null);
-	let canvasWidth = 800;
-	let canvasHeight = 600;
+
+	// Derive canvas dimensions from the template's own SVG viewBox so the
+	// position markers always align with the rendered template graphic.
+	let canvasWidth = $derived.by(() => {
+		const svg = activeTemplate.svgTemplate || '';
+		const m = svg.match(/viewBox=["']\s*[\d.]+\s+[\d.]+\s+([\d.]+)\s+([\d.]+)/);
+		return m ? parseFloat(m[1]) : 500;
+	});
+	let canvasHeight = $derived.by(() => {
+		const svg = activeTemplate.svgTemplate || '';
+		const m = svg.match(/viewBox=["']\s*[\d.]+\s+[\d.]+\s+[\d.]+\s+([\d.]+)/);
+		return m ? parseFloat(m[1]) : 500;
+	});
 
 	// Active template state (allows local modification for adding beads)
 	let activeTemplate = $state<JewelryTemplate>(template);
