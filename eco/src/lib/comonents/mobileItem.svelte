@@ -76,7 +76,7 @@
 
 <svg
 	id="svg2"
-	viewBox="-320.053862 -3104.000117 1263.302407 8471.580883"
+	viewBox="-320.053862 -3104.000117 1263.302407 7571.580883"
 	version="1.1"
 	width="100vw"
 	preserveAspectRatio="none"
@@ -2792,6 +2792,7 @@
 			</g>
 		</g>
 	</g>
+
 	<foreignObject
 		x="-240"
 		y="-1650"
@@ -2874,21 +2875,17 @@
 		transform="matrix(3.00520825386, 0, 0, 3.126010417938, -1059.554077148437, -384.874084472656)"
 		style=""
 	>
-		<g
+		<!----<g
 			transform="matrix(16.637781143188, 0, 0, 18.446662902832, 252.694412231445, 684.391540527344)"
 			style=""
 		>
 			<g style="" transform="matrix(1, 0, 0, 1.681684970856, 0, -8.354349136353)">
 				<path
-					d="M 0 1.718429 L 24 1.718429 L 24 12.255439 L 0 12.255439 L 0 1.718429 Z"
-					style="fill: url(#linearGradient5786-9-5-22); stroke-width: 0.372077px; stroke: url(#linearGradient16181-1);"
-				/>
-				<path
 					d="M 2 3.427476 L 7 5.634465 L 12 1.220485 L 17 5.634465 L 22 3.427476 L 22 12.255439 L 2 12.255439 L 2 3.427476 Z"
 					style="fill: url(#linearGradient5786-9-5-23); stroke-miterlimit: 49; stroke-width: 0.550889px; stroke: url(#linearGradient5786-7);"
 				/>
 			</g>
-		</g>
+		</g>-->
 		<g
 			transform="matrix(1.89198589325, 0, 0, 2.257056951523, 308.152496337891, 1085.0732421875)"
 			style=""
@@ -2921,11 +2918,11 @@
 			</g>
 			<g
 				id="g-3"
-				transform="matrix(0.405203610659, 0, 0, 0.538073003292, -72.06616973877, -222.698669433594)"
+				transform="matrix(0.405203610659, 0, 0, 0.538073003292, -72.06616973877, -322.698669433594)"
 				style=""
 			>
 				<g
-					transform="matrix(0.434044450521, 0, 0, 0.187112092972, -69.273986816406, 305.341552734375)"
+					transform="matrix(0.434044450521, 0, 0, 0.187112092972, -69.273986816406, 805.341552734375)"
 					style=""
 				>
 					<path
@@ -3036,7 +3033,7 @@
 					style=""
 				>
 					<g
-						transform="matrix(-0.008079366758, 0.779021918774, -0.905837833881, -0.005016242154, 801.211791992188, -179.010803222656)"
+						transform="matrix(-0.008079366758, 0.779021918774, -0.905837833881, -0.005016242154, 801.211791992188, -500)"
 						style=""
 					>
 						<path
@@ -3224,7 +3221,7 @@
 	>
 	<g
 		id="g-1"
-		transform="matrix(3.721632480621, 0, 0, 3.9768846035, -556.130249023437, 1417.448608398438)"
+		transform="matrix(3.721632480621, 0, 0, 3.9768846035, -556.130249023437, 517.448608398438)"
 		style=""
 	>
 		<path
@@ -3320,7 +3317,7 @@
 				d="m582.86 487.36a66.429 100.72 0 1 1 -7.19 -45.55l-59.24 45.55z"
 				transform="matrix(.15269 -.39155 .44331 .40429 -148.85 151.98)"
 			/>
-			<g id="g12014" transform="translate(-89.904 -28.284)">
+			<!----<g id="g12014" transform="translate(-89.904 -28.284)">
 				<path
 					id="path11644"
 					style="stroke: url(#gradient-26); fill: none; stroke-width: 4.75904px;"
@@ -3470,7 +3467,7 @@
 						transform="matrix(.65712 0 0 .40524 -44.943 95.143)"
 					/>
 				</g>
-			</g>
+			</g>-->
 			<path
 				id="path11020"
 				style="filter: url(#filter11242); fill: rgb(255, 255, 255); stroke-width: 7.83814px;"
@@ -3487,7 +3484,7 @@
 	</g>
 	<text
 		style="fill: url(#linearGradient10151-0); font-family: &quot;Old English Text MT&quot;; font-size: 33.1089px; stroke: url(#linearGradient7090-0); stroke-width: 0.209601px; text-anchor: middle; white-space: pre;"
-		transform="matrix(7.966637134552, 0, 0, 9.476630210876, 299.845184326172, 2548.64453125)"
+		transform="matrix(7.966637134552, 0, 0, 9.476630210876, 299.845184326172, 1648.64453125)"
 		bx:origin="34.787 1">₪</text
 	>
 	<text
@@ -4760,7 +4757,14 @@
 			/>
 		</g>
 	</g>
-	<foreignObject x="-50" y="60" width="708" height="380" style="overflow: visible;">
+	<foreignObject
+		transform=" scale(0.8)"
+		x="0"
+		y="60"
+		width="708"
+		height="380"
+		style="overflow: visible;"
+	>
 		<div style="display:flex; align-items:center; justify-content:center; width:100%; height:100%;">
 			<button
 				type="button"
@@ -4789,16 +4793,14 @@
                     "
 			>
 				<span style="font-family:'Italianno', 'Marcellus', serif; font-size: 1.1em; color:#f7ecb4;"
-					>💖</span
-				>
+				></span>
 				להזמנה!
 				<span style="font-family:'Italianno', 'Marcellus', serif; font-size: 1.1em; color:#f7ecb4;"
-					>💖</span
-				>
+				></span>
 			</button>
 		</div>
 	</foreignObject>
-	<foreignObject x="-40" y="3761" width="688" height="1133.400024" style=" fill: none;">
+	<foreignObject x="-40" y="2400" width="688" height="1133.400024" style=" fill: none;">
 		<div style="padding: 0 32px;">
 			<p
 				style="color:#fff6d5; font-size:84px; line-height:1.45; text-align:center; font-family:'Frank Ruhl Libre', 'Assistant', serif; font-weight:400; letter-spacing:0.015em; text-shadow: 0 0 1px #4a0e2a, 0 6px 14px rgba(58,10,31,0.55), 0 0 22px rgba(255,200,222,0.35); margin: 0;"
@@ -4858,131 +4860,8 @@
 		/>
 		<ellipse cx="-8" cy="-6" rx="8" ry="14" fill="rgba(255,246,213,0.4)" />
 	</g>
-	<g id="sewingDecoration" transform="translate(312, 2950)">
-		<g transform="translate(-160, 0)">
-			<ellipse
-				cx="0"
-				cy="-90"
-				rx="78"
-				ry="14"
-				fill="url(#spoolWoodGrad)"
-				stroke="#6e5832"
-				stroke-width="2.5"
-			/>
-			<path
-				d="M -78,-90 L -60,90 L 60,90 L 78,-90 Z"
-				fill="url(#spoolWoodGrad)"
-				stroke="#6e5832"
-				stroke-width="2.5"
-			/>
-			<ellipse
-				cx="0"
-				cy="-30"
-				rx="64"
-				ry="9"
-				fill="url(#threadGrad)"
-				stroke="#7a1442"
-				stroke-width="1.5"
-			/>
-			<ellipse
-				cx="0"
-				cy="-10"
-				rx="65"
-				ry="9"
-				fill="url(#threadGrad)"
-				stroke="#7a1442"
-				stroke-width="1.5"
-			/>
-			<ellipse
-				cx="0"
-				cy="10"
-				rx="66"
-				ry="9"
-				fill="url(#threadGrad)"
-				stroke="#7a1442"
-				stroke-width="1.5"
-			/>
-			<ellipse
-				cx="0"
-				cy="30"
-				rx="67"
-				ry="9"
-				fill="url(#threadGrad)"
-				stroke="#7a1442"
-				stroke-width="1.5"
-			/>
-			<ellipse
-				cx="0"
-				cy="50"
-				rx="68"
-				ry="9"
-				fill="url(#threadGrad)"
-				stroke="#7a1442"
-				stroke-width="1.5"
-			/>
-			<ellipse
-				cx="0"
-				cy="90"
-				rx="78"
-				ry="14"
-				fill="url(#spoolWoodGrad)"
-				stroke="#6e5832"
-				stroke-width="2.5"
-			/>
-			<path d="M -78,-90 A 78,14 0 0 0 78,-90" fill="none" stroke="#6e5832" stroke-width="2.5" />
-		</g>
-		<path
-			d="M -82,-30 C 0,-100 120,-60 220,-80"
-			fill="none"
-			stroke="#aa1f5d"
-			stroke-width="3"
-			stroke-linecap="round"
-		/>
-		<g transform="translate(220, -50)">
-			<circle cx="0" cy="0" r="90" fill="url(#buttonGrad)" stroke="#7a5a14" stroke-width="3" />
-			<circle cx="0" cy="0" r="70" fill="none" stroke="#7a5a14" stroke-width="2" opacity="0.6" />
-			<circle cx="-22" cy="-22" r="9" fill="#3d0a1f" />
-			<circle cx="22" cy="-22" r="9" fill="#3d0a1f" />
-			<circle cx="-22" cy="22" r="9" fill="#3d0a1f" />
-			<circle cx="22" cy="22" r="9" fill="#3d0a1f" />
-			<line
-				x1="-22"
-				y1="-22"
-				x2="22"
-				y2="22"
-				stroke="#aa1f5d"
-				stroke-width="3"
-				stroke-linecap="round"
-			/>
-			<line
-				x1="22"
-				y1="-22"
-				x2="-22"
-				y2="22"
-				stroke="#aa1f5d"
-				stroke-width="3"
-				stroke-linecap="round"
-			/>
-			<ellipse cx="-30" cy="-30" rx="22" ry="14" fill="rgba(255,246,213,0.35)" />
-		</g>
-		<g transform="translate(-90, -100) rotate(-20)">
-			<path
-				d="M 0,0 L 240,-2 L 246,0 L 240,2 Z"
-				fill="#cfcfcf"
-				stroke="#6a6a6a"
-				stroke-width="0.8"
-			/>
-			<circle cx="6" cy="0" r="4" fill="none" stroke="#3d0a1f" stroke-width="1.5" />
-			<path
-				d="M 6,0 C -20,10 -40,-10 -60,5"
-				fill="none"
-				stroke="#aa1f5d"
-				stroke-width="2.5"
-				stroke-linecap="round"
-			/>
-		</g>
-	</g>
-	<foreignObject x="-181" y="-2780" width="950" height="700" style="overflow: visible;">
+
+	<foreignObject x="-181" y="-2580" width="950" height="700" style="overflow: visible;">
 		<div
 			style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100%; box-sizing:border-box; padding: 40px 60px 90px; text-align:center;"
 		>
@@ -5007,21 +4886,18 @@
 		>
 			<div
 				style="font-family: 'Italianno', 'Marcellus', serif; font-size: 96px; color: #fff6d5; opacity: 0.8; letter-spacing: 0.08em; line-height: 1; margin-bottom: -100px; text-shadow: 0 4px 12px rgba(58,10,31,0.55);"
-			>
-				המחיר שלי
-			</div>
+			></div>
 			<div
 				style="font-family: 'Playfair Display', 'Cormorant Garamond', serif; font-size: 240px; font-weight: 800; font-style: italic; color: #fff6d5; line-height: 1; letter-spacing: 0.01em; text-shadow: 0 0 2px #4a0e2a, 0 14px 30px rgba(58,10,31,0.72), 0 0 40px rgba(255,200,222,0.45); display: inline-flex; align-items: center; justify-content:center; gap: 28px; max-width: 100%; flex-wrap: wrap;"
 			>
 				<span
 					style="font-family: 'Cormorant Garamond', serif; font-size: 0.82em; font-style: normal; opacity: 0.92;"
-					>₪</span
-				>
+				></span>
 				<span>{price}</span>
 			</div>
 		</div>
 	</foreignObject>
-	<foreignObject x="-160" y="3400" width="944" height="260" style="overflow: visible;">
+	<foreignObject x="-160" y="2000" width="944" height="260" style="overflow: visible;">
 		<div
 			style="display:flex; align-items:center; justify-content:center; gap: 28px; width: 100%; height: 100%; box-sizing:border-box; padding: 0 30px;"
 		>
@@ -5039,6 +4915,15 @@
 				style="flex: 1; height: 3px; background: linear-gradient(to left, transparent 0%, rgba(255,246,213,0.3) 30%, #fff6d5 100%);"
 			></span>
 		</div>
+	</foreignObject>
+	<foreignObject
+		x="40"
+		y="-850"
+		width="1050"
+		height="1050"
+		style="stroke-width: 13.0705px; stroke-miterlimit: 1; fill: none; stroke: url(#linearGradient10151-1);"
+	>
+		tttt
 	</foreignObject>
 </svg>
 <hr class="mb-5 w-full sm:mb-10 bg-nice" />
