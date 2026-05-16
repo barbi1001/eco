@@ -2,7 +2,33 @@
   "permissions": {
     "allow": [
       "Bash(dir \"C:\\\\Users\\\\babay\\\\Documents\\\\GitHub\\\\eco\\\\src\\\\routes\")",
-      "Bash(gh pr create --title 'SEO בעברית – טבריה, צפון ישראל, סדנאות עיצוב אישי ואומנות' --body ' *)"
+      "Bash(gh pr create --title 'SEO בעברית – טבריה, צפון ישראל, סדנאות עיצוב אישי ואומנות' --body ' *)",
+      "Bash(awk 'NR==575,NR==605' \"c:/Users/babay/Documents/GitHub/eco/eco/src/lib/components/jewelry/DesignCanvas.svelte\")",
+      "Bash(timeout 100 npx --no-install svelte-check)",
+      "Bash(npx --no-install svelte-check --tsconfig ./tsconfig.json --threshold error)",
+      "Bash(node_modules/.bin/tsc --noEmit -p tsconfig.json)",
+      "Bash(node_modules/.bin/tsc --noEmit --skipLibCheck src/lib/stores/jewelryDesigner.ts)",
+      "Bash(timeout 120 npx vite build --logLevel error)",
+      "Bash(timeout 180 npx vite build)",
+      "Bash(timeout 180 ./node_modules/.bin/vite build)",
+      "Bash(timeout 180 node ./node_modules/vite/bin/vite.js build)",
+      "Bash(curl -sS -o /dev/null -w \"%{http_code}\\\\n\" https://strapi-7iq2.onrender.com/api/custom-jewelry-orders --max-time 30)",
+      "Bash(curl -sS -X POST https://strapi-7iq2.onrender.com/api/custom-jewelry-orders -H 'Content-Type: application/json' -H 'Authorization: Bearer 02eacc547835d0e679dc7755e01cf89e2c47c49111c07f56b53f06df3c232aa7eb80c864b6bd172feb861d60be2fa2b553e067926c239562a3011381299d0d6bb638f9abfd19b2ccbacf7bb112a64592865dd8fc779b2771ee10d1e50d49807cd657f292d54932db2297661059c53cea351c2fb93be3d7561bcf70e5e12aa86b' -d '{\"data\":{\"customer_name\":\"TEST_FROM_CLAUDE\",\"customer_phone\":\"0500000000\",\"total_price\":0,\"order_status\":\"pending\",\"order_date\":\"2026-05-16T00:00:00Z\"}}' --max-time 30 -w '\\\\nHTTP:%{http_code}\\\\n')",
+      "Bash(curl -sS -X DELETE https://strapi-7iq2.onrender.com/api/custom-jewelry-orders/4 -H 'Authorization: Bearer 02eacc547835d0e679dc7755e01cf89e2c47c49111c07f56b53f06df3c232aa7eb80c864b6bd172feb861d60be2fa2b553e067926c239562a3011381299d0d6bb638f9abfd19b2ccbacf7bb112a64592865dd8fc779b2771ee10d1e50d49807cd657f292d54932db2297661059c53cea351c2fb93be3d7561bcf70e5e12aa86b' --max-time 30 -w '\\\\nHTTP:%{http_code}\\\\n')",
+      "Bash(curl -sS -X POST https://barbracha.vercel.app/api/jewelry-order -H 'Content-Type: application/json' -d '{\"customerName\":\"PROBE\",\"customerPhone\":\"0\",\"totalPrice\":0,\"designConfiguration\":{}}' --max-time 60 -w '\\\\nHTTP:%{http_code}\\\\n')",
+      "Bash(curl -sS 'https://strapi-7iq2.onrender.com/api/custom-jewelry-orders?populate=design_preview' -H 'Authorization: Bearer 02eacc547835d0e679dc7755e01cf89e2c47c49111c07f56b53f06df3c232aa7eb80c864b6bd172feb861d60be2fa2b553e067926c239562a3011381299d0d6bb638f9abfd19b2ccbacf7bb112a64592865dd8fc779b2771ee10d1e50d49807cd657f292d54932db2297661059c53cea351c2fb93be3d7561bcf70e5e12aa86b' --max-time 30)",
+      "Bash(curl -sS -X POST https://barbracha.vercel.app/api/jewelry-order -H 'Content-Type: application/json' -d '{\"customerName\":\"IMG_PROBE\",\"customerPhone\":\"0\",\"totalPrice\":0,\"designConfiguration\":{},\"previewImageBlob\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=\"}' --max-time 60 -w '\\\\nHTTP:%{http_code}\\\\n')",
+      "Bash(curl -sS 'https://strapi-7iq2.onrender.com/api/custom-jewelry-orders/6?populate=design_preview' -H 'Authorization: Bearer 02eacc547835d0e679dc7755e01cf89e2c47c49111c07f56b53f06df3c232aa7eb80c864b6bd172feb861d60be2fa2b553e067926c239562a3011381299d0d6bb638f9abfd19b2ccbacf7bb112a64592865dd8fc779b2771ee10d1e50d49807cd657f292d54932db2297661059c53cea351c2fb93be3d7561bcf70e5e12aa86b' --max-time 30)",
+      "Read(//c/tmp/**)",
+      "Bash(printf '\\\\x89PNG\\\\r\\\\n\\\\x1a\\\\n\\\\x00\\\\x00\\\\x00\\\\rIHDR\\\\x00\\\\x00\\\\x00\\\\x01\\\\x00\\\\x00\\\\x00\\\\x01\\\\x08\\\\x06\\\\x00\\\\x00\\\\x00\\\\x1f\\\\x15\\\\xc4\\\\x89\\\\x00\\\\x00\\\\x00\\\\rIDATx\\\\x9cc\\\\xfc\\\\xff\\\\xff?\\\\x00\\\\x05\\\\xfe\\\\x02\\\\xfe\\\\xa3\\\\x88\\\\x06\\\\xc1\\\\x00\\\\x00\\\\x00\\\\x00IEND\\\\xaeB`\\\\x82')",
+      "Bash(curl -sS -X POST https://strapi-7iq2.onrender.com/api/upload -H 'Authorization: Bearer 02eacc547835d0e679dc7755e01cf89e2c47c49111c07f56b53f06df3c232aa7eb80c864b6bd172feb861d60be2fa2b553e067926c239562a3011381299d0d6bb638f9abfd19b2ccbacf7bb112a64592865dd8fc779b2771ee10d1e50d49807cd657f292d54932db2297661059c53cea351c2fb93be3d7561bcf70e5e12aa86b' -F files=@probe.png --max-time 60 -w '\\\\nHTTP:%{http_code}\\\\n')",
+      "Bash(curl -sS https://strapi-7iq2.onrender.com/api/upload/files -H 'Authorization: Bearer 02eacc547835d0e679dc7755e01cf89e2c47c49111c07f56b53f06df3c232aa7eb80c864b6bd172feb861d60be2fa2b553e067926c239562a3011381299d0d6bb638f9abfd19b2ccbacf7bb112a64592865dd8fc779b2771ee10d1e50d49807cd657f292d54932db2297661059c53cea351c2fb93be3d7561bcf70e5e12aa86b' --max-time 30 -w '\\\\nHTTP:%{http_code}\\\\n')",
+      "Bash(awk 'NR>=885 && NR<=915' \"c:/Users/babay/Documents/GitHub/eco/eco/src/lib/comonents/mobileItem.svelte\")",
+      "Bash(awk -F'Z' '{print NR, NF}')",
+      "Bash(sort -k2 -n)",
+      "Bash(awk 'NR==915 {depth=1; print NR\": \"$0; next} NR>915 && depth>0 { for\\(i=1;i<=length\\($0\\);i++\\) { c=substr\\($0,i,1\\); if \\(i<length\\($0\\)-3 && substr\\($0,i,2\\)==\"<g\"\\) depth++; if \\(i<length\\($0\\)-3 && substr\\($0,i,4\\)==\"</g>\"\\) depth--; } if \\(depth==0\\) {print NR\": \"$0\" <-- closes line 915\"; exit} }' \"c:/Users/babay/Documents/GitHub/eco/eco/src/lib/comonents/mobileItem.svelte\")",
+      "Bash(awk -F: 'NR==1{open=0;close=0} {gsub\\(/[^<]/,\"\",$2\\); n=length\\($2\\); if\\($2 ~ /\\\\//\\) close+=n; else open+=n} END {print open, close}')",
+      "Bash(awk -F'<path' '{print NR-1, length\\($2\\)}')"
     ]
   }
 }

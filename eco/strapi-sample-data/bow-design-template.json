@@ -1,8 +1,8 @@
 {
-  "name": "Bow Design 1",
+  "name": "Bow new Design 1",
   "category": "necklace",
   "description": "Elegant infinity bow necklace with customizable bead positions and pendant drops",
-  "svg_template": "<svg width=\"600\" height=\"400\" viewBox=\"0 0 600 400\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"chainGradient\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\"><stop offset=\"0%\" style=\"stop-color:#C0C0C0;stop-opacity:1\" /><stop offset=\"50%\" style=\"stop-color:#E8E8E8;stop-opacity:1\" /><stop offset=\"100%\" style=\"stop-color:#C0C0C0;stop-opacity:1\" /></linearGradient></defs><!-- Left loop of infinity bow --><ellipse cx=\"200\" cy=\"150\" rx=\"100\" ry=\"60\" fill=\"none\" stroke=\"#808080\" stroke-width=\"3\" /><!-- Right loop of infinity bow --><ellipse cx=\"400\" cy=\"150\" rx=\"100\" ry=\"60\" fill=\"none\" stroke=\"#808080\" stroke-width=\"3\" /><!-- Center knot --><circle cx=\"300\" cy=\"150\" r=\"20\" fill=\"#4A9FD8\" stroke=\"#3A7FB8\" stroke-width=\"2\" /><!-- Left drop chain --><path d=\"M 250 200 L 240 320\" stroke=\"#808080\" stroke-width=\"3\" fill=\"none\" /><!-- Right drop chain --><path d=\"M 350 200 L 360 320\" stroke=\"#808080\" stroke-width=\"3\" fill=\"none\" /><!-- Position markers (will be replaced with components) --><!--POSITION_left_loop_1--><!--POSITION_left_loop_2--><!--POSITION_left_loop_3--><!--POSITION_left_loop_4--><!--POSITION_left_loop_5--><!--POSITION_left_loop_6--><!--POSITION_left_loop_7--><!--POSITION_left_loop_8--><!--POSITION_right_loop_1--><!--POSITION_right_loop_2--><!--POSITION_right_loop_3--><!--POSITION_right_loop_4--><!--POSITION_right_loop_5--><!--POSITION_right_loop_6--><!--POSITION_right_loop_7--><!--POSITION_right_loop_8--><!--POSITION_center_knot--><!--POSITION_left_drop_1--><!--POSITION_left_drop_2--><!--POSITION_left_drop_3--><!--POSITION_left_drop_4--><!--POSITION_left_drop_5--><!--POSITION_left_drop_pendant--><!--POSITION_right_drop_1--><!--POSITION_right_drop_2--><!--POSITION_right_drop_3--><!--POSITION_right_drop_4--><!--POSITION_right_drop_5--><!--POSITION_right_drop_pendant--></svg>",
+  "svg_template": "<svg width=\"600\" height=\"400\" viewBox=\"0 0 600 400\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"chainGradient\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\"><stop offset=\"0%\" style=\"stop-color:#C0C0C0;stop-opacity:1\" /><stop offset=\"50%\" style=\"stop-color:#E8E8E8;stop-opacity:1\" /><stop offset=\"100%\" style=\"stop-color:#C0C0C0;stop-opacity:1\" /></linearGradient></defs><!-- Left loop of infinity bow --><ellipse cx=\"200\" cy=\"150\" rx=\"100\" ry=\"60\" fill=\"none\" stroke=\"#808080\" stroke-width=\"3\" /><!-- Right loop of infinity bow --><ellipse cx=\"400\" cy=\"150\" rx=\"100\" ry=\"60\" fill=\"none\" stroke=\"#808080\" stroke-width=\"3\" /><!-- Center knot --><circle cx=\"300\" cy=\"150\" r=\"20\" fill=\"#4A9FD8\" stroke=\"#3A7FB8\" stroke-width=\"2\" /><!-- Left drop chain (starts from center of bow) --><path d=\"M 300 170 L 240 320\" stroke=\"#808080\" stroke-width=\"3\" fill=\"none\" /><!-- Right drop chain (starts from center of bow) --><path d=\"M 300 170 L 360 320\" stroke=\"#808080\" stroke-width=\"3\" fill=\"none\" /><!-- Position markers (will be replaced with components) --><!--POSITION_left_loop_1--><!--POSITION_left_loop_2--><!--POSITION_left_loop_3--><!--POSITION_left_loop_4--><!--POSITION_left_loop_5--><!--POSITION_left_loop_6--><!--POSITION_left_loop_7--><!--POSITION_left_loop_8--><!--POSITION_right_loop_1--><!--POSITION_right_loop_2--><!--POSITION_right_loop_3--><!--POSITION_right_loop_4--><!--POSITION_right_loop_5--><!--POSITION_right_loop_6--><!--POSITION_right_loop_7--><!--POSITION_right_loop_8--><!--POSITION_center_knot--><!--POSITION_left_drop_1--><!--POSITION_left_drop_2--><!--POSITION_left_drop_3--><!--POSITION_left_drop_4--><!--POSITION_left_drop_5--><!--POSITION_left_drop_pendant--><!--POSITION_right_drop_1--><!--POSITION_right_drop_2--><!--POSITION_right_drop_3--><!--POSITION_right_drop_4--><!--POSITION_right_drop_5--><!--POSITION_right_drop_pendant--></svg>",
   "base_price": 150.00,
   "positions": [
     {
@@ -11,7 +11,7 @@
       "y_coordinate": 180,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_loop_2",
@@ -19,7 +19,7 @@
       "y_coordinate": 207,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_loop_3",
@@ -27,7 +27,7 @@
       "y_coordinate": 204,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_loop_4",
@@ -35,7 +35,7 @@
       "y_coordinate": 172,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_loop_5",
@@ -43,7 +43,7 @@
       "y_coordinate": 128,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_loop_6",
@@ -51,7 +51,7 @@
       "y_coordinate": 96,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_loop_7",
@@ -59,7 +59,7 @@
       "y_coordinate": 93,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_loop_8",
@@ -67,7 +67,7 @@
       "y_coordinate": 120,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_loop_1",
@@ -75,7 +75,7 @@
       "y_coordinate": 120,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_loop_2",
@@ -83,7 +83,7 @@
       "y_coordinate": 93,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_loop_3",
@@ -91,7 +91,7 @@
       "y_coordinate": 96,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_loop_4",
@@ -99,7 +99,7 @@
       "y_coordinate": 128,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_loop_5",
@@ -107,7 +107,7 @@
       "y_coordinate": 172,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_loop_6",
@@ -115,7 +115,7 @@
       "y_coordinate": 204,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_loop_7",
@@ -123,7 +123,7 @@
       "y_coordinate": 207,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_loop_8",
@@ -131,7 +131,7 @@
       "y_coordinate": 180,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "center_knot",
@@ -143,43 +143,43 @@
     },
     {
       "position_id": "left_drop_1",
-      "x_coordinate": 248,
+      "x_coordinate": 280,
       "y_coordinate": 220,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_drop_2",
-      "x_coordinate": 246,
+      "x_coordinate": 270,
       "y_coordinate": 245,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_drop_3",
-      "x_coordinate": 244,
+      "x_coordinate": 260,
       "y_coordinate": 270,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_drop_4",
-      "x_coordinate": 242,
+      "x_coordinate": 250,
       "y_coordinate": 295,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_drop_5",
-      "x_coordinate": 240,
+      "x_coordinate": 244,
       "y_coordinate": 310,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "left_drop_pendant",
@@ -191,43 +191,43 @@
     },
     {
       "position_id": "right_drop_1",
-      "x_coordinate": 352,
+      "x_coordinate": 320,
       "y_coordinate": 220,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_drop_2",
-      "x_coordinate": 354,
+      "x_coordinate": 330,
       "y_coordinate": 245,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_drop_3",
-      "x_coordinate": 356,
+      "x_coordinate": 340,
       "y_coordinate": 270,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_drop_4",
-      "x_coordinate": 358,
+      "x_coordinate": 350,
       "y_coordinate": 295,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_drop_5",
-      "x_coordinate": 360,
+      "x_coordinate": 356,
       "y_coordinate": 310,
       "position_type": "bead",
       "size_category": "small",
-      "is_required": false
+      "is_required": true
     },
     {
       "position_id": "right_drop_pendant",

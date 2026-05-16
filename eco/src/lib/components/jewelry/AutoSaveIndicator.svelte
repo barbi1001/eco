@@ -73,24 +73,26 @@
 	}
 
 	.indicator-content {
-		background: rgba(255, 255, 255, 0.95);
+		background: rgba(255, 255, 255, 0.97);
 		backdrop-filter: blur(10px);
 		padding: 0.5rem 1rem;
 		border-radius: 2rem;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		border: 1px solid #fbcfe8;
+		box-shadow: 0 4px 12px rgba(236, 72, 153, 0.18);
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		font-size: 0.875rem;
-		color: #6b7280;
-		font-family: 'MakabiYG', sans-serif;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: #9d174d;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.spinner {
 		width: 1rem;
 		height: 1rem;
-		border: 2px solid #e5e7eb;
-		border-top: 2px solid #bf953f;
+		border: 2px solid #fce7f3;
+		border-top: 2px solid #ec4899;
 		border-radius: 50%;
 		animation: spin 0.8s linear infinite;
 	}

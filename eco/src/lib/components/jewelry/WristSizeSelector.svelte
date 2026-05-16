@@ -205,18 +205,19 @@
   }
 
   .selector-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a1a;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #831843;
     margin: 0 0 8px 0;
-    font-family: inherit;
+    font-family: 'Heebo', sans-serif;
   }
 
   .selector-subtitle {
-    font-size: 0.875rem;
-    color: #666;
+    font-size: 0.9rem;
+    color: #9d174d;
+    font-weight: 500;
     margin: 0;
-    font-family: inherit;
+    font-family: 'Heebo', sans-serif;
   }
 
   .popular-sizes {
@@ -232,27 +233,30 @@
     align-items: center;
     justify-content: center;
     padding: 16px 12px;
-    border: 2px solid #e5e5e5;
+    border: 2px solid #fbcfe8;
     border-radius: 12px;
     background: white;
+    color: #9d174d;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-family: inherit;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 700;
     min-height: 70px;
   }
 
   .size-button:hover:not(.disabled) {
-    border-color: #d4af37;
-    background: #fefdf8;
+    border-color: #ec4899;
+    background: #fdf2f8;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
   }
 
   .size-button.selected {
-    border-color: #d4af37;
-    background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    border-color: #ec4899;
+    background: linear-gradient(135deg, #ec4899 0%, #f9a8d4 45%, #fcf6ba 100%);
+    color: #831843;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
   }
 
   .size-button.disabled {
@@ -282,26 +286,27 @@
     gap: 8px;
     width: 100%;
     padding: 12px 16px;
-    border: 2px dashed #d1d5db;
+    border: 2px dashed #f9a8d4;
     border-radius: 12px;
     background: transparent;
-    color: #6b7280;
+    color: #9d174d;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-family: inherit;
-    font-size: 0.875rem;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.9rem;
   }
 
   .custom-toggle:hover:not(.disabled) {
-    border-color: #d4af37;
-    color: #d4af37;
-    background: #fefdf8;
+    border-color: #ec4899;
+    color: #be185d;
+    background: #fdf2f8;
   }
 
   .custom-toggle.active {
-    border-color: #d4af37;
-    color: #d4af37;
-    background: #fefdf8;
+    border-color: #ec4899;
+    color: #831843;
+    background: #fdf2f8;
     border-style: solid;
   }
 
@@ -335,18 +340,20 @@
   .custom-input {
     width: 100%;
     padding: 12px 40px 12px 16px;
-    border: 2px solid #e5e5e5;
+    border: 2px solid #fbcfe8;
     border-radius: 8px;
     font-size: 1rem;
-    font-family: inherit;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    color: #831843;
     transition: border-color 0.2s ease;
     background: white;
   }
 
   .custom-input:focus {
     outline: none;
-    border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    border-color: #ec4899;
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
   }
 
   .custom-input.error {
@@ -391,12 +398,12 @@
     align-items: center;
     gap: 8px;
     padding: 12px 16px;
-    background: #f9fafb;
+    background: #fdf2f8;
     cursor: pointer;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #9d174d;
+    font-family: 'Heebo', sans-serif;
     list-style: none;
   }
 
@@ -421,9 +428,9 @@
   .guide-steps {
     margin: 0 0 12px 0;
     padding-right: 20px;
-    color: #4b5563;
-    font-size: 0.875rem;
-    font-family: inherit;
+    color: #831843;
+    font-size: 0.9rem;
+    font-family: 'Heebo', sans-serif;
   }
 
   .guide-steps li {
@@ -432,11 +439,12 @@
 
   .guide-tip {
     padding: 8px 12px;
-    background: #fef3c7;
+    background: linear-gradient(90deg, #fce7f3 0%, #fef3c7 100%);
     border-radius: 6px;
-    font-size: 0.75rem;
-    color: #92400e;
-    font-family: inherit;
+    font-size: 0.8rem;
+    color: #9d174d;
+    font-weight: 600;
+    font-family: 'Heebo', sans-serif;
   }
 
   .selection-display {
@@ -445,20 +453,21 @@
     justify-content: center;
     gap: 8px;
     padding: 12px;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: linear-gradient(135deg, #fdf2f8 0%, #fcf6ba 100%);
+    border: 1px solid #fbcfe8;
     border-radius: 8px;
-    font-size: 0.875rem;
-    font-family: inherit;
+    font-size: 0.9rem;
+    font-family: 'Heebo', sans-serif;
   }
 
   .selection-label {
-    color: #0369a1;
-    font-weight: 500;
+    color: #9d174d;
+    font-weight: 600;
   }
 
   .selection-value {
-    color: #0c4a6e;
-    font-weight: 600;
+    color: #831843;
+    font-weight: 800;
   }
 
   /* RTL support */

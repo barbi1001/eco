@@ -292,30 +292,32 @@
     <!-- Design Summary Sidebar -->
     <div class="design-summary">
       <h3>סיכום העיצוב</h3>
-      
+
       {#if $selectedTemplate}
-        <div class="summary-section">
-          <h4>תבנית</h4>
-          <div class="summary-item">
-            <span class="item-label">{$selectedTemplate.name}</span>
-            <span class="item-value">₪{$selectedTemplate.basePrice.toFixed(2)}</span>
+        <div class="summary-scroll">
+          <div class="summary-section">
+            <h4>תבנית</h4>
+            <div class="summary-item">
+              <span class="item-label">{$selectedTemplate.name}</span>
+              <span class="item-value">₪{$selectedTemplate.basePrice.toFixed(2)}</span>
+            </div>
+          </div>
+
+          <div class="summary-section">
+            <h4>רכיבים נבחרים</h4>
+            {#if $designState.selectedComponents.size === 0}
+              <p class="empty-message">לא נבחרו רכיבים</p>
+            {:else}
+              {#each Array.from($designState.selectedComponents.entries()) as [positionId, component]}
+                <div class="summary-item" in:scale={{ duration: 200, easing: quintOut }}>
+                  <span class="item-label">{component.name}</span>
+                  <span class="item-value">₪{component.price.toFixed(2)}</span>
+                </div>
+              {/each}
+            {/if}
           </div>
         </div>
-        
-        <div class="summary-section">
-          <h4>רכיבים נבחרים</h4>
-          {#if $designState.selectedComponents.size === 0}
-            <p class="empty-message">לא נבחרו רכיבים</p>
-          {:else}
-            {#each Array.from($designState.selectedComponents.entries()) as [positionId, component]}
-              <div class="summary-item" in:scale={{ duration: 200, easing: quintOut }}>
-                <span class="item-label">{component.name}</span>
-                <span class="item-value">₪{component.price.toFixed(2)}</span>
-              </div>
-            {/each}
-          {/if}
-        </div>
-        
+
         <div class="summary-section total-section">
           <div class="summary-item total-item">
             <span class="item-label">סה"כ</span>
@@ -323,7 +325,7 @@
           </div>
         </div>
       {/if}
-      
+
       <!-- Action Buttons -->
       <div class="action-buttons">
         <button 
@@ -377,17 +379,23 @@
   }
   
   .preview-header h2 {
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-weight: 900;
     font-size: 2.5rem;
+    letter-spacing: -0.5px;
     margin-bottom: 0.5rem;
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
+    background: linear-gradient(135deg, #831843 0%, #be185d 35%, #92400e 65%, #b45309 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6))
+      drop-shadow(0 2px 4px rgba(131, 24, 67, 0.2));
   }
-  
+
   .preview-subtitle {
-    color: #6b7280;
+    color: #9d174d;
+    font-weight: 600;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     font-size: 1.1rem;
   }
   
@@ -403,7 +411,7 @@
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 2px solid #f3e8ff;
+    border: 2px solid #fbcfe8;
     position: relative;
   }
   
@@ -456,8 +464,8 @@
     width: 40px;
     height: 40px;
     border: none;
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
-    color: #374151;
+    background: linear-gradient(135deg, #ec4899 0%, #f9a8d4 35%, #fcf6ba 70%, #BF953F 100%);
+    color: #831843;
     border-radius: 0.375rem;
     cursor: pointer;
     display: flex;
@@ -465,10 +473,10 @@
     justify-content: center;
     transition: all 0.2s ease;
   }
-  
+
   .zoom-button:hover {
     transform: scale(1.1);
-    box-shadow: 0 2px 8px rgba(191, 149, 63, 0.3);
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.4);
   }
   
   .zoom-button:active {
@@ -491,32 +499,36 @@
     padding: 0.5rem 1rem;
     border: none;
     background: transparent;
-    color: #6b7280;
+    color: #9d174d;
     border-radius: 0.375rem;
     cursor: pointer;
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.2s ease;
   }
-  
+
   .view-mode-button.active {
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
-    color: #374151;
-    font-weight: 600;
+    background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #BF953F 100%);
+    color: #831843;
+    font-weight: 800;
   }
-  
+
   .view-mode-button:hover:not(.active) {
-    background: #f3f4f6;
+    background: #fce7f3;
   }
-  
+
   .preview-instructions {
     text-align: center;
     margin-top: 1rem;
-    padding: 0.75rem;
-    background: linear-gradient(to right, rgba(191, 149, 63, 0.1), rgba(252, 246, 186, 0.1));
+    padding: 0.85rem;
+    background: linear-gradient(90deg, #fce7f3 0%, #fcf6ba 50%, #fce7f3 100%);
+    border: 1px solid rgba(236, 72, 153, 0.2);
     border-radius: 0.5rem;
-    color: #6b7280;
-    font-size: 0.9rem;
+    color: #9d174d;
+    font-weight: 600;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-size: 0.95rem;
   }
   
   .design-summary {
@@ -524,91 +536,128 @@
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 2px solid #f3e8ff;
+    border: 2px solid #fbcfe8;
     position: sticky;
     top: 2rem;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 4rem);
+    min-height: 0;
   }
-  
+
+  .summary-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-inline-end: 0.25rem;
+    margin-inline-end: -0.25rem;
+  }
+
+  .summary-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .summary-scroll::-webkit-scrollbar-thumb {
+    background: #fbcfe8;
+    border-radius: 3px;
+  }
+
+  .summary-scroll::-webkit-scrollbar-thumb:hover {
+    background: #f9a8d4;
+  }
+
   .design-summary h3 {
-    font-family: 'MakabiYG', sans-serif;
-    font-size: 1.5rem;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: -0.3px;
     margin-bottom: 1.5rem;
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
+    background: linear-gradient(90deg, #831843 0%, #be185d 40%, #b45309 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .summary-section {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #fbcfe8;
   }
-  
+
   .summary-section:last-of-type {
     border-bottom: none;
   }
-  
+
   .summary-section h4 {
-    font-family: 'MakabiYG', sans-serif;
-    font-size: 1.1rem;
-    color: #374151;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: #9d174d;
     margin-bottom: 0.75rem;
   }
-  
+
   .summary-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0;
-    color: #6b7280;
+    color: #be185d;
   }
-  
+
   .item-label {
     font-size: 0.95rem;
+    font-weight: 500;
   }
-  
+
   .item-value {
-    font-weight: 600;
-    color: #374151;
+    font-weight: 700;
+    color: #831843;
   }
-  
+
   .total-section {
-    background: linear-gradient(to right, rgba(191, 149, 63, 0.1), rgba(252, 246, 186, 0.1));
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(252, 246, 186, 0.15));
+    border: 1px solid rgba(236, 72, 153, 0.18);
     border-radius: 0.5rem;
     padding: 1rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+    border-bottom: none;
+    padding-bottom: 1rem;
   }
-  
+
   .total-item {
     padding: 0;
   }
-  
+
   .total-item .item-label {
     font-size: 1.2rem;
-    font-weight: 600;
-    color: #374151;
+    font-weight: 800;
+    color: #831843;
   }
-  
+
   .total-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
+    font-size: 1.55rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #be185d 0%, #ec4899 35%, #b45309 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .empty-message {
-    color: #9ca3af;
+    color: #be185d;
     font-size: 0.9rem;
     font-style: italic;
+    opacity: 0.7;
   }
   
   .action-buttons {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    flex-shrink: 0;
   }
   
   .primary-button,
@@ -618,7 +667,7 @@
     padding: 0.875rem 1.5rem;
     border: none;
     border-radius: 0.5rem;
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -630,45 +679,49 @@
   }
   
   .primary-button {
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
-    color: #374151;
+    background: linear-gradient(135deg, #ec4899 0%, #f472b6 35%, #fcf6ba 70%, #BF953F 100%);
+    color: #831843;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
   }
-  
+
   .primary-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(191, 149, 63, 0.3);
+    box-shadow: 0 4px 14px rgba(236, 72, 153, 0.45);
   }
-  
+
   .primary-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
-  
+
   .download-button {
-    background: linear-gradient(to right, #3b82f6, #60a5fa, #2563eb);
+    background: linear-gradient(135deg, #be185d 0%, #ec4899 50%, #BF953F 100%);
     color: white;
+    font-weight: 700;
   }
-  
+
   .download-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 14px rgba(190, 24, 93, 0.45);
   }
-  
+
   .download-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
-  
+
   .secondary-button {
     background: white;
-    color: #6b7280;
-    border: 2px solid #e5e7eb;
+    color: #9d174d;
+    font-weight: 700;
+    border: 2px solid #fbcfe8;
   }
-  
+
   .secondary-button:hover {
-    background: #f9fafb;
-    border-color: #BF953F;
-    color: #374151;
+    background: #fdf2f8;
+    border-color: #ec4899;
+    color: #831843;
   }
   
   /* Responsive design */
@@ -681,6 +734,11 @@
     .design-summary {
       position: static;
       order: 2;
+      max-height: none;
+    }
+
+    .summary-scroll {
+      overflow-y: visible;
     }
     
     .preview-canvas-wrapper {
@@ -795,7 +853,7 @@
       background: white;
       padding: 1rem;
       margin: -1rem;
-      border-top: 2px solid #f3e8ff;
+      border-top: 2px solid #fbcfe8;
     }
     
     .primary-button,

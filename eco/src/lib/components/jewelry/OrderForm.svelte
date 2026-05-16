@@ -13,6 +13,12 @@
 			name: string;
 			phone: string;
 			message: string;
+			email: string;
+			city: string;
+			street: string;
+			houseNumber: string;
+			apartment: string;
+			postalCode: string;
 		}) => Promise<void>;
 		onCancel?: () => void;
 	}
@@ -22,19 +28,25 @@
 	let name = $state('');
 	let phone = $state('');
 	let message = $state('');
+	let email = $state('');
+	let city = $state('');
+	let street = $state('');
+	let houseNumber = $state('');
+	let apartment = $state('');
+	let postalCode = $state('');
 	let isLoading = $state(false);
 	let isSuccess = $state(false);
 	let errorMessage = $state('');
 
 	async function handleSubmit() {
-		if (!name || !phone) return;
+		if (!name || !phone || !email || !city || !street || !houseNumber) return;
 
 		isLoading = true;
 		isSuccess = false;
 		errorMessage = '';
 
 		try {
-			await onSubmit({ name, phone, message });
+			await onSubmit({ name, phone, message, email, city, street, houseNumber, apartment, postalCode });
 			isSuccess = true;
 
 			// Reset form after delay
@@ -42,6 +54,12 @@
 				name = '';
 				phone = '';
 				message = '';
+				email = '';
+				city = '';
+				street = '';
+				houseNumber = '';
+				apartment = '';
+				postalCode = '';
 				isSuccess = false;
 			}, 3000);
 		} catch (error) {
@@ -52,7 +70,14 @@
 		}
 	}
 
-	const isFormValid = $derived(name.trim() !== '' && phone.trim() !== '');
+	const isFormValid = $derived(
+		name.trim() !== '' &&
+		phone.trim() !== '' &&
+		email.trim() !== '' &&
+		city.trim() !== '' &&
+		street.trim() !== '' &&
+		houseNumber.trim() !== ''
+	);
 	const isBraceletOrder = $derived(selectedTemplate?.isBracelet || false);
 	const hasCustomText = $derived(braceletConfig?.customText && braceletConfig.customText.trim() !== '');
 </script>
@@ -60,23 +85,23 @@
 <div class="order-form-container" dir="rtl">
 	<div class="form-header">
 		<h2
-			class="text-2xl font-[MakabiYG] mb-4 bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text sparkly-uv"
+			class="text-3xl font-[Heebo] font-black mb-4 bg-gradient-to-r from-[#831843] via-[#be185d] to-[#b45309] text-transparent bg-clip-text sparkly-uv"
 		>
 			השלימי את ההזמנה
 		</h2>
 		<p
-			class="text-lg font-medium bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#d462cb] text-transparent bg-clip-text mb-4 sparkly-uv pearl-effect"
+			class="text-lg font-bold bg-gradient-to-r from-[#be185d] via-[#ec4899] to-[#BF953F] text-transparent bg-clip-text mb-4 pearl-effect"
 		>
 			השאירי פרטים ואני אחזור אלייך בהקדם!
 		</p>
 		<div class="price-display mb-4">
-			<span class="text-xl font-bold text-indigo-600">סכום כולל: ₪{totalPrice}</span>
+			<span class="text-xl font-bold text-pink-900">סכום כולל: ₪{totalPrice}</span>
 		</div>
 
 		{#if isBraceletOrder && braceletConfig}
-			<div class="bracelet-summary mb-4 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200">
-				<h3 class="text-lg font-semibold text-purple-800 mb-2">פרטי הצמיד</h3>
-				<div class="space-y-2 text-sm text-purple-700">
+			<div class="bracelet-summary mb-4 p-4 bg-gradient-to-r from-pink-50 to-amber-50 rounded-lg border border-pink-200">
+				<h3 class="text-lg font-bold text-pink-800 mb-2">פרטי הצמיד</h3>
+				<div class="space-y-2 text-sm text-pink-700">
 					<div class="flex justify-between">
 						<span>היקף פרק יד:</span>
 						<span class="font-medium">{braceletConfig.wristCircumference} ס"מ</span>
@@ -100,7 +125,7 @@
 
 	<form class="flex flex-col space-y-4" onsubmit={preventDefault(handleSubmit)}>
 		<input
-			class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+			class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
 			type="text"
 			placeholder="שם מלא"
 			bind:value={name}
@@ -108,7 +133,7 @@
 			dir="rtl"
 		/>
 		<input
-			class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+			class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
 			type="tel"
 			placeholder="טלפון נייד"
 			bind:value={phone}
@@ -117,8 +142,61 @@
 			pattern="[0-9]*"
 			inputmode="numeric"
 		/>
+		<input
+			class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+			type="email"
+			placeholder="אימייל"
+			bind:value={email}
+			required
+			dir="ltr"
+			inputmode="email"
+		/>
+		<div class="grid grid-cols-2 gap-3">
+			<input
+				class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+				type="text"
+				placeholder="עיר"
+				bind:value={city}
+				required
+				dir="rtl"
+			/>
+			<input
+				class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+				type="text"
+				placeholder="רחוב"
+				bind:value={street}
+				required
+				dir="rtl"
+			/>
+		</div>
+		<div class="grid grid-cols-3 gap-3">
+			<input
+				class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+				type="text"
+				placeholder="מס' בית"
+				bind:value={houseNumber}
+				required
+				dir="rtl"
+			/>
+			<input
+				class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+				type="text"
+				placeholder="דירה (אופציונלי)"
+				bind:value={apartment}
+				dir="rtl"
+			/>
+			<input
+				class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10"
+				type="text"
+				placeholder="מיקוד"
+				bind:value={postalCode}
+				dir="ltr"
+				inputmode="numeric"
+				pattern="[0-9]*"
+			/>
+		</div>
 		<textarea
-			class="text-indigo-600 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10 min-h-[100px] resize-y"
+			class="text-pink-700 bg-gray-50 border-2 border-transparent bg-clip-padding text-sm rounded-lg block w-full p-3 transition-all duration-300 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#BF953F] focus:border-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] bg-opacity-10 min-h-[100px] resize-y"
 			placeholder="הודעה (אופציונלי)"
 			bind:value={message}
 			dir="rtl"
@@ -158,7 +236,7 @@
 			<button
 				type="button"
 				onclick={onCancel}
-				class="text-gray-600 hover:text-gray-800 font-medium text-center transition-colors"
+				class="text-pink-700 hover:text-pink-900 font-bold text-center transition-colors"
 			>
 				חזרה לעיצוב
 			</button>
@@ -180,9 +258,10 @@
 
 	.price-display {
 		padding: 1rem;
-		background: linear-gradient(to right, #fef3c7, #fde68a);
+		background: linear-gradient(90deg, #fce7f3 0%, #fcf6ba 50%, #fce7f3 100%);
 		border-radius: 0.5rem;
-		border: 2px solid #f59e0b;
+		border: 2px solid #ec4899;
+		box-shadow: 0 2px 10px rgba(236, 72, 153, 0.15);
 	}
 
 	.send-icon {
@@ -268,12 +347,12 @@
 	}
 
 	.bracelet-summary {
-		background: linear-gradient(135deg, #f3e8ff 0%, #fce7f3 100%);
-		border: 1px solid #d8b4fe;
+		background: linear-gradient(135deg, #fdf2f8 0%, #fef3c7 100%);
+		border: 1px solid #f9a8d4;
 	}
 
 	.font-hebrew {
-		font-family: 'MakabiYG', Arial, sans-serif;
+		font-family: 'Heebo', 'MakabiYG', Arial, sans-serif;
 		direction: rtl;
 	}
 

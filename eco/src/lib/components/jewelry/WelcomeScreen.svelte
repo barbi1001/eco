@@ -244,8 +244,8 @@
     font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif;
     font-size: clamp(0.8rem, 2.3vw, 1.15rem);
     font-weight: 900;
-    color: #4a0060;
-    text-shadow: 0 1px 3px rgba(252, 246, 186, 0.6), 0 0 8px rgba(180, 100, 255, 0.3);
+    color: #831843;
+    text-shadow: 0 1px 3px rgba(252, 246, 186, 0.7), 0 0 8px rgba(236, 72, 153, 0.4);
     letter-spacing: 0.06em;
     text-align: center;
   }
@@ -273,7 +273,7 @@
   /* Decorative plaque behind the title */
   .welcome-title-plaque {
     position: relative;
-    background: linear-gradient(160deg, #2d0040 0%, #3d0030 50%, #2d0040 100%);
+    background: linear-gradient(160deg, #5b0c2f 0%, #831843 50%, #5b0c2f 100%);
     border: 2px solid #BF953F;
     border-radius: 1rem;
     padding: 0.5rem 1.2rem;
@@ -281,9 +281,9 @@
     width: 100%;
     box-sizing: border-box;
     box-shadow:
-      0 6px 28px rgba(139, 0, 100, 0.35),
-      0 0 0 1px rgba(252, 246, 186, 0.15) inset,
-      0 0 18px rgba(191, 149, 63, 0.12) inset;
+      0 6px 28px rgba(157, 23, 77, 0.4),
+      0 0 0 1px rgba(252, 246, 186, 0.18) inset,
+      0 0 18px rgba(191, 149, 63, 0.15) inset;
   }
 
   .welcome-title-plaque::before,
@@ -302,10 +302,11 @@
 
   /* Title */
   .welcome-title {
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     font-size: clamp(1.1rem, 3.2vw, 1.8rem);
-    font-weight: bold;
-    background: linear-gradient(to right, #FCF6BA, #FFD700, #FCF6BA);
+    font-weight: 900;
+    letter-spacing: -0.3px;
+    background: linear-gradient(to right, #FCF6BA 0%, #FFD700 30%, #ffc4dd 55%, #FFD700 80%, #FCF6BA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -321,7 +322,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin: 0;
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     line-height: 1.4;
     font-weight: 600;
   }
@@ -359,26 +360,26 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin: 0;
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     line-height: 1.3;
     font-weight: 600;
   }
 
   /* Start button */
   .start-button {
-    background: linear-gradient(135deg, #2d0040 0%, #7b1fa2 45%, #6a0080 70%, #2d0040 100%);
+    background: linear-gradient(135deg, #831843 0%, #be185d 45%, #ec4899 70%, #831843 100%);
     color: #FCF6BA;
-    font-weight: 700;
+    font-weight: 800;
     padding: 0.6rem 2rem;
     border: 2px solid #BF953F;
     border-radius: 0.75rem;
     cursor: pointer;
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     box-shadow:
-      0 4px 18px rgba(100, 0, 160, 0.45),
-      0 0 0 1px rgba(252, 246, 186, 0.15) inset;
+      0 4px 18px rgba(190, 24, 93, 0.5),
+      0 0 0 1px rgba(252, 246, 186, 0.2) inset;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     letter-spacing: 0.03em;
     flex-shrink: 0;
@@ -389,8 +390,8 @@
   .start-button:hover {
     transform: translateY(-3px);
     box-shadow:
-      0 8px 26px rgba(100, 0, 160, 0.55),
-      0 0 0 1px rgba(252, 246, 186, 0.25) inset;
+      0 8px 26px rgba(236, 72, 153, 0.55),
+      0 0 0 1px rgba(252, 246, 186, 0.3) inset;
   }
 
   .start-button:active {

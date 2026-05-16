@@ -1,6 +1,18 @@
 {
   "beads": [
     {
+      "name": "White Pearl Bead",
+      "component_type": "bead",
+      "color": "white",
+      "material": "pearl",
+      "description": "Classic white pearl bead — the timeless default for any design",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"8\" fill=\"#F8F8FF\" stroke=\"#D8D8E0\" stroke-width=\"1\" opacity=\"0.95\" /><circle cx=\"-2.5\" cy=\"-2.5\" r=\"2.5\" fill=\"#FFFFFF\" opacity=\"0.75\" />",
+      "price": 5.00,
+      "compatible_sizes": ["small", "medium"],
+      "diameter": 0.7,
+      "is_active": true
+    },
+    {
       "name": "Pink Pearl Bead",
       "component_type": "bead",
       "color": "pink",
@@ -57,6 +69,17 @@
     }
   ],
   "charms": [
+    {
+      "name": "White Pearl Center Knot",
+      "component_type": "charm",
+      "color": "white",
+      "material": "pearl",
+      "description": "Elegant white pearl center piece — the default knot",
+      "svg_element": "<circle cx=\"0\" cy=\"0\" r=\"20\" fill=\"#F8F8FF\" stroke=\"#D8D8E0\" stroke-width=\"2\" /><circle cx=\"-6\" cy=\"-6\" r=\"6\" fill=\"#FFFFFF\" opacity=\"0.7\" />",
+      "price": 12.00,
+      "compatible_sizes": ["medium", "large"],
+      "is_active": true
+    },
     {
       "name": "Blue Center Knot",
       "component_type": "charm",

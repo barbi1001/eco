@@ -425,18 +425,19 @@
   }
 
   .input-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a1a;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #831843;
     margin: 0 0 8px 0;
-    font-family: inherit;
+    font-family: 'Heebo', sans-serif;
   }
 
   .input-subtitle {
-    font-size: 0.875rem;
-    color: #666;
+    font-size: 0.9rem;
+    color: #9d174d;
+    font-weight: 500;
     margin: 0;
-    font-family: inherit;
+    font-family: 'Heebo', sans-serif;
   }
 
   .input-container {
@@ -462,10 +463,12 @@
   .text-input {
     width: 100%;
     padding: 16px 120px 16px 16px;
-    border: 2px solid #e5e5e5;
+    border: 2px solid #fbcfe8;
     border-radius: 12px;
     font-size: 1.125rem;
-    font-family: inherit;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    color: #831843;
     transition: all 0.2s ease;
     background: white;
     line-height: 1.4;
@@ -473,8 +476,8 @@
 
   .text-input:focus {
     outline: none;
-    border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    border-color: #ec4899;
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
   }
 
   .text-input.error {
@@ -533,9 +536,9 @@
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 100%);
+    background: linear-gradient(135deg, #ec4899 0%, #f9a8d4 45%, #fcf6ba 100%);
     border: none;
-    color: white;
+    color: #831843;
     cursor: pointer;
     padding: 8px 16px;
     border-radius: 6px;
@@ -543,15 +546,15 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    font-family: inherit;
-    box-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+    font-size: 0.9rem;
+    font-weight: 800;
+    font-family: 'Heebo', sans-serif;
+    box-shadow: 0 2px 6px rgba(236, 72, 153, 0.35);
   }
 
   .apply-button:hover:not(:disabled) {
-    background: linear-gradient(135deg, #c9a030 0%, #e6d495 100%);
-    box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, #db2777 0%, #f472b6 45%, #BF953F 100%);
+    box-shadow: 0 4px 10px rgba(236, 72, 153, 0.45);
     transform: translateY(-50%) scale(1.05);
   }
 
@@ -574,8 +577,9 @@
   }
 
   .counter-text {
-    color: #6b7280;
-    font-weight: 500;
+    color: #9d174d;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
   }
 
   .counter-text.warning {
@@ -603,23 +607,25 @@
     gap: 8px;
     margin-bottom: 16px;
     padding: 8px 12px;
-    background: #f0f9ff;
+    background: linear-gradient(90deg, #fdf2f8 0%, #fcf6ba 100%);
+    border: 1px solid #fbcfe8;
     border-radius: 8px;
-    font-size: 0.875rem;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.9rem;
   }
 
   .language-label {
-    color: #0369a1;
-    font-weight: 500;
-  }
-
-  .language-value {
-    color: #0c4a6e;
+    color: #9d174d;
     font-weight: 600;
   }
 
+  .language-value {
+    color: #831843;
+    font-weight: 800;
+  }
+
   .language-value.mixed {
-    color: #7c2d12;
+    color: #b45309;
   }
 
   .error-messages {
@@ -694,15 +700,15 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #9d174d;
+    font-family: 'Heebo', sans-serif;
     transition: background 0.2s ease;
   }
 
   .preview-toggle:hover {
-    background: #f3f4f6;
+    background: #fdf2f8;
   }
 
   .preview-icon {
@@ -761,24 +767,28 @@
   }
 
   .bead-letter {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #374151;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #831843;
+    font-family: 'Heebo', sans-serif;
   }
 
   .bead-letter.missing {
-    color: #9ca3af;
+    color: #be185d;
+    opacity: 0.5;
   }
 
   .preview-info {
     text-align: center;
     padding-top: 12px;
-    border-top: 1px solid #f3f4f6;
+    border-top: 1px solid #fbcfe8;
   }
 
   .preview-stats {
-    color: #6b7280;
-    font-size: 0.875rem;
+    color: #9d174d;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
     margin: 0;
   }
 
@@ -797,12 +807,12 @@
     align-items: center;
     gap: 8px;
     padding: 12px 16px;
-    background: #f9fafb;
+    background: #fdf2f8;
     cursor: pointer;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #9d174d;
+    font-family: 'Heebo', sans-serif;
     list-style: none;
   }
 
@@ -827,9 +837,9 @@
   .tips-list {
     margin: 0;
     padding-right: 20px;
-    color: #4b5563;
-    font-size: 0.875rem;
-    font-family: inherit;
+    color: #831843;
+    font-size: 0.9rem;
+    font-family: 'Heebo', sans-serif;
   }
 
   .tips-list li {

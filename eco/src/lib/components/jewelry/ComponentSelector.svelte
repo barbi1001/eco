@@ -400,38 +400,40 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem;
-    border-bottom: 2px solid #f3e8ff;
+    border-bottom: 2px solid #fbcfe8;
   }
   
   .modal-header h3 {
-    font-family: 'MakabiYG', sans-serif;
-    font-size: 1.5rem;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: -0.3px;
     margin: 0;
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
+    background: linear-gradient(90deg, #831843 0%, #be185d 40%, #b45309 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .close-button {
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #6b7280;
+    color: #9d174d;
     padding: 0.5rem;
     line-height: 1;
     transition: color 0.2s;
   }
-  
+
   .close-button:hover {
-    color: #374151;
+    color: #831843;
   }
   
   .current-selection {
     padding: 1rem 1.5rem;
-    background: linear-gradient(to right, rgba(191, 149, 63, 0.1), rgba(252, 246, 186, 0.1));
-    border-bottom: 1px solid #f3e8ff;
+    background: linear-gradient(90deg, rgba(236, 72, 153, 0.08), rgba(252, 246, 186, 0.15));
+    border-bottom: 1px solid #fbcfe8;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -459,15 +461,16 @@
   }
   
   .current-name {
-    font-weight: 600;
-    color: #374151;
+    font-weight: 700;
+    color: #831843;
     margin: 0;
   }
-  
+
   .current-details {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #be185d;
     margin: 0;
+    opacity: 0.85;
   }
   
   .remove-button {
@@ -477,7 +480,7 @@
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     transition: background 0.2s;
   }
   
@@ -487,7 +490,7 @@
   
   .filters-section {
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid #f3e8ff;
+    border-bottom: 1px solid #fbcfe8;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -500,15 +503,18 @@
   .search-input {
     width: 100%;
     padding: 0.75rem 2.5rem 0.75rem 1rem;
-    border: 2px solid #e5e7eb;
+    border: 2px solid #fbcfe8;
     border-radius: 0.5rem;
     font-size: 1rem;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    color: #831843;
     transition: border-color 0.2s;
   }
-  
+
   .search-input:focus {
     outline: none;
-    border-color: #BF953F;
+    border-color: #ec4899;
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
   }
   
   .search-icon {
@@ -527,45 +533,50 @@
   
   .type-filter {
     padding: 0.5rem 1rem;
-    border: 2px solid #e5e7eb;
+    border: 2px solid #fbcfe8;
     background: white;
+    color: #9d174d;
     border-radius: 0.5rem;
     cursor: pointer;
-    font-family: 'MakabiYG', sans-serif;
+    font-weight: 600;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     transition: all 0.2s;
   }
-  
+
   .type-filter:hover {
-    border-color: #BF953F;
+    border-color: #ec4899;
+    background: #fdf2f8;
   }
-  
+
   .type-filter.active {
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
-    border-color: #BF953F;
-    color: #374151;
-    font-weight: 600;
+    background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #BF953F 100%);
+    border-color: #ec4899;
+    color: #831843;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
   }
   
   /* Letter beads toggle */
   .letter-beads-toggle {
     padding-top: 0.5rem;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #fbcfe8;
   }
-  
+
   .toggle-label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
-    font-family: 'MakabiYG', sans-serif;
-    font-size: 0.875rem;
-    color: #6b7280;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #9d174d;
   }
-  
+
   .toggle-checkbox {
     width: 1rem;
     height: 1rem;
-    accent-color: #8B5CF6;
+    accent-color: #ec4899;
   }
   
   .toggle-text {
@@ -586,19 +597,22 @@
     align-items: center;
     justify-content: center;
     padding: 3rem 1rem;
-    color: #6b7280;
+    color: #9d174d;
+    font-weight: 500;
   }
-  
+
   .retry-button,
   .clear-search-button {
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
+    background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #BF953F 100%);
+    color: #831843;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
-    font-family: 'MakabiYG', sans-serif;
-    font-weight: 600;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
     transition: transform 0.2s;
   }
   
@@ -615,7 +629,7 @@
   
   .component-card {
     background: white;
-    border: 2px solid #e5e7eb;
+    border: 2px solid #fbcfe8;
     border-radius: 0.75rem;
     padding: 1rem;
     cursor: pointer;
@@ -626,31 +640,31 @@
     align-items: center;
     text-align: center;
   }
-  
+
   .component-card:hover {
-    border-color: #BF953F;
+    border-color: #ec4899;
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(191, 149, 63, 0.2);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.25);
   }
-  
+
   .component-card.selected {
-    border-color: #10b981;
-    background: linear-gradient(to bottom, rgba(16, 185, 129, 0.05), white);
+    border-color: #15803d;
+    background: linear-gradient(to bottom, rgba(34, 197, 94, 0.08), white);
   }
-  
+
   /* Letter bead specific styling */
   .component-card.letter-bead {
-    border-color: #8B5CF6;
+    border-color: #BF953F;
   }
-  
+
   .component-card.letter-bead:hover {
-    border-color: #7C3AED;
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
+    border-color: #b45309;
+    box-shadow: 0 8px 20px rgba(180, 83, 9, 0.25);
   }
-  
+
   .component-card.letter-bead.selected {
-    border-color: #7C3AED;
-    background: linear-gradient(to bottom, rgba(139, 92, 246, 0.05), white);
+    border-color: #b45309;
+    background: linear-gradient(to bottom, rgba(180, 83, 9, 0.08), white);
   }
   
   .component-image-wrapper {
@@ -680,8 +694,8 @@
     position: absolute;
     top: 0.25rem;
     right: 0.25rem;
-    background: linear-gradient(135deg, #8B5CF6, #A855F7);
-    color: white;
+    background: linear-gradient(135deg, #ec4899 0%, #BF953F 100%);
+    color: #fff8e7;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
@@ -690,12 +704,12 @@
     justify-content: center;
     font-weight: bold;
     font-size: 0.75rem;
-    box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 2px 4px rgba(236, 72, 153, 0.4);
     z-index: 10;
   }
   
   .letter-character {
-    font-family: 'MakabiYG', sans-serif;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
   }
@@ -721,38 +735,39 @@
   }
   
   .component-name {
-    font-weight: 600;
-    color: #374151;
+    font-weight: 700;
+    color: #831843;
     margin: 0 0 0.25rem 0;
     font-size: 0.95rem;
   }
-  
+
   .component-details {
     font-size: 0.8rem;
-    color: #6b7280;
+    color: #be185d;
     margin: 0 0 0.5rem 0;
+    opacity: 0.85;
   }
-  
+
   .letter-info {
     font-size: 0.8rem;
-    color: #8B5CF6;
-    font-weight: 600;
-    margin: 0 0 0.5rem 0;
-    font-family: 'MakabiYG', sans-serif;
-  }
-  
-  .component-price {
+    color: #b45309;
     font-weight: 700;
-    color: #BF953F;
+    margin: 0 0 0.5rem 0;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+  }
+
+  .component-price {
+    font-weight: 800;
+    color: #b45309;
     margin: 0;
     font-size: 1rem;
   }
-  
+
   .selected-badge {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    background: #10b981;
+    background: #15803d;
     color: white;
     width: 24px;
     height: 24px;
@@ -766,13 +781,15 @@
   
   .modal-footer {
     padding: 1rem 1.5rem;
-    border-top: 2px solid #f3e8ff;
+    border-top: 2px solid #fbcfe8;
     text-align: center;
   }
   
   .results-count {
-    color: #6b7280;
-    font-size: 0.875rem;
+    color: #9d174d;
+    font-weight: 600;
+    font-family: 'Heebo', 'MakabiYG', sans-serif;
+    font-size: 0.9rem;
     margin: 0;
   }
   

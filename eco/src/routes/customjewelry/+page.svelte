@@ -64,7 +64,17 @@
 	}
 
 	// Handle order submission
-	async function handleOrderSubmit(orderData: { name: string; phone: string; message: string }) {
+	async function handleOrderSubmit(orderData: {
+		name: string;
+		phone: string;
+		message: string;
+		email: string;
+		city: string;
+		street: string;
+		houseNumber: string;
+		apartment: string;
+		postalCode: string;
+	}) {
 		if (isSubmittingOrder) return;
 
 		isSubmittingOrder = true;
@@ -75,6 +85,12 @@
 				customerName: orderData.name,
 				customerPhone: orderData.phone,
 				customerMessage: orderData.message,
+				customerEmail: orderData.email,
+				city: orderData.city,
+				street: orderData.street,
+				houseNumber: orderData.houseNumber,
+				apartment: orderData.apartment,
+				postalCode: orderData.postalCode,
 				designConfiguration: $designState.designData,
 				totalPrice: $totalPrice,
 				previewImageBlob: $designState.previewImage || '',
@@ -251,9 +267,87 @@
 	.jewelry-designer-container {
 		min-height: 100vh;
 		width: 100%;
-		background: radial-gradient(#e46faf 0%, #ba98b7 50%, #b66123 100%);
+		background:
+			radial-gradient(ellipse at 20% 10%, rgba(255, 220, 235, 0.9) 0%, transparent 55%),
+			radial-gradient(ellipse at 80% 90%, rgba(255, 182, 213, 0.85) 0%, transparent 55%),
+			radial-gradient(ellipse at 50% 50%, #ffd1e3 0%, #f7a8c8 45%, #e26ea8 100%);
 		position: relative;
 		overflow-x: hidden;
+		isolation: isolate;
+	}
+
+	.jewelry-designer-container::before,
+	.jewelry-designer-container::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.jewelry-designer-container::before {
+		background-image:
+			radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0.6) 30%, transparent 70%),
+			radial-gradient(circle, #fff8fb 0%, rgba(255, 248, 251, 0.5) 35%, transparent 70%),
+			radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0.55) 30%, transparent 70%),
+			radial-gradient(circle, #ffeef6 0%, rgba(255, 238, 246, 0.5) 35%, transparent 70%);
+		background-size:
+			6px 6px,
+			4px 4px,
+			5px 5px,
+			3px 3px;
+		background-position:
+			12% 18%,
+			28% 62%,
+			47% 30%,
+			63% 78%;
+		background-repeat: no-repeat;
+		filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+		animation: twinkleA 3.2s ease-in-out infinite;
+	}
+
+	.jewelry-designer-container::after {
+		background-image:
+			radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0.6) 30%, transparent 70%),
+			radial-gradient(circle, #fff0f7 0%, rgba(255, 240, 247, 0.55) 30%, transparent 70%),
+			radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0.55) 30%, transparent 70%),
+			radial-gradient(circle, #ffe6f1 0%, rgba(255, 230, 241, 0.55) 30%, transparent 70%),
+			radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0.55) 30%, transparent 70%);
+		background-size:
+			5px 5px,
+			3px 3px,
+			6px 6px,
+			4px 4px,
+			3px 3px;
+		background-position:
+			82% 22%,
+			18% 88%,
+			72% 55%,
+			38% 12%,
+			92% 70%;
+		background-repeat: no-repeat;
+		filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.95));
+		animation: twinkleB 4.1s ease-in-out infinite;
+	}
+
+	@keyframes twinkleA {
+		0%,
+		100% {
+			opacity: 0.2;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes twinkleB {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.25;
+		}
 	}
 
 	.error-overlay {
@@ -365,6 +459,11 @@
 		.loading-spinner {
 			animation: none;
 			transition: none;
+		}
+
+		.jewelry-designer-container::before,
+		.jewelry-designer-container::after {
+			animation: none;
 		}
 	}
 

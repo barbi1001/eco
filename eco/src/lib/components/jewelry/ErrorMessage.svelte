@@ -53,18 +53,18 @@
 <div class="error-container bg-red-50 border-2 border-red-200 rounded-lg p-6 max-w-md mx-auto" dir="rtl">
   <div class="error-header flex items-center gap-3 mb-4">
     <span class="error-icon text-2xl">{getErrorIcon(error.type)}</span>
-    <h3 class="error-title text-lg font-bold text-red-800 font-[MakabiYG]">
+    <h3 class="error-title text-lg font-bold text-red-800 font-[Heebo]">
       {getErrorTitle(error.type)}
     </h3>
   </div>
   
-  <p class="error-message text-red-700 mb-4 font-[MakabiYG]">
+  <p class="error-message text-red-700 mb-4 font-[Heebo]">
     {error.message}
   </p>
   
   {#if showDetails && error.details}
     <details class="error-details mb-4">
-      <summary class="text-sm text-red-600 cursor-pointer hover:text-red-800 font-[MakabiYG]">
+      <summary class="text-sm text-red-600 cursor-pointer hover:text-red-800 font-[Heebo]">
         פרטים טכניים
       </summary>
       <pre class="text-xs text-red-500 mt-2 p-2 bg-red-100 rounded overflow-auto">
@@ -77,15 +77,15 @@
     {#if showRetry}
       <button
         onclick={handleRetry}
-        class="retry-button bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-gray-900 font-medium rounded-lg text-sm px-4 py-2 hover:opacity-80 transition-opacity font-[MakabiYG]"
+        class="retry-button bg-gradient-to-r from-[#ec4899] via-[#f9a8d4] to-[#BF953F] text-[#831843] font-bold rounded-lg text-sm px-4 py-2 hover:opacity-90 shadow-md transition-opacity font-[Heebo]"
       >
         נסה שוב
       </button>
     {/if}
-    
+
     <button
       onclick={handleDismiss}
-      class="dismiss-button bg-gray-200 text-gray-700 font-medium rounded-lg text-sm px-4 py-2 hover:bg-gray-300 transition-colors font-[MakabiYG]"
+      class="dismiss-button bg-pink-100 text-pink-800 font-bold rounded-lg text-sm px-4 py-2 hover:bg-pink-200 transition-colors font-[Heebo]"
     >
       סגור
     </button>

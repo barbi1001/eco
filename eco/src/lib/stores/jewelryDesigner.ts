@@ -8,7 +8,9 @@ import {
   type DesignConfiguration,
   type JewelryDesignerError,
   type BraceletConfiguration,
-  type BraceletCalculationResult
+  type BraceletCalculationResult,
+  type ComponentType,
+  type SizeCategory
 } from '$lib/types/jewelry';
 import { 
   calculateBraceletBeads, 
@@ -256,6 +258,63 @@ export const jewelryDesignerActions = {
         componentId: component.id
       });
       
+      return {
+        ...state,
+        selectedComponents: newSelectedComponents,
+        designData: {
+          ...state.designData,
+          components: newComponents,
+          timestamp: new Date()
+        }
+      };
+    });
+  },
+
+  // Auto-populate empty required positions with white-pearl defaults.
+  // Picks the cheapest white/pearl component that matches each position's type & size,
+  // and only fills positions that are currently empty (preserves user choices and recovered sessions).
+  autoPopulateWithDefaults: () => {
+    const template = get(selectedTemplate);
+    const components = get(availableComponents);
+    if (!template || components.length === 0) return;
+
+    const isWhitePearl = (c: JewelryComponent) => {
+      const color = (c.color || '').toLowerCase();
+      const material = (c.material || '').toLowerCase();
+      const isWhite = color.includes('white') || c.color?.includes('לבן');
+      const isPearl = material.includes('pearl') || c.material?.includes('פנינה');
+      return (isWhite || isPearl) && !c.isLetterBead && c.isActive;
+    };
+
+    const pickDefault = (type: ComponentType, size: SizeCategory) => {
+      const candidates = components.filter(
+        (c) => c.type === type && c.compatibleSizes.includes(size) && c.isActive && !c.isLetterBead
+      );
+      const whitePearl = candidates.find(isWhitePearl);
+      if (whitePearl) return whitePearl;
+      // Fallback: any pearl, then any matching component (sorted by price).
+      const pearls = candidates.filter((c) => (c.material || '').toLowerCase().includes('pearl'));
+      const pool = pearls.length > 0 ? pearls : candidates;
+      return pool.sort((a, b) => a.price - b.price)[0];
+    };
+
+    designState.update((state) => {
+      const newSelectedComponents = new Map(state.selectedComponents);
+      const newComponents = [...state.designData.components];
+      let added = false;
+
+      template.positions.forEach((position) => {
+        if (!position.required) return;
+        if (newSelectedComponents.has(position.id)) return;
+        const defaultComp = pickDefault(position.type, position.size);
+        if (!defaultComp) return;
+        newSelectedComponents.set(position.id, defaultComp);
+        newComponents.push({ positionId: position.id, componentId: defaultComp.id });
+        added = true;
+      });
+
+      if (!added) return state;
+
       return {
         ...state,
         selectedComponents: newSelectedComponents,

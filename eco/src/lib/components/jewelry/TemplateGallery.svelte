@@ -371,21 +371,24 @@
 	}
 
 	.gallery-title {
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		font-size: 2.5rem;
-		font-weight: bold;
-		background: linear-gradient(135deg, #c2185b 0%, #e91e8c 40%, #bf953f 70%, #fcf6ba 100%);
+		font-weight: 900;
+		background: linear-gradient(135deg, #831843 0%, #be185d 35%, #92400e 65%, #b45309 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
 		margin-bottom: 0.5rem;
-		letter-spacing: 0.05em;
+		letter-spacing: -0.3px;
+		filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6))
+			drop-shadow(0 2px 4px rgba(131, 24, 67, 0.2));
 	}
 
 	.gallery-subtitle {
 		font-size: 1.1rem;
-		color: #9d4f6e;
-		font-family: 'MakabiYG', sans-serif;
+		color: #9d174d;
+		font-weight: 600;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		letter-spacing: 0.03em;
 	}
 
@@ -420,7 +423,7 @@
 		padding: 0.4rem 1rem;
 		border-radius: 2rem;
 		cursor: pointer;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		font-size: 0.875rem;
 		transition: all 0.25s ease;
 		display: flex;
@@ -460,7 +463,7 @@
 		align-items: center;
 		gap: 1rem;
 		color: #9d4f6e;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.loading-spinner {
@@ -500,7 +503,7 @@
 
 	.max-retries-message p {
 		margin-bottom: 1rem;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.refresh-button {
@@ -511,7 +514,7 @@
 		border: none;
 		border-radius: 2rem;
 		cursor: pointer;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		transition: all 0.3s ease;
 		box-shadow: 0 3px 10px rgba(194, 24, 91, 0.3);
 	}
@@ -538,13 +541,13 @@
 		font-weight: 600;
 		margin-bottom: 0.5rem;
 		color: #c2185b;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.empty-state p {
 		font-size: 1rem;
 		margin-bottom: 2rem;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.retry-button {
@@ -555,7 +558,7 @@
 		border: none;
 		border-radius: 2rem;
 		cursor: pointer;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		transition: all 0.3s ease;
 		box-shadow: 0 3px 10px rgba(194, 24, 91, 0.3);
 	}
@@ -620,7 +623,7 @@
 		border-radius: 1rem;
 		font-size: 0.75rem;
 		font-weight: 600;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;
@@ -710,7 +713,7 @@
 		border: none;
 		border-radius: 2rem;
 		cursor: pointer;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		font-size: 0.95rem;
 		transform: translateY(12px);
 		transition:
@@ -742,7 +745,7 @@
 		font-weight: 700;
 		color: #880e4f;
 		margin-bottom: 0.25rem;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		letter-spacing: 0.02em;
 	}
 
@@ -750,7 +753,7 @@
 		font-size: 0.8rem;
 		color: #c2185b;
 		margin-bottom: 1rem;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
 		opacity: 0.8;
@@ -775,7 +778,7 @@
 		font-size: 0.8rem;
 		color: #7a5500;
 		font-weight: 500;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.template-price {
@@ -792,7 +795,7 @@
 	.price-label {
 		font-size: 0.8rem;
 		color: #9d4f6e;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.price-value {
@@ -802,14 +805,14 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.template-description {
 		font-size: 0.8rem;
 		color: #9d4f6e;
 		line-height: 1.5;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		opacity: 0.85;
 	}
 

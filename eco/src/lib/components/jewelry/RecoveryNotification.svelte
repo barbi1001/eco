@@ -62,11 +62,12 @@
 	}
 
 	.notification-content {
-		background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-		color: white;
+		background: linear-gradient(135deg, #ec4899 0%, #be185d 50%, #BF953F 100%);
+		color: #fff8e7;
 		padding: 1rem 1.5rem;
 		border-radius: 0.75rem;
-		box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+		border: 1px solid rgba(252, 246, 186, 0.4);
+		box-shadow: 0 10px 25px rgba(236, 72, 153, 0.35);
 		display: flex;
 		align-items: center;
 		gap: 1rem;
@@ -75,10 +76,10 @@
 
 	@keyframes pulse {
 		0%, 100% {
-			box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+			box-shadow: 0 10px 25px rgba(236, 72, 153, 0.35);
 		}
 		50% {
-			box-shadow: 0 10px 35px rgba(16, 185, 129, 0.5);
+			box-shadow: 0 10px 35px rgba(236, 72, 153, 0.5);
 		}
 	}
 
@@ -102,14 +103,14 @@
 		font-weight: 700;
 		font-size: 1rem;
 		margin: 0 0 0.25rem 0;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.subtitle {
 		font-size: 0.875rem;
 		margin: 0;
 		opacity: 0.95;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 	}
 
 	.dismiss-button {

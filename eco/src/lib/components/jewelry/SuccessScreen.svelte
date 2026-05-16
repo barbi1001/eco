@@ -92,11 +92,13 @@
 	.success-content {
 		max-width: 600px;
 		width: 100%;
-		background: rgb(215, 171, 214);
+		background: linear-gradient(160deg, #fff0f5 0%, #fde8f0 50%, #fff8e7 100%);
 		border-radius: 1.5rem;
 		padding: 3rem 2rem;
-		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-		border: 2px solid #f3e8ff;
+		box-shadow:
+			0 20px 50px rgba(236, 72, 153, 0.18),
+			0 0 0 1px rgba(191, 149, 63, 0.2);
+		border: 2px solid #fbcfe8;
 		text-align: center;
 		position: relative;
 		overflow: hidden;
@@ -134,20 +136,25 @@
 	}
 
 	.success-title {
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
+		font-weight: 900;
 		font-size: 2.5rem;
+		letter-spacing: -0.5px;
 		margin-bottom: 1.5rem;
-		background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+		background: linear-gradient(135deg, #831843 0%, #be185d 35%, #92400e 65%, #b45309 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
-		text-shadow: 0 2px 10px rgba(191, 149, 63, 0.2);
+		filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6))
+			drop-shadow(0 2px 4px rgba(131, 24, 67, 0.2));
 	}
 
 	.success-message {
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
+		font-weight: 500;
 		font-size: 1.1rem;
 		line-height: 1.8;
-		color: #6b7280;
+		color: #9d174d;
 		margin-bottom: 2.5rem;
 	}
 
@@ -250,7 +257,7 @@
 		padding: 1rem 2rem;
 		border: none;
 		border-radius: 0.75rem;
-		font-family: 'MakabiYG', sans-serif;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
 		font-size: 1.1rem;
 		font-weight: 600;
 		cursor: pointer;
@@ -262,31 +269,35 @@
 	}
 
 	.primary-button {
-		background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
-		color: #374151;
+		background: linear-gradient(135deg, #ec4899 0%, #f472b6 35%, #fcf6ba 70%, #bf953f 100%);
+		color: #831843;
+		font-weight: 800;
+		box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3);
 	}
 
 	.primary-button:hover {
 		transform: translateY(-3px);
-		box-shadow: 0 8px 20px rgba(191, 149, 63, 0.3);
+		box-shadow: 0 8px 22px rgba(236, 72, 153, 0.45);
 	}
 
 	.secondary-button {
 		background: white;
-		color: #6b7280;
-		border: 2px solid #e5e7eb;
+		color: #9d174d;
+		font-weight: 700;
+		border: 2px solid #fbcfe8;
 	}
 
 	.secondary-button:hover {
-		background: #f9fafb;
-		border-color: #bf953f;
+		background: #fdf2f8;
+		border-color: #ec4899;
 		transform: translateY(-2px);
 	}
 
 	.contact-info {
 		padding-top: 2rem;
-		border-top: 1px solid #e5e7eb;
-		color: #6b7280;
+		border-top: 1px solid #fbcfe8;
+		color: #9d174d;
+		font-weight: 600;
 	}
 
 	.contact-info p {

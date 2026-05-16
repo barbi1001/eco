@@ -573,33 +573,50 @@
 	}
 
 	.canvas-header h2 {
-		font-family: 'MakabiYG', sans-serif;
-		font-size: 2rem;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
+		font-weight: 900;
+		font-size: 2.4rem;
+		letter-spacing: -0.5px;
 		margin-bottom: 0.5rem;
-		background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+		background: linear-gradient(
+			90deg,
+			#831843 0%,
+			#be185d 25%,
+			#92400e 50%,
+			#b45309 75%,
+			#831843 100%
+		);
+		background-size: 200% auto;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
+		filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6))
+			drop-shadow(0 2px 4px rgba(131, 24, 67, 0.25));
 	}
 
 	.template-description {
-		color: #6b7280;
-		font-size: 1rem;
+		font-family: 'Heebo', sans-serif;
+		font-weight: 600;
+		color: #9d174d;
+		font-size: 1.05rem;
+		letter-spacing: 0.2px;
 	}
 
 	.bracelet-badge {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		background: linear-gradient(135deg, #8b5cf6, #a855f7);
-		color: white;
-		padding: 0.5rem 1rem;
+		background: linear-gradient(135deg, #ec4899 0%, #f472b6 40%, #fbcfe8 70%, #fcf6ba 100%);
+		color: #7a1f3d;
+		padding: 0.5rem 1.25rem;
 		border-radius: 2rem;
-		font-size: 0.875rem;
-		font-weight: 600;
-		font-family: 'MakabiYG', sans-serif;
+		font-size: 0.95rem;
+		font-weight: 800;
+		font-family: 'Heebo', sans-serif;
 		margin-top: 0.5rem;
-		box-shadow: 0 4px 8px rgba(139, 92, 246, 0.3);
+		box-shadow:
+			0 4px 12px rgba(236, 72, 153, 0.35),
+			0 0 0 1px rgba(191, 149, 63, 0.25) inset;
 	}
 
 	.bracelet-icon {
@@ -612,28 +629,35 @@
 
 	/* Bracelet-specific interfaces */
 	.bracelet-interfaces {
-		background: linear-gradient(135deg, #f3e8ff, #ede9fe);
-		border: 2px solid #c4b5fd;
+		background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fef3c7 100%);
+		border: 2px solid #f9a8d4;
 		border-radius: 1rem;
 		padding: 1.5rem;
 		margin-bottom: 2rem;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 2rem;
+		box-shadow: 0 4px 16px rgba(236, 72, 153, 0.12);
 	}
 
 	.bracelet-section {
 		background: white;
 		padding: 1rem;
 		border-radius: 0.75rem;
-		box-shadow: 0 2px 4px rgba(139, 92, 246, 0.1);
+		box-shadow:
+			0 2px 6px rgba(236, 72, 153, 0.12),
+			0 0 0 1px rgba(191, 149, 63, 0.15);
 	}
 
 	.section-title {
-		font-family: 'MakabiYG', sans-serif;
-		font-size: 1.125rem;
-		font-weight: 600;
-		color: #7c3aed;
+		font-family: 'Heebo', sans-serif;
+		font-size: 1.2rem;
+		font-weight: 800;
+		letter-spacing: -0.2px;
+		background: linear-gradient(90deg, #ec4899 0%, #f472b6 40%, #bf953f 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 		margin-bottom: 1rem;
 		text-align: center;
 	}
@@ -642,8 +666,10 @@
 		background: white;
 		border-radius: 1rem;
 		padding: 1.5rem;
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-		border: 2px solid #f3e8ff;
+		box-shadow:
+			0 10px 25px rgba(236, 72, 153, 0.12),
+			0 0 0 1px rgba(191, 149, 63, 0.15);
+		border: 2px solid #fbcfe8;
 		position: relative;
 	}
 
@@ -724,8 +750,10 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		font-size: 0.875rem;
-		color: #6b7280;
+		font-family: 'Heebo', sans-serif;
+		font-weight: 600;
+		font-size: 0.9rem;
+		color: #be185d;
 	}
 
 	.legend-marker {
@@ -738,13 +766,25 @@
 	.canvas-instructions {
 		text-align: center;
 		margin-top: 1rem;
-		padding: 0.75rem;
-		background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-		border-radius: 0.5rem;
-		color: #181f61;
-		font-size: 0.95rem;
-		font-weight: 600;
-		text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+		padding: 0.85rem 1rem;
+		background:
+			linear-gradient(
+				90deg,
+				#fce7f3 0%,
+				#fcf6ba 25%,
+				#fbcfe8 50%,
+				#fcf6ba 75%,
+				#fce7f3 100%
+			);
+		border: 1px solid rgba(236, 72, 153, 0.25);
+		border-radius: 0.75rem;
+		color: #9d174d;
+		font-family: 'Heebo', sans-serif;
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: 0.2px;
+		text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+		box-shadow: 0 2px 10px rgba(236, 72, 153, 0.15);
 	}
 
 	/* Responsive design */
