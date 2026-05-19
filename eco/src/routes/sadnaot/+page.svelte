@@ -172,20 +172,47 @@
 				<WhatsappButton text="מפגש עיצוב תכשיטים" rotate={true} />
 			</div>
 
-			<a
-				href="https://youtu.be/kdTmSGom5mc?si=SPHN54giFnpz8P8M"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="w-full max-w-full flex justify-center cursor-pointer overflow-ס-hidden box-border"
-			>
-				<img
-					src="/lehair.jpeg"
-					alt="תמונה"
-					class="w-full max-w-full h-auto object-cover ךע:w-auto md:max-h-[60vh] md:object-contain mb-10"
-				/>
-			</a>
-
 			<div class="w-full flex flex-col items-center gap-6 mb-12 sm:px-4">
+				<a
+					href="/customjewelry"
+					class="mt-4 mb-6 mx-4 w-full max-w-md block rounded-3xl overflow-hidden shadow-2xl border border-pink-200 hover:-translate-y-1 transition-transform duration-300"
+				>
+					<div
+						class="flex flex-col items-center justify-center gap-3 px-6 py-8 text-center"
+						style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);"
+					>
+						<img
+							src="/logo.jpg"
+							alt="לוגו ברבי עיצובים"
+							class="w-20 h-20 rounded-full object-cover shadow-lg border-2 border-[#BF953F]"
+						/>
+						<h3
+							class="text-2xl font-bold font-[MakabiYG] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text"
+						>
+							יצירת תכשיט אונליין בהתאמה אישית
+						</h3>
+						<p class="text-pink-100 text-base font-[MakabiYG]">
+							עצבי את התכשיט שלך מהבית — בחרי סגנון, חומר ועיצוב בדיוק כמו שדמיינת
+						</p>
+						<span
+							class="mt-2 inline-block bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-[#7e22ce] font-bold rounded-full text-lg px-8 py-3 font-[MakabiYG] shadow-lg"
+						>
+							לעיצוב התכשיט שלי ←
+						</span>
+					</div>
+				</a>
+				<a
+					href="https://youtu.be/kdTmSGom5mc?si=SPHN54giFnpz8P8M"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="w-full max-w-full flex justify-center cursor-pointer overflow-ס-hidden box-border"
+				>
+					<img
+						src="/lehair.jpeg"
+						alt="תמונה"
+						class="w-full max-w-full h-auto object-cover ךע:w-auto md:max-h-[60vh] md:object-contain mb-10"
+					/>
+				</a>
 				{#each ['photo_1_2026-02-24_21-33-11.jpg', 'photo_2_2026-02-24_21-33-11.jpg', 'photo_3_2026-02-24_21-33-11.jpg', 'photo_4_2026-02-24_21-33-11.jpg', 'photo_5_2026-02-24_21-33-11.jpg', 'photo_6_2026-02-24_21-33-11.jpg', 'photo_7_2026-02-24_21-33-11.jpg', 'photo_8_2026-02-24_21-33-11.jpg'] as img}
 					<div
 						class="w-full max-w-4xl flex justify-center items-center bg-white/50 sm:rounded-3xl shadow-lg border-y border-pink-200 sm:border"
@@ -203,7 +230,7 @@
 				</h3>
 				<button
 					onclick={() => (dialogOpen = true)}
-					class="z-[10] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-gray-900 font-bold rounded-full text-2xl px-10 py-4 text-center hover:to-pink-600 hover:from-pink-600 hover:via-[#FCF6BA] transition-all duration-300 hover:opacity-90 shadow-xl transform hover:-translate-y-1 mb-6 font-[MakabiYG]"
+					class="z-[10] bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-[#7e22ce] font-bold rounded-full text-2xl px-10 py-4 text-center hover:to-pink-600 hover:from-pink-600 hover:via-[#FCF6BA] transition-all duration-300 hover:opacity-90 shadow-xl transform hover:-translate-y-1 mb-6 font-[MakabiYG]"
 				>
 					לתיאום פגישה
 				</button>
