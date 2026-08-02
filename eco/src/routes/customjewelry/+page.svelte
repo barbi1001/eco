@@ -9,12 +9,14 @@
 		currentStep,
 		jewelryDesignerActions,
 		designerError,
+		designerNotice,
 		designState,
 		totalPrice,
 		selectedTemplate,
 		braceletConfiguration,
 		hasRecoveredSession,
-		recoveryTimestamp
+		recoveryTimestamp,
+		saveFailed
 	} from '$lib/stores/jewelryDesigner';
 	import { DesignStep } from '$lib/types/jewelry';
 
@@ -32,20 +34,23 @@
 	// Component state using Svelte 5 runes
 	let mounted = $state(false);
 	let isSubmittingOrder = $state(false);
+	/** Components dropped on restore because they no longer exist in the catalogue. */
+	let droppedOnRestore = $state(0);
 
-	onMount(() => {
-		console.log('starting');
-		// Try to restore previous session
-		const restored = jewelryDesignerActions.loadFromLocalStorage();
+	onMount(async () => {
+		mounted = true;
 
-		// Auto-dismiss recovery notification after 5 seconds
-		if (restored) {
+		// Restoring re-fetches the template from Strapi, so it is async now.
+		const result = await jewelryDesignerActions.loadFromLocalStorage();
+
+		if (result.restored) {
+			droppedOnRestore = result.droppedCount ?? 0;
+
+			// Auto-dismiss recovery notification after 5 seconds
 			setTimeout(() => {
 				jewelryDesignerActions.dismissRecoveryNotification();
 			}, 5000);
 		}
-
-		mounted = true;
 	});
 
 	// Handle navigation between steps
@@ -164,7 +169,42 @@
 		<!-- Auto-save Indicator -->
 		<AutoSaveIndicator />
 
-		<!-- Error Display -->
+		<!-- Restored-session caveats -->
+		{#if droppedOnRestore > 0}
+			<div class="banner" in:fly={{ y: -20, duration: 300 }}>
+				{droppedOnRestore === 1
+					? 'רכיב אחד מהעיצוב השמור לא זמין יותר והוסר. אפשר לבחור רכיב אחר במקומו.'
+					: `${droppedOnRestore} רכיבים מהעיצוב השמור לא זמינים יותר והוסרו. אפשר לבחור אחרים במקומם.`}
+				<button class="banner-close" onclick={() => (droppedOnRestore = 0)} aria-label="סגור">✕</button>
+			</div>
+		{/if}
+
+		<!-- Auto-save failure — the "your design is saved" promise silently broke -->
+		{#if $saveFailed}
+			<div class="banner banner-warning" in:fly={{ y: -20, duration: 300 }}>
+				לא הצלחנו לשמור את העיצוב במכשיר. אפשר להמשיך לעצוב, אבל כדאי לא לסגור את הדף.
+				<button class="banner-close" onclick={() => saveFailed.set(false)} aria-label="סגור">✕</button>
+			</div>
+		{/if}
+
+		<!-- Soft, in-context feedback (bead capacity, warnings) -->
+		{#if $designerNotice}
+			<div
+				class="notice notice-{$designerNotice.level}"
+				role="status"
+				in:fly={{ y: 20, duration: 250 }}
+				out:fade={{ duration: 200 }}
+			>
+				<span>{$designerNotice.message}</span>
+				<button
+					class="notice-close"
+					onclick={() => jewelryDesignerActions.clearNotice()}
+					aria-label="סגור">✕</button
+				>
+			</div>
+		{/if}
+
+		<!-- Blocking overlay — reserved for hard failures (network / server) -->
 		{#if $designerError}
 			<div class="error-overlay" in:fade={{ duration: 300 }} out:fade={{ duration: 300 }}>
 				<ErrorMessage
@@ -348,6 +388,90 @@
 		50% {
 			opacity: 0.25;
 		}
+	}
+
+	/* ── Inline banners / notices ─────────────────────────────
+	   Soft problems stay in context instead of blocking the screen. */
+	.banner {
+		position: relative;
+		z-index: 500;
+		max-width: 40rem;
+		margin: 0.75rem auto 0;
+		padding: 0.75rem 2.5rem 0.75rem 1rem;
+		border-radius: 0.75rem;
+		background: #fff;
+		border: 1px solid #fbcfe8;
+		color: #9d174d;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
+		font-weight: 600;
+		font-size: 0.95rem;
+		line-height: 1.5;
+		text-align: center;
+		box-shadow: 0 4px 14px rgba(190, 24, 93, 0.15);
+		direction: rtl;
+	}
+
+	.banner-warning {
+		background: #fffbeb;
+		border-color: #fcd34d;
+		color: #92400e;
+	}
+
+	.banner-close,
+	.notice-close {
+		position: absolute;
+		top: 50%;
+		left: 0.6rem;
+		transform: translateY(-50%);
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-size: 0.9rem;
+		line-height: 1;
+		color: inherit;
+		opacity: 0.65;
+		padding: 0.25rem;
+	}
+
+	.banner-close:hover,
+	.notice-close:hover {
+		opacity: 1;
+	}
+
+	.notice {
+		position: fixed;
+		bottom: 1.25rem;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 900;
+		max-width: min(90vw, 30rem);
+		padding: 0.85rem 2.75rem 0.85rem 1.25rem;
+		border-radius: 0.85rem;
+		font-family: 'Heebo', 'MakabiYG', sans-serif;
+		font-weight: 700;
+		font-size: 0.95rem;
+		line-height: 1.5;
+		text-align: center;
+		direction: rtl;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+	}
+
+	.notice-error {
+		background: #fef2f2;
+		border: 1px solid #fca5a5;
+		color: #991b1b;
+	}
+
+	.notice-warning {
+		background: #fffbeb;
+		border: 1px solid #fcd34d;
+		color: #92400e;
+	}
+
+	.notice-info {
+		background: #eff6ff;
+		border: 1px solid #93c5fd;
+		color: #1e40af;
 	}
 
 	.error-overlay {

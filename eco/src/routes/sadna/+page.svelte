@@ -1,33 +1,40 @@
 <script>
-    let name = '';
-    let phone = '';
-    let message = '';
-  
-    const submitForm = async () => {
-      const telegramBotToken = 'YOUR_TELEGRAM_BOT_TOKEN';
-      const chatId = 'YOUR_TELEGRAM_CHAT_ID';
-      const text = `פנייה חדשה:\nשם: ${name}\nטלפון: ${phone}\nהודעה: ${message}`;
-      const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-  
-      await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text }),
-      });
-  
-      alert('הפרטים נשלחו בהצלחה!');
-      name = '';
-      phone = '';
-      message = '';
+    let name = $state('');
+    let phone = $state('');
+    let message = $state('');
+    let isLoading = $state(false);
+    let status = $state(null); // null | 'success' | 'error'
+
+    const submitForm = async (event) => {
+      event.preventDefault();
+      if (!name || !phone || isLoading) return;
+
+      isLoading = true;
+      status = null;
+
+      try {
+        // Server endpoint — the Telegram credentials must never reach the browser.
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, message, source: 'סדנה' })
+        });
+
+        if (!res.ok) throw new Error(`Contact request failed: ${res.status}`);
+
+        status = 'success';
+        name = '';
+        phone = '';
+        message = '';
+      } catch (error) {
+        console.error('Contact submit failed:', error);
+        status = 'error';
+      } finally {
+        isLoading = false;
+      }
     };
-  
-    const images = [
-      '/images/jewelry1.jpg',
-      '/images/jewelry2.jpg',
-      '/images/jewelry3.jpg',
-    ];
   </script>
-  
+
   <style>
     .gradient-bg {
       background: linear-gradient(90deg, #f8c291, #f78fb3);
@@ -36,7 +43,7 @@
       border-radius: 8px;
       text-align: center;
     }
-  
+
     button {
       background-color: #f8c291;
       color: white;
@@ -45,11 +52,11 @@
       border-radius: 5px;
       cursor: pointer;
     }
-  
+
     button:hover {
       background-color: #e77f67;
     }
-  
+
     input, textarea {
       width: 100%;
       padding: 10px;
@@ -57,31 +64,46 @@
       border: 1px solid #ddd;
       border-radius: 5px;
     }
-  
-    .gallery {
+
+    .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 20px;
     }
-  
-    .gallery img {
-      width: calc(33% - 10px);
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
+
+    .cta {
+      background-color: #f8c291;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 700;
     }
-  
-    .gallery img:hover {
-      transform: scale(1.05);
+
+    .cta:hover {
+      background-color: #e77f67;
     }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin: 10px 0 0;
+      font-weight: 700;
+    }
+
+    .status.success { color: #15803d; }
+    .status.error { color: #b91c1c; }
   </style>
-  
+
   <div class="gradient-bg">
     <h1>עצבו את התכשיט המושלם שלכם</h1>
     <p>סדנה ליצירת תכשיטים אישיים מפנינים וחרוזים</p>
   </div>
-  
+
   <div>
     <h2>מה בסדנה?</h2>
     <ul>
@@ -90,17 +112,14 @@
       <li>מחדשים ומשדרגים תכשיטים ישנים</li>
     </ul>
   </div>
-  
-  <div class="gallery">
-    {#each images as image}
-      <img src={image} alt="תכשיט מעוצב" />
-    {/each}
+
+  <div class="actions">
+    <a class="cta" href="/tachshit-ishi">לעצב תכשיט אונליין עכשיו</a>
+    <a class="cta" href="https://wa.me/972585171519" target="_blank" rel="noopener noreferrer">
+      שלחי הודעה בווצאפ
+    </a>
   </div>
-  
-  <div>
-    <button onclick={location.href='https://wa.me/+97258151719'}>שלחי הודעה בווצאפ</button>
-  </div>
-  
+
   <div>
     <h2>השאירו פרטים ונחזור אליכם</h2>
     <form onsubmit={submitForm}>
@@ -120,6 +139,16 @@
         placeholder="הודעה"
         bind:value={message}
       ></textarea>
-      <button type="submit">שלחי</button>
+      <button type="submit" disabled={!name || !phone || isLoading}>
+        {isLoading ? 'שולח...' : 'שלחי'}
+      </button>
+
+      {#if status === 'success'}
+        <p class="status success">הפרטים נשלחו בהצלחה! נחזור אלייך בהקדם.</p>
+      {:else if status === 'error'}
+        <p class="status error">
+          לא הצלחנו לשלוח את הפרטים. אפשר לנסות שוב, או לפנות בווצאפ.
+        </p>
+      {/if}
     </form>
   </div>

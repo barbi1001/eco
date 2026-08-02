@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
   import { fade, slide } from 'svelte/transition';
   import type { 
     BraceletCalculationResult, 
@@ -9,6 +9,7 @@
     calculateBraceletBeads, 
     calculateTotalBeadSpace,
     checkBeadsFitInSpace,
+    averageBeadDiameter,
     BRACELET_VALIDATION_RULES 
   } from '$lib/utils/braceletCalculations.js';
 
@@ -31,21 +32,16 @@
   }: Props = $props();
 
   // Reactive calculations
-  let calculationResult = $derived.by(() => {
-    // Calculate with average bead diameter if no specific beads selected
-    const averageBeadDiameter = selectedBeads.length > 0 
-      ? selectedBeads.reduce((sum, bead) => sum + (bead.diameter || 0.5), 0) / selectedBeads.length
-      : 0.5; // Default 0.5cm
+  let calculationResult = $derived(
+    calculateBraceletBeads(wristCircumference, averageBeadDiameter(selectedBeads))
+  );
 
-    const result = calculateBraceletBeads(wristCircumference, averageBeadDiameter);
-    
-    // Update text fit status based on custom text
-    if (customText) {
-      result.textFitsInSpace = customText.length <= result.recommendedBeadCount;
-    }
-
-    return result;
-  });
+  // Whether the custom text fits in the recommended number of bead slots.
+  // (Used to be a lying `textFitsInSpace` field on the calculation result that
+  // defaulted to `true` whether or not anyone had checked.)
+  let textFitsInSpace = $derived(
+    !customText || customText.length <= calculationResult.recommendedBeadCount
+  );
 
   let totalSelectedBeadSpace = $derived(() => {
     return calculateTotalBeadSpace(selectedBeads);
@@ -73,13 +69,9 @@
     return Math.max(0, calculationResult.availableBeadSpace - totalSelectedBeadSpace);
   });
 
-  let remainingBeadCount = $derived(() => {
-    const averageBeadDiameter = selectedBeads.length > 0 
-      ? selectedBeads.reduce((sum, bead) => sum + (bead.diameter || 0.5), 0) / selectedBeads.length
-      : 0.5;
-    
-    return Math.floor(remainingSpace / averageBeadDiameter);
-  });
+  let remainingBeadCount = $derived(
+    Math.floor(remainingSpace / averageBeadDiameter(selectedBeads))
+  );
 
   // Effects for callbacks
   $effect(() => {
@@ -207,11 +199,11 @@
         </div>
         <div class="flex justify-between items-center">
           <span class="text-sm text-gray-600">מקום זמין לטקסט:</span>
-          <span class="text-sm font-medium {calculationResult.textFitsInSpace ? 'text-green-600' : 'text-red-600'}">
+          <span class="text-sm font-medium {textFitsInSpace ? 'text-green-600' : 'text-red-600'}">
             {calculationResult.recommendedBeadCount} מיקומים
           </span>
         </div>
-        {#if !calculationResult.textFitsInSpace}
+        {#if !textFitsInSpace}
           <div class="mt-2 text-xs text-red-600 bg-red-50 rounded p-2">
             הטקסט ארוך מדי עבור הצמיד. קצר את הטקסט או הגדל את גודל הצמיד.
           </div>

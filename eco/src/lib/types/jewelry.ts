@@ -74,11 +74,10 @@ export interface LetterBeadPosition {
 }
 
 export interface BraceletCalculationResult {
-  totalCircumference: number; // wrist + clasp space
-  availableBeadSpace: number; // space available for beads
+  totalCircumference: number; // finished loop = wrist + ease allowance
+  availableBeadSpace: number; // finished loop minus the clasp
   maxBeadCount: number; // maximum beads that can fit
   recommendedBeadCount: number; // recommended for comfortable fit
-  textFitsInSpace: boolean; // whether entered text fits
 }
 
 export interface BraceletValidationRules {

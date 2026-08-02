@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   BraceletConfiguration,
   BraceletCalculationResult,
   BraceletValidationRules,
@@ -6,6 +6,28 @@ import type {
   LetterBeadPosition,
   JewelryComponent
 } from '../types/jewelry.js';
+
+/**
+ * Physical constants for bracelet geometry — the single source of truth.
+ *
+ * These used to be duplicated with different values: this module assumed a
+ * 0.5cm bead while DesignCanvas assumed 0.7cm, so the number of bead slots drawn
+ * on the canvas never matched the number the validator thought would fit.
+ */
+export const BRACELET_GEOMETRY = {
+  /**
+   * Length of the clasp hardware. It is part of the finished loop, so it takes
+   * space away from the beads.
+   */
+  claspSpace: 1.5,
+  /**
+   * Slack added over the wrist measurement so the bracelet slides on and moves.
+   * Without it the bracelet would be exactly wrist-tight.
+   */
+  easeAllowance: 1.0,
+  /** Fallback bead diameter used only when nothing has been selected yet. */
+  defaultBeadDiameter: 0.7
+} as const;
 
 // Bracelet validation rules
 export const BRACELET_VALIDATION_RULES: BraceletValidationRules = {
@@ -25,21 +47,49 @@ export const BRACELET_VALIDATION_RULES: BraceletValidationRules = {
  */
 export function calculateBraceletBeads(
   wristCircumference: number,
-  beadDiameter: number
+  beadDiameter: number = BRACELET_GEOMETRY.defaultBeadDiameter
 ): BraceletCalculationResult {
-  const claspSpace = 1.5; // cm - space reserved for clasp
-  const totalCircumference = wristCircumference + claspSpace;
-  const availableBeadSpace = totalCircumference;
-  const maxBeadCount = Math.floor(availableBeadSpace / beadDiameter);
-  const recommendedBeadCount = Math.floor(maxBeadCount * 0.9); // 90% for comfort
+  const { claspSpace, easeAllowance } = BRACELET_GEOMETRY;
+
+  // The finished loop is: beads + clasp, and it has to be a little larger than the
+  // wrist so it slides on. So the beads get (wrist + ease) - clasp.
+  //
+  // This used to read `wrist + claspSpace` for the bead budget — the clasp was
+  // ADDED to the beads instead of taken out of them, and a separate 0.9 "comfort"
+  // factor was multiplied on top, so the two errors partly masked each other and
+  // every bracelet came out roughly 2-3cm too loose.
+  const totalCircumference = wristCircumference + easeAllowance;
+  const availableBeadSpace = Math.max(0, totalCircumference - claspSpace);
+
+  const safeDiameter = beadDiameter > 0 ? beadDiameter : BRACELET_GEOMETRY.defaultBeadDiameter;
+  const maxBeadCount = Math.floor(availableBeadSpace / safeDiameter);
+
+  // No extra shrink factor: the ease allowance above is what makes it comfortable,
+  // and applying both made the strand too short.
+  const recommendedBeadCount = Math.max(1, maxBeadCount);
 
   return {
     totalCircumference,
     availableBeadSpace,
     maxBeadCount,
-    recommendedBeadCount,
-    textFitsInSpace: true // Will be calculated based on text length in other functions
+    recommendedBeadCount
   };
+}
+
+/**
+ * Diameter of a single bead, with the shared fallback applied.
+ */
+export function beadDiameter(bead: JewelryComponent): number {
+  return bead.diameter || BRACELET_GEOMETRY.defaultBeadDiameter;
+}
+
+/**
+ * Average diameter of a set of beads, falling back to the default when the set is
+ * empty. Use this instead of sprinkling `0.5` / `0.7` literals around the codebase.
+ */
+export function averageBeadDiameter(beads: JewelryComponent[]): number {
+  if (!beads || beads.length === 0) return BRACELET_GEOMETRY.defaultBeadDiameter;
+  return beads.reduce((sum, bead) => sum + beadDiameter(bead), 0) / beads.length;
 }
 
 /**
@@ -164,23 +214,23 @@ export function validateBraceletConfiguration(config: BraceletConfiguration): Va
 
   // Validate wrist circumference
   if (config.wristCircumference < BRACELET_VALIDATION_RULES.minWristSize) {
-    errors.push(`Wrist circumference must be at least ${BRACELET_VALIDATION_RULES.minWristSize}cm`);
+    errors.push(`היקף פרק היד חייב להיות לפחות ${BRACELET_VALIDATION_RULES.minWristSize} ס"מ`);
   }
   
   if (config.wristCircumference > BRACELET_VALIDATION_RULES.maxWristSize) {
-    errors.push(`Wrist circumference cannot exceed ${BRACELET_VALIDATION_RULES.maxWristSize}cm`);
+    errors.push(`היקף פרק היד לא יכול לעלות על ${BRACELET_VALIDATION_RULES.maxWristSize} ס"מ`);
   }
 
   // Validate custom text length
   if (config.customText && config.customText.length > BRACELET_VALIDATION_RULES.maxTextLength) {
-    errors.push(`Custom text cannot exceed ${BRACELET_VALIDATION_RULES.maxTextLength} characters`);
+    errors.push(`הטקסט לא יכול לעלות על ${BRACELET_VALIDATION_RULES.maxTextLength} תווים`);
   }
 
   // Validate text contains only supported characters
   if (config.customText) {
     const hasUnsupportedChars = !isTextSupported(config.customText);
     if (hasUnsupportedChars) {
-      errors.push('Custom text contains unsupported characters. Only English and Hebrew letters are supported.');
+      errors.push('הטקסט מכיל תווים שאין להם חרוזי אותיות. אפשר להשתמש באותיות בעברית ובאנגלית.');
     }
   }
 
@@ -199,11 +249,11 @@ export function validateWristSize(wristSize: number): ValidationResult {
   const errors: string[] = [];
 
   if (isNaN(wristSize) || wristSize <= 0) {
-    errors.push('Wrist size must be a positive number');
+    errors.push('מידת פרק היד חייבת להיות מספר חיובי');
   } else if (wristSize < BRACELET_VALIDATION_RULES.minWristSize) {
-    errors.push(`Wrist size must be at least ${BRACELET_VALIDATION_RULES.minWristSize}cm`);
+    errors.push(`מידת פרק היד חייבת להיות לפחות ${BRACELET_VALIDATION_RULES.minWristSize} ס"מ`);
   } else if (wristSize > BRACELET_VALIDATION_RULES.maxWristSize) {
-    errors.push(`Wrist size cannot exceed ${BRACELET_VALIDATION_RULES.maxWristSize}cm`);
+    errors.push(`מידת פרק היד לא יכולה לעלות על ${BRACELET_VALIDATION_RULES.maxWristSize} ס"מ`);
   }
 
   return {
@@ -221,11 +271,11 @@ export function validateCustomText(text: string): ValidationResult {
   const errors: string[] = [];
 
   if (text.length > BRACELET_VALIDATION_RULES.maxTextLength) {
-    errors.push(`Text cannot exceed ${BRACELET_VALIDATION_RULES.maxTextLength} characters`);
+    errors.push(`הטקסט לא יכול לעלות על ${BRACELET_VALIDATION_RULES.maxTextLength} תווים`);
   }
 
   if (!isTextSupported(text)) {
-    errors.push('Text contains unsupported characters. Only English and Hebrew letters are supported.');
+    errors.push('הטקסט מכיל תווים שאין להם חרוזי אותיות. אפשר להשתמש באותיות בעברית ובאנגלית.');
   }
 
   return {
@@ -256,7 +306,7 @@ export function checkBeadsFitInSpace(
   availableSpace: number
 ): boolean {
   const totalBeadSpace = selectedBeads.reduce((total, bead) => {
-    return total + (bead.diameter || 0.5); // Default to 0.5cm if diameter not specified
+    return total + beadDiameter(bead);
   }, 0);
 
   return totalBeadSpace <= availableSpace;
@@ -269,22 +319,21 @@ export function checkBeadsFitInSpace(
  */
 export function calculateTotalBeadSpace(selectedBeads: JewelryComponent[]): number {
   return selectedBeads.reduce((total, bead) => {
-    return total + (bead.diameter || 0.5); // Default to 0.5cm if diameter not specified
+    return total + beadDiameter(bead);
   }, 0);
 }
 
 /**
  * Get recommended bead count for a given wrist size
  * @param wristCircumference - Wrist size in centimeters
- * @param averageBeadDiameter - Average diameter of beads in centimeters
+ * @param beadDiameterCm - Diameter of the beads in centimeters
  * @returns Recommended number of beads
  */
 export function getRecommendedBeadCount(
   wristCircumference: number,
-  averageBeadDiameter: number = 0.5
+  beadDiameterCm: number = BRACELET_GEOMETRY.defaultBeadDiameter
 ): number {
-  const calculation = calculateBraceletBeads(wristCircumference, averageBeadDiameter);
-  return calculation.recommendedBeadCount;
+  return calculateBraceletBeads(wristCircumference, beadDiameterCm).recommendedBeadCount;
 }
 
 /**
@@ -308,16 +357,20 @@ export function validateBeadAddition(
   currentBeads: JewelryComponent[],
   newBead: JewelryComponent,
   availableSpace: number
-): ValidationResult & { warningLevel?: 'low' | 'medium' | 'high' | 'critical' } {
+): ValidationResult & {
+  warnings: string[];
+  warningLevel?: 'low' | 'medium' | 'high' | 'critical';
+} {
   const currentSpace = calculateTotalBeadSpace(currentBeads);
-  const newBeadSpace = newBead.diameter || 0.5;
+  const newBeadSpace = beadDiameter(newBead);
   const totalSpaceWithNewBead = currentSpace + newBeadSpace;
 
   if (totalSpaceWithNewBead > availableSpace) {
     const excessSpace = totalSpaceWithNewBead - availableSpace;
     return {
       isValid: false,
-      errors: [`Adding this bead would exceed capacity by ${excessSpace.toFixed(1)}cm`],
+      errors: [`אין מקום לחרוז הזה — הוא חורג ב-${excessSpace.toFixed(1)} ס"מ מהמידה שבחרת`],
+      warnings: [],
       warningLevel: 'critical'
     };
   }
@@ -326,17 +379,20 @@ export function validateBeadAddition(
   let warningLevel: 'low' | 'medium' | 'high' | 'critical' = 'low';
   const warnings: string[] = [];
 
+  // Warnings are kept separate from errors: `isValid: true` with a non-empty
+  // `errors` array used to make callers show a blocking dialog for a soft hint.
   if (usagePercentage > 0.9) {
     warningLevel = 'high';
-    warnings.push(`Adding this bead will fill ${(usagePercentage * 100).toFixed(1)}% of the bracelet`);
+    warnings.push(`הצמיד יהיה מלא ב-${(usagePercentage * 100).toFixed(0)}% אחרי החרוז הזה`);
   } else if (usagePercentage > 0.8) {
     warningLevel = 'medium';
-    warnings.push(`Bracelet will be ${(usagePercentage * 100).toFixed(1)}% full after adding this bead`);
+    warnings.push(`נשאר מעט מקום — ${(usagePercentage * 100).toFixed(0)}% מהצמיד תפוס`);
   }
 
   return {
     isValid: true,
-    errors: warnings,
+    errors: [],
+    warnings,
     warningLevel
   };
 }
@@ -363,18 +419,18 @@ export function generateBeadReductionSuggestions(
 
   // Sort beads by diameter (largest first)
   const sortedBeads = [...selectedBeads].sort((a, b) => 
-    (b.diameter || 0.5) - (a.diameter || 0.5)
+    beadDiameter(b) - beadDiameter(a)
   );
 
   // Suggestion 1: Remove largest beads
   if (sortedBeads.length > 0) {
     const largestBead = sortedBeads[0];
-    const spaceSaved = largestBead.diameter || 0.5;
+    const spaceSaved = beadDiameter(largestBead);
     
     if (spaceSaved >= excessSpace * 0.5) {
       suggestions.push({
         type: 'remove_largest' as const,
-        description: `Remove largest bead (${largestBead.name}) to save ${spaceSaved.toFixed(1)}cm`,
+        description: `להסיר את החרוז הגדול (${largestBead.name}) ולפנות ${spaceSaved.toFixed(1)} ס"מ`,
         beadToRemove: largestBead,
         spaceSaved
       });
@@ -386,21 +442,21 @@ export function generateBeadReductionSuggestions(
     const smallerAlternatives = availableComponents.filter(comp => 
       comp.type === 'bead' && 
       comp.id !== largeBead.id &&
-      (comp.diameter || 0.5) < (largeBead.diameter || 0.5) &&
+      beadDiameter(comp) < beadDiameter(largeBead) &&
       comp.color === largeBead.color
     );
 
     if (smallerAlternatives.length > 0) {
       const bestAlternative = smallerAlternatives.reduce((best, current) => 
-        (current.diameter || 0.5) > (best.diameter || 0.5) ? current : best
+        beadDiameter(current) > beadDiameter(best) ? current : best
       );
 
-      const spaceSaved = (largeBead.diameter || 0.5) - (bestAlternative.diameter || 0.5);
+      const spaceSaved = beadDiameter(largeBead) - beadDiameter(bestAlternative);
       
       if (spaceSaved > 0.1) {
         suggestions.push({
           type: 'replace_with_smaller' as const,
-          description: `Replace ${largeBead.name} with ${bestAlternative.name} to save ${spaceSaved.toFixed(1)}cm`,
+          description: `להחליף את ${largeBead.name} ב-${bestAlternative.name} ולפנות ${spaceSaved.toFixed(1)} ס"מ`,
           beadToRemove: largeBead,
           replacementBead: bestAlternative,
           spaceSaved
@@ -416,7 +472,7 @@ export function generateBeadReductionSuggestions(
     
     suggestions.push({
       type: 'reduce_count' as const,
-      description: `Remove ${beadsToRemove} beads to fit bracelet size`,
+      description: `להסיר ${beadsToRemove} חרוזים כדי להתאים למידה`,
       spaceSaved: beadsToRemove * averageBeadSize
     });
   }
@@ -450,19 +506,19 @@ export function getBraceletCapacityStatus(
 
   if (usagePercentage > 100) {
     warningLevel = 'critical';
-    message = 'Bracelet is over capacity';
+    message = 'הצמיד חורג מהמידה שבחרת';
     canAddMoreBeads = false;
   } else if (usagePercentage > 90) {
     warningLevel = 'high';
-    message = 'Bracelet is nearly full';
+    message = 'הצמיד כמעט מלא';
     canAddMoreBeads = remainingSpace > 0.3; // Can add if more than 3mm left
   } else if (usagePercentage > 80) {
     warningLevel = 'medium';
-    message = 'Bracelet is filling up';
+    message = 'הצמיד מתמלא';
     canAddMoreBeads = true;
   } else {
     warningLevel = 'low';
-    message = 'Bracelet has plenty of space';
+    message = 'יש עוד הרבה מקום בצמיד';
     canAddMoreBeads = true;
   }
 
@@ -703,7 +759,10 @@ export function validateTextFitRealTime(
   const suggestions: string[] = [];
 
   // Calculate available space
-  const calculation = calculateBraceletBeads(braceletConfig.wristCircumference, 0.5);
+  const calculation = calculateBraceletBeads(
+    braceletConfig.wristCircumference,
+    averageBeadDiameter(selectedBeads)
+  );
   const spaceUsedByOtherBeads = selectedBeads.filter(b => !b.isLetterBead).length;
   const availableSpaceForText = calculation.recommendedBeadCount - spaceUsedByOtherBeads;
   const textLength = text.length;
@@ -778,7 +837,10 @@ export function getTextInputRecommendations(
   popularCombinations: string[];
   tips: string[];
 } {
-  const calculation = calculateBraceletBeads(braceletConfig.wristCircumference, 0.5);
+  const calculation = calculateBraceletBeads(
+    braceletConfig.wristCircumference,
+    averageBeadDiameter(selectedBeads)
+  );
   const spaceUsedByOtherBeads = selectedBeads.filter(b => !b.isLetterBead).length;
   const availableSpaceForText = calculation.recommendedBeadCount - spaceUsedByOtherBeads;
   

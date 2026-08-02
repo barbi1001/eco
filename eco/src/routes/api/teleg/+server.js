@@ -1,23 +1,35 @@
+import { json } from '@sveltejs/kit';
+import { sendTelegramMessage } from '$lib/server/telegram';
+import { STRAPI_URL } from '$lib/server/strapi';
 
-
+/**
+ * Order notification for the shop (hazmanas).
+ * Credentials come from private env vars via $lib/server/telegram.
+ */
 export const POST = async ({ request }) => {
-    
-    console.log("tryng",request.body)
-     const data = await request.json()
-     
-     const name = data.name;
-     const phone = data.phone;
-     const total = data.total
-     // const email = (form.get('email'));
-     // const contact = (form.get('contact'));
-      const botMessage = `יש לי הזמנה חדשה מ-${name} %0A 
-      טלפון ${phone} %0A 
-      על סך ${total} %0A 
-       כדאי להיכנס ולבדוק בלינק https://strapi-7iq2.onrender.com/admin/content-manager/collectionType/api::hazmana.hazmana?page=1&pageSize=10&sort=id:DESC`;
-  // %0A is url encoded '\n' which is used for new line. 
-          const Token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-          const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-          const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${botMessage}`;
-          const res = await fetch(url);
-                return new Response();
-}
+	let data;
+
+	try {
+		data = await request.json();
+	} catch {
+		return json({ success: false, error: 'Invalid request body' }, { status: 400 });
+	}
+
+	const name = typeof data?.name === 'string' ? data.name.slice(0, 200) : '';
+	const phone = typeof data?.phone === 'string' ? data.phone.slice(0, 40) : '';
+	const total = data?.total ?? '';
+
+	const adminLink = `${STRAPI_URL}/admin/content-manager/collectionType/api::hazmana.hazmana?page=1&pageSize=10&sort=id:DESC`;
+
+	const botMessage = [
+		`יש לי הזמנה חדשה מ-${name}`,
+		`טלפון ${phone}`,
+		`על סך ${total}`,
+		'',
+		`כדאי להיכנס ולבדוק בלינק ${adminLink}`
+	].join('\n');
+
+	const sent = await sendTelegramMessage(botMessage);
+
+	return json({ success: sent }, { status: sent ? 200 : 502 });
+};

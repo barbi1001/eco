@@ -1,10 +1,12 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const STRAPI_URL = "https://strapi-7iq2.onrender.com"
-const STRAPI_API_TOKEN = "0392108fd94a9cd10bae241624798ad49c68e875d4c670b9ea63c0e4a118b2672a83079f979e162eed23d1491b00428ea1be867ade7cd7db6c96013c65fd769343086a5bdb5a9add51ba42e9c9c431e4bc0157050113001f09d7b32840541f9287ca36ec194fa366fffda75edad6cfd5edd078d9e3ca5ba49fe398dfc3dcd8d2"
+const STRAPI_URL = process.env.STRAPI_URL || "https://strapi-7iq2.onrender.com"
+// Never hard-code the token: this file is in git, so a committed token stays in
+// the history forever. Pass it in:  STRAPI_API_TOKEN=xxx node scripts/sync_components.js
+const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN
 
 const LETTER_BEADS_FILE_PATH = path.resolve(__dirname, '../strapi-sample-data/bracelet-pendants.json');
 

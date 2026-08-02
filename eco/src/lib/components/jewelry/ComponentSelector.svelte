@@ -1,11 +1,13 @@
-<script lang="ts">
+﻿<script lang="ts">
   import { onMount } from 'svelte';
   import { fade, fly, scale } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import type { JewelryComponent, TemplatePosition, ComponentType, SizeCategory } from '$lib/types/jewelry';
   import { availableComponents, isLoadingComponents, componentLoadError } from '$lib/stores/jewelryDesigner';
   import { componentsApi } from '$lib/api/strapiClient';
+  import { isLetterBeadComponent } from '$lib/utils/jewelryHelpers';
   import LoadingSpinner from './LoadingSpinner.svelte';
+  import OptimizedImage from './OptimizedImage.svelte';
   import ErrorMessage from './ErrorMessage.svelte';
   
   interface Props {
@@ -21,7 +23,12 @@
   
   // Filter and search state
   let searchQuery = $state('');
-  let selectedType = $state<ComponentType | 'all'>(position.type);
+  // `pendant_center` may hold either a pendant or a letter bead, so it starts on
+  // "all". Defaulting to `position.type` there filtered every letter bead out one
+  // line after the code above had explicitly allowed them.
+  let selectedType = $state<ComponentType | 'all' | 'letter'>(
+    position.id === 'pendant_center' ? 'all' : position.type
+  );
   let filteredComponents = $state<JewelryComponent[]>([]);
   let searchInput = $state<HTMLInputElement>();
   let showLetterBeadsOnly = $state(false);
@@ -36,6 +43,31 @@
     { value: 'chain', label: 'שרשראות' }
   ];
   
+  /**
+   * One place that decides what may go into this position.
+   *
+   * This was a chain of conditions that contradicted each other: the center
+   * pendant explicitly allowed letter beads, then the very next check rejected
+   * anything whose type differed from the position type — so the feature never
+   * worked. Size compatibility is also relaxed for letter beads in the center
+   * position, where the slot is `large` but letter beads are catalogued smaller.
+   */
+  function isComponentAllowedAt(component: JewelryComponent): boolean {
+    const isCenterPendant = position.id === 'pendant_center';
+    const isLetter = isLetterBeadComponent(component);
+
+    if (isCenterPendant) {
+      // Either a pendant, or a letter bead standing in for the custom text.
+      if (!(component.type === 'pendant' || isLetter)) return false;
+      // Letter beads bypass the size check here — the slot is large by design.
+      if (isLetter) return true;
+    } else if (component.type !== position.type) {
+      return false;
+    }
+
+    return component.compatibleSizes.includes(position.size);
+  }
+
   // Load components on mount
   onMount(async () => {
     if ($availableComponents.length === 0) {
@@ -71,45 +103,17 @@
   // Filter components based on position compatibility, search, and type
   $effect(() => {
     filteredComponents = $availableComponents.filter(component => {
-      // Special case: pendant_center can accept letter beads (beads) when text is being used
-      const isCenterPendant = position.id === 'pendant_center';
-      const isLetterBead = component.isLetterBead || 
-                          (component.name && (component.name.endsWith('-letter') || component.name.includes('-letter')));
-      
-      // If it's the center pendant, allow both pendant and bead (letter bead) types
-      if (isCenterPendant) {
-        if (!isLetterBead && component.type !== 'pendant') {
-          return false;
-        }
-        // Allow letter beads (beads) or pendants for center position
-        if (isLetterBead && component.type !== 'bead') {
-          return false;
-        }
-      } else {
-        // Normal filtering: component type must match position type
-        if (component.type !== position.type) {
-          return false;
-        }
-      }
-      
-      // Filter by size compatibility
-      if (!component.compatibleSizes.includes(position.size)) {
-        return false;
-      }
-      
-      // Filter by selected type
+      if (!isComponentAllowedAt(component)) return false;
+
+      // Filter by the chosen tab
       if (selectedType === 'letter') {
-        // Show only letter beads
-        return component.isLetterBead === true;
+        if (!isLetterBeadComponent(component)) return false;
       } else if (selectedType !== 'all' && component.type !== selectedType) {
         return false;
       }
-      
-      // If showLetterBeadsOnly is true, only show letter beads
-      if (showLetterBeadsOnly && !component.isLetterBead) {
-        return false;
-      }
-      
+
+      if (showLetterBeadsOnly && !isLetterBeadComponent(component)) return false;
+
       // Filter by search query
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
@@ -168,9 +172,7 @@
   }
   
   // Check if component is a letter bead
-  function isLetterBead(component: JewelryComponent): boolean {
-    return component.isLetterBead === true;
-  }
+  const isLetterBead = isLetterBeadComponent;
   
   // Get letter bead display character
   function getLetterDisplay(component: JewelryComponent): string {
@@ -182,10 +184,9 @@
   
   // Toggle letter beads only filter
   function toggleLetterBeadsOnly() {
-    showLetterBeadsOnly = !showLetterBeadsOnly;
-    if (showLetterBeadsOnly) {
-      selectedType = 'letter';
-    }
+    // `bind:checked` has already flipped the value by the time this runs.
+    // Turning the filter off used to leave the tab stuck on "letter beads".
+    selectedType = showLetterBeadsOnly ? 'letter' : position.type;
   }
 </script>
 
@@ -224,11 +225,11 @@
       {#if currentComponent}
         <div class="current-selection">
           <div class="current-component">
-            <img 
-              src={currentComponent.image} 
+            <OptimizedImage
+              src={currentComponent.image}
               alt={currentComponent.name}
+              width={64}
               loading="eager"
-              decoding="async"
             />
             <div class="current-info">
               <p class="current-name">{currentComponent.name}</p>
@@ -325,12 +326,13 @@
                 transition:scale={{ duration: 200 }}
               >
                 <div class="component-image-wrapper">
-                  <img
+                  <!-- The picker can list 100 components at once; a 96px thumb is
+                       plenty and keeps the modal from downloading megabytes. -->
+                  <OptimizedImage
                     src={component.image}
                     alt={component.name}
                     class="component-image"
-                    loading="lazy"
-                    decoding="async"
+                    width={96}
                   />
                   
                   {#if isLetterBead(component)}
@@ -445,7 +447,7 @@
     gap: 1rem;
   }
   
-  .current-component img {
+  .current-component :global(img) {
     width: 50px;
     height: 50px;
     object-fit: contain;
@@ -680,7 +682,8 @@
     position: relative;
   }
   
-  .component-image {
+  /* Class lands on OptimizedImage's wrapper, outside this component's scope. */
+  :global(.component-image) {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -715,7 +718,7 @@
   }
   
   /* Loading state for images */
-  .component-image[loading="lazy"] {
+  :global(.component-image[loading="lazy"]) {
     background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;

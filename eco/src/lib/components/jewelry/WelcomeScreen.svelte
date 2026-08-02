@@ -183,14 +183,20 @@
   @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&display=swap');
 
   .welcome-screen {
-    height: 100vh;
+    /* `height: 100vh` + `overflow: hidden` meant that on mobile browsers — where
+       100vh exceeds the visible area because of the address bar — the "start
+       designing" button could be cut off with no way to scroll to it.
+       `dvh` tracks the actual viewport, and the page can scroll if it must. */
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #ff83a8;
     padding: 1rem;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   /* CSS-grid overlay: SVG and content share the same cell.
@@ -198,7 +204,7 @@
      in (100vh-2rem) at the SVG's 600:720 aspect ratio — so no letterboxing ever. */
   .store-container {
     position: relative;
-    width: min(100%, 560px, calc((100vh - 2rem) * 600 / 720));
+    width: min(100%, 560px, calc((100dvh - 2rem) * 600 / 720));
     aspect-ratio: 600 / 720;
     display: grid;
   }

@@ -30,15 +30,14 @@
 		isLoading = true;
 		isSuccess = false;
 		try {
-			const Token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-			const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-			const text = `פנייה חדשה:
-        %0A שם: ${name}
-        %0A טלפון: ${phone}
-        %0A הודעה: ${message}`;
-			const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${text}`;
+			// Goes through the server so the Telegram bot token stays private.
+			const res = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, phone, message, source: 'סדנאות' })
+			});
 
-			await fetch(url);
+			if (!res.ok) throw new Error(`Contact request failed: ${res.status}`);
 
 			isSuccess = true;
 

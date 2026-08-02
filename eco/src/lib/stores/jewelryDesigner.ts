@@ -1,4 +1,5 @@
-import { writable, derived, get } from 'svelte/store';
+﻿import { writable, derived, get } from 'svelte/store';
+import { browser } from '$app/environment';
 import {
   DesignStep,
   type JewelryTemplate,
@@ -12,9 +13,12 @@ import {
   type ComponentType,
   type SizeCategory
 } from '$lib/types/jewelry';
-import { 
-  calculateBraceletBeads, 
-  validateBraceletConfiguration, 
+import { isLetterBeadComponent } from '$lib/utils/jewelryHelpers';
+import { templatesApi } from '$lib/api/strapiClient';
+import {
+  calculateBraceletBeads,
+  averageBeadDiameter,
+  validateBraceletConfiguration,
   validateBeadAddition,
   getBraceletCapacityStatus,
   generateBeadReductionSuggestions,
@@ -22,6 +26,24 @@ import {
   calculateLetterBeadPositions,
   getLetterBeadId
 } from '$lib/utils/braceletCalculations.js';
+
+export interface DesignerNotice {
+  level: 'warning' | 'error' | 'info';
+  message: string;
+}
+
+export interface RestoreResult {
+  restored: boolean;
+  /** Placements dropped because the position or component no longer exists. */
+  droppedCount?: number;
+}
+
+/** Bumped to 2.0: saved payloads now hold a template id, not the whole template. */
+const SAVE_VERSION = '2.0';
+const SUPPORTED_SAVE_VERSIONS = ['1.0', '1.1', '2.0'];
+const SAVE_MAX_AGE_HOURS = 24;
+
+let noticeTimeout: ReturnType<typeof setTimeout> | null = null;
 
 // Current step in the design process
 export const currentStep = writable<DesignStep>(DesignStep.WELCOME);
@@ -57,13 +79,22 @@ export const isLoadingComponents = writable<boolean>(false);
 export const isSubmittingOrder = writable<boolean>(false);
 
 // Error handling
+//
+// `designerError` is for hard failures that justify a blocking overlay (network,
+// server). Soft, in-context feedback ("this bead doesn't fit") goes to
+// `designerNotice` and is rendered inline — a capacity hint used to darken the
+// whole screen behind a modal.
 export const designerError = writable<JewelryDesignerError | null>(null);
+export const designerNotice = writable<DesignerNotice | null>(null);
 export const templateLoadError = writable<JewelryDesignerError | null>(null);
 export const componentLoadError = writable<JewelryDesignerError | null>(null);
 
 // Session recovery notification
 export const hasRecoveredSession = writable<boolean>(false);
 export const recoveryTimestamp = writable<Date | null>(null);
+
+/** True when the last auto-save failed (quota exceeded, storage blocked, …). */
+export const saveFailed = writable<boolean>(false);
 
 // Derived stores for computed values
 export const totalPrice = derived(
@@ -121,20 +152,21 @@ export const canProceedToNextStep = derived(
 
 // Derived store for current bracelet calculation
 export const currentBraceletCalculation = derived(
-  [braceletConfiguration, availableComponents],
-  ([$braceletConfiguration, $availableComponents]) => {
+  [braceletConfiguration, designState],
+  ([$braceletConfiguration, $designState]) => {
     if (!$braceletConfiguration) return null;
-    
-    // Calculate with average bead diameter if no specific beads selected
-    const averageBeadDiameter = 0.5; // Default 0.5cm
-    
-    // If we have selected components, use their actual diameters
-    const selectedBeads = Array.from($availableComponents.values()).filter(c => c.type === 'bead');
-    const actualBeadDiameter = selectedBeads.length > 0 
-      ? selectedBeads.reduce((sum, bead) => sum + (bead.diameter || 0.5), 0) / selectedBeads.length
-      : averageBeadDiameter;
-    
-    return calculateBraceletBeads($braceletConfiguration.wristCircumference, actualBeadDiameter);
+
+    // Use the beads the customer actually placed. This previously averaged over
+    // `availableComponents` — the whole catalogue — under a variable named
+    // `selectedBeads`, so the figure had nothing to do with her design.
+    const placedBeads = Array.from($designState.selectedComponents.values()).filter(
+      (c) => c.type === 'bead'
+    );
+
+    return calculateBraceletBeads(
+      $braceletConfiguration.wristCircumference,
+      averageBeadDiameter(placedBeads)
+    );
   }
 );
 
@@ -228,22 +260,27 @@ export const jewelryDesignerActions = {
       const braceletConfig = get(braceletConfiguration);
       
       if (braceletConfig) {
-        const calculation = calculateBraceletBeads(braceletConfig.wristCircumference, 0.5);
+        const calculation = calculateBraceletBeads(
+          braceletConfig.wristCircumference,
+          averageBeadDiameter(currentBeads)
+        );
         const validation = validateBeadAddition(currentBeads, component, calculation.availableBeadSpace);
-        
+
         if (!validation.isValid) {
-          // Set error for blocked bead selection
-          jewelryDesignerActions.setError({
-            type: 'validation',
-            message: validation.errors[0] || 'Cannot add this bead',
-            details: { component, validation }
+          // A bead that does not fit is a soft, in-context problem — not a
+          // full-screen failure. It goes to `designerNotice`, which the UI shows
+          // inline; `designerError` stays reserved for network/server failures.
+          jewelryDesignerActions.setNotice({
+            level: 'error',
+            message: validation.errors[0] ?? 'אין מקום לחרוז הזה'
           });
           return;
         }
-        
-        // Show warning if approaching capacity
-        if (validation.warningLevel && validation.warningLevel !== 'low') {
-          console.warn('Bracelet capacity warning:', validation.errors[0]);
+
+        if (validation.warnings.length > 0) {
+          jewelryDesignerActions.setNotice({ level: 'warning', message: validation.warnings[0] });
+        } else {
+          jewelryDesignerActions.clearNotice();
         }
       }
     }
@@ -364,7 +401,13 @@ export const jewelryDesignerActions = {
       };
 
       // Recalculate bead count with new wrist size
-      const calculation = calculateBraceletBeads(wristCircumference, 0.5); // Default bead diameter
+      const placedBeads = Array.from(get(designState).selectedComponents.values()).filter(
+        (c) => c.type === 'bead'
+      );
+      const calculation = calculateBraceletBeads(
+        wristCircumference,
+        averageBeadDiameter(placedBeads)
+      );
       updatedConfig.calculatedBeadCount = calculation.recommendedBeadCount;
 
       return updatedConfig;
@@ -411,24 +454,23 @@ export const jewelryDesignerActions = {
       // Clear letter beads if text is empty
       designState.update(state => {
         const newSelectedComponents = new Map(state.selectedComponents);
-        const newComponents = [...state.designData.components];
-        
-        // Remove all letter beads
-        Array.from(newSelectedComponents.entries()).forEach(([positionId, component]) => {
-          const isLetterBead = component.isLetterBead || 
-                              (component.name && (component.name.endsWith('-letter') || component.name.includes('-letter')));
-          if (isLetterBead) {
-            newSelectedComponents.delete(positionId);
-          }
-        });
-        
-        const filteredComponents = newComponents.filter(comp => {
-          const component = newSelectedComponents.get(comp.positionId);
-          const isLetterBead = component?.isLetterBead || 
-                              (component?.name && (component.name.endsWith('-letter') || component.name.includes('-letter')));
-          return !isLetterBead;
-        });
-        
+
+        // Collect the letter-bead positions FIRST. The previous version deleted
+        // from the map and then looked the entries up in the same (already
+        // mutated) map, so the lookup returned undefined, the filter kept every
+        // stale placement, and cleared letters still shipped with the order.
+        const letterPositionIds = new Set(
+          Array.from(state.selectedComponents.entries())
+            .filter(([, component]) => isLetterBeadComponent(component))
+            .map(([positionId]) => positionId)
+        );
+
+        letterPositionIds.forEach((positionId) => newSelectedComponents.delete(positionId));
+
+        const filteredComponents = state.designData.components.filter(
+          (comp) => !letterPositionIds.has(comp.positionId)
+        );
+
         return {
           ...state,
           selectedComponents: newSelectedComponents,
@@ -451,14 +493,9 @@ export const jewelryDesignerActions = {
       return;
     }
 
-    // Get letter bead components (check both isLetterBead flag and name pattern)
     const letterBeadComponents = new Map<string, JewelryComponent>();
-    components.forEach(comp => {
-      const isLetterBead = comp.isLetterBead || 
-                          (comp.name && (comp.name.endsWith('-letter') || comp.name.includes('-letter')));
-      if (isLetterBead) {
-        letterBeadComponents.set(comp.id, comp);
-      }
+    components.forEach((comp) => {
+      if (isLetterBeadComponent(comp)) letterBeadComponents.set(comp.id, comp);
     });
 
     if (letterBeadComponents.size === 0) {
@@ -466,19 +503,14 @@ export const jewelryDesignerActions = {
       return;
     }
 
-    console.log('Creating letter beads for text:', customText);
-    console.log('Available letter beads:', Array.from(letterBeadComponents.keys()));
-
-    // Get bead positions from template (filter by type 'bead')
-    const templateBeadPositions = template.positions.filter(p => p.type === 'bead');
-    const availableBeadPositions = templateBeadPositions.length;
-    
-    // Calculate total bead count (for reference, but we use actual positions)
-    const calculation = calculateBraceletBeads(config.wristCircumference, 0.5);
+    // Bead slots the template actually offers, and how many beads fit at the
+    // selected wrist size (using the real diameter of the letter beads).
+    const availableBeadPositions = template.positions.filter((p) => p.type === 'bead').length;
+    const calculation = calculateBraceletBeads(
+      config.wristCircumference,
+      averageBeadDiameter(Array.from(letterBeadComponents.values()))
+    );
     const totalBeadCount = calculation.recommendedBeadCount;
-
-    console.log('Total bead count (calculated):', totalBeadCount);
-    console.log('Available bead positions in template:', availableBeadPositions);
 
     // Calculate letter bead positions using actual available positions
     const letterPositions = calculateLetterBeadPositions(
@@ -487,8 +519,6 @@ export const jewelryDesignerActions = {
       letterBeadComponents,
       availableBeadPositions
     );
-
-    console.log('Letter positions calculated:', letterPositions);
 
     // Update bracelet configuration with positions
     braceletConfiguration.update(cfg => {
@@ -512,28 +542,20 @@ export const jewelryDesignerActions = {
         p.type === 'bead' || p.id === 'pendant_center'
       );
       
-      console.log('Template bead positions (including pendant_center for text):', templateBeadPositions.length);
-      
-      // Remove existing letter beads first
-      templateBeadPositions.forEach((templatePos) => {
-        const existingComponent = newSelectedComponents.get(templatePos.id);
-        if (existingComponent) {
-          const isLetterBead = existingComponent.isLetterBead || 
-                              (existingComponent.name && (existingComponent.name.endsWith('-letter') || existingComponent.name.includes('-letter')));
-          if (isLetterBead) {
-            newSelectedComponents.delete(templatePos.id);
-          }
-        }
-      });
+      // Remove existing letter beads first. Collect the ids up front — looking
+      // them up after deleting from the map returns undefined and silently keeps
+      // every stale placement in designData.components.
+      const staleLetterPositionIds = new Set(
+        templateBeadPositions
+          .filter((templatePos) => isLetterBeadComponent(newSelectedComponents.get(templatePos.id)))
+          .map((templatePos) => templatePos.id)
+      );
 
-      // Filter out existing letter bead components
-      const filteredComponents = newComponents.filter(comp => {
-        const component = newSelectedComponents.get(comp.positionId);
-        if (!component) return true;
-        const isLetterBead = component.isLetterBead || 
-                            (component.name && (component.name.endsWith('-letter') || component.name.includes('-letter')));
-        return !isLetterBead;
-      });
+      staleLetterPositionIds.forEach((positionId) => newSelectedComponents.delete(positionId));
+
+      const filteredComponents = newComponents.filter(
+        (comp) => !staleLetterPositionIds.has(comp.positionId)
+      );
 
       // Add new letter beads to matching template positions
       // Ensure positionIndex is within bounds
@@ -557,29 +579,25 @@ export const jewelryDesignerActions = {
         if (templatePosition) {
           // Check if position is already taken by a non-letter bead
           const existingComponent = newSelectedComponents.get(templatePosition.id);
-          if (existingComponent && !existingComponent.isLetterBead && 
-              !(existingComponent.name && (existingComponent.name.endsWith('-letter') || existingComponent.name.includes('-letter')))) {
+          if (existingComponent && !isLetterBeadComponent(existingComponent)) {
             console.warn(`Position ${templatePosition.id} already has a non-letter bead, skipping`);
             return;
           }
-          
+
           newSelectedComponents.set(templatePosition.id, letterBead);
           filteredComponents.push({
             positionId: templatePosition.id,
             componentId: letterBead.id
           });
           addedCount++;
-          console.log(`Added letter bead "${letterPos.letter}" to position ${templatePosition.id} (index ${letterPos.positionIndex})`);
         } else {
           console.warn('Template position not found for index:', letterPos.positionIndex);
         }
       });
-      
+
       if (letterPositions.length > templateBeadPositions.length) {
         console.warn(`Text has ${letterPositions.length} letters but only ${templateBeadPositions.length} positions available. Some letters may not be placed.`);
       }
-
-      console.log(`Added ${addedCount} letter beads to design`);
 
       return {
         ...state,
@@ -628,7 +646,10 @@ export const jewelryDesignerActions = {
     const config = get(braceletConfiguration);
     if (!config) return null;
     
-    return calculateBraceletBeads(config.wristCircumference, 0.5); // Default bead diameter
+    const placedBeads = Array.from(get(designState).selectedComponents.values()).filter(
+      (c) => c.type === 'bead'
+    );
+    return calculateBraceletBeads(config.wristCircumference, averageBeadDiameter(placedBeads));
   },
 
   // Get bracelet capacity status and overflow prevention info
@@ -639,7 +660,10 @@ export const jewelryDesignerActions = {
     if (!config) return null;
     
     const selectedBeads = Array.from(state.selectedComponents.values()).filter(c => c.type === 'bead');
-    const calculation = calculateBraceletBeads(config.wristCircumference, 0.5);
+    const calculation = calculateBraceletBeads(
+      config.wristCircumference,
+      averageBeadDiameter(selectedBeads)
+    );
     const components = get(availableComponents);
     
     return {
@@ -663,18 +687,21 @@ export const jewelryDesignerActions = {
     const state = get(designState);
     const config = get(braceletConfiguration);
     
-    if (!config) return { canAdd: false, error: 'Bracelet configuration not found' };
+    if (!config) return { canAdd: false, error: 'לא נמצאו הגדרות הצמיד' };
     
     const currentBeads = Array.from(state.selectedComponents.values()).filter(c => c.type === 'bead');
-    const calculation = calculateBraceletBeads(config.wristCircumference, 0.5);
+    const calculation = calculateBraceletBeads(
+      config.wristCircumference,
+      averageBeadDiameter(currentBeads)
+    );
     const validation = validateBeadAddition(currentBeads, bead, calculation.availableBeadSpace);
-    
+
     if (!validation.isValid) {
       return { canAdd: false, error: validation.errors[0] };
     }
-    
-    if (validation.warningLevel && validation.warningLevel !== 'low') {
-      return { canAdd: true, warning: validation.errors[0] };
+
+    if (validation.warnings.length > 0) {
+      return { canAdd: true, warning: validation.warnings[0] };
     }
     
     return { canAdd: true };
@@ -707,6 +734,21 @@ export const jewelryDesignerActions = {
     designerError.set(null);
   },
 
+  // Soft, inline feedback. Auto-dismisses so it never sticks around.
+  setNotice: (notice: DesignerNotice) => {
+    designerNotice.set(notice);
+    if (noticeTimeout) clearTimeout(noticeTimeout);
+    noticeTimeout = setTimeout(
+      () => designerNotice.set(null),
+      notice.level === 'error' ? 6000 : 4000
+    );
+  },
+
+  clearNotice: () => {
+    if (noticeTimeout) clearTimeout(noticeTimeout);
+    designerNotice.set(null);
+  },
+
   setTemplateLoadError: (error: JewelryDesignerError) => {
     templateLoadError.set(error);
   },
@@ -725,109 +767,164 @@ export const jewelryDesignerActions = {
 
   // Local storage persistence
   saveToLocalStorage: () => {
+    if (!browser) return;
+
     try {
       const state = get(designState);
       const template = get(selectedTemplate);
       const step = get(currentStep);
       const braceletConfig = get(braceletConfiguration);
-      
+
       // Only save if there's meaningful data
       if (!template && state.selectedComponents.size === 0) {
         return;
       }
-      
+
+      // `previewImage` is a 2x PNG data URL — easily hundreds of KB. Persisting it
+      // blew through the ~5MB localStorage quota, the write threw, and auto-save
+      // silently stopped working from the moment the preview was generated. It is
+      // regenerated on demand, so it is never persisted.
+      const { previewImage: _previewImage, ...persistableState } = state;
+
       const saveData = {
-        version: '1.1', // Updated version for bracelet support
+        version: SAVE_VERSION,
         designState: {
-          ...state,
+          ...persistableState,
           selectedComponents: Array.from(state.selectedComponents.entries()),
           designData: {
             ...state.designData,
             timestamp: state.designData.timestamp.toISOString()
           }
         },
-        selectedTemplate: template,
+        // Only the id: the full template (prices, positions) went stale as soon as
+        // it changed in Strapi, and the customer would then order at the old price.
+        selectedTemplateId: template?.id ?? null,
         currentStep: step,
         braceletConfiguration: braceletConfig,
         timestamp: new Date().toISOString()
       };
-      
+
       localStorage.setItem('jewelry-designer-state', JSON.stringify(saveData));
       localStorage.setItem('jewelry-designer-last-save', new Date().toISOString());
+      saveFailed.set(false);
     } catch (error) {
       console.error('Failed to save to localStorage:', error);
-      // If localStorage is full or unavailable, fail silently
+      // Surface it: "your design is saved" silently becoming false is worse than
+      // saying so.
+      saveFailed.set(true);
     }
   },
 
-  loadFromLocalStorage: () => {
-    try {
-      const saved = localStorage.getItem('jewelry-designer-state');
-      if (!saved) return false;
-      
-      const saveData = JSON.parse(saved);
-      
-      // Validate version compatibility (support both 1.0 and 1.1)
-      if (!saveData.version || !['1.0', '1.1'].includes(saveData.version)) {
-        console.warn('Incompatible save data version, clearing...');
-        localStorage.removeItem('jewelry-designer-state');
-        return false;
-      }
-      
-      // Check if saved data is not too old (24 hours)
-      const savedTime = new Date(saveData.timestamp);
-      const now = new Date();
-      const hoursDiff = (now.getTime() - savedTime.getTime()) / (1000 * 60 * 60);
-      
-      if (hoursDiff > 24) {
-        console.log('Saved data expired (>24 hours), clearing...');
-        localStorage.removeItem('jewelry-designer-state');
-        localStorage.removeItem('jewelry-designer-last-save');
-        return false;
-      }
-      
-      // Restore state with validation
-      if (saveData.selectedTemplate) {
-        selectedTemplate.set(saveData.selectedTemplate);
-      }
-      
-      if (saveData.designState) {
-        const restoredState = {
-          ...saveData.designState,
-          selectedComponents: new Map(saveData.designState.selectedComponents),
-          designData: {
-            ...saveData.designState.designData,
-            timestamp: new Date(saveData.designState.designData.timestamp)
-          }
-        };
-        designState.set(restoredState);
-      }
+  /**
+   * Restores a saved design.
+   *
+   * Async because the template is re-fetched from Strapi by id instead of being
+   * restored from the browser copy — a stored template carried stale prices and
+   * positions, so a customer returning an hour later could order at the old price.
+   * Components that no longer exist in the catalogue are dropped, and the caller
+   * is told about it so it can say something.
+   */
+  loadFromLocalStorage: async (): Promise<RestoreResult> => {
+    if (!browser) return { restored: false };
 
-      // Restore bracelet configuration if available (version 1.1+)
-      if (saveData.version === '1.1' && saveData.braceletConfiguration) {
-        braceletConfiguration.set(saveData.braceletConfiguration);
-      }
-      
-      if (saveData.currentStep) {
-        // Don't restore SUCCESS step, start fresh
-        if (saveData.currentStep !== DesignStep.SUCCESS) {
-          currentStep.set(saveData.currentStep);
-        }
-      }
-      
-      console.log('Successfully restored design from localStorage');
-      hasRecoveredSession.set(true);
-      recoveryTimestamp.set(savedTime);
-      return true;
-    } catch (error) {
-      console.error('Failed to load from localStorage:', error);
+    const discard = () => {
       localStorage.removeItem('jewelry-designer-state');
       localStorage.removeItem('jewelry-designer-last-save');
-      return false;
+    };
+
+    try {
+      const saved = localStorage.getItem('jewelry-designer-state');
+      if (!saved) return { restored: false };
+
+      const saveData = JSON.parse(saved);
+
+      if (!saveData.version || !SUPPORTED_SAVE_VERSIONS.includes(saveData.version)) {
+        console.warn('Incompatible save data version, clearing...');
+        discard();
+        return { restored: false };
+      }
+
+      const savedTime = new Date(saveData.timestamp);
+      const hoursDiff = (Date.now() - savedTime.getTime()) / (1000 * 60 * 60);
+
+      if (hoursDiff > SAVE_MAX_AGE_HOURS) {
+        discard();
+        return { restored: false };
+      }
+
+      // Re-fetch the template so prices and positions are current.
+      // `selectedTemplate` (the full object) is the pre-2.0 format.
+      const templateId: string | null =
+        saveData.selectedTemplateId ?? saveData.selectedTemplate?.id ?? null;
+
+      let template: JewelryTemplate | null = null;
+      if (templateId) {
+        try {
+          template = await templatesApi.getById(templateId);
+        } catch (error) {
+          console.error('Could not re-fetch the saved template:', error);
+          discard();
+          return { restored: false };
+        }
+      }
+
+      if (!template) {
+        discard();
+        return { restored: false };
+      }
+
+      // Drop placements whose component or position no longer exists.
+      const validPositionIds = new Set(template.positions.map((p) => p.id));
+      const savedEntries: Array<[string, JewelryComponent]> =
+        saveData.designState?.selectedComponents ?? [];
+
+      const keptEntries = savedEntries.filter(
+        ([positionId, component]) => validPositionIds.has(positionId) && component?.id
+      );
+      const droppedCount = savedEntries.length - keptEntries.length;
+
+      selectedTemplate.set(template);
+
+      if (saveData.designState) {
+        const keptPositionIds = new Set(keptEntries.map(([positionId]) => positionId));
+        designState.set({
+          ...saveData.designState,
+          previewImage: undefined,
+          templateId: template.id,
+          selectedComponents: new Map(keptEntries),
+          designData: {
+            ...saveData.designState.designData,
+            templateId: template.id,
+            components: (saveData.designState.designData?.components ?? []).filter(
+              (c: ComponentPlacement) => keptPositionIds.has(c.positionId)
+            ),
+            timestamp: new Date(saveData.designState.designData.timestamp)
+          }
+        });
+      }
+
+      if (saveData.braceletConfiguration) {
+        braceletConfiguration.set(saveData.braceletConfiguration);
+      }
+
+      // Never restore into SUCCESS — that order is already sent.
+      if (saveData.currentStep && saveData.currentStep !== DesignStep.SUCCESS) {
+        currentStep.set(saveData.currentStep);
+      }
+
+      hasRecoveredSession.set(true);
+      recoveryTimestamp.set(savedTime);
+
+      return { restored: true, droppedCount };
+    } catch (error) {
+      console.error('Failed to load from localStorage:', error);
+      discard();
+      return { restored: false };
     }
   },
 
   clearLocalStorage: () => {
+    if (!browser) return;
     try {
       localStorage.removeItem('jewelry-designer-state');
       localStorage.removeItem('jewelry-designer-last-save');
@@ -838,6 +935,7 @@ export const jewelryDesignerActions = {
 
   // Get last save timestamp
   getLastSaveTime: (): Date | null => {
+    if (!browser) return null;
     try {
       const lastSave = localStorage.getItem('jewelry-designer-last-save');
       return lastSave ? new Date(lastSave) : null;
@@ -848,18 +946,16 @@ export const jewelryDesignerActions = {
 
   // Check if there's a saved session available
   hasSavedSession: (): boolean => {
+    if (!browser) return false;
     try {
       const saved = localStorage.getItem('jewelry-designer-state');
       if (!saved) return false;
-      
+
       const saveData = JSON.parse(saved);
-      
-      // Check if not expired
       const savedTime = new Date(saveData.timestamp);
-      const now = new Date();
-      const hoursDiff = (now.getTime() - savedTime.getTime()) / (1000 * 60 * 60);
-      
-      return hoursDiff <= 24;
+      const hoursDiff = (Date.now() - savedTime.getTime()) / (1000 * 60 * 60);
+
+      return hoursDiff <= SAVE_MAX_AGE_HOURS;
     } catch (error) {
       return false;
     }
@@ -872,34 +968,22 @@ export const jewelryDesignerActions = {
   }
 };
 
-// Auto-save functionality with debouncing
+// Auto-save functionality with debouncing.
+// Guarded on `browser`: these subscriptions fire once at module init, which also
+// happens during SSR, where there is no localStorage to write to.
 let saveTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const autoSave = () => {
-  if (saveTimeout) {
-    clearTimeout(saveTimeout);
-  }
+  if (!browser) return;
+  if (saveTimeout) clearTimeout(saveTimeout);
   saveTimeout = setTimeout(() => {
     jewelryDesignerActions.saveToLocalStorage();
   }, 1000);
 };
 
-// Auto-save when design state changes
-designState.subscribe(() => {
-  autoSave();
-});
-
-// Auto-save when template changes
-selectedTemplate.subscribe(() => {
-  autoSave();
-});
-
-// Auto-save when step changes
-currentStep.subscribe(() => {
-  autoSave();
-});
-
-// Auto-save when bracelet configuration changes
-braceletConfiguration.subscribe(() => {
-  autoSave();
-});
+if (browser) {
+  designState.subscribe(autoSave);
+  selectedTemplate.subscribe(autoSave);
+  currentStep.subscribe(autoSave);
+  braceletConfiguration.subscribe(autoSave);
+}

@@ -1,4 +1,4 @@
-<script>
+﻿<script>
   //  import anime from "animejs";
     import {  fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
@@ -59,7 +59,7 @@ let i = $state(0)
 
 const staticItems = [
         { id: null, attributes: { name: 'סדנאות' }, path: '/sadnaot' },
-        { id: null, attributes: { name: 'צרי עיצוב משלך' }, path: '/customjewelry' }
+        { id: null, attributes: { name: 'צרי עיצוב משלך' }, path: '/tachshit-ishi' }
 ]
 const allItems = $derived([...staticItems, ...shopsi.data])
 
