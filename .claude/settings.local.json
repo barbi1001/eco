@@ -28,7 +28,9 @@
       "Bash(sort -k2 -n)",
       "Bash(awk 'NR==915 {depth=1; print NR\": \"$0; next} NR>915 && depth>0 { for\\(i=1;i<=length\\($0\\);i++\\) { c=substr\\($0,i,1\\); if \\(i<length\\($0\\)-3 && substr\\($0,i,2\\)==\"<g\"\\) depth++; if \\(i<length\\($0\\)-3 && substr\\($0,i,4\\)==\"</g>\"\\) depth--; } if \\(depth==0\\) {print NR\": \"$0\" <-- closes line 915\"; exit} }' \"c:/Users/babay/Documents/GitHub/eco/eco/src/lib/comonents/mobileItem.svelte\")",
       "Bash(awk -F: 'NR==1{open=0;close=0} {gsub\\(/[^<]/,\"\",$2\\); n=length\\($2\\); if\\($2 ~ /\\\\//\\) close+=n; else open+=n} END {print open, close}')",
-      "Bash(awk -F'<path' '{print NR-1, length\\($2\\)}')"
+      "Bash(awk -F'<path' '{print NR-1, length\\($2\\)}')",
+      "PowerShell(Get-ChildItem -Path \"$env:USERPROFILE\\\\Downloads\" -File -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 15 | Format-Table Name, Length, LastWriteTime -AutoSize | Out-String)",
+      "PowerShell(git ls-remote --heads origin 2>&1)"
     ]
   }
 }

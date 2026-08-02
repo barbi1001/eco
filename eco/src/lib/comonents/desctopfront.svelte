@@ -1,4 +1,4 @@
-<script>
+﻿<script>
         import { fly , fade} from 'svelte/transition'
 	import { onMount } from 'svelte';
         console.log(shopsi)
@@ -16,7 +16,7 @@ let i = $state(0)
 
 const staticItems = [
         { id: null, attributes: { name: 'סדנאות' }, path: '/sadnaot' },
-        { id: null, attributes: { name: 'צרי עיצוב משלך' }, path: '/customjewelry' }
+        { id: null, attributes: { name: 'צרי עיצוב משלך' }, path: '/tachshit-ishi' }
 ]
 const allItems = $derived([...staticItems, ...shopsi.data])
 

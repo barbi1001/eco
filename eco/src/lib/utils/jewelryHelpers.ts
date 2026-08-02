@@ -7,6 +7,54 @@ import type {
   SizeCategory,
   TemplatePosition
 } from '$lib/types/jewelry';
+import { PUBLIC_STRAPI_URL } from '$lib/config/strapi';
+
+/**
+ * Single definition of "is this a letter bead".
+ *
+ * This check was duplicated in seven places (the store, DesignCanvas,
+ * ComponentSelector, braceletCalculations) and no two copies agreed: some used
+ * `endsWith('-letter')`, some `includes('-letter')`, and one only trusted the
+ * `isLetterBead` flag. That meant a bead could be a letter bead on one screen and
+ * not on another.
+ */
+export function isLetterBeadComponent(
+  component: Pick<JewelryComponent, 'isLetterBead' | 'name'> | undefined | null
+): boolean {
+  if (!component) return false;
+  if (component.isLetterBead === true) return true;
+  // Fall back to the naming convention for records where the flag was never set.
+  return typeof component.name === 'string' && component.name.toLowerCase().includes('-letter');
+}
+
+/**
+ * Resolve a media URL coming from Strapi, and ask for a sensibly sized version.
+ *
+ * Two things were wrong before: gallery and picker images were rendered at full
+ * upload resolution (the picker loads up to 100 of them at once), and a relative
+ * Strapi path like `/uploads/x.png` resolved against the site origin rather than
+ * the Strapi host, so it 404'd.
+ */
+export function resolveMediaUrl(url: string | undefined, width?: number): string {
+  if (!url) return '';
+
+  // Relative upload path -> absolute Strapi URL
+  const absolute = url.startsWith('/') ? `${PUBLIC_STRAPI_URL}${url}` : url;
+
+  if (!width) return absolute;
+
+  // Cloudinary supports inline transformations; ask for a right-sized,
+  // auto-format, auto-quality variant. Other hosts are returned untouched.
+  const cloudinaryUpload = '/image/upload/';
+  if (absolute.includes('res.cloudinary.com') && absolute.includes(cloudinaryUpload)) {
+    const [prefix, rest] = absolute.split(cloudinaryUpload);
+    // Don't stack transforms if the URL already carries one.
+    if (/^[a-z]_[^/]+\//.test(rest)) return absolute;
+    return `${prefix}${cloudinaryUpload}w_${width},c_limit,f_auto,q_auto/${rest}`;
+  }
+
+  return absolute;
+}
 
 /**
  * Transform Strapi template data to internal template format

@@ -1,4 +1,4 @@
-<script>
+﻿<script>
 	let ìsStatic = import.meta.env.VITE_STATIC || undefined
 	import '../app.css';
 	import Small from './../lib/comonents/smallcarta.svelte'
@@ -16,8 +16,9 @@
     isOpen = false;
 	//get name from event timout to show goodby msg
   };
-  export const prerender = true;
-  export const trailingSlash = 'always';
+  // NOTE: page options (prerender / trailingSlash) belong in +layout.js — they are
+  // ignored here. See src/routes/+layout.js, which is the file SvelteKit reads.
+
 
 
 

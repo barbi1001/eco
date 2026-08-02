@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import { onMount, untrack } from 'svelte';
 	import { fade, scale } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
@@ -10,7 +10,8 @@
 		availableComponents
 	} from '$lib/stores/jewelryDesigner';
 	import { prepareSvgForRendering } from '$lib/utils/svgSanitizer';
-	import { parseRichText } from '$lib/utils/jewelryHelpers';
+	import { parseRichText, isLetterBeadComponent } from '$lib/utils/jewelryHelpers';
+	import { BRACELET_GEOMETRY, averageBeadDiameter } from '$lib/utils/braceletCalculations';
 
 	// Import bracelet-specific components
 	import WristSizeSelector from './WristSizeSelector.svelte';
@@ -62,15 +63,9 @@
 
 	// Get letter bead components (check both isLetterBead flag and name pattern)
 	let letterBeadComponents = $derived.by(() => {
-		const components = $availableComponents;
 		const letterBeads = new Map<string, JewelryComponent>();
-		components.forEach((comp) => {
-			const isLetterBead =
-				comp.isLetterBead ||
-				(comp.name && (comp.name.endsWith('-letter') || comp.name.includes('-letter')));
-			if (isLetterBead) {
-				letterBeads.set(comp.id, comp);
-			}
+		$availableComponents.forEach((comp) => {
+			if (isLetterBeadComponent(comp)) letterBeads.set(comp.id, comp);
 		});
 		return letterBeads;
 	});
@@ -82,52 +77,23 @@
 		}
 	});
 
-	// Logic: Watch for charm diameter changes and update wrist size
-	function updateWristSizeFromCharms() {
-		if (!isBracelet) return;
-
-		let previousCharmAdjustment = 0;
-		// Calculate total adjustment needed based on charms/pendants > 0.7cm
-		let currentAdjustment = 0;
-		const selComponents = $designState.selectedComponents;
-
-		// Check positions in the ORIGINAL template since we only add beads to activeTemplate.
-		template.positions.forEach((pos) => {
-			if (pos.type === 'charm' || pos.type === 'pendant') {
-				const comp = selComponents.get(pos.id);
-				if (comp) {
-					// Default bead/pearl is 0.7cm
-					const baseSize = 0.7;
-					const actualSize = comp.diameter || 0.7;
-					// Add the difference to the wrist size
-					currentAdjustment += actualSize - baseSize;
-				}
-			}
-		});
-
-		// Check for significant change (avoid floating point noise)
-		if (Math.abs(currentAdjustment - previousCharmAdjustment) > 0.01) {
-			const diff = currentAdjustment - previousCharmAdjustment;
-			previousCharmAdjustment = currentAdjustment;
-
-			// Update the wrist size in the store
-			const newSize = (currentBraceletConfig?.wristCircumference || 17) + diff;
-			const roundedSize = Math.round(newSize * 10) / 10;
-			jewelryDesignerActions.updateWristSize(roundedSize);
-		}
-	}
-
 	// Logic: Redistribute beads along the circle based on current wrist size
 	function updateBeadPositions() {
 		if (!isBracelet) return;
 
-		// Constants
-		const BEAD_SIZE = 0.7;
-		const CLASP_SPACE = 1.5; // cm
-
-		// Calculate needed beads based on wrist size
-		// We use currentWristSize which is derived from store.
-		const neededBeads = Math.ceil((currentWristSize - CLASP_SPACE) / BEAD_SIZE);
+		// Geometry comes from one shared source now — this file used to assume a
+		// 0.7cm bead while braceletCalculations assumed 0.5cm, so the slots drawn
+		// here never matched the number the validator thought would fit.
+		const placedBeads = Array.from($designState.selectedComponents.values()).filter(
+			(c) => c.type === 'bead'
+		);
+		const beadSize = averageBeadDiameter(placedBeads);
+		const neededBeads = Math.ceil(
+			Math.max(
+				0,
+				currentWristSize + BRACELET_GEOMETRY.easeAllowance - BRACELET_GEOMETRY.claspSpace
+			) / beadSize
+		);
 
 		// Get original beads from the base template (source of truth for geometry)
 		const originalBeadPositions = template.positions.filter((p) => p.type === 'bead');
@@ -248,8 +214,6 @@
 	}
 
 	onMount(() => {
-		// Initialize
-		// updateWristSizeFromCharms(); // Skip for now to avoid side effect on mount without context
 		updateBeadPositions();
 
 		// Parse the SVG template
@@ -304,18 +268,28 @@
 		}
 	}
 
+	// Touch targets need to be bigger on phones. This used to be a CSS `r: 14`
+	// override, which hit every <circle> in the marker group — the hover halo and
+	// the pulse ring included — so all three sizes collapsed into one and the
+	// animations broke. Scaling here keeps the small/medium/large hierarchy.
+	let isCompactViewport = $state(false);
+
+	$effect(() => {
+		if (typeof window === 'undefined' || !window.matchMedia) return;
+
+		const query = window.matchMedia('(max-width: 768px)');
+		isCompactViewport = query.matches;
+
+		const onChange = (e: MediaQueryListEvent) => (isCompactViewport = e.matches);
+		query.addEventListener('change', onChange);
+		return () => query.removeEventListener('change', onChange);
+	});
+
 	// Get position marker size based on position size
 	function getMarkerSize(position: TemplatePosition): number {
-		switch (position.size) {
-			case 'small':
-				return 8;
-			case 'medium':
-				return 12;
-			case 'large':
-				return 16;
-			default:
-				return 12;
-		}
+		const base = position.size === 'small' ? 8 : position.size === 'large' ? 16 : 12;
+		// ~44px minimum touch target once the SVG is scaled to the phone width.
+		return isCompactViewport ? Math.round(base * 1.35) : base;
 	}
 
 	// Handle wrist size change for bracelets
@@ -833,16 +807,6 @@
 		.design-canvas {
 			/* Improve touch target sizes on mobile */
 			touch-action: manipulation;
-		}
-
-		.position-marker {
-			/* Increase touch target size */
-			cursor: pointer;
-		}
-
-		/* Larger markers for easier touch interaction */
-		:global(.design-canvas .position-marker circle) {
-			r: 14;
 		}
 
 		.canvas-legend {

@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
@@ -15,6 +15,7 @@
 	import { templatesApi } from '$lib/api/strapiClient';
 	import { parseRichText } from '$lib/utils/jewelryHelpers';
 	import SkeletonLoader from './SkeletonLoader.svelte';
+	import OptimizedImage from './OptimizedImage.svelte';
 	import ErrorMessage from './ErrorMessage.svelte';
 
 	// Component props
@@ -27,8 +28,11 @@
 
 	// Component state
 	let loadingError = $state<JewelryDesignerError | null>(null);
+	// `templatesApi.getAll` already retries internally (see retryMechanism.ts), so a
+	// manual retry here is a single extra attempt, not another 3 rounds of backoff.
+	// Stacking them made a Strapi cold start look like a hang.
 	let retryCount = $state(0);
-	let maxRetries = 3;
+	const maxRetries = 3;
 	let selectedCategory = $state<string>('all');
 
 	// Filtered templates based on category selection
@@ -37,9 +41,6 @@
 			? $availableTemplates
 			: $availableTemplates.filter((template) => template.category === selectedCategory)
 	);
-	$effect(() => {
-		console.log($availableTemplates);
-	});
 	// Load templates on mount
 	onMount(() => {
 		loadTemplates();
@@ -290,17 +291,15 @@
 								</div>
 							{/if}
 
-							<img
+							<!-- Cards render around 320px wide; ask the CDN for that instead of
+							     downloading every full-size upload. -->
+							<OptimizedImage
 								src={template.previewImage}
 								alt={template.name}
 								class="template-image"
-								loading="lazy"
-								decoding="async"
-								onerror={(e) => {
-									// Handle image loading errors
-									const target = e.currentTarget as HTMLImageElement;
-									target.src = '/images/placeholder-jewelry.svg';
-								}}
+								width={320}
+								aspectRatio="4 / 3"
+								objectFit="cover"
 							/>
 							<div class="template-overlay">
 								<button class="select-button" onclick={() => handleTemplateSelect(template)}>
@@ -658,7 +657,9 @@
 		z-index: 5;
 	}
 
-	.template-image {
+	/* OptimizedImage renders the <img> inside its own wrapper, so these styles must
+	   pierce component scoping. The class lands on the wrapper element. */
+	:global(.template-image) {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
@@ -667,7 +668,7 @@
 		image-rendering: crisp-edges;
 	}
 
-	.template-image[loading='lazy'] {
+	:global(.template-image[loading='lazy']) {
 		background: linear-gradient(90deg, #fce4ec 25%, #f8bbd9 50%, #fce4ec 75%);
 		background-size: 200% 100%;
 		animation: imageShimmer 1.5s infinite;
@@ -682,7 +683,7 @@
 		}
 	}
 
-	.template-card:hover .template-image {
+	.template-card:hover :global(.template-image) {
 		transform: scale(1.06);
 	}
 

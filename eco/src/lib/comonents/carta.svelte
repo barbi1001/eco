@@ -43,8 +43,8 @@
 		<div class="cart-item">
 			<img width="50" src={item.image} alt={item.name}/>
 			<div>{item.quantity}
-				<button class="p-1 bg-pink-200" onclick={() => plusItem(item)}>+</button>
-				<button class="p-1 bg-pink-200" onclick={() => minusItem(item)}>-</button>
+				<button class="min-h-[44px] min-w-[44px] rounded bg-pink-200 text-lg" aria-label="הוספת יחידה" onclick={() => plusItem(item)}>+</button>
+				<button class="min-h-[44px] min-w-[44px] rounded bg-pink-200 text-lg" aria-label="הפחתת יחידה" onclick={() => minusItem(item)}>-</button>
 			</div>
 			<p>₪{item.price * item.quantity}</p>
 		</div>

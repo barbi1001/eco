@@ -29,6 +29,7 @@ export const GET = async () => {
     additionalPaths: [
       { path: '/bartikun', changefreq: 'weekly', priority: 0.8 },
       { path: '/customjewelry', changefreq: 'weekly', priority: 0.8 },
+      { path: '/tachshit-ishi', changefreq: 'weekly', priority: 0.9 },
       { path: '/sadnaot', changefreq: 'weekly', priority: 0.8 },
       { path: '/sadna', changefreq: 'monthly', priority: 0.6 },
       { path: '/pele', changefreq: 'monthly', priority: 0.6 },

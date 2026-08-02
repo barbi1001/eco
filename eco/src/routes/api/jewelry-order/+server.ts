@@ -1,10 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-
-const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337';
-const STRAPI_API_TOKEN = import.meta.env.VITE_STRAPI_API_TOKEN;
-const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+import { sendTelegramMessage, sendTelegramPhoto } from '$lib/server/telegram';
+import { STRAPI_URL, strapiHeaders } from '$lib/server/strapi';
 
 function dataUrlToBlob(dataUrl: string): Blob | null {
 	try {
@@ -21,55 +18,13 @@ function dataUrlToBlob(dataUrl: string): Blob | null {
 	}
 }
 
-async function sendTelegramMessage(text: string) {
-	if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
-	try {
-		const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-		const res = await fetch(url, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				chat_id: TELEGRAM_CHAT_ID,
-				text,
-				parse_mode: 'HTML',
-				disable_web_page_preview: true
-			})
-		});
-		if (!res.ok) {
-			console.error('Telegram sendMessage failed:', res.status, await res.text());
-		}
-	} catch (e) {
-		console.error('Telegram sendMessage error:', e);
-	}
-}
-
-async function sendTelegramPhoto(blob: Blob, caption: string, filename: string) {
-	if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
-	try {
-		const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`;
-		const fd = new FormData();
-		fd.append('chat_id', TELEGRAM_CHAT_ID);
-		fd.append('caption', caption);
-		fd.append('photo', blob, filename);
-		const res = await fetch(url, { method: 'POST', body: fd });
-		if (!res.ok) {
-			console.error('Telegram sendPhoto failed:', res.status, await res.text());
-		}
-	} catch (e) {
-		console.error('Telegram sendPhoto error:', e);
-	}
-}
-
 async function uploadAndLinkImage(blob: Blob, filename: string, orderId: number | string) {
 	const fd = new FormData();
 	fd.append('files', blob, filename);
 
-	const headers: HeadersInit = {};
-	if (STRAPI_API_TOKEN) headers['Authorization'] = `Bearer ${STRAPI_API_TOKEN}`;
-
 	const uploadRes = await fetch(`${STRAPI_URL}/api/upload`, {
 		method: 'POST',
-		headers,
+		headers: strapiHeaders(),
 		body: fd
 	});
 
@@ -88,12 +43,9 @@ async function uploadAndLinkImage(blob: Blob, filename: string, orderId: number 
 		return { url, fileId: null };
 	}
 
-	const linkHeaders: HeadersInit = { 'Content-Type': 'application/json' };
-	if (STRAPI_API_TOKEN) linkHeaders['Authorization'] = `Bearer ${STRAPI_API_TOKEN}`;
-
 	const linkRes = await fetch(`${STRAPI_URL}/api/custom-jewelry-orders/${orderId}`, {
 		method: 'PUT',
-		headers: linkHeaders,
+		headers: strapiHeaders({ 'Content-Type': 'application/json' }),
 		body: JSON.stringify({ data: { design_preview: fileId } })
 	});
 
@@ -151,12 +103,9 @@ export const POST: RequestHandler = async ({ request }) => {
 			}
 		};
 
-		const headers: HeadersInit = { 'Content-Type': 'application/json' };
-		if (STRAPI_API_TOKEN) headers['Authorization'] = `Bearer ${STRAPI_API_TOKEN}`;
-
 		const orderResponse = await fetch(`${STRAPI_URL}/api/custom-jewelry-orders`, {
 			method: 'POST',
-			headers,
+			headers: strapiHeaders({ 'Content-Type': 'application/json' }),
 			body: JSON.stringify(orderPayload)
 		});
 

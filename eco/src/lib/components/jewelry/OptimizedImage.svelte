@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  
+  import { resolveMediaUrl } from '$lib/utils/jewelryHelpers';
+
   interface OptimizedImageProps {
     src: string;
     alt: string;
@@ -9,16 +10,26 @@
     loading?: 'lazy' | 'eager';
     aspectRatio?: string;
     objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
+    /** Rendered width in CSS px — used to request a right-sized variant. */
+    width?: number;
+    /** Shown when the image fails to load. */
+    fallbackSrc?: string;
   }
-  
+
   let {
     src,
     alt,
     class: className = '',
     loading = 'lazy',
     aspectRatio = '1',
-    objectFit = 'contain'
+    objectFit = 'contain',
+    width,
+    fallbackSrc = '/images/placeholder-jewelry.svg'
   }: OptimizedImageProps = $props();
+
+  // Ask the CDN for roughly twice the layout width so it still looks sharp on
+  // retina screens, instead of downloading the full-size upload.
+  let resolvedSrc = $derived(resolveMediaUrl(src, width ? width * 2 : undefined));
   
   let isLoaded = $state(false);
   let hasError = $state(false);
@@ -35,6 +46,11 @@
   }
   
   function handleError() {
+    if (!hasError && fallbackSrc && imgElement && imgElement.src !== fallbackSrc) {
+      hasError = true;
+      imgElement.src = fallbackSrc;
+      return;
+    }
     hasError = true;
     isLoaded = true;
   }
@@ -52,7 +68,7 @@
   
   <img
     bind:this={imgElement}
-    {src}
+    src={resolvedSrc}
     {alt}
     {loading}
     decoding="async"

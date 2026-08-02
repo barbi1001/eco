@@ -1,16 +1,25 @@
 import type {
   JewelryTemplate,
   JewelryComponent,
-  CustomJewelryOrder,
   StrapiResponse,
   StrapiTemplate,
   StrapiComponent
 } from '$lib/types/jewelry';
 import { transformStrapiTemplate, transformStrapiComponent } from '$lib/utils/jewelryHelpers';
 import { createRetryWrapper, retryConfigs } from '$lib/utils/retryMechanism';
+import { PUBLIC_STRAPI_URL } from '$lib/config/strapi';
 
 // Strapi configuration
-const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337';
+const STRAPI_URL = PUBLIC_STRAPI_URL;
+
+// This client runs in the browser and is READ-ONLY (templates + components).
+//
+// `VITE_`-prefixed variables are inlined into the browser bundle by Vite, so this
+// token is public. It is kept only because the read collections may still require
+// it; the correct end state is to make `jewelry-templates` and `jewelry-components`
+// publicly readable in Strapi and drop this entirely.
+// Every WRITE goes through a server endpoint with a private token
+// (see src/lib/server/strapi.ts). Do not add write calls here.
 const STRAPI_API_TOKEN = import.meta.env.VITE_STRAPI_API_TOKEN;
 
 /**
@@ -82,31 +91,6 @@ class StrapiClient {
     });
   }
 
-  async uploadFile(file: File, refId?: string, ref?: string, field?: string): Promise<any> {
-    const formData = new FormData();
-    formData.append('files', file);
-    
-    if (refId) formData.append('refId', refId);
-    if (ref) formData.append('ref', ref);
-    if (field) formData.append('field', field);
-
-    const headers: HeadersInit = {};
-    if (this.apiToken) {
-      headers['Authorization'] = `Bearer ${this.apiToken}`;
-    }
-
-    const response = await fetch(`${this.baseUrl}/api/upload`, {
-      method: 'POST',
-      headers,
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error(`File upload failed: ${response.status} ${response.statusText}`);
-    }
-
-    return response.json();
-  }
 }
 
 // Create client instance
@@ -219,84 +203,5 @@ export const componentsApi = {
     return response.data.map(transformStrapiComponent);
   }, retryConfigs.components)
 };
-
-/**
- * Custom Orders API
- */
-export const ordersApi = {
-  /**
-   * Create a new custom jewelry order
-   */
-  async create(order: Omit<CustomJewelryOrder, 'id' | 'orderDate'>): Promise<CustomJewelryOrder> {
-    try {
-      const orderData = {
-        data: {
-          customer_name: order.customerName,
-          customer_phone: order.customerPhone,
-          customer_message: order.customerMessage || '',
-          design_configuration: order.designConfiguration,
-          total_price: order.totalPrice,
-          order_status: order.orderStatus,
-          order_date: new Date().toISOString()
-        }
-      };
-
-      const response = await strapiClient.post<StrapiResponse<any>>(
-        '/custom-jewelry-orders',
-        orderData
-      );
-
-      return {
-        id: response.data.id.toString(),
-        customerName: response.data.attributes.customer_name,
-        customerPhone: response.data.attributes.customer_phone,
-        customerMessage: response.data.attributes.customer_message,
-        designConfiguration: response.data.attributes.design_configuration,
-        totalPrice: response.data.attributes.total_price,
-        orderStatus: response.data.attributes.order_status,
-        orderDate: new Date(response.data.attributes.order_date)
-      };
-    } catch (error) {
-      console.error('Failed to create order:', error);
-      throw new Error('Failed to submit jewelry order');
-    }
-  },
-
-  /**
-   * Upload design preview image for an order
-   */
-  async uploadPreviewImage(orderId: string, imageBlob: Blob): Promise<string> {
-    try {
-      const file = new File([imageBlob], `design-preview-${orderId}.png`, {
-        type: 'image/png'
-      });
-
-      const uploadResponse = await strapiClient.uploadFile(
-        file,
-        orderId,
-        'api::custom-jewelry-order.custom-jewelry-order',
-        'design_preview'
-      );
-
-      return uploadResponse[0]?.url || '';
-    } catch (error) {
-      console.error('Failed to upload preview image:', error);
-      throw new Error('Failed to upload design preview');
-    }
-  }
-};
-
-/**
- * Health check for Strapi connection
- */
-export async function checkStrapiConnection(): Promise<boolean> {
-  try {
-    await strapiClient.get('/jewelry-templates', { 'pagination[limit]': '1' });
-    return true;
-  } catch (error) {
-    console.error('Strapi connection failed:', error);
-    return false;
-  }
-}
 
 export default strapiClient;

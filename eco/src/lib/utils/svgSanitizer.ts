@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Decodes HTML entities in a string (multiple passes to handle double-encoding)
  */
 function decodeHtmlEntities(text: string): string {

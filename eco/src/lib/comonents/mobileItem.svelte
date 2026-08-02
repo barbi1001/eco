@@ -1,34 +1,6 @@
 <script>
 	import SimilarProducts from '$lib/comonents/item/similarProducts.svelte';
 
-	let imge = find();
-
-	function find() {
-		if (shopsi) {
-			let imge = shopsi.data.attributes.img5.data;
-
-			return imge;
-		} else {
-			let imge = [];
-			return imge;
-			setTimeout(function n() {
-				if (shopsi) {
-					let imge = shopsi.data.attributes.img5.data;
-
-					return imge;
-				} else {
-					setTimeout(function n() {
-						if (shopsi) {
-							let imge = shopsi.data.attributes.img5.data;
-
-							return imge;
-						} else {
-						}
-					}, 1000);
-				}
-			}, 1000);
-		}
-	}
 	import { Swiper, SwiperSlide } from 'swiper/svelte';
 	import 'swiper/css/zoom';
 
@@ -68,6 +40,9 @@
 		price,
 		onaddto
 	} = $props();
+
+	// חייב לבוא אחרי אתחול ה-$props כדי לא לגשת ל-shopsi ב-TDZ בזמן SSR
+	let imge = $derived(shopsi ? shopsi.data.attributes.img5.data : []);
 
 	function addToCart(id) {
 		onaddto({ pr: id });
