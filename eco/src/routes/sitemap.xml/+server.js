@@ -1,8 +1,9 @@
 import * as sitemap from 'super-sitemap';
+import { PUBLIC_STRAPI_URL } from '$lib/config/strapi';
 
 export const prerender = false;
 
-const STRAPI = 'https://strapi-7iq2.onrender.com';
+const STRAPI = PUBLIC_STRAPI_URL;
 
 async function fetchCategories() {
   try {

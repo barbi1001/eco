@@ -1,4 +1,5 @@
 <script>
+  import { PUBLIC_STRAPI_URL } from '$lib/config/strapi';
 	import {cart, address} from "../stores/cart.js";
     import * as yup from "yup";
     import "yup-phone";
@@ -23,7 +24,7 @@
         }
 
        axios
-  .post('https://strapi-7iq2.onrender.com/api/hazmanas', {
+  .post(`${PUBLIC_STRAPI_URL}/api/hazmanas`, {
 
    "data": {  
     customer: $address.name,

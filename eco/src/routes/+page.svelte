@@ -1,6 +1,7 @@
 
 
 <script>
+  import { PUBLIC_STRAPI_URL } from '$lib/config/strapi';
   import { Head } from 'svead';
   import { fly } from 'svelte/transition'
   import { bounceOut } from 'svelte/easing'
@@ -11,7 +12,7 @@
   onMount(async () =>{
     shopsi = datax
     await
-    fetch(`https://strapi-7iq2.onrender.com/api/categories?populate=%2A`)
+    fetch(`${PUBLIC_STRAPI_URL}/api/categories?populate=%2A`)
   .then(response => response.json())
   .then(data => {
 		console.log(data);

@@ -1,7 +1,8 @@
 import { writable, get, derived } from 'svelte/store';
 import { browser } from '$app/environment';
+import { PUBLIC_STRAPI_URL } from '$lib/config/strapi';
 
-const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'https://strapi-7iq2.onrender.com';
+const STRAPI_URL = PUBLIC_STRAPI_URL;
 const STORAGE_KEY = 'barb_admin_auth';
 
 export interface AdminUser {

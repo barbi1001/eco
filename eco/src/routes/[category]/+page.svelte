@@ -1,5 +1,6 @@
 
   <script>
+  import { PUBLIC_STRAPI_URL } from '$lib/config/strapi';
   import { run } from 'svelte/legacy';
 
 
@@ -23,7 +24,7 @@
       import Mobile from '$lib/comonents/mobilecatego.svelte'
   /** @type {{data: any}} */
   let { data } = $props();
-      let urlx = "https://strapi-7iq2.onrender.com/api/";
+      let urlx = `${PUBLIC_STRAPI_URL}/api/`;
 
 
 

@@ -14,13 +14,15 @@ const STRAPI_URL = PUBLIC_STRAPI_URL;
 
 // This client runs in the browser and is READ-ONLY (templates + components).
 //
-// `VITE_`-prefixed variables are inlined into the browser bundle by Vite, so this
-// token is public. It is kept only because the read collections may still require
-// it; the correct end state is to make `jewelry-templates` and `jewelry-components`
-// publicly readable in Strapi and drop this entirely.
+// It sends no token. `jewelry-templates` and `jewelry-components` are publicly
+// readable in Strapi, and a `VITE_` token would be inlined into the bundle anyway.
+// It used to send VITE_STRAPI_API_TOKEN, which stopped working when Strapi moved
+// to barbi.1lev1.com with a new API_TOKEN_SALT (2026-10-29): Strapi rejects an
+// unknown bearer with 401 even on a public route, so the stale token broke reads
+// that need no token at all.
 // Every WRITE goes through a server endpoint with a private token
 // (see src/lib/server/strapi.ts). Do not add write calls here.
-const STRAPI_API_TOKEN = import.meta.env.VITE_STRAPI_API_TOKEN;
+const STRAPI_API_TOKEN: string | undefined = undefined;
 
 /**
  * Base API client for Strapi requests

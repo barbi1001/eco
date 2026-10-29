@@ -1,4 +1,5 @@
 <script>
+  import { PUBLIC_STRAPI_URL } from '$lib/config/strapi';
   import { DialogOverlay, DialogContent } from 'svelte-accessible-dialog';
  import { createForm } from "svelte-forms-lib";
     import * as yup from "yup";
@@ -67,7 +68,7 @@ let shgi = $state({st: false, msg: ""})
       onSubmit: values => {
        const mail = $form.email.toLowerCase()
   axios
-  .post('https://strapi-7iq2.onrender.com/api/rekamots', {
+  .post(`${PUBLIC_STRAPI_URL}/api/rekamots`, {
 
    "data": {  
      name: $form.name,

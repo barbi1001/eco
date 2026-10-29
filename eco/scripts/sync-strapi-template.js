@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
  * CONFIGURATION
  * Edit these values or pass them via environment variables
  */
-const STRAPI_URL = process.env.STRAPI_URL || "https://strapi-7iq2.onrender.com"
+const STRAPI_URL = process.env.STRAPI_URL || "https://barbi.1lev1.com"
 // Never hard-code the token: this file is in git, so a committed token stays in
 // the history forever. Pass it in:  STRAPI_API_TOKEN=xxx node scripts/sync-strapi-template.js
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN
